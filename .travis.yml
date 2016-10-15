@@ -6,7 +6,6 @@ jdk:
 script:
 - mvn test
 - mvn cobertura:cobertura
-- mvn site
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
