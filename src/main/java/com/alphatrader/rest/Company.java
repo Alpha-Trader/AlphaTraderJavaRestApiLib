@@ -6,6 +6,8 @@ import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -19,6 +21,11 @@ import java.util.List;
  */
 public class Company {
     /**
+     * The logger for this company.
+     */
+    private static final Log log = LogFactory.getLog(Company.class);
+
+    /**
      * Gson instance for deserialization.
      */
     private static final Gson gson = new Gson();
@@ -26,86 +33,32 @@ public class Company {
     /**
      * List type for gson deserialization.
      */
-    private static final Type listType = new TypeToken<ArrayList<Company>>(){}.getType();
-
-    /**
-     * Fetches all companies currently employing the given user as a CEO.
-     *
-     * @param user the user who governs the company
-     * @return a list of all companies governed by the user
-     */
-    public static List<Company> getAllUserCompanies(User user) {
-        List<Company> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/");
-            String companyNodes = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(companyNodes, listType);
-        } catch (UnirestException e) {
-            System.err.println("Error fetching companies: " + e.getMessage());
-        }
-
-        return myReturn;
-    }
-
-    /**
-     * fetches all companies in the game
-     */
-
-    public static List<Company> getAllCompanies() {
-        List<Company> myReturn = new ArrayList<>();
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/all/");
-            String companyNodes = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(companyNodes, listType);
-        } catch (UnirestException e) {
-            System.err.println("Error fetching companies: " + e.getMessage());
-        }
-
-        return myReturn;
-    }
-
-
-    /**
-     * Creates a Company object from the API's json response.
-     *
-     * @param json the json object you want to parse
-     * @return the parsed company
-     */
-    public static Company createFromJson(String json) {
-        return gson.fromJson(json, Company.class);
-    }
-
+    private static final Type listType = new TypeToken<ArrayList<Company>>() {
+    }.getType();
     /**
      * The unique company identifier.
      */
     private final String id;
-
     /**
      * The company name.
      */
     private final String name;
-
     /**
      * The security identifier of this company's stocks on the market.
      */
     private final String securityIdentifier;
-
     /**
      * The securities account id.
      */
     private final String securitiesAccountId;
-
     /**
      * The current amount of uncommitted cash.
      */
     private double cash;
-
     /**
      * The company's portfolio.
      */
     private Portfolio portfolio;
-
     /**
      * The number of company shares in circulation.
      */
@@ -132,6 +85,55 @@ public class Company {
         this.securitiesAccountId = securitiesAccountId;
         this.cash = cash;
         this.outstandingShares = outstandingShares;
+    }
+
+    /**
+     * Fetches all companies currently employing the given user as a CEO.
+     *
+     * @param user the user who governs the company
+     * @return a list of all companies governed by the user
+     */
+    public static List<Company> getAllUserCompanies(User user) {
+        List<Company> myReturn = new ArrayList<>();
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/");
+            String companyNodes = response.getBody().getArray().toString();
+            myReturn = gson.fromJson(companyNodes, listType);
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching companies: " + e.getMessage());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * fetches all companies in the game
+     */
+
+    public static List<Company> getAllCompanies() {
+        List<Company> myReturn = new ArrayList<>();
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/all/");
+            String companyNodes = response.getBody().getArray().toString();
+            myReturn = gson.fromJson(companyNodes, listType);
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching companies: " + e.getMessage());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * Creates a Company object from the API's json response.
+     *
+     * @param json the json object you want to parse
+     * @return the parsed company
+     */
+    public static Company createFromJson(String json) {
+        return gson.fromJson(json, Company.class);
     }
 
     /**
@@ -170,7 +172,8 @@ public class Company {
     }
 
     /**
-     * Returns the portfolio of this company. This call will be evaluated lazily to avoid congesting the server.
+     * Returns the portfolio of this company. This call will be evaluated lazily to avoid congesting the
+     * server.
      *
      * @return the company's portfolio.
      */
@@ -179,6 +182,15 @@ public class Company {
             this.portfolio = Portfolio.getCompanyPortfolio(this);
         }
         return this.portfolio;
+    }
+
+    /**
+     * Sets the company portfolio to the provided one.
+     *
+     * @param portfolio the new portfolio
+     */
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     /* (non-Javadoc)
@@ -194,15 +206,8 @@ public class Company {
     }
 
     /**
-     * Sets the company portfolio to the provided one.
-     * @param portfolio the new portfolio
-     */
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
-    }
-
-    /**
      * Sets the outstanding shares to the new value.
+     *
      * @param outstandingShares the number of outstanding shares
      */
     public void setOutstandingShares(int outstandingShares) {

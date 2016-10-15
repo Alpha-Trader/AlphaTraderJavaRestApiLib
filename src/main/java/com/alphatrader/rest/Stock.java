@@ -11,6 +11,8 @@ import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
@@ -25,53 +27,29 @@ import java.util.List;
  */
 public class Stock {
     /**
+     * The logger for this class.
+     */
+    private static final Log log = LogFactory.getLog(Stock.class);
+
+    /**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
 
     /**
      * List type for gson deserialization.
      */
-    private static final Type listType = new TypeToken<ArrayList<Stock>>(){}.getType();
-
-    /**
-     * Fetches all listings currently on the market from the server.
-     *
-     * @return all listings on the market
-     */
-    public static List<Stock> getAllStocks() {
-        List<Stock> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/listings/");
-            String listings = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(listings, listType);
-        } catch (UnirestException e) {
-            System.err.println("Error fetching bonds : " + e.getMessage());
-        }
-        return myReturn;
-    }
-
-    /**
-     * Creates a Stock from the api json answers.
-     * corrected
-     * @param json the json object you want to parse
-     * @return the parsed stock
-     */
-    public static Stock createFromJson(String json) {
-        return gson.fromJson(json, Stock.class);
-    }
+    private static final Type listType = new TypeToken<ArrayList<Stock>>() { }.getType();
 
     /**
      * The stock's name
      */
     private String name;
-
     /**
      * The stock's security identifier
      */
     private String securityIdentifier;
-
     /**
      * The stock's issue date
      */
@@ -88,6 +66,36 @@ public class Stock {
         this.name = name;
         this.securityIdentifier = securityIdentifier;
         this.startDate = startDate;
+    }
+
+    /**
+     * Fetches all listings currently on the market from the server.
+     *
+     * @return all listings on the market
+     */
+    public static List<Stock> getAllStocks() {
+        List<Stock> myReturn = new ArrayList<>();
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/listings/");
+            String listings = response.getBody().getArray().toString();
+            myReturn = gson.fromJson(listings, listType);
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching bonds : " + e.getMessage());
+        }
+        return myReturn;
+    }
+
+    /**
+     * Creates a Stock from the api json answers.
+     * corrected
+     *
+     * @param json the json object you want to parse
+     * @return the parsed stock
+     */
+    public static Stock createFromJson(String json) {
+        return gson.fromJson(json, Stock.class);
     }
 
     /**
@@ -115,7 +123,7 @@ public class Stock {
      * @return a string representation of the stock listing
      */
     public String toString() {
-        return "Stock{" + "name='" + name + '\'' + ", securityIdentifier=" + securityIdentifier + ", startDate="
-            + startDate + '}';
+        return "Stock{" + "name='" + name + '\'' + ", securityIdentifier=" + securityIdentifier
+            + ", startDate=" + startDate + '}';
     }
 }

@@ -18,7 +18,8 @@ import java.time.ZoneId;
  */
 public class LocalDateTimeDeserializer implements JsonDeserializer<LocalDateTime> {
     @Override
-    public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext)
+    public LocalDateTime deserialize(JsonElement json, Type type,
+                                     JsonDeserializationContext jsonDeserializationContext)
         throws JsonParseException {
         Instant instant = Instant.ofEpochMilli(json.getAsJsonPrimitive().getAsLong());
         return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());

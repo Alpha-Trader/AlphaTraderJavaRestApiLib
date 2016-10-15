@@ -27,13 +27,15 @@ public class Http {
 
     public HttpResponse<JsonNode> get(String url) throws UnirestException {
         return Unirest.get(Config.getInstance().getApiUrl() + url)
-            .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance().getUser().getToken())
+            .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance().getUser()
+                .getToken())
             .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
     }
 
     public HttpResponse<JsonNode> post(String url) throws UnirestException {
         return Unirest.post(Config.getInstance().getApiUrl() + url)
-            .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance().getUser().getToken())
+            .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance().getUser()
+                .getToken())
             .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
     }
 }

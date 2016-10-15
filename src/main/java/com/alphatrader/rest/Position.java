@@ -13,54 +13,23 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 public class Position {
-    /**
-     * Last price wrapping class used for gson deserialization.
-     *
-     * @author Christopher Guckes (christopher.guckes@torq-dev.de
-     * @version 1.0
-     */
-    private static class LastPrice {
-        /**
-         * The date of the last transaction resulting in this price.
-         */
-        LocalDateTime date;
-
-        /**
-         * The last trade price of this position.
-         */
-        double value;
-    }
-
-    /**
+/**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).create();;
-
-    /**
-     * Creates a new portfolio position from an API JSON response.
-     *
-     * @param json the json to parse
-     * @return the parsed position object
-     */
-    public static Position createFromJson(String json) {
-        return gson.fromJson(json, Position.class);
-    }
-
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
     /**
      * The security identifier of this position.
      */
-    private String securityIdentifier;
-
+    private String securityIdentifier;;
     /**
      * The price this position was traded for in the last trade.
      */
     private LastPrice lastPrice;
-
     /**
      * The number of shares held in the portfolio.
      */
     private int numberOfShares;
-
     /**
      * The overall volume of this position.
      */
@@ -78,6 +47,16 @@ public class Position {
         this.lastPrice.value = volume / (double) numberOfShares;
         this.numberOfShares = numberOfShares;
         this.volume = volume;
+    }
+
+    /**
+     * Creates a new portfolio position from an API JSON response.
+     *
+     * @param json the json to parse
+     * @return the parsed position object
+     */
+    public static Position createFromJson(String json) {
+        return gson.fromJson(json, Position.class);
     }
 
     /**
@@ -106,5 +85,23 @@ public class Position {
      */
     public double getVolume() {
         return volume;
+    }
+
+    /**
+     * Last price wrapping class used for gson deserialization.
+     *
+     * @author Christopher Guckes (christopher.guckes@torq-dev.de
+     * @version 1.0
+     */
+    private static class LastPrice {
+        /**
+         * The date of the last transaction resulting in this price.
+         */
+        private LocalDateTime date;
+
+        /**
+         * The last trade price of this position.
+         */
+        private double value;
     }
 }

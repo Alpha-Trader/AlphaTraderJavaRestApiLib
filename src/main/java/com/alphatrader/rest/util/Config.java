@@ -11,27 +11,54 @@ import java.net.URL;
  * @version 1.0.0
  */
 public class Config {
+    /**
+     * The singleton instance.
+     */
     private static Config instance = new Config();
+    /**
+     * The URL of the API.
+     */
+    private URL apiUrl;
+    /**
+     * The user to log into the game API.
+     */
+    private User user;
 
+    /**
+     * @return the singleton instance.
+     */
     public static Config getInstance() {
         return instance;
     }
 
-    private User user;
-    private URL apiUrl;
-
+    /**
+     * @return the API URL.
+     */
     public URL getApiUrl() {
         return apiUrl;
     }
 
+    /**
+     * Sets the API URL to a new value.
+     *
+     * @param apiUrl the new API URL
+     */
     public void setApiUrl(URL apiUrl) {
         this.apiUrl = apiUrl;
     }
 
+    /**
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets a new user.
+     *
+     * @param user the new user
+     */
     public void setUser(User user) {
         this.user = user;
     }

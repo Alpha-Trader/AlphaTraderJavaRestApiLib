@@ -5,6 +5,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 
 /**
@@ -14,6 +16,11 @@ import org.json.JSONObject;
  * @version 1.0
  */
 public class User {
+    /**
+     * The logger for this class.
+     */
+    private static final Log log = LogFactory.getLog(User.class);
+
     /**
      * The username.
      */
@@ -41,10 +48,10 @@ public class User {
     }
 
     /**
-     * Tries to log in you in and saves the token if successfull.
-     * TODO: Error handling
+     * Tries to log in you in and saves the token if successful.
      */
     public void login() {
+        //TODO Error handling
         try {
             HttpResponse<JsonNode> response = Unirest
                 .post(Config.getInstance().getApiUrl() + "/user/token/")
@@ -56,11 +63,13 @@ public class User {
 
             if (body.optInt("code", -1) == 200) {
                 token = body.getString("message");
-            } else {
-                System.err.println("Login failed.");
             }
-        } catch (UnirestException e) {
-            System.err.println("Login error: " + e.getMessage());
+            else {
+                log.warn("Login failed.");
+            }
+        }
+        catch (UnirestException e) {
+            log.warn("Login error: " + e.getMessage());
         }
     }
 

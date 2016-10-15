@@ -10,6 +10,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
@@ -21,24 +23,39 @@ import java.util.List;
  */
 public class Notification {
     /**
-     * Content wrapper class used for gson deserialization.
-     *
-     * @author Christopher Guckes
-     * @version 1.0
+     * The logger for this class.
      */
-    private static final class Content {
-        String filledString = "";
-    }
+    private static final Log log = LogFactory.getLog(Notification.class);
 
     /**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer()).create();
-
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
     /**
      * List type for gson deserialization.
      */
-    private static final Type listType = new TypeToken<ArrayList<Notification>>(){}.getType();
+    private static final Type listType = new TypeToken<ArrayList<Notification>>() {
+    }.getType();
+    /**
+     * The content of the notification.
+     */
+    private final Content content = new Content();
+    /**
+     * The date and time the notification was created.
+     */
+    private LocalDateTime date;
+
+    /**
+     * Creates a unread Notification with the given parameters
+     *
+     * @param date    the date this notification was created
+     * @param message the content.
+     */
+    public Notification(LocalDateTime date, String message) {
+        this.date = date;
+        this.content.filledString = message;
+    }
 
     /**
      * Fetches all unread events of the user and marks them as read
@@ -52,8 +69,9 @@ public class Notification {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/notifications/unread/");
             String notifications = response.getBody().getArray().toString();
             myReturn = gson.fromJson(notifications, listType);
-        } catch (UnirestException e) {
-            System.err.println("Error fetching notifications: " + e.getMessage());
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching notifications: " + e.getMessage());
         }
 
         return myReturn;
@@ -72,41 +90,22 @@ public class Notification {
     public static void markAllAsRead() {
         try {
             Unirest.put(Config.getInstance().getApiUrl() + "/api/notifications/read/")
-                .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance().getUser().getToken())
+                .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance()
+                .getUser().getToken())
                 .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
-        } catch (UnirestException ue) {
-            System.err.println("Error marking notifications as read.");
+        }
+        catch (UnirestException ue) {
+            log.error("Error marking notifications as read.");
             ue.printStackTrace();
         }
     }
 
-    /**
-     * The content of the notification.
-     */
-    private final Content content = new Content();
-
-    /**
-     * The date and time the notification was created.
-     */
-    private LocalDateTime date;
-
-    /**
-     * Creates a unread Notification with the given parameters
-     *
-     * @param date the date this notification was created
-     * @param message the content.
-     */
-    public Notification(LocalDateTime date, String message) {
-        this.date = date;
-        this.content.filledString = message;
-    }
-
     @Override
     public String toString() {
-        return "Notification{" +
-            "content='" + content.filledString + '\'' +
-            ", date=" + date +
-            '}';
+        return "Notification{"
+            + "content='" + content.filledString + '\''
+            + ", date=" + date
+            + '}';
     }
 
     /**
@@ -114,6 +113,16 @@ public class Notification {
      */
     public String getMessage() {
         return content.filledString;
+    }
+
+    /**
+     * Content wrapper class used for gson deserialization.
+     *
+     * @author Christopher Guckes
+     * @version 1.0
+     */
+    private static final class Content {
+        private String filledString = "";
     }
 
 }
