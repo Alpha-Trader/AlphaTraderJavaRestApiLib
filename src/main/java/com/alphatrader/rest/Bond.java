@@ -115,7 +115,7 @@ public class Bond {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching bonds : " + ue.getMessage());
+            log.error("Error fetching bonds: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());
