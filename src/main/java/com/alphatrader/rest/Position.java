@@ -36,20 +36,6 @@ public class Position {
     private double volume;
 
     /**
-     * Creates a new position object with the given parameters.
-     *
-     * @param securityIdentifier the security identifier
-     * @param numberOfShares     the number of shares
-     * @param volume             the overall volume
-     */
-    public Position(String securityIdentifier, int numberOfShares, double volume) {
-        this.securityIdentifier = securityIdentifier;
-        this.lastPrice.value = volume / (double) numberOfShares;
-        this.numberOfShares = numberOfShares;
-        this.volume = volume;
-    }
-
-    /**
      * Creates a new portfolio position from an API JSON response.
      *
      * @param json the json to parse
@@ -70,7 +56,7 @@ public class Position {
      * @return the last trading price
      */
     public double getLastPrice() {
-        return lastPrice.value;
+        return lastPrice.getValue();
     }
 
     /**
@@ -85,23 +71,5 @@ public class Position {
      */
     public double getVolume() {
         return volume;
-    }
-
-    /**
-     * Last price wrapping class used for gson deserialization.
-     *
-     * @author Christopher Guckes (christopher.guckes@torq-dev.de
-     * @version 1.0
-     */
-    private static class LastPrice {
-        /**
-         * The date of the last transaction resulting in this price.
-         */
-        private LocalDateTime date;
-
-        /**
-         * The last trade price of this position.
-         */
-        private double value;
     }
 }

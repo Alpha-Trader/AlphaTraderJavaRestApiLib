@@ -11,18 +11,21 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a bond in the game. Contains factory methods to handle json input as well.
+ * Represents a bond in the game. Contains factory methods to handle API communication as well.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
 public class Bond {
+
     /**
      * The logger for this class. Use this to write messages to the console.
      */
@@ -37,46 +40,62 @@ public class Bond {
     /**
      * List type for gson deserialization.
      */
-    private static final Type listType = new TypeToken<ArrayList<Bond>>() {
-    }.getType();
+    private static final Type listType = new TypeToken<ArrayList<Bond>>() { }.getType();
+
     /**
      * The bond's name.
      */
-    private String name;
+    private final String name = null;
+
     /**
      * The bond's volume.
      */
-    private int volume;
+    private final Integer volume = null;
+
     /**
      * The overall interest rate of the bond.
      */
-    private double interestRate;
+    private final Double interestRate = null;
+
     /**
      * The face value the bond was issued for.
      */
-    private double faceValue;
+    private final Double faceValue = null;
+
     /**
      * The bond's date of maturity.
      */
-    private LocalDateTime maturityDate;
+    private final LocalDateTime maturityDate = null;
 
     /**
-     * Creates a new bond with the given parameters.
-     *
-     * @param name         the name
-     * @param volume       the volume
-     * @param interestRate the interest rate
-     * @param faceValue    the face value it was issued for
-     * @param maturityDate the maturity date
+     * The date the bond was issued.
      */
-    public Bond(String name, int volume, double interestRate, double faceValue,
-                LocalDateTime maturityDate) {
-        this.name = name;
-        this.volume = volume;
-        this.interestRate = interestRate;
-        this.faceValue = faceValue;
-        this.maturityDate = maturityDate;
-    }
+    private final LocalDateTime issueDate = null;
+
+    /**
+     * The price spread
+     */
+    private final PriceSpread priceSpread = null;
+
+    /**
+     * The company that issued the bond.
+     */
+    private final Company issuer = null;
+
+    /**
+     * The listing as present on the market.
+     */
+    private final Listing listing = null;
+
+    /**
+     * The repurchase listing as present on the market.
+     */
+    private final Listing repurchaseListing = null;
+
+    /**
+     * The unique bond id.
+     */
+    private final String id = null;
 
     /**
      * Fetches all bonds currently on the market from the server.
@@ -88,24 +107,79 @@ public class Bond {
 
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/");
-            String bonds = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(bonds, listType);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getArray()
+                    .toString(), listType);
+            }
         }
-        catch (UnirestException e) {
-            log.error("Error fetching bonds : " + e.getMessage());
+        catch (UnirestException ue) {
+            log.error("Error fetching bonds : " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
         }
 
         return myReturn;
     }
 
     /**
-     * Creates a bond from the api json answers.
+     * Fetches the bond with the given security identifier from the server.
      *
-     * @param json the json object you want to parse.
-     * @return the parsed bond
+     * @param secId the security identifier of the bond you want
+     * @return the bond with the given security identifier
      */
-    public static Bond createFromJson(String json) {
-        return gson.fromJson(json, Bond.class);
+    public static Bond getBondBySecurityIdentifier(String secId) {
+        Bond myReturn = null;
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/securityidentifier/"
+                + secId);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getObject()
+                    .toString(), Bond.class);
+            }
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching bond : " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * Fetches the bond with the given id from the server.
+     *
+     * @param bondId the id of the bond you want
+     * @return the bond with the given id
+     */
+    public static Bond getBondById(String bondId) {
+        Bond myReturn = null;
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/"
+                + bondId);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getObject()
+                    .toString(), Bond.class);
+            }
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching bond : " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
     }
 
     /**
@@ -143,6 +217,49 @@ public class Bond {
         return maturityDate;
     }
 
+
+    /**
+     * @return the issue date
+     */
+    public LocalDateTime getIssueDate() {
+        return issueDate;
+    }
+
+    /**
+     * @return the price spread
+     */
+    public PriceSpread getPriceSpread() {
+        return priceSpread;
+    }
+
+    /**
+     * @return the issuer
+     */
+    public Company getIssuer() {
+        return issuer;
+    }
+
+    /**
+     * @return the listing
+     */
+    public Listing getListing() {
+        return listing;
+    }
+
+    /**
+     * @return the repurchase listing
+     */
+    public Listing getRepurchaseListing() {
+        return repurchaseListing;
+    }
+
+    /**
+     * @return the unique id
+     */
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Bond{"
@@ -165,33 +282,17 @@ public class Bond {
 
         Bond bond = (Bond) o;
 
-        if (volume != bond.volume) {
-            return false;
-        }
-        if (Double.compare(bond.interestRate, interestRate) != 0) {
-            return false;
-        }
-        if (Double.compare(bond.faceValue, faceValue) != 0) {
-            return false;
-        }
         if (name != null ? !name.equals(bond.name) : bond.name != null) {
             return false;
         }
-        return maturityDate != null ? maturityDate.equals(bond.maturityDate) : bond.maturityDate == null;
+        return id != null ? id.equals(bond.id) : bond.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
-        result = 31 * result + volume;
-        temp = Double.doubleToLongBits(interestRate);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(faceValue);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (maturityDate != null ? maturityDate.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
         return result;
     }
 }
