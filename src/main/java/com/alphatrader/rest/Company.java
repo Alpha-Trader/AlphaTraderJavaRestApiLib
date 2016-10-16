@@ -213,4 +213,37 @@ public class Company {
     public void setOutstandingShares(int outstandingShares) {
         this.outstandingShares = outstandingShares;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Company company = (Company) o;
+
+        if (id != null ? !id.equals(company.id) : company.id != null) {
+            return false;
+        }
+        if (name != null ? !name.equals(company.name) : company.name != null) {
+            return false;
+        }
+        if (securityIdentifier != null ? !securityIdentifier.equals(company.securityIdentifier) : company.securityIdentifier != null) {
+            return false;
+        }
+        return securitiesAccountId != null ? securitiesAccountId.equals(company.securitiesAccountId) : company.securitiesAccountId == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (securityIdentifier != null ? securityIdentifier.hashCode() : 0);
+        result = 31 * result + (securitiesAccountId != null ? securitiesAccountId.hashCode() : 0);
+        return result;
+    }
 }

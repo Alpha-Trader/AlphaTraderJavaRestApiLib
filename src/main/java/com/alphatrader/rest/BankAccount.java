@@ -41,7 +41,7 @@ public class BankAccount {
     /**
      * Creates a new bank account with the given parameters.
      *
-     * @param id the unique id of this account
+     * @param id   the unique id of this account
      * @param cash the amount of cash in this account
      */
     public BankAccount(String id, double cash) {
@@ -56,10 +56,14 @@ public class BankAccount {
         BankAccount myReturn = null;
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/bankaccounts");
-            myReturn = gson.fromJson(
-                response.getBody()
-                    .getObject()
-                    .toString(), BankAccount.class);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(
+                    response.getBody()
+                        .getObject()
+                        .toString(),
+                    BankAccount.class);
+            }
         }
         catch (UnirestException ue) {
             log.error("Error loading bank account!");
