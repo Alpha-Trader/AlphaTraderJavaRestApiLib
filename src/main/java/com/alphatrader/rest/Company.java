@@ -134,24 +134,10 @@ public class Company {
     }
 
     /**
-     * @return the securityIdentifier
-     */
-    public String getSecurityIdentifier() {
-        return listing.getSecurityIdentifier();
-    }
-
-    /**
      * @return the securities accounts unique identifier.
      */
     public String getSecuritiesAccountId() {
         return securitiesAccountId;
-    }
-
-    /**
-     * @return the company's cash
-     */
-    public double getCash() {
-        return bankAccount.getCash();
     }
 
     /**
