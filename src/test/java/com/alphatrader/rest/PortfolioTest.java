@@ -1,8 +1,13 @@
 package com.alphatrader.rest;
 
+import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -13,7 +18,10 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  */
 public class PortfolioTest {
-    private static final JSONObject JSON = new JSONObject("{\n" +
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
+
+    private static final String JSON = "{\n" +
         "  \"committedCash\": 0,\n" +
         "  \"cash\": 400,\n" +
         "  \"positions\": [\n" +
@@ -40,13 +48,13 @@ public class PortfolioTest {
         "      \"type\": \"STOCK\"\n" +
         "    }\n" +
         "  ]\n" +
-        "}");
+        "}";
 
     private Portfolio toTest;
 
     @Before
     public void setUp() throws Exception {
-        toTest = Portfolio.createFromJson(JSON);
+        toTest = gson.fromJson(JSON, Portfolio.class);
     }
 
     @Test

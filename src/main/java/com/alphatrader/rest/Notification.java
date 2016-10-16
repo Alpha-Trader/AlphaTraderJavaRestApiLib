@@ -40,22 +40,11 @@ public class Notification {
     /**
      * The content of the notification.
      */
-    private final Content content = new Content();
+    private final Message content = null;
     /**
      * The date and time the notification was created.
      */
-    private LocalDateTime date;
-
-    /**
-     * Creates a unread Notification with the given parameters
-     *
-     * @param date    the date this notification was created
-     * @param message the content.
-     */
-    public Notification(LocalDateTime date, String message) {
-        this.date = date;
-        this.content.filledString = message;
-    }
+    private final LocalDateTime date = null;
 
     /**
      * Fetches all unread events of the user and marks them as read
@@ -103,7 +92,7 @@ public class Notification {
     @Override
     public String toString() {
         return "Notification{"
-            + "content='" + content.filledString + '\''
+            + "content='" + content.getFilledString() + '\''
             + ", date=" + date
             + '}';
     }
@@ -112,19 +101,8 @@ public class Notification {
      * @return the Message
      */
     public String getMessage() {
-        return content.filledString;
+        return content.getFilledString();
     }
-
-    /**
-     * Content wrapper class used for gson deserialization.
-     *
-     * @author Christopher Guckes
-     * @version 1.0
-     */
-    private static final class Content {
-        private String filledString = "";
-    }
-
 }
 
 

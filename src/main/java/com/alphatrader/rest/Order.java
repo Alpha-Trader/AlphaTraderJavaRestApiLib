@@ -41,36 +41,27 @@ public class Order {
     /**
      * The date and time the order was created
      */
-    private LocalDateTime creationDate;
+    private final LocalDateTime creationDate = null;
     /**
      * Name of Security
      */
-    private Listing listing = new Listing();
+    private final Listing listing = null;
     /**
      * Type of Security
      */
-    private String type;
+    private final String type = null;
     /**
      * Unique securityIdentifier of security
      */
-    private String securityIdentifier;
+    private final String securityIdentifier = null;
     /**
      * Number of shares entailed in Order
      */
-    private int numberOfShares;
+    private final Integer numberOfShares = null;
     /**
      * Volume of Order
      */
-    private double volume;
-
-    public Order(LocalDateTime creationDate, String name, String securityIdentifier, String type,
-                 int numberOfShares) {
-        this.creationDate = creationDate;
-        this.listing.name = name;
-        this.type = type;
-        this.numberOfShares = numberOfShares;
-        this.securityIdentifier = securityIdentifier;
-    }
+    private final Double volume = null;
 
     /**
      * Fetches all unfilled orders  of the user

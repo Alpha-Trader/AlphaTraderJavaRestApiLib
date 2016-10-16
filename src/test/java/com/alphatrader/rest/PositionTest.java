@@ -1,7 +1,12 @@
 package com.alphatrader.rest;
 
+import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,6 +18,9 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  */
 public class PositionTest {
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
+
     private static final String JSON = "{\n" +
         "      \"currentAskPrice\": 3500,\n" +
         "      \"currentAskSize\": 850,\n" +
@@ -40,12 +48,7 @@ public class PositionTest {
 
     @Before
     public void setUp() throws Exception {
-        toTest = Position.createFromJson(JSON);
-    }
-
-    @Test
-    public void testCreateFromJson() throws Exception {
-        assertNotNull(toTest);
+        toTest = gson.fromJson(JSON, Position.class);
     }
 
     @Test

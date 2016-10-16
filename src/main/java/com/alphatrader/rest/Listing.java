@@ -13,7 +13,6 @@ import org.apache.commons.logging.LogFactory;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

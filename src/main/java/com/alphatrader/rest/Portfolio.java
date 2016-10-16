@@ -4,17 +4,13 @@ import com.alphatrader.rest.util.Http;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,28 +33,15 @@ public class Portfolio {
     /**
      * The amount of cash in this portfolio.
      */
-    private double cash;
+    private final Double cash = null;
     /**
      * The amount of committed cash in this portfolio.
      */
-    private double committedCash;
+    private final Double committedCash = null;
     /**
      * A list of all positions in this portfolio.
      */
-    private List<Position> positions;
-
-    /**
-     * Creates a new portfolio with the given parameters.
-     *
-     * @param cash          the amount of cash
-     * @param committedCash the amount of committed cash
-     * @param positions     a list of all positions.
-     */
-    public Portfolio(double cash, double committedCash, List<Position> positions) {
-        this.cash = cash;
-        this.committedCash = committedCash;
-        this.positions = positions;
-    }
+    private final List<Position> positions = null;
 
     /**
      * Fetches a company's portfolio from the server.
@@ -78,21 +61,6 @@ public class Portfolio {
         }
 
         return myReturn;
-    }
-
-    /**
-     * Creates a new portfolio object by parsing the provided json object.
-     *
-     * @param json the json to parse
-     * @return the parsed portfolio
-     */
-    public static Portfolio createFromJson(JSONObject json) {
-        Type positionListType = new TypeToken<ArrayList<Position>>() { }.getType();
-
-        String positionsJson = json.getJSONArray("positions").toString();
-        List<Position> positions = gson.fromJson(positionsJson, positionListType);
-
-        return new Portfolio(json.getDouble("cash"), json.getDouble("committedCash"), positions);
     }
 
     /**

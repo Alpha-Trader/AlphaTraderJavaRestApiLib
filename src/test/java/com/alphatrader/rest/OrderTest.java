@@ -1,5 +1,8 @@
 package com.alphatrader.rest;
 
+import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +19,9 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0
  */
 public class OrderTest {
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
+
     private static final String JSON = "{\n" +
         "    \"counterPartyName\": null,\n" +
         "    \"creationDate\": 1475619375635,\n" +
@@ -42,7 +48,7 @@ public class OrderTest {
 
     @Before
     public void setUp() {
-        toTest = Order.createFromJson(JSON);
+        toTest = gson.fromJson(JSON, Order.class);
     }
 
     @Test
