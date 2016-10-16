@@ -10,6 +10,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -52,12 +54,38 @@ public class Portfolio {
     public static Portfolio getCompanyPortfolio(Company company) {
         Portfolio myReturn = null;
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/portfolios/");
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/portfolios/"
+                + company.getSecuritiesAccountId());
             myReturn = gson.fromJson(response.getBody().getObject().toString(), Portfolio.class);
         }
         catch (UnirestException ue) {
-            log.error("Error fetching portfolio for company " + company.getName());
-            ue.printStackTrace();
+            log.error("Error fetching portfolio: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * Fetches a company's fixed income portfolio from the server.
+     *
+     * @param company the company of which you want the portfolio from.
+     * @return the fixed income portfolio of the given company
+     */
+    public static Portfolio getFixedIncomePortfolio(Company company) {
+        Portfolio myReturn = null;
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/portfolios/fixedincome/"
+                + company.getSecuritiesAccountId());
+            myReturn = gson.fromJson(response.getBody().getObject().toString(), Portfolio.class);
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching portfolio: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
         }
 
         return myReturn;
