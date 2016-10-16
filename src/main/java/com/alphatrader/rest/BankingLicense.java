@@ -82,7 +82,7 @@ public class BankingLicense {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error loading banking license!");
+            log.error("Error loading banking license: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());
@@ -122,7 +122,7 @@ public class BankingLicense {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error loading banking license!");
+            log.error("Error loading banking license: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());

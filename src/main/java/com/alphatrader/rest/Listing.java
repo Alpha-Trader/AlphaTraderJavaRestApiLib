@@ -58,7 +58,8 @@ class Listing {
         if (endDate != null ? !endDate.equals(listing.endDate) : listing.endDate != null) {
             return false;
         }
-        if (securityIdentifier != null ? !securityIdentifier.equals(listing.securityIdentifier) : listing.securityIdentifier != null) {
+        if (securityIdentifier != null ? !securityIdentifier.equals(listing.securityIdentifier)
+            : listing.securityIdentifier != null) {
             return false;
         }
         if (name != null ? !name.equals(listing.name) : listing.name != null) {

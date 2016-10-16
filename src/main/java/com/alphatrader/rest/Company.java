@@ -231,10 +231,12 @@ public class Company {
         if (name != null ? !name.equals(company.name) : company.name != null) {
             return false;
         }
-        if (securityIdentifier != null ? !securityIdentifier.equals(company.securityIdentifier) : company.securityIdentifier != null) {
+        if (securityIdentifier != null ? !securityIdentifier.equals(company.securityIdentifier)
+            : company.securityIdentifier != null) {
             return false;
         }
-        return securitiesAccountId != null ? securitiesAccountId.equals(company.securitiesAccountId) : company.securitiesAccountId == null;
+        return securitiesAccountId != null ? securitiesAccountId.equals(company.securitiesAccountId)
+            : company.securitiesAccountId == null;
 
     }
 

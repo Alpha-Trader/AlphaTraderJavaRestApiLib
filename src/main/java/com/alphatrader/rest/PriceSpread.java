@@ -95,7 +95,8 @@ class PriceSpread {
         if (spreadAbs != null ? !spreadAbs.equals(that.spreadAbs) : that.spreadAbs != null) {
             return false;
         }
-        if (spreadPercent != null ? !spreadPercent.equals(that.spreadPercent) : that.spreadPercent != null) {
+        if (spreadPercent != null ? !spreadPercent.equals(that.spreadPercent)
+            : that.spreadPercent != null) {
             return false;
         }
         if (lastPrice != null ? !lastPrice.equals(that.lastPrice) : that.lastPrice != null) {

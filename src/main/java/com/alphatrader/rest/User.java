@@ -51,7 +51,6 @@ public class User {
      * Tries to log in you in and saves the token if successful.
      */
     public void login() {
-        //TODO Error handling
         try {
             HttpResponse<JsonNode> response = Unirest
                 .post(Config.getInstance().getApiUrl() + "/user/token/")

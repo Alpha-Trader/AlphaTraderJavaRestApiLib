@@ -66,7 +66,7 @@ public class BankAccount {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error loading bank account!");
+            log.error("Error loading bank account: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());
