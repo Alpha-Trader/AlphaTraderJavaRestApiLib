@@ -10,6 +10,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,57 +36,46 @@ public class Company {
      */
     private static final Type listType = new TypeToken<ArrayList<Company>>() {
     }.getType();
+
     /**
      * The unique company identifier.
      */
-    private final String id;
+    private final String id = null;
+
     /**
      * The company name.
      */
-    private final String name;
-    /**
-     * The security identifier of this company's stocks on the market.
-     */
-    private final String securityIdentifier;
+    private final String name = null;
+
     /**
      * The securities account id.
      */
-    private final String securitiesAccountId;
+    private final String securitiesAccountId = null;
+
     /**
      * The current amount of uncommitted cash.
      */
-    private double cash;
+    private final BankAccount bankAccount = null;
+
     /**
      * The company's portfolio.
      */
     private Portfolio portfolio;
-    /**
-     * The number of company shares in circulation.
-     */
-    private int outstandingShares;
 
     /**
-     * Creates a new Company object with the given parameters
-     *
-     * @param id                  the unique company id
-     * @param name                the company name
-     * @param securityIdentifier  the security identifier
-     * @param securitiesAccountId the securities account id
-     * @param cash                the amount of uncommitted cash
+     * The current CEO.
      */
-    public Company(String id,
-                   String name,
-                   String securityIdentifier,
-                   String securitiesAccountId,
-                   double cash,
-                   int outstandingShares) {
-        this.id = id;
-        this.name = name;
-        this.securityIdentifier = securityIdentifier;
-        this.securitiesAccountId = securitiesAccountId;
-        this.cash = cash;
-        this.outstandingShares = outstandingShares;
-    }
+    private final User ceo = null;
+
+    /**
+     * The company listing on the market.
+     */
+    private final Listing listing = null;
+
+    /**
+     * The URL of the company logo.
+     */
+    private final URL logoUrl = null;
 
     /**
      * Fetches all companies currently employing the given user as a CEO.
@@ -147,7 +137,7 @@ public class Company {
      * @return the securityIdentifier
      */
     public String getSecurityIdentifier() {
-        return securityIdentifier;
+        return listing.getSecurityIdentifier();
     }
 
     /**
@@ -161,7 +151,7 @@ public class Company {
      * @return the company's cash
      */
     public double getCash() {
-        return cash;
+        return bankAccount.getCash();
     }
 
     /**
@@ -193,25 +183,13 @@ public class Company {
         this.portfolio = portfolio;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
-        return "Company [name=" + name + ", securityIdentifier=" + securityIdentifier + "]";
-    }
-
-    public int getOutstandingShares() {
-        return outstandingShares;
-    }
-
-    /**
-     * Sets the outstanding shares to the new value.
-     *
-     * @param outstandingShares the number of outstanding shares
-     */
-    public void setOutstandingShares(int outstandingShares) {
-        this.outstandingShares = outstandingShares;
+        return "Company{"
+            + "id='" + id + '\''
+            + ", name='" + name + '\''
+            + ", securitiesAccountId='" + securitiesAccountId + '\''
+            + '}';
     }
 
     @Override
@@ -231,10 +209,6 @@ public class Company {
         if (name != null ? !name.equals(company.name) : company.name != null) {
             return false;
         }
-        if (securityIdentifier != null ? !securityIdentifier.equals(company.securityIdentifier)
-            : company.securityIdentifier != null) {
-            return false;
-        }
         return securitiesAccountId != null ? securitiesAccountId.equals(company.securitiesAccountId)
             : company.securitiesAccountId == null;
 
@@ -244,7 +218,6 @@ public class Company {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (securityIdentifier != null ? securityIdentifier.hashCode() : 0);
         result = 31 * result + (securitiesAccountId != null ? securitiesAccountId.hashCode() : 0);
         return result;
     }
