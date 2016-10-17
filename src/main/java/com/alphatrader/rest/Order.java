@@ -191,7 +191,8 @@ public class Order {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
             String orders = response.getBody().getArray().toString();
             myReturn = gson.fromJson(orders, listType);
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching orders: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
@@ -215,7 +216,8 @@ public class Order {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityorders/" + id);
             String orders = response.getBody().getObject().toString();
             myReturn = gson.fromJson(orders, Order.class);
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching orders: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));

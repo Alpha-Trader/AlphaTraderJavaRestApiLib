@@ -42,6 +42,9 @@ public final class SecurityPrice {
     private static final java.lang.reflect.Type listType = new TypeToken<ArrayList<LastPrice>>() {
     }.getType();
 
+    private SecurityPrice() {
+    }
+
     /**
      * Fetches all prices for the given company.
      *
@@ -92,7 +95,8 @@ public final class SecurityPrice {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityPrices/" + suffix);
             String orders = response.getBody().getArray().toString();
             myReturn = gson.fromJson(orders, listType);
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching security prices: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
@@ -100,8 +104,5 @@ public final class SecurityPrice {
         }
 
         return myReturn;
-    }
-
-    private SecurityPrice() {
     }
 }

@@ -40,7 +40,8 @@ public class OrderBook {
     /**
      * List type for gson deserialization.
      */
-    private static final Type listType = new TypeToken<ArrayList<Order>>() { }.getType();
+    private static final Type listType = new TypeToken<ArrayList<Order>>() {
+    }.getType();
 
     /**
      * The maximum buy size.
@@ -77,7 +78,8 @@ public class OrderBook {
                 + securityIdentifier);
             String object = response.getBody().getObject().toString();
             myReturn = gson.fromJson(object, OrderBook.class);
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching orderbook: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
@@ -117,12 +119,12 @@ public class OrderBook {
 
     @Override
     public String toString() {
-        return "OrderBook{" +
-            "maxBuySize=" + maxBuySize +
-            ", maxSellSize=" + maxSellSize +
-            ", buyOrders=" + buyOrders +
-            ", sellOrders=" + sellOrders +
-            '}';
+        return "OrderBook{"
+            + "maxBuySize=" + maxBuySize
+            + ", maxSellSize=" + maxSellSize
+            + ", buyOrders=" + buyOrders
+            + ", sellOrders=" + sellOrders
+            + '}';
     }
 
     @Override

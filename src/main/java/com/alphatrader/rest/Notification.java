@@ -84,7 +84,8 @@ public class Notification {
     /*public static void markAllAsRead() {
         try {
             Unirest.put(Config.getInstance().getApiUrl() + "/api/notifications/read/")
-                .header("accept", "*//*").header("Authorization", "Bearer " + Config.getInstance()
+                .header("accept", "*/
+    /*").header("Authorization", "Bearer " + Config.getInstance()
                 .getUser().getToken())
                 .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
         }

@@ -142,7 +142,8 @@ public class SecurityOrderLog {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityorderlogs" + suffix);
             String orders = response.getBody().getArray().toString();
             myReturn = gson.fromJson(orders, listType);
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching security order logs: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));

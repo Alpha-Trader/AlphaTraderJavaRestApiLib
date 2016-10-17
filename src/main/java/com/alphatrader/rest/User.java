@@ -118,7 +118,8 @@ public class User {
                     .getObject()
                     .toString(), User.class);
             }
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching user: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
@@ -164,7 +165,8 @@ public class User {
                     .getArray()
                     .toString(), listType);
             }
-        } catch (UnirestException ue) {
+        }
+        catch (UnirestException ue) {
             log.error("Error fetching users: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
@@ -189,10 +191,12 @@ public class User {
 
             if (body.optInt("code", -1) == 200) {
                 jwtToken = body.getString("message");
-            } else {
+            }
+            else {
                 log.warn("Login failed.");
             }
-        } catch (UnirestException e) {
+        }
+        catch (UnirestException e) {
             log.warn("Login error: " + e.getMessage());
         }
     }

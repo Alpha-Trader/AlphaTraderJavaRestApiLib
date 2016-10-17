@@ -40,7 +40,8 @@ public class HourlyMarketStatistics {
      * List type for gson deserialization.
      */
     private static final java.lang.reflect.Type listType =
-        new TypeToken<ArrayList<HourlyMarketStatistics>>() { }.getType();
+        new TypeToken<ArrayList<HourlyMarketStatistics>>() {
+        }.getType();
 
     private final String id = null;
     private final Double averageBondDurationInDays = null;
@@ -258,45 +259,45 @@ public class HourlyMarketStatistics {
 
     @Override
     public String toString() {
-        return "HourlyMarketStatistics{" +
-            "id='" + id + '\'' +
-            ", averageBondDurationInDays=" + averageBondDurationInDays +
-            ", averageBookValue=" + averageBookValue +
-            ", averageDailyWage=" + averageDailyWage +
-            ", averageDesignatedSponsorRating=" + averageDesignatedSponsorRating +
-            ", averageYieldToMaturity=" + averageYieldToMaturity +
-            ", bondFaceVolume=" + bondFaceVolume +
-            ", centralBankReserves=" + centralBankReserves +
-            ", committedCash=" + committedCash +
-            ", corporateCash=" + corporateCash +
-            ", date=" + date +
-            ", mainInterestRate=" + mainInterestRate +
-            ", marketCap=" + marketCap +
-            ", numberOfActiveListings=" + numberOfActiveListings +
-            ", numberOfBanks=" + numberOfBanks +
-            ", numberOfBondOrders=" + numberOfBondOrders +
-            ", numberOfCashoutPolls=" + numberOfCashoutPolls +
-            ", numberOfCommittedShares=" + numberOfCommittedShares +
-            ", numberOfCompanies=" + numberOfCompanies +
-            ", numberOfDesignatedSponsors=" + numberOfDesignatedSponsors +
-            ", numberOfLiquidationPolls=" + numberOfLiquidationPolls +
-            ", numberOfOrders=" + numberOfOrders +
-            ", numberOfOrders24h=" + numberOfOrders24h +
-            ", numberOfOtcOrders=" + numberOfOtcOrders +
-            ", numberOfOtherListings=" + numberOfOtherListings +
-            ", numberOfOtherOrders=" + numberOfOtherOrders +
-            ", numberOfPartnerUsers=" + numberOfPartnerUsers +
-            ", numberOfPremiumUsers=" + numberOfPremiumUsers +
-            ", numberOfRepoOrders=" + numberOfRepoOrders +
-            ", numberOfStockOrders=" + numberOfStockOrders +
-            ", numberOfSystemBondOrders=" + numberOfSystemBondOrders +
-            ", numberOfSystemRepoOrders=" + numberOfSystemRepoOrders +
-            ", numberOfUsers=" + numberOfUsers +
-            ", orderVolume=" + orderVolume +
-            ", orderVolume24h=" + orderVolume24h +
-            ", privateCash=" + privateCash +
-            ", systemBondFaceVolume=" + systemBondFaceVolume +
-            '}';
+        return "HourlyMarketStatistics{"
+            + "id='" + id + '\''
+            + ", averageBondDurationInDays=" + averageBondDurationInDays
+            + ", averageBookValue=" + averageBookValue
+            + ", averageDailyWage=" + averageDailyWage
+            + ", averageDesignatedSponsorRating=" + averageDesignatedSponsorRating
+            + ", averageYieldToMaturity=" + averageYieldToMaturity
+            + ", bondFaceVolume=" + bondFaceVolume
+            + ", centralBankReserves=" + centralBankReserves
+            + ", committedCash=" + committedCash
+            + ", corporateCash=" + corporateCash
+            + ", date=" + date
+            + ", mainInterestRate=" + mainInterestRate
+            + ", marketCap=" + marketCap
+            + ", numberOfActiveListings=" + numberOfActiveListings
+            + ", numberOfBanks=" + numberOfBanks
+            + ", numberOfBondOrders=" + numberOfBondOrders
+            + ", numberOfCashoutPolls=" + numberOfCashoutPolls
+            + ", numberOfCommittedShares=" + numberOfCommittedShares
+            + ", numberOfCompanies=" + numberOfCompanies
+            + ", numberOfDesignatedSponsors=" + numberOfDesignatedSponsors
+            + ", numberOfLiquidationPolls=" + numberOfLiquidationPolls
+            + ", numberOfOrders=" + numberOfOrders
+            + ", numberOfOrders24h=" + numberOfOrders24h
+            + ", numberOfOtcOrders=" + numberOfOtcOrders
+            + ", numberOfOtherListings=" + numberOfOtherListings
+            + ", numberOfOtherOrders=" + numberOfOtherOrders
+            + ", numberOfPartnerUsers=" + numberOfPartnerUsers
+            + ", numberOfPremiumUsers=" + numberOfPremiumUsers
+            + ", numberOfRepoOrders=" + numberOfRepoOrders
+            + ", numberOfStockOrders=" + numberOfStockOrders
+            + ", numberOfSystemBondOrders=" + numberOfSystemBondOrders
+            + ", numberOfSystemRepoOrders=" + numberOfSystemRepoOrders
+            + ", numberOfUsers=" + numberOfUsers
+            + ", orderVolume=" + orderVolume
+            + ", orderVolume24h=" + orderVolume24h
+            + ", privateCash=" + privateCash
+            + ", systemBondFaceVolume=" + systemBondFaceVolume
+            + '}';
     }
 
     @Override
