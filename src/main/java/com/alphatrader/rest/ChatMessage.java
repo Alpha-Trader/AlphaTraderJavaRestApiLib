@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-class ChatMessage {
+public class ChatMessage {
     /**
      * The date the message was sent.
      */

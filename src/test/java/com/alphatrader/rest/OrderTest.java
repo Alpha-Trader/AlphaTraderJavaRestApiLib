@@ -64,7 +64,7 @@ public class OrderTest {
 
     @Test
     public void testGetType() throws Exception {
-        assertEquals("LIMIT", toTest.getType());
+        assertEquals(Order.Type.LIMIT, toTest.getType());
     }
 
     @Test

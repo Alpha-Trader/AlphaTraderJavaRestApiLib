@@ -125,6 +125,33 @@ public class Bond {
     }
 
     /**
+     * Fetches all system bonds on the market from the server.
+     *
+     * @return all system bonds on the market
+     */
+    public static List<Bond> getAllSystemBonds() {
+        List<Bond> myReturn = new ArrayList<>();
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/");
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getArray()
+                    .toString(), listType);
+            }
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching system bonds: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
+    }
+
+    /**
      * Fetches the bond with the given security identifier from the server.
      *
      * @param secId the security identifier of the bond you want
@@ -144,7 +171,36 @@ public class Bond {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching bond : " + ue.getMessage());
+            log.error("Error fetching bond: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * Fetches the system bond with the given security identifier from the server.
+     *
+     * @param secId the security identifier of the system bond you want
+     * @return the system bond with the given security identifier
+     */
+    public static Bond getSystemBondBySecurityIdentifier(String secId) {
+        Bond myReturn = null;
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/securityidentifier/"
+                + secId);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getObject()
+                    .toString(), Bond.class);
+            }
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching bond: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());
@@ -173,7 +229,36 @@ public class Bond {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching bond : " + ue.getMessage());
+            log.error("Error fetching bond: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * Fetches the system bond with the given id from the server.
+     *
+     * @param bondId the id of the system bond you want
+     * @return the system bond with the given id
+     */
+    public static Bond getSystemBondById(String bondId) {
+        Bond myReturn = null;
+
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/"
+                + bondId);
+
+            if (response != null && response.getStatus() == 200) {
+                myReturn = gson.fromJson(response.getBody()
+                    .getObject()
+                    .toString(), Bond.class);
+            }
+        }
+        catch (UnirestException ue) {
+            log.error("Error fetching bond: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());

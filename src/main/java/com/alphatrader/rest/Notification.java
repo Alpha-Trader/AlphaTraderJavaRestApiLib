@@ -13,6 +13,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -59,8 +61,11 @@ public class Notification {
             String notifications = response.getBody().getArray().toString();
             myReturn = gson.fromJson(notifications, listType);
         }
-        catch (UnirestException e) {
-            log.error("Error fetching notifications: " + e.getMessage());
+        catch (UnirestException ue) {
+            log.error("Error fetching notifications: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
         }
 
         return myReturn;
@@ -76,18 +81,20 @@ public class Notification {
     /**
      * Marks all notifications as read.
      */
-    public static void markAllAsRead() {
+    /*public static void markAllAsRead() {
         try {
             Unirest.put(Config.getInstance().getApiUrl() + "/api/notifications/read/")
-                .header("accept", "*/*").header("Authorization", "Bearer " + Config.getInstance()
+                .header("accept", "*//*").header("Authorization", "Bearer " + Config.getInstance()
                 .getUser().getToken())
                 .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
         }
         catch (UnirestException ue) {
-            log.error("Error marking notifications as read.");
-            ue.printStackTrace();
+            log.error("Error fetching marking notifications as read: " + ue.getMessage());
+            StringWriter stringWriter = new StringWriter();
+            ue.printStackTrace(new PrintWriter(stringWriter));
+            log.debug(stringWriter.toString());
         }
-    }
+    } */
 
     @Override
     public String toString() {

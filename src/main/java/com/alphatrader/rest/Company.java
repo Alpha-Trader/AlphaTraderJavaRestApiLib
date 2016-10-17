@@ -207,4 +207,8 @@ public class Company {
         result = 31 * result + (securitiesAccountId != null ? securitiesAccountId.hashCode() : 0);
         return result;
     }
+
+    public Listing getListing() {
+        return listing;
+    }
 }
