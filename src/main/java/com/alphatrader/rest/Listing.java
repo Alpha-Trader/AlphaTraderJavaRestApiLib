@@ -113,6 +113,12 @@ public class Listing {
         return myReturn;
     }
 
+    /**
+     * Returns the number of outstanding shares for this listing.
+     *
+     * @param securityIdentifier the security identifier of the listing
+     * @return the number of outstanding shares
+     */
     @Nullable
     public static Double getOutstandingShares(String securityIdentifier) {
         Double myReturn = null;
