@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.Config;
+import com.alphatrader.rest.util.ApiLibConfig;
 import com.alphatrader.rest.util.Http;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
@@ -182,7 +182,7 @@ public class User {
     public void login() {
         try {
             HttpResponse<JsonNode> response = Unirest
-                .post(Config.getInstance().getApiUrl() + "/user/token/")
+                .post(ApiLibConfig.getInstance().getApiUrl() + "/user/token/")
                 .header("accept", "*/*")
                 .queryString("username", username)
                 .field("password", password)

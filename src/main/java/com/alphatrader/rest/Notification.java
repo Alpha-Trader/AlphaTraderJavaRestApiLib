@@ -1,6 +1,5 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.Config;
 import com.alphatrader.rest.util.Http;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
@@ -8,7 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -83,9 +81,9 @@ public class Notification {
      */
     /*public static void markAllAsRead() {
         try {
-            Unirest.put(Config.getInstance().getApiUrl() + "/api/notifications/read/")
+            Unirest.put(ApiLibConfig.getInstance().getApiUrl() + "/api/notifications/read/")
                 .header("accept", "*/
-    /*").header("Authorization", "Bearer " + Config.getInstance()
+    /*").header("Authorization", "Bearer " + ApiLibConfig.getInstance()
                 .getUser().getToken())
                 .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
         }

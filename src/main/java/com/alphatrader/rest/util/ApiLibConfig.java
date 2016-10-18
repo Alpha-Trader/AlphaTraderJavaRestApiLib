@@ -5,16 +5,16 @@ import com.alphatrader.rest.User;
 import java.net.URL;
 
 /**
- * The Config singleton holds all library wide configuration variables.
+ * The ApiLibConfig singleton holds all library wide configuration variables.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-public class Config {
+public class ApiLibConfig {
     /**
      * The singleton instance.
      */
-    private static Config instance = new Config();
+    private static ApiLibConfig instance = new ApiLibConfig();
     /**
      * The URL of the API.
      */
@@ -23,11 +23,15 @@ public class Config {
      * The user to log into the game API.
      */
     private User user;
+    /**
+     * The partner id of the developer.
+     */
+    private String partnerId;
 
     /**
      * @return the singleton instance.
      */
-    public static Config getInstance() {
+    public static ApiLibConfig getInstance() {
         return instance;
     }
 
@@ -61,5 +65,21 @@ public class Config {
      */
     public void setUser(User user) {
         this.user = user;
+    }
+
+    /**
+     * @return the partner id.
+     */
+    public String getPartnerId() {
+        return partnerId;
+    }
+
+    /**
+     * Sets a new partner id.
+     *
+     * @param partnerId the new partner id
+     */
+    public void setPartnerId(String partnerId) {
+        this.partnerId = partnerId;
     }
 }
