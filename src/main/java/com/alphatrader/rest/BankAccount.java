@@ -6,6 +6,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -51,6 +52,7 @@ public class BankAccount {
     /**
      * @return the bank account of the logged in user
      */
+    @Nullable
     public static BankAccount getUserBankAccount() {
         BankAccount myReturn = null;
         try {

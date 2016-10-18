@@ -8,6 +8,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -34,30 +35,17 @@ public class BankingLicense {
     /**
      * The date the license has been issued.
      */
-    private final LocalDateTime startDate;
+    private final LocalDateTime startDate = null;
 
     /**
      * The company this license enables banking functions for.
      */
-    private final Company company;
+    private final Company company = null;
 
     /**
      * The id of this banking license.
      */
-    private final String id;
-
-    /**
-     * Creates a new banking license with the given parameters.
-     *
-     * @param id        the id of the license
-     * @param company   the company this license belongs to
-     * @param startDate the issue date of this license
-     */
-    public BankingLicense(String id, Company company, LocalDateTime startDate) {
-        this.id = id;
-        this.company = company;
-        this.startDate = startDate;
-    }
+    private final String id = null;
 
     /**
      * Fetches the banking license for the specified company from the API.
@@ -65,28 +53,9 @@ public class BankingLicense {
      * @param companyId the company id to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @Nullable
     public static BankingLicense getBankingLicenseOfCompany(String companyId) {
-        BankingLicense myReturn = null;
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bankinglicense/?companyId="
-                + companyId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(
-                    response.getBody()
-                        .getObject()
-                        .toString(),
-                    BankingLicense.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading banking license: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getFromApi("?companyId=" + companyId);
     }
 
     /**
@@ -95,6 +64,7 @@ public class BankingLicense {
      * @param company the company to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @Nullable
     public static BankingLicense getBankingLicenseOfCompany(Company company) {
         return getBankingLicenseOfCompany(company.getId());
     }
@@ -105,11 +75,22 @@ public class BankingLicense {
      * @param licenseId the license id to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @Nullable
     public static BankingLicense getBankingLicenseById(String licenseId) {
+        return getFromApi(licenseId);
+    }
+
+    /**
+     * Wrapper for the api access.
+     *
+     * @param suffix the api endpoint suffix
+     * @return the requested license
+     */
+    @Nullable
+    private static BankingLicense getFromApi(String suffix) {
         BankingLicense myReturn = null;
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bankinglicense/"
-                + licenseId);
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bankinglicense/" + suffix);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn = gson.fromJson(

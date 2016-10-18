@@ -118,11 +118,7 @@ public class BankingLicenseTest {
 
     @Before
     public void setUp() throws Exception {
-        toTest = new BankingLicense(
-            "257e1004-8c5e-4d09-beca-8377e8be070c",
-            testCompany,
-            testDate
-        );
+        toTest = gson.fromJson(JSON, BankingLicense.class);
     }
 
     @Test

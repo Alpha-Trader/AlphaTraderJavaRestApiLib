@@ -9,6 +9,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -101,26 +103,9 @@ public class Bond {
      *
      * @return all bonds on the market
      */
+    @NotNull
     public static List<Bond> getAllBonds() {
-        List<Bond> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/");
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray()
-                    .toString(), listType);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching bonds: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getMultipleBondsFromApi("bonds/");
     }
 
     /**
@@ -128,26 +113,9 @@ public class Bond {
      *
      * @return all system bonds on the market
      */
+    @NotNull
     public static List<Bond> getAllSystemBonds() {
-        List<Bond> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/");
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray()
-                    .toString(), listType);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching system bonds: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getMultipleBondsFromApi("systembonds/");
     }
 
     /**
@@ -156,27 +124,9 @@ public class Bond {
      * @param secId the security identifier of the bond you want
      * @return the bond with the given security identifier
      */
+    @Nullable
     public static Bond getBondBySecurityIdentifier(String secId) {
-        Bond myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/securityidentifier/"
-                + secId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject()
-                    .toString(), Bond.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching bond: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getSingleBondFromApi("bonds/securityidentifier/" + secId);
     }
 
     /**
@@ -185,27 +135,9 @@ public class Bond {
      * @param secId the security identifier of the system bond you want
      * @return the system bond with the given security identifier
      */
+    @Nullable
     public static Bond getSystemBondBySecurityIdentifier(String secId) {
-        Bond myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/securityidentifier/"
-                + secId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject()
-                    .toString(), Bond.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching bond: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getSingleBondFromApi("systembonds/securityidentifier/" + secId);
     }
 
     /**
@@ -214,12 +146,34 @@ public class Bond {
      * @param bondId the id of the bond you want
      * @return the bond with the given id
      */
+    @Nullable
     public static Bond getBondById(String bondId) {
+        return getSingleBondFromApi("bonds/" + bondId);
+    }
+
+    /**
+     * Fetches the system bond with the given id from the server.
+     *
+     * @param bondId the id of the system bond you want
+     * @return the system bond with the given id
+     */
+    @Nullable
+    public static Bond getSystemBondById(String bondId) {
+        return getSingleBondFromApi("systembonds/" + bondId);
+    }
+
+    /**
+     * Wrapper function fetching single bonds from the API.
+     *
+     * @param suffix the api endpoint suffix
+     * @return the requested bond or null of none found.
+     */
+    @Nullable
+    private static Bond getSingleBondFromApi(String suffix) {
         Bond myReturn = null;
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bonds/"
-                + bondId);
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn = gson.fromJson(response.getBody()
@@ -238,26 +192,26 @@ public class Bond {
     }
 
     /**
-     * Fetches the system bond with the given id from the server.
+     * Wrapper function for fetching multiple Bonds from the API.
      *
-     * @param bondId the id of the system bond you want
-     * @return the system bond with the given id
+     * @param suffix the api endpoint suffix
+     * @return all requested bonds
      */
-    public static Bond getSystemBondById(String bondId) {
-        Bond myReturn = null;
+    @NotNull
+    public static List<Bond> getMultipleBondsFromApi(String suffix) {
+        List<Bond> myReturn = new ArrayList<>();
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/systembonds/"
-                + bondId);
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject()
-                    .toString(), Bond.class);
+                myReturn.addAll(gson.fromJson(response.getBody()
+                    .getArray()
+                    .toString(), listType));
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching bond: " + ue.getMessage());
+            log.error("Error fetching bonds: " + ue.getMessage());
             StringWriter stringWriter = new StringWriter();
             ue.printStackTrace(new PrintWriter(stringWriter));
             log.debug(stringWriter.toString());
