@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Represents a chat message in the game.
@@ -13,7 +13,7 @@ public class ChatMessage {
     /**
      * The date the message was sent.
      */
-    private final LocalDateTime dateSent = null;
+    private final ZonedDateTime dateSent = null;
 
     /**
      * The id of the chat the message was sent in.
@@ -43,7 +43,7 @@ public class ChatMessage {
     /**
      * @return the date the message was sent.
      */
-    public LocalDateTime getDateSent() {
+    public ZonedDateTime getDateSent() {
 
         return dateSent;
     }

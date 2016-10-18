@@ -7,21 +7,21 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 /**
- * Deserializes LocalDateTime objects from unix timestamps.
+ * Deserializes ZonedDateTime objects from unix timestamps.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-public class LocalDateTimeDeserializer implements JsonDeserializer<LocalDateTime> {
+public class ZonedDateTimeDeserializer implements JsonDeserializer<ZonedDateTime> {
     @Override
-    public LocalDateTime deserialize(JsonElement json, Type type,
+    public ZonedDateTime deserialize(JsonElement json, Type type,
                                      JsonDeserializationContext jsonDeserializationContext)
         throws JsonParseException {
         Instant instant = Instant.ofEpochMilli(json.getAsJsonPrimitive().getAsLong());
-        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        return ZonedDateTime.ofInstant(instant, ZoneId.systemDefault());
     }
 }

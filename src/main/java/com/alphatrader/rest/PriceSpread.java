@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +30,8 @@ public class PriceSpread {
     /**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     /**
      * List type for gson deserialization.
@@ -86,7 +86,7 @@ public class PriceSpread {
     /**
      * The date the spread was created.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * Fetches all price spreads currently on the market from the server.
@@ -186,7 +186,7 @@ public class PriceSpread {
     /**
      * @return the date of the last trade
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 

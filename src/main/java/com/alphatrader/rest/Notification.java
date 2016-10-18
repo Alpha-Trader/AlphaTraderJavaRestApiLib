@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -27,7 +27,7 @@ public class Notification {
     /**
      * The date and time the notification was created.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * Fetches all unread events of the user and marks them as read

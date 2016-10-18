@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Represents a salary payment in the game.
@@ -27,7 +27,7 @@ public class SalaryPayment {
     /**
      * The next possible payment date.
      */
-    private final LocalDateTime nextPossiblePaymentDate = null;
+    private final ZonedDateTime nextPossiblePaymentDate = null;
 
     /**
      * The salary amount.
@@ -37,7 +37,7 @@ public class SalaryPayment {
     /**
      * The date the salary was paid.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * The unique id of this payment.
@@ -65,7 +65,7 @@ public class SalaryPayment {
     /**
      * @return the date at which the next payment can be made
      */
-    public LocalDateTime getNextPossiblePaymentDate() {
+    public ZonedDateTime getNextPossiblePaymentDate() {
         return nextPossiblePaymentDate;
     }
 
@@ -79,7 +79,7 @@ public class SalaryPayment {
     /**
      * @return the date this salary was paid
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 

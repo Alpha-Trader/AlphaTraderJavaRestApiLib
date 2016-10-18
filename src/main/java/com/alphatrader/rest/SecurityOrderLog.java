@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -10,8 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,8 +32,8 @@ public class SecurityOrderLog {
     /**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     /**
      * List type for gson deserialization.
@@ -75,7 +74,7 @@ public class SecurityOrderLog {
     /**
      * The date.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * The unique id.
@@ -100,7 +99,7 @@ public class SecurityOrderLog {
      */
     @NotNull
     @SafeVarargs
-    public static List<SecurityOrderLog> searchLogs(LocalDateTime startDate, LocalDateTime endDate,
+    public static List<SecurityOrderLog> searchLogs(ZonedDateTime startDate, ZonedDateTime endDate,
                                                     Pair<SearchType, String>... params) {
         String suffix = "";
 
@@ -110,13 +109,13 @@ public class SecurityOrderLog {
             if (startDate != null) {
                 parameters.add(new Pair<>(
                     SearchType.START_DATE,
-                    Long.toString(startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                    Long.toString(startDate.toInstant().toEpochMilli())
                 ));
             }
             if (endDate != null) {
                 parameters.add(new Pair<>(
                     SearchType.END_DATE,
-                    Long.toString(endDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                    Long.toString(endDate.toInstant().toEpochMilli())
                 ));
             }
             suffix += "?" + String.join("&", parameters.stream().map(
@@ -183,7 +182,7 @@ public class SecurityOrderLog {
     /**
      * @return the date the order was placed
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 

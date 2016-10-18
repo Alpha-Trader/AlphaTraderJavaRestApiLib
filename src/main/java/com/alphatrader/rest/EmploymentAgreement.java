@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -39,7 +39,7 @@ public class EmploymentAgreement {
     /**
      * The date the CEO was employed.
      */
-    private final LocalDateTime startDate = null;
+    private final ZonedDateTime startDate = null;
 
     /**
      * Fetches the current employment agreement of the given company.
@@ -98,7 +98,7 @@ public class EmploymentAgreement {
     /**
      * @return the start date
      */
-    public LocalDateTime getStartDate() {
+    public ZonedDateTime getStartDate() {
         return startDate;
     }
 

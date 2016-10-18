@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -34,8 +34,8 @@ import static org.mockito.Mockito.when;
  * @version 1.0
  */
 public class BondTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     private static final String JSON = "{\n" +
         "    \"priceSpread\": {\n" +
@@ -162,16 +162,16 @@ public class BondTest {
 
     @Test
     public void testGetMaturityDate() throws Exception {
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(1476387663798L),
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1476387663798L),
             ZoneId.systemDefault());
-        assertEquals(localDateTime, toTest.getMaturityDate());
+        assertEquals(zonedDateTime, toTest.getMaturityDate());
     }
 
     @Test
     public void testGetIssueDate() throws Exception {
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(1476301249868L),
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1476301249868L),
             ZoneId.systemDefault());
-        assertEquals(localDateTime, toTest.getIssueDate());
+        assertEquals(zonedDateTime, toTest.getIssueDate());
     }
 
     @Test

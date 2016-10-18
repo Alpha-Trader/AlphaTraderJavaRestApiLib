@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -34,7 +34,7 @@ public class MainInterestRate {
     /**
      * The date this main interest rate was put into place.
      */
-    private final LocalDateTime dateTime = null;
+    private final ZonedDateTime dateTime = null;
 
     /**
      * Fetches the latest main interest rate.
@@ -73,7 +73,7 @@ public class MainInterestRate {
     /**
      * @return the start date
      */
-    public LocalDateTime getDateTime() {
+    public ZonedDateTime getDateTime() {
         return dateTime;
     }
 

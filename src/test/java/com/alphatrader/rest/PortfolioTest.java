@@ -1,13 +1,12 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -18,8 +17,8 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  */
 public class PortfolioTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     private static final String JSON = "{\n" +
         "  \"committedCash\": 0,\n" +

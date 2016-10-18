@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Last price wrapping class used for gson deserialization.
@@ -13,7 +13,7 @@ public class LastPrice {
     /**
      * The date of the last transaction resulting in this price.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * The last trade price of this position.
@@ -23,7 +23,7 @@ public class LastPrice {
     /**
      * @return the time this trade took place
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return this.date;
     }
 

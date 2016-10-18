@@ -5,8 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,7 +68,7 @@ public class Message {
      * @return the list of messages in that room
      */
     @NotNull
-    public static List<Message> getChatMessages(String chatId, LocalDateTime from) {
+    public static List<Message> getChatMessages(String chatId, ZonedDateTime from) {
         return getChatMessages(chatId, from, null);
     }
 
@@ -81,7 +80,7 @@ public class Message {
      * @return the list of messages in that room
      */
     @NotNull
-    public static List<Message> getChatMessages(Chat chat, LocalDateTime from) {
+    public static List<Message> getChatMessages(Chat chat, ZonedDateTime from) {
         return getChatMessages(chat.getId(), from, null);
     }
 
@@ -94,16 +93,15 @@ public class Message {
      * @return the list of messages
      */
     @NotNull
-    public static List<Message> getChatMessages(String chatId, LocalDateTime from, LocalDateTime to) {
+    public static List<Message> getChatMessages(String chatId, ZonedDateTime from, ZonedDateTime to) {
         String suffix = chatId;
 
         List<String> parameters = new ArrayList<>();
         if (from != null) {
-            parameters.add("afterDate=" + from.atZone(ZoneId.systemDefault()).toInstant()
-                .toEpochMilli());
+            parameters.add("afterDate=" + from.toInstant().toEpochMilli());
         }
         if (from != null) {
-            parameters.add("beforeDate=" + to.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            parameters.add("beforeDate=" + to.toInstant().toEpochMilli());
         }
 
         if (parameters.size() > 0) {
@@ -122,7 +120,7 @@ public class Message {
      * @return the list of messages
      */
     @NotNull
-    public static List<Message> getChatMessages(Chat chat, LocalDateTime from, LocalDateTime to) {
+    public static List<Message> getChatMessages(Chat chat, ZonedDateTime from, ZonedDateTime to) {
         return getChatMessages(chat.getId(), from, to);
     }
 

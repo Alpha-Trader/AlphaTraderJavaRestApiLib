@@ -1,16 +1,10 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,18 +20,6 @@ public class CashTransferLog {
      * The logger for this class.
      */
     private static final Log log = LogFactory.getLog(CashTransferLog.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * The list type we use.
-     */
-    private static final Type listType = new TypeToken<ArrayList<CashTransferLog>>() {
-    }.getType();
 
     /**
      * The amount of cash transfered.
@@ -57,7 +39,7 @@ public class CashTransferLog {
     /**
      * The date the transfer took place.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * The message describing this transfer.
@@ -80,22 +62,18 @@ public class CashTransferLog {
      * @return a list of all cash transfers matching the given criteria
      */
     @NotNull
-    public static List<CashTransferLog> getCashTransferLogs(LocalDateTime startDate,
-                                                            LocalDateTime endDate,
+    public static List<CashTransferLog> getCashTransferLogs(ZonedDateTime startDate,
+                                                            ZonedDateTime endDate,
                                                             String senderBankAccountId,
                                                             String receiverBankAccountId) {
-        List<CashTransferLog> myReturn = new ArrayList<>();
-
         String request = "/api/cashtransferlogs/";
         List<String> options = new ArrayList<>();
 
         if (startDate != null) {
-            options.add("startDate=" + startDate.atZone(ZoneId.systemDefault()).toInstant()
-                .toEpochMilli());
+            options.add("startDate=" + startDate.toInstant().toEpochMilli());
         }
         if (endDate != null) {
-            options.add("endDate=" + endDate.atZone(ZoneId.systemDefault()).toInstant()
-                .toEpochMilli());
+            options.add("endDate=" + endDate.toInstant().toEpochMilli());
         }
         if (senderBankAccountId != null && !senderBankAccountId.equals("")) {
             options.add("senderBankAccountId=" + senderBankAccountId);
@@ -135,7 +113,7 @@ public class CashTransferLog {
     /**
      * @return the date the transfer took place
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 

@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -29,8 +29,8 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class BankAccountTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     private static final String JSON = "{\n" +
         "  \"cash\": 10000,\n" +
@@ -75,8 +75,7 @@ public class BankAccountTest {
 
     @Test
     public void testToString() throws Exception {
-        assertEquals("BankAccount{cash=10000.0, id='443db0b7-c399-4252-8166-061d8de1d634'}",
-            toTest.toString());
+        assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
     }
 
     @Test

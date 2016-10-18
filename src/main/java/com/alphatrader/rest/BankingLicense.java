@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Represents a banking licence in the game.
@@ -22,7 +22,7 @@ public class BankingLicense {
     /**
      * The date the license has been issued.
      */
-    private final LocalDateTime startDate = null;
+    private final ZonedDateTime startDate = null;
 
     /**
      * The company this license enables banking functions for.
@@ -81,7 +81,7 @@ public class BankingLicense {
     /**
      * @return the issue date of this license
      */
-    public LocalDateTime getStartDate() {
+    public ZonedDateTime getStartDate() {
         return startDate;
     }
 

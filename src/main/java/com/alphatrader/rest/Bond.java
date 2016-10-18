@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -45,12 +45,12 @@ public class Bond {
     /**
      * The bond's date of maturity.
      */
-    private final LocalDateTime maturityDate = null;
+    private final ZonedDateTime maturityDate = null;
 
     /**
      * The date the bond was issued.
      */
-    private final LocalDateTime issueDate = null;
+    private final ZonedDateTime issueDate = null;
 
     /**
      * The price spread
@@ -194,7 +194,7 @@ public class Bond {
     /**
      * @return the maturity date
      */
-    public LocalDateTime getMaturityDate() {
+    public ZonedDateTime getMaturityDate() {
         return maturityDate;
     }
 
@@ -202,7 +202,7 @@ public class Bond {
     /**
      * @return the issue date
      */
-    public LocalDateTime getIssueDate() {
+    public ZonedDateTime getIssueDate() {
         return issueDate;
     }
 

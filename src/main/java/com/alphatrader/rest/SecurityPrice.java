@@ -4,8 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -45,9 +44,9 @@ public final class SecurityPrice {
      * @return the list of prices
      */
     @NotNull
-    public static List<LastPrice> getSecurityPrices(String securityIdentifier, LocalDateTime startDate) {
+    public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate) {
         return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
-            + startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            + startDate.toInstant().toEpochMilli());
     }
 
     /**
@@ -59,11 +58,10 @@ public final class SecurityPrice {
      * @return the list of prices
      */
     @NotNull
-    public static List<LastPrice> getSecurityPrices(String securityIdentifier, LocalDateTime startDate,
-                                                    LocalDateTime endDate) {
+    public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate,
+                                                    ZonedDateTime endDate) {
         return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
-            + startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() + "&endDate" + endDate
-            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            + startDate.toInstant().toEpochMilli() + "&endDate" + endDate.toInstant().toEpochMilli());
     }
 
     /**

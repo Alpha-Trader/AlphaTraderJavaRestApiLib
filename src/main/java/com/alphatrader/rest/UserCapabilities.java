@@ -1,7 +1,7 @@
 package com.alphatrader.rest;
 
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * A collection of user capabilities.
@@ -19,7 +19,7 @@ public class UserCapabilities {
     /**
      * The date the level 2 user status is revoked.
      */
-    private final LocalDateTime level2UserEndDate = null;
+    private final ZonedDateTime level2UserEndDate = null;
 
     /**
      * The user's locale.
@@ -44,7 +44,7 @@ public class UserCapabilities {
     /**
      * The date, the premium status runs out.
      */
-    private final LocalDateTime premiumEndDate = null;
+    private final ZonedDateTime premiumEndDate = null;
 
     /**
      * @return true, if the user is a level 2 user
@@ -56,7 +56,7 @@ public class UserCapabilities {
     /**
      * @return the date the level 2 user status runs out
      */
-    public LocalDateTime getLevel2UserEndDate() {
+    public ZonedDateTime getLevel2UserEndDate() {
         return level2UserEndDate;
     }
 
@@ -91,7 +91,7 @@ public class UserCapabilities {
     /**
      * @return the time the premium status runs out
      */
-    public LocalDateTime getPremiumEndDate() {
+    public ZonedDateTime getPremiumEndDate() {
         return premiumEndDate;
     }
 

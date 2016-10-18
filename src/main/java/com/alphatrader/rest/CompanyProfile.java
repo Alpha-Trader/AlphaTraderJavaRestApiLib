@@ -169,7 +169,7 @@ public class CompanyProfile {
     /**
      * @return the sponsored listings
      */
-    public List<Object> getSponsoredListings() {
+    public List<SecuritySponsorship> getSponsoredListings() {
         return Arrays.asList(sponsoredListings);
     }
 

@@ -4,8 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -34,7 +33,7 @@ public class Event {
     /**
      * The date the event was triggered.
      */
-    private final LocalDateTime date = null;
+    private final ZonedDateTime date = null;
 
     /**
      * The list of realms.
@@ -54,9 +53,8 @@ public class Event {
      * @return all non-persistent events in the game from the provided date
      */
     @NotNull
-    public static List<Event> getAllEvents(LocalDateTime fromDate) {
-        return getMultipleEventsFromApi("events/?afterDate=" + fromDate.atZone(ZoneId.systemDefault())
-            .toInstant().toEpochMilli());
+    public static List<Event> getAllEvents(ZonedDateTime fromDate) {
+        return getMultipleEventsFromApi("events/?afterDate=" + fromDate.toInstant().toEpochMilli());
     }
 
     /**
@@ -72,9 +70,8 @@ public class Event {
      * @return all non-persistent events for this user from the provided date
      */
     @NotNull
-    public static List<Event> getAllUserEvents(LocalDateTime fromDate) {
-        return getMultipleEventsFromApi("events/user/?afterDate=" + fromDate.atZone(ZoneId
-            .systemDefault()).toInstant().toEpochMilli());
+    public static List<Event> getAllUserEvents(ZonedDateTime fromDate) {
+        return getMultipleEventsFromApi("events/user/?afterDate=" + fromDate.toInstant().toEpochMilli());
     }
 
     /**
@@ -92,9 +89,9 @@ public class Event {
      * @return all non-persistent events in the game from the provided date
      */
     @NotNull
-    public static List<Event> getEventsByType(Type type, LocalDateTime fromDate) {
+    public static List<Event> getEventsByType(Type type, ZonedDateTime fromDate) {
         return getMultipleEventsFromApi("search/events/" + type.toString() + "?afterDate=" + fromDate
-            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            .toInstant().toEpochMilli());
     }
 
     /**
@@ -114,9 +111,9 @@ public class Event {
      * @return all non-persistent events in the game from the provided date
      */
     @NotNull
-    public static List<Event> searchEvents(String fulltext, LocalDateTime fromDate) {
+    public static List<Event> searchEvents(String fulltext, ZonedDateTime fromDate) {
         return getMultipleEventsFromApi("search/events/" + fulltext + "?afterDate=" + fromDate
-            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+            .toInstant().toEpochMilli());
     }
 
     /**
@@ -147,7 +144,7 @@ public class Event {
     /**
      * @return the event trigger date
      */
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 

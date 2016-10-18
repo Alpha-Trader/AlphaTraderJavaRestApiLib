@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -24,7 +24,7 @@ public class Chat {
     /**
      * The date the chat was created.
      */
-    private final LocalDateTime dateCreated = null;
+    private final ZonedDateTime dateCreated = null;
     /**
      * The last message sent in the chat.
      */
@@ -95,7 +95,7 @@ public class Chat {
     /**
      * @return the creation date
      */
-    public LocalDateTime getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 

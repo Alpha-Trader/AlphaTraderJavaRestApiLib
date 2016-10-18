@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -24,7 +24,7 @@ public class Order {
     /**
      * The date and time the order was created
      */
-    private final LocalDateTime creationDate = null;
+    private final ZonedDateTime creationDate = null;
 
     /**
      * Name of Security
@@ -186,7 +186,7 @@ public class Order {
     /**
      * return the date of creation
      */
-    public LocalDateTime getCreationDate() {
+    public ZonedDateTime getCreationDate() {
 
         return creationDate;
     }

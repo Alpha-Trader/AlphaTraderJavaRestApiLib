@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,11 +45,11 @@ public class Poll {
     /**
      * The start date.
      */
-    private final LocalDateTime startDate = null;
+    private final ZonedDateTime startDate = null;
     /**
      * The end date.
      */
-    private final LocalDateTime endDate = null;
+    private final ZonedDateTime endDate = null;
     /**
      * All group members of this poll.
      */
@@ -69,7 +69,7 @@ public class Poll {
     /**
      * The date the result expires.
      */
-    private final LocalDateTime resultExpireDate = null;
+    private final ZonedDateTime resultExpireDate = null;
     /**
      * The unique id.
      */
@@ -159,14 +159,14 @@ public class Poll {
     /**
      * @return the start date
      */
-    public LocalDateTime getStartDate() {
+    public ZonedDateTime getStartDate() {
         return startDate;
     }
 
     /**
      * @return the end date
      */
-    public LocalDateTime getEndDate() {
+    public ZonedDateTime getEndDate() {
         return endDate;
     }
 
@@ -201,7 +201,7 @@ public class Poll {
     /**
      * @return the expiry date of the result
      */
-    public LocalDateTime getResultExpireDate() {
+    public ZonedDateTime getResultExpireDate() {
         return resultExpireDate;
     }
 

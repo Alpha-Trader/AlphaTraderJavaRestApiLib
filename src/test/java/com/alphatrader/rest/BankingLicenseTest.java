@@ -1,6 +1,6 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.ZoneId;
 
 import static org.junit.Assert.*;
@@ -31,8 +31,8 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class BankingLicenseTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     private final static String JSON = "{\n" +
         "  \"startDate\": 1475335931401,\n" +
@@ -68,7 +68,7 @@ public class BankingLicenseTest {
         "  \"message\": \"Banking license does not exist\"\n" +
         "}";
 
-    private static final LocalDateTime testDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(1475335931401L),
+    private static final ZonedDateTime testDate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1475335931401L),
         ZoneId.systemDefault());
 
     private static final Company testCompany = gson.fromJson("{\n" +

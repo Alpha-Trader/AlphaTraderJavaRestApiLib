@@ -1,13 +1,13 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.ZoneId;
 
 import static org.junit.Assert.assertEquals;
@@ -19,8 +19,8 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0
  */
 public class OrderTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
+        new ZonedDateTimeDeserializer()).create();
 
     private static final String JSON = "{\n" +
         "    \"counterPartyName\": null,\n" +
@@ -58,8 +58,9 @@ public class OrderTest {
 
     @Test
     public void testGetCreationDate() throws Exception {
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(1475619375635L), ZoneId.systemDefault());
-        assertEquals(localDateTime, toTest.getCreationDate());
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1475619375635L),
+            ZoneId.systemDefault());
+        assertEquals(zonedDateTime, toTest.getCreationDate());
     }
 
     @Test
