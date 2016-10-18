@@ -78,11 +78,6 @@ public class UserProfile {
     private final BankAccount bankAccount = null;
 
     /**
-     * The capabilities of this user.
-     */
-    private final UserCapabilities userCapabilities = null;
-
-    /**
      * The user's locale.
      */
     private final String locale = null;
@@ -177,13 +172,6 @@ public class UserProfile {
     }
 
     /**
-     * @return the user's capabilities
-     */
-    public UserCapabilities getUserCapabilities() {
-        return userCapabilities;
-    }
-
-    /**
      * @return the user's locale
      */
     public String getLocale() {
@@ -200,7 +188,6 @@ public class UserProfile {
             + ", salaryPayments=" + Arrays.toString(salaryPayments)
             + ", user=" + user
             + ", bankAccount=" + bankAccount
-            + ", userCapabilities=" + userCapabilities
             + ", locale='" + locale + '\''
             + '}';
     }
