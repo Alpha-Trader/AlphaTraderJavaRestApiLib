@@ -7,6 +7,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -82,47 +84,137 @@ public class Company {
      * @param user the user who governs the company
      * @return a list of all companies governed by the user
      */
+    @NotNull
     public static List<Company> getAllUserCompanies(User user) {
-        List<Company> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/");
-            String companyNodes = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(companyNodes, listType);
-        }
-        catch (UnirestException e) {
-            log.error("Error fetching companies: " + e.getMessage());
-        }
-
-        return myReturn;
+        return getAllUserCompanies(user.getId());
     }
 
     /**
-     * fetches all companies in the game
-     */
-
-    public static List<Company> getAllCompanies() {
-        List<Company> myReturn = new ArrayList<>();
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companies/all/");
-            String companyNodes = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(companyNodes, listType);
-        }
-        catch (UnirestException e) {
-            log.error("Error fetching companies: " + e.getMessage());
-        }
-
-        return myReturn;
-    }
-
-    /**
-     * Creates a Company object from the API's json response.
+     * Fetches all companies currently employing the given user as a CEO.
      *
-     * @param json the json object you want to parse
-     * @return the parsed company
+     * @param userId the id of the user who governs the company
+     * @return a list of all companies governed by the user
      */
-    public static Company createFromJson(String json) {
-        return gson.fromJson(json, Company.class);
+    @NotNull
+    public static List<Company> getAllUserCompanies(String userId) {
+        return getMultipleCompaniesFromApi("companies/ceo/userid/" + userId);
+    }
+
+    /**
+     * Fetches all companies currently employing the given user as a CEO.
+     *
+     * @param username the name of the user who governs the company
+     * @return a list of all companies governed by the user
+     */
+    @NotNull
+    public static List<Company> getAllUserCompaniesByUsername(String username) {
+        return getMultipleCompaniesFromApi("companies/ceo/username/" + username);
+    }
+
+    /**
+     * Fetches all companies governed by the logged in user.
+     *
+     * @return all companies currently employing the logged in user as CEO
+     */
+    @NotNull
+    public static List<Company> getAllUserCompanies() {
+        return getMultipleCompaniesFromApi("companies/");
+    }
+
+    /**
+     * Fetches all companies in the game.
+     *
+     * @return all companies in the game
+     */
+    @NotNull
+    public static List<Company> getAllCompanies() {
+        return getMultipleCompaniesFromApi("companies/all/");
+    }
+
+    /**
+     * Fetch a company by it's securities account id.
+     *
+     * @param securitiesAccountId the securities account id
+     * @return the company or null if not found
+     */
+    @Nullable
+    public static Company getBySecuritiesAccountId(String securitiesAccountId) {
+        return getSingleCompanyFromApi("companies/securitiesaccount/" + securitiesAccountId);
+    }
+
+    /**
+     * Fetch a company by it's security identifier.
+     *
+     * @param securityIdentifier the security identifier
+     * @return the company or null if not found
+     */
+    @Nullable
+    public static Company getBySecurityIdentifier(String securityIdentifier) {
+        return getSingleCompanyFromApi("companies/securityIdentifier/" + securityIdentifier);
+    }
+
+    /**
+     * Fetch a company by it's unique id.
+     *
+     * @param id the company id
+     * @return the company or null if not found
+     */
+    @Nullable
+    public static Company getById(String id) {
+        return getSingleCompanyFromApi("companies/" + id);
+    }
+
+    /**
+     * Search for companies with matching name parts.
+     *
+     * @param namePart the search query
+     * @return a list of companies matching the search
+     */
+    @NotNull
+    public static List<Company> searchByName(String namePart) {
+        return getMultipleCompaniesFromApi("search/companies/" + namePart);
+    }
+
+    /**
+     * API wrapper function for single company fetching.
+     *
+     * @param suffix the api endpoint suffix
+     * @return the requested company
+     */
+    @Nullable
+    private static Company getSingleCompanyFromApi(String suffix) {
+        Company myReturn = null;
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
+            String companyNodes = response.getBody().getObject().toString();
+            myReturn = gson.fromJson(companyNodes, Company.class);
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching company: " + e.getMessage());
+        }
+
+        return myReturn;
+    }
+
+    /**
+     * API wrapper function for all company lists.
+     *
+     * @param suffix the api endpoint suffix
+     * @return the requested list of companies
+     */
+    @NotNull
+    private static List<Company> getMultipleCompaniesFromApi(String suffix) {
+        List<Company> myReturn = new ArrayList<>();
+        try {
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
+            String companyNodes = response.getBody().getArray().toString();
+            myReturn.addAll(gson.fromJson(companyNodes, listType));
+        }
+        catch (UnirestException e) {
+            log.error("Error fetching companies: " + e.getMessage());
+        }
+
+        return myReturn;
     }
 
     /**

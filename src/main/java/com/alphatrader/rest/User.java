@@ -220,4 +220,11 @@ public class User {
     public String getToken() {
         return jwtToken;
     }
+
+    /**
+     * @return the unique user id
+     */
+    public String getId() {
+        return id;
+    }
 }
