@@ -37,7 +37,7 @@ public class BankAccount {
     /**
      * @return the amount of cash in this bank account
      */
-    public double getCash() {
+    public Double getCash() {
         return cash;
     }
 
