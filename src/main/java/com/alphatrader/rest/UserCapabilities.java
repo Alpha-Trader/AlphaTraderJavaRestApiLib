@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-class UserCapabilities {
+public class UserCapabilities {
     private final Boolean level2User = null;
     private final LocalDateTime level2UserEndDate = null;
     private final String locale = null;
