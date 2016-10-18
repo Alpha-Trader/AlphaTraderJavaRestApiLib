@@ -4,17 +4,12 @@ import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import javafx.util.Pair;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -28,7 +23,7 @@ import java.util.stream.Collectors;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings ({"ConstantConditions", "SameParameterValue"})
+@SuppressWarnings({"ConstantConditions", "SameParameterValue"})
 public class SecurityOrderLog {
     /**
      * The logger for this class.
@@ -140,21 +135,7 @@ public class SecurityOrderLog {
      */
     @NotNull
     private static List<SecurityOrderLog> getMultipleLogsFromApi(String suffix) {
-        List<SecurityOrderLog> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityorderlogs" + suffix);
-            String orders = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(orders, listType));
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching security order logs: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(SecurityOrderLog.class, "/api/securityorderlogs" + suffix);
     }
 
     /**

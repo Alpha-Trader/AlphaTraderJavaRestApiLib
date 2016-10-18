@@ -18,6 +18,20 @@ public class SponsorRating {
     private final SponsorRatingLetter value = null;
 
     /**
+     * @return the sponsor salary
+     */
+    public Double getSalary() {
+        return salary;
+    }
+
+    /**
+     * @return the valuation of the sponsor
+     */
+    public SponsorRatingLetter getValue() {
+        return value;
+    }
+
+    /**
      * Represents the sponsor rating classes.
      */
     public enum SponsorRatingLetter {

@@ -1,23 +1,16 @@
 package com.alphatrader.rest;
 
 import com.alphatrader.rest.util.ApiLibConfig;
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,17 +26,6 @@ public class User {
     private static final Log log = LogFactory.getLog(User.class);
 
     /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final Type listType = new TypeToken<ArrayList<User>>() {
-    }.getType();
-    /**
      * The username.
      */
     private final String username;
@@ -51,10 +33,27 @@ public class User {
      * De passwoord.
      */
     private final String password;
+
+    /**
+     * The user's email address.
+     */
     private final String emailAddress = null;
+
+    /**
+     * The gravatar hash of the user's profile image.
+     */
     private final String gravatarHash = null;
+
+    /**
+     * The unique id.
+     */
     private final String id = null;
+
+    /**
+     * The user capabilities.
+     */
     private final UserCapabilities userCapabilities = null;
+
     /**
      * The current session web token to use as login credentials.
      */
@@ -76,6 +75,7 @@ public class User {
      *
      * @return the logged in user
      */
+    @Nullable
     public static User getLoggedInUser() {
         return getSingleUser("user/");
     }
@@ -86,6 +86,7 @@ public class User {
      * @param userId the user id to look for
      * @return the requested user
      */
+    @Nullable
     public static User getById(String userId) {
         return getSingleUser("users/" + userId);
     }
@@ -96,6 +97,7 @@ public class User {
      * @param username the user to look for
      * @return the requested user
      */
+    @Nullable
     public static User getByUsername(String username) {
         return getSingleUser("users/username/" + username);
     }
@@ -106,26 +108,9 @@ public class User {
      * @param suffix the api suffix
      * @return the requested user
      */
+    @Nullable
     private static User getSingleUser(String suffix) {
-        User myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject()
-                    .toString(), User.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching user: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(User.class, "/api/" + suffix);
     }
 
     /**
@@ -134,6 +119,7 @@ public class User {
      * @param namePart the name part
      * @return a list of matching users
      */
+    @NotNull
     public static List<User> searchUser(String namePart) {
         return getMultipleUsers("search/users/" + namePart);
     }
@@ -143,6 +129,7 @@ public class User {
      *
      * @return a list of all users
      */
+    @NotNull
     public static List<User> getAllUsers() {
         return getMultipleUsers("users");
     }
@@ -153,26 +140,9 @@ public class User {
      * @param suffix the api suffix
      * @return the requested users
      */
+    @NotNull
     private static List<User> getMultipleUsers(String suffix) {
-        List<User> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray()
-                    .toString(), listType);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching users: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(User.class, "/api/" + suffix);
     }
 
     /**
@@ -203,7 +173,7 @@ public class User {
     /**
      * @return the name
      */
-    public String getName() {
+    public String getUsername() {
         return username;
     }
 
@@ -226,5 +196,26 @@ public class User {
      */
     public String getId() {
         return id;
+    }
+
+    /**
+     * @return the user's email address
+     */
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    /**
+     * @return the gravatar hash
+     */
+    public String getGravatarHash() {
+        return gravatarHash;
+    }
+
+    /**
+     * @return the user's capabilities
+     */
+    public UserCapabilities getUserCapabilities() {
+        return userCapabilities;
     }
 }

@@ -1,21 +1,11 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,17 +21,8 @@ public final class SecurityPrice {
     private static final Log log = LogFactory.getLog(LastPrice.class);
 
     /**
-     * Gson instance for deserialization.
+     * Private constructor to avoid utility class instantiation.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final java.lang.reflect.Type listType = new TypeToken<ArrayList<LastPrice>>() {
-    }.getType();
-
     private SecurityPrice() {
     }
 
@@ -93,20 +74,6 @@ public final class SecurityPrice {
      */
     @NotNull
     private static List<LastPrice> getMultipleLastPricesFromApi(String suffix) {
-        List<LastPrice> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityPrices/" + suffix);
-            String orders = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(orders, listType));
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching security prices: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(LastPrice.class, "/api/securityPrices/" + suffix);
     }
 }

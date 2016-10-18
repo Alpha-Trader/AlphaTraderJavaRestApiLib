@@ -22,7 +22,7 @@ public class UserTest {
 
     @Test
     public void testGetName() throws Exception {
-        assertEquals("test", toTest.getName());
+        assertEquals("test", toTest.getUsername());
     }
 
     @Test
