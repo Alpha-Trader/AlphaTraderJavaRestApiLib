@@ -1,21 +1,11 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,20 +22,8 @@ public class Chat {
     private static final Log log = LogFactory.getLog(Chat.class);
 
     /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final Type listType = new TypeToken<ArrayList<Chat>>() {
-    }.getType();
-    /**
      * The date the chat was created.
      */
-
     private final LocalDateTime dateCreated = null;
     /**
      * The last message sent in the chat.
@@ -100,23 +78,7 @@ public class Chat {
      */
     @NotNull
     private static List<Chat> getMultipleChatsFromApi(String suffix) {
-        List<Chat> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/chats" + suffix);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn.addAll(gson.fromJson(response.getBody().getArray().toString(), listType));
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading chats: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Chat.class, "/api/chats" + suffix);
     }
 
     /**
@@ -125,24 +87,9 @@ public class Chat {
      * @param chatId the chat id to look for
      * @return the chat with the given id
      */
+    @Nullable
     public static Chat getChatById(String chatId) {
-        Chat myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/chats/" + chatId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getObject().toString(), Chat.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading chat: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(Chat.class, "/api/chats/" + chatId);
     }
 
     /**

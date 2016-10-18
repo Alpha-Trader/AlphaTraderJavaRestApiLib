@@ -1,22 +1,11 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,18 +21,6 @@ public class Poll {
      * The logger for this class.
      */
     private static final Log log = LogFactory.getLog(Poll.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final Type listType = new TypeToken<ArrayList<Poll>>() {
-    }.getType();
 
     /**
      * The abstention rule.
@@ -130,24 +107,7 @@ public class Poll {
      */
     @NotNull
     private static List<Poll> getMultiplePollsFromApi(String suffix) {
-        List<Poll> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn.addAll(gson.fromJson(response.getBody()
-                    .getArray().toString(), listType));
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching polls: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Poll.class, "/api/" + suffix);
     }
 
     /**
@@ -158,23 +118,7 @@ public class Poll {
      */
     @Nullable
     private static Poll getById(String pollId) {
-        Poll myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/polls/" + pollId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getObject().toString(), Poll.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching poll: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(Poll.class, "/api/polls/" + pollId);
     }
 
     /**

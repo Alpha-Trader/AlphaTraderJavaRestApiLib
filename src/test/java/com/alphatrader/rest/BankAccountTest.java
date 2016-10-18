@@ -1,5 +1,8 @@
 package com.alphatrader.rest;
 
+import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import org.apache.http.HttpResponseFactory;
@@ -11,6 +14,8 @@ import org.apache.http.message.BasicStatusLine;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -24,6 +29,9 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class BankAccountTest {
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
+
     private static final String JSON = "{\n" +
         "  \"cash\": 10000,\n" +
         "  \"id\": \"443db0b7-c399-4252-8166-061d8de1d634\"\n" +
@@ -34,7 +42,8 @@ public class BankAccountTest {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         HttpResponseFactory factory = new DefaultHttpResponseFactory();
-        org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
+        org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(HttpVersion
+            .HTTP_1_1, HttpStatus.SC_OK, null), null);
         response.setEntity(new StringEntity(JSON));
         HttpResponse<JsonNode> httpResponse = new HttpResponse<>(response, JsonNode.class);
 
@@ -45,7 +54,7 @@ public class BankAccountTest {
 
     @Before
     public void setUp() throws Exception {
-        toTest = new BankAccount("443db0b7-c399-4252-8166-061d8de1d634", 10000.0);
+        toTest = gson.fromJson(JSON, BankAccount.class);
     }
 
     @Test

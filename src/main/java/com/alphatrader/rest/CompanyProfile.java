@@ -1,19 +1,10 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,12 +20,6 @@ public class CompanyProfile {
      * The logger for this class. Use this to write messages to the console.
      */
     private static final Log log = LogFactory.getLog(CompanyProfile.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
 
     /**
      * The ceo employment agreement.
@@ -150,25 +135,7 @@ public class CompanyProfile {
      */
     @Nullable
     public static CompanyProfile getByCompany(String companyId) {
-        CompanyProfile myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/companyprofiles/"
-                + companyId);
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject().toString(), CompanyProfile.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching employment agreement: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(CompanyProfile.class, "/api/companyprofiles/" + companyId);
     }
 
     /**

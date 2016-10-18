@@ -3,7 +3,6 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -15,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,11 +34,6 @@ public class Listing {
      */
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
         new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final java.lang.reflect.Type listType = new TypeToken<ArrayList<Listing>>() { }.getType();
 
     /**
      * The start date of the listing.
@@ -85,21 +78,7 @@ public class Listing {
      */
     @Nullable
     public static Listing getById(String securityIdentifier) {
-        Listing myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/listings/"
-                + securityIdentifier);
-            String listing = response.getBody().getObject().toString();
-            myReturn = gson.fromJson(listing, Listing.class);
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching listing: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-        return myReturn;
+        return Http.getSingleObjectFromApi(Listing.class, "/api/listings/" + securityIdentifier);
     }
 
     /**
@@ -149,22 +128,7 @@ public class Listing {
      */
     @NotNull
     public static List<Company> getShareholders(String securityIdentifier) {
-        List<Company> myReturn = new ArrayList<>();
-        java.lang.reflect.Type companyListType = new TypeToken<ArrayList<Company>>() { }.getType();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/shareholders/"
-                + securityIdentifier);
-            String listings = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(listings, companyListType));
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching listings: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Company.class, "/api/shareholders/" + securityIdentifier);
     }
 
     /**
@@ -175,22 +139,7 @@ public class Listing {
      */
     @NotNull
     private static List<Listing> getMultipleListingsFromApi(String suffix) {
-        List<Listing> myReturn = new ArrayList<>();
-        java.lang.reflect.Type companyListType = new TypeToken<ArrayList<Company>>() { }.getType();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-            String listings = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(listings, companyListType));
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching listings: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Listing.class, "/api/" + suffix);
     }
 
     /**

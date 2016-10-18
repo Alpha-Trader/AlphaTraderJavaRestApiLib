@@ -1,21 +1,11 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,18 +20,6 @@ public class Order {
      * The logger for this class.
      */
     private static final Log log = LogFactory.getLog(Order.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final java.lang.reflect.Type listType = new TypeToken<ArrayList<Order>>() {
-    }.getType();
 
     /**
      * The date and time the order was created
@@ -184,21 +162,7 @@ public class Order {
      */
     @NotNull
     private static List<Order> getMultipleOrdersFromApi(String suffix) {
-        List<Order> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-            String orders = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(orders, listType));
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching orders: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Order.class, "/api/" + suffix);
     }
 
     /**
@@ -209,21 +173,7 @@ public class Order {
      */
     @Nullable
     public static Order getById(String id) {
-        Order myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityorders/" + id);
-            String orders = response.getBody().getObject().toString();
-            myReturn = gson.fromJson(orders, Order.class);
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching orders: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(Order.class, "/api/securityorders/" + id);
     }
 
     /**

@@ -2,9 +2,6 @@ package com.alphatrader.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
@@ -184,17 +181,7 @@ public class Company {
      */
     @Nullable
     private static Company getSingleCompanyFromApi(String suffix) {
-        Company myReturn = null;
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-            String companyNodes = response.getBody().getObject().toString();
-            myReturn = gson.fromJson(companyNodes, Company.class);
-        }
-        catch (UnirestException e) {
-            log.error("Error fetching company: " + e.getMessage());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(Company.class, "/api/" + suffix);
     }
 
     /**
@@ -205,17 +192,7 @@ public class Company {
      */
     @NotNull
     private static List<Company> getMultipleCompaniesFromApi(String suffix) {
-        List<Company> myReturn = new ArrayList<>();
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
-            String companyNodes = response.getBody().getArray().toString();
-            myReturn.addAll(gson.fromJson(companyNodes, listType));
-        }
-        catch (UnirestException e) {
-            log.error("Error fetching companies: " + e.getMessage());
-        }
-
-        return myReturn;
+        return Http.getMultipleObjectFromApi(Company.class, "/api/" + suffix);
     }
 
     /**

@@ -1,15 +1,9 @@
 package com.alphatrader.rest;
 
 import com.google.gson.Gson;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 /**
  * Represents the central bank reserves of a company in the game.
@@ -57,24 +51,8 @@ public class CentralBankReserves {
      */
     @Nullable
     public static CentralBankReserves getByCompany(String companyId) {
-        CentralBankReserves myReturn = null;
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get(
-                "/api/centralbankreserves/?companyId=" + companyId);
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getObject().toString(),
-                    CentralBankReserves.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading central bank reserves: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(CentralBankReserves.class,
+            "/api/centralbankreserves/?companyId=" + companyId);
     }
 
     /**

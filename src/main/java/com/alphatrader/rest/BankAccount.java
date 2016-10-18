@@ -1,15 +1,8 @@
 package com.alphatrader.rest;
 
-import com.google.gson.Gson;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 /**
  * Represents a bank account in the game.
@@ -24,56 +17,21 @@ public class BankAccount {
     private static final Log log = LogFactory.getLog(BankAccount.class);
 
     /**
-     * The gson wrapper for this class.
-     */
-    private static final Gson gson = new Gson();
-
-    /**
      * The amount of cash stored in this bank account.
      */
-    private final double cash;
+    private final Double cash = null;
 
     /**
      * The unique id of this bank account.
      */
-    private final String id;
-
-    /**
-     * Creates a new bank account with the given parameters.
-     *
-     * @param id   the unique id of this account
-     * @param cash the amount of cash in this account
-     */
-    public BankAccount(String id, double cash) {
-        this.id = id;
-        this.cash = cash;
-    }
+    private final String id = null;
 
     /**
      * @return the bank account of the logged in user
      */
     @Nullable
     public static BankAccount getUserBankAccount() {
-        BankAccount myReturn = null;
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/bankaccounts");
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(
-                    response.getBody()
-                        .getObject()
-                        .toString(),
-                    BankAccount.class);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading bank account: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return Http.getSingleObjectFromApi(BankAccount.class, "/api/bankaccounts");
     }
 
     /**
