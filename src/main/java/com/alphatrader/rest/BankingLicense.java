@@ -1,6 +1,5 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.Http;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,7 +8,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.cookie.CommonCookieAttributeHandler;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

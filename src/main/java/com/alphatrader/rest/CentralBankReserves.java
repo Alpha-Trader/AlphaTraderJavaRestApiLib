@@ -1,6 +1,5 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.Http;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;

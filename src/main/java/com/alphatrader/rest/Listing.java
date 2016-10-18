@@ -1,6 +1,5 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.Http;
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
