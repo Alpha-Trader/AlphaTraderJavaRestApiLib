@@ -119,7 +119,7 @@ public class SecurityOrderLog {
                 ));
             }
             if (endDate != null) {
-                parameters.add(new Pair<SearchType, String>(
+                parameters.add(new Pair<>(
                     SearchType.END_DATE,
                     Long.toString(endDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 ));

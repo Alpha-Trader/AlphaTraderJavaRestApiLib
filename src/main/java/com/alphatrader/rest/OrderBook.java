@@ -56,12 +56,12 @@ public class OrderBook {
     /**
      * List of buy orders.
      */
-    private List<Order> buyOrders;
+    private final List<Order> buyOrders = null;
 
     /**
      * List of sell orders.
      */
-    private List<Order> sellOrders;
+    private final List<Order> sellOrders = null;
 
     /**
      * Returns the order book for the specified company.

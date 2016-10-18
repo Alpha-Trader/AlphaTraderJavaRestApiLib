@@ -14,7 +14,7 @@ public class ApiLibConfig {
     /**
      * The singleton instance.
      */
-    private static ApiLibConfig instance = new ApiLibConfig();
+    private static final ApiLibConfig instance = new ApiLibConfig();
     /**
      * The URL of the API.
      */
