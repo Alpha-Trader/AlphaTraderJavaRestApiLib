@@ -1,7 +1,12 @@
 package com.alphatrader.rest;
 
+import com.alphatrader.rest.util.LocalDateTimeDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,6 +18,9 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  */
 public class NotificationTest {
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
+        new LocalDateTimeDeserializer()).create();
+
     private static final String JSON = "{\n" +
         "  \"subject\": {\n" +
         "    \"message\": \"Order filled\",\n" +
@@ -54,7 +62,7 @@ public class NotificationTest {
 
     @Before
     public void setUp() {
-        toTest = Notification.createFromJson(JSON);
+        toTest = gson.fromJson(JSON, Notification.class);
     }
 
     @Test

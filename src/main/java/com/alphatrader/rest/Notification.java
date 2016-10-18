@@ -9,6 +9,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -48,15 +49,17 @@ public class Notification {
     /**
      * Fetches all unread events of the user and marks them as read
      *
+     * @param suffix the api endpoint suffix
      * @return all unread events
      */
-    public static List<Notification> getUnreadNotifications() {
+    @NotNull
+    public static List<Notification> getMultipleNotificationsFromApi(String suffix) {
         List<Notification> myReturn = new ArrayList<>();
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/notifications/unread/");
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/notifications" + suffix);
             String notifications = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(notifications, listType);
+            myReturn.addAll(gson.fromJson(notifications, listType));
         }
         catch (UnirestException ue) {
             log.error("Error fetching notifications: " + ue.getMessage());
@@ -69,10 +72,19 @@ public class Notification {
     }
 
     /**
-     * Creates a Notification from the api json answers and marks it as read
+     * @return all unread notifications for the logged in user
      */
-    public static Notification createFromJson(String json) {
-        return gson.fromJson(json, Notification.class);
+    @NotNull
+    public static List<Notification> getUnreadNotifications() {
+        return getMultipleNotificationsFromApi("/unread");
+    }
+
+    /**
+     * @return all notifications for the logged in user
+     */
+    @NotNull
+    public static List<Notification> getNotifications() {
+        return getMultipleNotificationsFromApi("");
     }
 
     /**

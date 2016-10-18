@@ -9,6 +9,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -64,41 +65,46 @@ public class Event {
     /**
      * @return all non-persistent events in the game
      */
+    @NotNull
     public static List<Event> getAllEvents() {
-        return getEvents("events/");
+        return getMultipleEventsFromApi("events/");
     }
 
     /**
      * @param fromDate the lower boundary date
      * @return all non-persistent events in the game from the provided date
      */
+    @NotNull
     public static List<Event> getAllEvents(LocalDateTime fromDate) {
-        return getEvents("events/?afterDate=" + fromDate.atZone(ZoneId.systemDefault()).toInstant()
-            .toEpochMilli());
+        return getMultipleEventsFromApi("events/?afterDate=" + fromDate.atZone(ZoneId.systemDefault())
+            .toInstant().toEpochMilli());
     }
 
     /**
      * @return all non-persistent events for this user
      */
+    @NotNull
     public static List<Event> getAllUserEvents() {
-        return getEvents("events/user/");
+        return getMultipleEventsFromApi("events/user/");
     }
 
     /**
      * @param fromDate the lower boundary date
      * @return all non-persistent events for this user from the provided date
      */
+    @NotNull
     public static List<Event> getAllUserEvents(LocalDateTime fromDate) {
-        return getEvents("events/user/?afterDate=" + fromDate.atZone(ZoneId.systemDefault()).toInstant()
-            .toEpochMilli());
+        return getMultipleEventsFromApi("events/user/?afterDate=" + fromDate.atZone(ZoneId
+            .systemDefault()).toInstant().toEpochMilli());
     }
 
     /**
      * @param type the type of event to list
      * @return all non-persistent events for this user by type
      */
+    @NotNull
     public static List<Event> getEventsByType(Type type) {
-        return getEvents("search/events/" + type.toString());
+        return getMultipleEventsFromApi("search/events/" + type.toString());
     }
 
     /**
@@ -106,9 +112,10 @@ public class Event {
      * @param fromDate the lower boundary date
      * @return all non-persistent events in the game from the provided date
      */
+    @NotNull
     public static List<Event> getEventsByType(Type type, LocalDateTime fromDate) {
-        return getEvents("search/events/" + type.toString() + "?afterDate=" + fromDate.atZone(ZoneId
-            .systemDefault()).toInstant().toEpochMilli());
+        return getMultipleEventsFromApi("search/events/" + type.toString() + "?afterDate=" + fromDate
+            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
     /**
@@ -117,8 +124,9 @@ public class Event {
      * @param fulltext the search string
      * @return the events matching the search string
      */
+    @NotNull
     public static List<Event> searchEvents(String fulltext) {
-        return getEvents("search/events/" + fulltext);
+        return getMultipleEventsFromApi("search/events/" + fulltext);
     }
 
     /**
@@ -126,9 +134,10 @@ public class Event {
      * @param fromDate the lower boundary date
      * @return all non-persistent events in the game from the provided date
      */
+    @NotNull
     public static List<Event> searchEvents(String fulltext, LocalDateTime fromDate) {
-        return getEvents("search/events/" + fulltext + "?afterDate=" + fromDate.atZone(ZoneId
-            .systemDefault()).toInstant().toEpochMilli());
+        return getMultipleEventsFromApi("search/events/" + fulltext + "?afterDate=" + fromDate
+            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
     /**
@@ -137,13 +146,14 @@ public class Event {
      * @param suffix the API suffix for the events
      * @return the list of requested events
      */
-    private static List<Event> getEvents(String suffix) {
+    @NotNull
+    private static List<Event> getMultipleEventsFromApi(String suffix) {
         List<Event> myReturn = new ArrayList<>();
 
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getArray().toString(), listType);
+                myReturn.addAll(gson.fromJson(response.getBody().getArray().toString(), listType));
             }
         }
         catch (UnirestException ue) {

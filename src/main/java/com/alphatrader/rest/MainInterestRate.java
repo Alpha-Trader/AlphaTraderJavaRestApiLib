@@ -97,9 +97,9 @@ public class MainInterestRate {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/maininterrestrate/");
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
+                myReturn.addAll(gson.fromJson(response.getBody()
                     .getArray()
-                    .toString(), listType);
+                    .toString(), listType));
             }
         }
         catch (UnirestException ue) {

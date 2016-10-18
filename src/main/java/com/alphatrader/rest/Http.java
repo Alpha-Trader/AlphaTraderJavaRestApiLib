@@ -5,6 +5,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Wrapper to allow testing of all webservice classes.
@@ -30,6 +31,7 @@ class Http {
     /**
      * @return the singleton instance
      */
+    @NotNull
     public static Http getInstance() {
         return instance;
     }

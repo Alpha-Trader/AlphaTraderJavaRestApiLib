@@ -11,6 +11,7 @@ import javafx.util.Pair;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
  * @version 1.0.0
  */
 public class SecurityOrderLog {
+    //TODO: Finish the class
     /**
      * The logger for this class.
      */
@@ -88,8 +90,9 @@ public class SecurityOrderLog {
     /**
      * @return a list of all security order logs
      */
+    @NotNull
     public static List<SecurityOrderLog> getAllLogs() {
-        return searchLogs(null, null, null);
+        return searchLogs(null, null, (Pair<SearchType, String>[]) null);
     }
 
     /**
@@ -100,6 +103,7 @@ public class SecurityOrderLog {
      * @param params    the list of search parameters
      * @return the search result list
      */
+    @NotNull
     @SafeVarargs
     public static List<SecurityOrderLog> searchLogs(LocalDateTime startDate, LocalDateTime endDate,
                                                     Pair<SearchType, String>... params) {
@@ -125,7 +129,7 @@ public class SecurityOrderLog {
             ).collect(Collectors.toList()));
         }
 
-        return getFromApi(suffix);
+        return getMultipleLogsFromApi(suffix);
     }
 
     /**
@@ -134,13 +138,14 @@ public class SecurityOrderLog {
      * @param suffix the url suffix
      * @return the list of security orders requested
      */
-    private static List<SecurityOrderLog> getFromApi(String suffix) {
+    @NotNull
+    private static List<SecurityOrderLog> getMultipleLogsFromApi(String suffix) {
         List<SecurityOrderLog> myReturn = new ArrayList<>();
 
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityorderlogs" + suffix);
             String orders = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(orders, listType);
+            myReturn.addAll(gson.fromJson(orders, listType));
         }
         catch (UnirestException ue) {
             log.error("Error fetching security order logs: " + ue.getMessage());

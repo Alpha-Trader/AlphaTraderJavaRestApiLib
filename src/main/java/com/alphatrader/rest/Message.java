@@ -166,8 +166,8 @@ public class Message {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray().toString(), listType);
+                myReturn.addAll(gson.fromJson(response.getBody()
+                    .getArray().toString(), listType));
             }
         }
         catch (UnirestException ue) {

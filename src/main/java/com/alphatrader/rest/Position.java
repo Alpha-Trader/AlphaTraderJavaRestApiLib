@@ -29,22 +29,22 @@ public class Position {
     /**
      * The security identifier of this position.
      */
-    private String securityIdentifier;
+    private final String securityIdentifier = null;
 
     /**
      * The price this position was traded for in the last trade.
      */
-    private LastPrice lastPrice;
+    private final LastPrice lastPrice = null;
 
     /**
      * The number of shares held in the portfolio.
      */
-    private int numberOfShares;
+    private final Integer numberOfShares = null;
 
     /**
      * The overall volume of this position.
      */
-    private double volume;
+    private final Double volume = null;
 
     /**
      * @return the security identifier
@@ -56,21 +56,21 @@ public class Position {
     /**
      * @return the last trading price
      */
-    public double getLastPrice() {
-        return lastPrice.getValue();
+    public LastPrice getLastPrice() {
+        return lastPrice;
     }
 
     /**
      * @return the number of shares
      */
-    public int getNumberOfShares() {
+    public Integer getNumberOfShares() {
         return numberOfShares;
     }
 
     /**
      * @return the overall volume
      */
-    public double getVolume() {
+    public Double getVolume() {
         return volume;
     }
 }

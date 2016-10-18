@@ -24,7 +24,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-public class Partner {
+public final class Partner {
     /**
      * The logger for this class. Use this to write messages to the console.
      */
@@ -42,6 +42,11 @@ public class Partner {
     private static final Type listType = new TypeToken<ArrayList<Partner>>() { }.getType();
 
     /**
+     * Avoid utility class instantiation.
+     */
+    private Partner() { }
+
+    /**
      * Fetches all registered partners.
      *
      * @return all partners
@@ -54,9 +59,8 @@ public class Partner {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/partners/");
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray()
-                    .toString(), listType);
+                myReturn.addAll(gson.fromJson(response.getBody()
+                    .getArray().toString(), listType));
             }
         }
         catch (UnirestException ue) {

@@ -118,7 +118,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOtcOrders(String securitiesAccountId) {
-        return getFromApi("securityorders/counterparty/" + securitiesAccountId);
+        return getMultipleOrdersFromApi("securityorders/counterparty/" + securitiesAccountId);
     }
 
     /**
@@ -129,7 +129,8 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOtcOrders(Company company) {
-        return getFromApi("securityorders/counterparty/" + company.getSecuritiesAccountId());
+        return getMultipleOrdersFromApi("securityorders/counterparty/"
+            + company.getSecuritiesAccountId());
     }
 
     /**
@@ -140,7 +141,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOrderForCompany(String securityIdentifier) {
-        return getFromApi("orderlist/" + securityIdentifier);
+        return getMultipleOrdersFromApi("orderlist/" + securityIdentifier);
     }
 
     /**
@@ -151,7 +152,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOrderForCompany(Company company) {
-        return getFromApi("orderlist/" + company.getListing().getSecurityIdentifier());
+        return getMultipleOrdersFromApi("orderlist/" + company.getListing().getSecurityIdentifier());
     }
 
     /**
@@ -162,7 +163,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOrders(String securitiesAccountId) {
-        return getFromApi("securityorders/securitiesaccount/" + securitiesAccountId);
+        return getMultipleOrdersFromApi("securityorders/securitiesaccount/" + securitiesAccountId);
     }
 
     /**
@@ -173,7 +174,8 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOrders(Company company) {
-        return getFromApi("securityorders/securitiesaccount/" + company.getSecuritiesAccountId());
+        return getMultipleOrdersFromApi("securityorders/securitiesaccount/"
+            + company.getSecuritiesAccountId());
     }
 
     /**
@@ -183,13 +185,13 @@ public class Order {
      * @return the requested list of orders
      */
     @NotNull
-    private static List<Order> getFromApi(String suffix) {
+    private static List<Order> getMultipleOrdersFromApi(String suffix) {
         List<Order> myReturn = new ArrayList<>();
 
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
             String orders = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(orders, listType);
+            myReturn.addAll(gson.fromJson(orders, listType));
         }
         catch (UnirestException ue) {
             log.error("Error fetching orders: " + ue.getMessage());

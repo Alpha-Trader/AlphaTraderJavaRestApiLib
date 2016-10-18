@@ -3,10 +3,13 @@ package com.alphatrader.rest;
 import java.time.LocalDateTime;
 
 /**
+ * Represents a poll in the game.
+ *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
 public class Poll {
+    //TODO: finish class
     private enum AbstentionRule {
         COUNTS_AS_REFUSAL,
         COUNTS_AS_APPROVAL

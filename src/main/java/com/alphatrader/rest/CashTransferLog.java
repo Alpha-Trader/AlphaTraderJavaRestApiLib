@@ -9,6 +9,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -82,6 +83,7 @@ public class CashTransferLog {
      * @param receiverBankAccountId the id of the receiver's bank account
      * @return a list of all cash transfers matching the given criteria
      */
+    @NotNull
     public static List<CashTransferLog> getCashTransferLogs(LocalDateTime startDate,
                                                             LocalDateTime endDate,
                                                             String senderBankAccountId,
@@ -112,7 +114,7 @@ public class CashTransferLog {
                 HttpResponse<JsonNode> response = Http.getInstance().get(request);
 
                 if (response != null && response.getStatus() == 200) {
-                    myReturn = gson.fromJson(response.getBody().getArray().toString(), listType);
+                    myReturn.addAll(gson.fromJson(response.getBody().getArray().toString(), listType));
                 }
             }
             catch (UnirestException ue) {

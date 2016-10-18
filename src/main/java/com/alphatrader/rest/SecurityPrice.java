@@ -9,6 +9,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -50,8 +51,9 @@ public final class SecurityPrice {
      * @param securityIdentifier the securityIdentifier
      * @return the list of prices
      */
+    @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier) {
-        return getFromApi("?securityIdentifier=" + securityIdentifier);
+        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier);
     }
 
     /**
@@ -61,9 +63,10 @@ public final class SecurityPrice {
      * @param startDate          the lower date boundary
      * @return the list of prices
      */
+    @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, LocalDateTime startDate) {
-        return getFromApi("?securityIdentifier=" + securityIdentifier + "&startDate" + startDate
-            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
+            + startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
     /**
@@ -74,10 +77,11 @@ public final class SecurityPrice {
      * @param endDate            the upper date boundary
      * @return the list of prices
      */
+    @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, LocalDateTime startDate,
                                                     LocalDateTime endDate) {
-        return getFromApi("?securityIdentifier=" + securityIdentifier + "&startDate" + startDate
-            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() + "&endDate" + endDate
+        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
+            + startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() + "&endDate" + endDate
             .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
@@ -87,13 +91,14 @@ public final class SecurityPrice {
      * @param suffix the api suffix
      * @return the requested list of prices.
      */
-    private static List<LastPrice> getFromApi(String suffix) {
+    @NotNull
+    private static List<LastPrice> getMultipleLastPricesFromApi(String suffix) {
         List<LastPrice> myReturn = new ArrayList<>();
 
         try {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/securityPrices/" + suffix);
             String orders = response.getBody().getArray().toString();
-            myReturn = gson.fromJson(orders, listType);
+            myReturn.addAll(gson.fromJson(orders, listType));
         }
         catch (UnirestException ue) {
             log.error("Error fetching security prices: " + ue.getMessage());

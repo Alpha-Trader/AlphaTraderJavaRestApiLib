@@ -26,6 +26,7 @@ import java.util.List;
  * @version 1.0.0
  */
 public class PriceSpread {
+    //TODO: Finish the class
     /**
      * The logger for this class.
      */

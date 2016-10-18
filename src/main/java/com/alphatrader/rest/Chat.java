@@ -9,6 +9,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -75,24 +76,9 @@ public class Chat {
      *
      * @return a list of all chats for this user
      */
+    @NotNull
     public static List<Chat> getAllChatsForThisUser() {
-        List<Chat> myReturn = new ArrayList<>();
-
-        try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/chats");
-
-            if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getArray().toString(), listType);
-            }
-        }
-        catch (UnirestException ue) {
-            log.error("Error loading chats: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-
-        return myReturn;
+        return getMultipleChatsFromApi("");
     }
 
     /**
@@ -100,14 +86,26 @@ public class Chat {
      *
      * @return a list of all chats with unread messages for this user
      */
+    @NotNull
     public static List<Chat> getAllUnreadChatsForThisUser() {
+        return getMultipleChatsFromApi("/unread");
+    }
+
+    /**
+     * Wrapper function for fetching multiple Chat objects from the API.
+     *
+     * @param suffix the api endpoint suffix
+     * @return the list of objects
+     */
+    @NotNull
+    private static List<Chat> getMultipleChatsFromApi(String suffix) {
         List<Chat> myReturn = new ArrayList<>();
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/chats/unread");
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/chats" + suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody().getArray().toString(), listType);
+                myReturn.addAll(gson.fromJson(response.getBody().getArray().toString(), listType));
             }
         }
         catch (UnirestException ue) {

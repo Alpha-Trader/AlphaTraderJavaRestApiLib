@@ -6,6 +6,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -53,6 +54,7 @@ public class CentralBankReserves {
      * @param companyId the unique identifier of the company
      * @return the central bank loans of the company
      */
+    @Nullable
     public static CentralBankReserves getByCompany(String companyId) {
         CentralBankReserves myReturn = null;
 
@@ -80,6 +82,7 @@ public class CentralBankReserves {
      * @param company the company
      * @return the central bank loans of the company
      */
+    @Nullable
     public static CentralBankReserves getByCompany(Company company) {
         return getByCompany(company.getId());
     }

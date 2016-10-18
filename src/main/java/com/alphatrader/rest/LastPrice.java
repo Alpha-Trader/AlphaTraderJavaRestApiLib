@@ -12,23 +12,24 @@ public class LastPrice {
     /**
      * The date of the last transaction resulting in this price.
      */
-    private final LocalDateTime date;
+    private final LocalDateTime date = null;
 
     /**
      * The last trade price of this position.
      */
-    private final double value;
+    private final Double value = null;
 
-    LastPrice(LocalDateTime date, double value) {
-        this.date = date;
-        this.value = value;
-    }
-
-    LocalDateTime getDate() {
+    /**
+     * @return the time this trade took place
+     */
+    public LocalDateTime getDate() {
         return this.date;
     }
 
-    double getValue() {
+    /**
+     * @return the value of this trade
+     */
+    public Double getValue() {
         return this.value;
     }
 

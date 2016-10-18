@@ -8,6 +8,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -50,6 +51,7 @@ public class Portfolio {
      * @param company the company of which you want the portfolio from.
      * @return the portfolio of the given company
      */
+    @Nullable
     public static Portfolio getCompanyPortfolio(Company company) {
         Portfolio myReturn = null;
         try {
@@ -73,6 +75,7 @@ public class Portfolio {
      * @param company the company of which you want the portfolio from.
      * @return the fixed income portfolio of the given company
      */
+    @Nullable
     public static Portfolio getFixedIncomePortfolio(Company company) {
         Portfolio myReturn = null;
         try {
