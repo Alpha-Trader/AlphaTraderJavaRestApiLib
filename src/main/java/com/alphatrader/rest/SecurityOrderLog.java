@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
  * @version 1.0.0
  */
 public class SecurityOrderLog {
-    //TODO: Finish the class
     /**
      * The logger for this class.
      */
@@ -157,34 +156,58 @@ public class SecurityOrderLog {
         return myReturn;
     }
 
+    /**
+     * @return the buyer's securities account id
+     */
     public String getBuyerSecuritiesAccount() {
         return buyerSecuritiesAccount;
     }
 
+    /**
+     * @return the seller's securities account id
+     */
     public String getSellerSecuritiesAccount() {
         return sellerSecuritiesAccount;
     }
 
+    /**
+     * @return the number of shares
+     */
     public Integer getNumberOfShares() {
         return numberOfShares;
     }
 
+    /**
+     * @return the overall volume of the order
+     */
     public Double getVolume() {
         return volume;
     }
 
+    /**
+     * @return the security identifier of the traded asset
+     */
     public String getSecurityIdentifier() {
         return securityIdentifier;
     }
 
+    /**
+     * @return the price the asset was traded for
+     */
     public Double getPrice() {
         return price;
     }
 
+    /**
+     * @return the date the order was placed
+     */
     public LocalDateTime getDate() {
         return date;
     }
 
+    /**
+     * @return the unique id
+     */
     public String getId() {
         return id;
     }
@@ -223,6 +246,9 @@ public class SecurityOrderLog {
         return id != null ? id.hashCode() : 0;
     }
 
+    /**
+     * The property you want to look for.
+     */
     public enum SearchType {
         START_DATE("startDate"),
         END_DATE("endDate"),

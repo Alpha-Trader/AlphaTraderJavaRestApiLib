@@ -26,11 +26,10 @@ import java.util.List;
  * @version 1.0.0
  */
 public class PriceSpread {
-    //TODO: Finish the class
     /**
      * The logger for this class.
      */
-    private static final Log log = LogFactory.getLog(Position.class);
+    private static final Log log = LogFactory.getLog(PriceSpread.class);
 
     /**
      * Gson instance for deserialization.
@@ -43,24 +42,54 @@ public class PriceSpread {
      */
     private static final Type listType = new TypeToken<ArrayList<PriceSpread>>() { }.getType();
 
+    /**
+     * The current ask size.
+     */
     private final Integer askSize = null;
 
+    /**
+     * The current asking price.
+     */
     private final Double askPrice = null;
 
+    /**
+     * The current bid size.
+     */
     private final Integer bidSize = null;
 
+    /**
+     * The current bid price.
+     */
     private final Double bidPrice = null;
 
+    /**
+     * The absolute spread.
+     */
     private final Double spreadAbs = null;
 
+    /**
+     * The spread percentage.
+     */
     private final Double spreadPercent = null;
 
+    /**
+     * The last price the listing was traded.
+     */
     private final LastPrice lastPrice = null;
 
+    /**
+     * The maximum bid price allowed by the market.
+     */
     private final Double maxBidPrice = null;
 
+    /**
+     * The minimal asking price allowed by the market.
+     */
     private final Double minAskPrice = null;
 
+    /**
+     * The date the spread was created.
+     */
     private final LocalDateTime date = null;
 
     /**
@@ -76,9 +105,8 @@ public class PriceSpread {
             HttpResponse<JsonNode> response = Http.getInstance().get("/api/pricespreads/");
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray()
-                    .toString(), listType);
+                myReturn.addAll(gson.fromJson(response.getBody()
+                    .getArray().toString(), listType));
             }
         }
         catch (UnirestException ue) {

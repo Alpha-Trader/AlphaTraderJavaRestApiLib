@@ -58,8 +58,7 @@ public class CompanyProfile {
     /**
      * The sponsored listings.
      */
-    //TODO: find out more
-    private final Object[] sponsoredListings = null;
+    private final SecuritySponsorship[] sponsoredListings = null;
 
     /**
      * The current price spread.
@@ -69,7 +68,7 @@ public class CompanyProfile {
     /**
      * The designated sponsors of this company.
      */
-    private final Company[] designatedSponsors = null;
+    private final SecuritySponsorship[] designatedSponsors = null;
 
     /**
      * The last order of this company.
@@ -216,7 +215,7 @@ public class CompanyProfile {
     /**
      * @return the designated sponsors of this company
      */
-    public List<Company> getDesignatedSponsors() {
+    public List<SecuritySponsorship> getDesignatedSponsors() {
         return Arrays.asList(designatedSponsors);
     }
 
