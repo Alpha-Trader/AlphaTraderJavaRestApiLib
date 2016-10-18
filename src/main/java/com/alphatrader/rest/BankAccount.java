@@ -67,9 +67,6 @@ public class BankAccount {
 
         BankAccount that = (BankAccount) o;
 
-        if (Double.compare(that.cash, cash) != 0) {
-            return false;
-        }
         return id != null ? id.equals(that.id) : that.id == null;
 
     }

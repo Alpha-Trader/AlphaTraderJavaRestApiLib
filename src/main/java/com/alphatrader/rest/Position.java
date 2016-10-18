@@ -1,12 +1,7 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.LocalDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import java.time.LocalDateTime;
 
 /**
  * Represents a single portfolio position in the game.
@@ -19,12 +14,6 @@ public class Position {
      * The logger for this class.
      */
     private static final Log log = LogFactory.getLog(Position.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class,
-        new LocalDateTimeDeserializer()).create();
 
     /**
      * The security identifier of this position.

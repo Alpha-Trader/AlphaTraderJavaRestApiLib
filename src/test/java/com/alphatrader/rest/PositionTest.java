@@ -58,12 +58,17 @@ public class PositionTest {
 
     @Test
     public void testGetLastPrice() throws Exception {
-        //assertEquals(2.88, toTest.getLastPrice(), 0.0001);
+        LastPrice reference = gson.fromJson("{\n" +
+        "        \"date\": 1475882777051,\n" +
+        "        \"value\": 2.88\n" +
+        "      }", LastPrice.class);
+
+        assertEquals(reference, toTest.getLastPrice());
     }
 
     @Test
     public void testGetNumberOfShares() throws Exception {
-        //assertEquals(1712, toTest.getNumberOfShares());
+        assertEquals(Integer.valueOf(1712), toTest.getNumberOfShares());
     }
 
     @Test

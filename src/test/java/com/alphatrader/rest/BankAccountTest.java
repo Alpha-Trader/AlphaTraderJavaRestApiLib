@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -71,5 +71,23 @@ public class BankAccountTest {
     @Test
     public void testGetId() throws Exception {
         assertEquals("443db0b7-c399-4252-8166-061d8de1d634", toTest.getId());
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        assertEquals("BankAccount{cash=10000.0, id='443db0b7-c399-4252-8166-061d8de1d634'}",
+            toTest.toString());
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        assertEquals(-1188920118, toTest.hashCode());
     }
 }

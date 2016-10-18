@@ -189,6 +189,17 @@ public class Listing {
     }
 
     @Override
+    public String toString() {
+        return "Listing{"
+            + "startDate=" + startDate
+            + ", endDate=" + endDate
+            + ", securityIdentifier='" + securityIdentifier + '\''
+            + ", name='" + name + '\''
+            + ", type=" + type
+            + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
