@@ -19,8 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author frangelo
+ * Represents a notification in the game.
+ *
+ * @author Christopher Guckes (christopher.guckes@torq-dev.de)
+ * @version 1.0
  */
+@SuppressWarnings("ConstantConditions")
 public class Notification {
     /**
      * The logger for this class.

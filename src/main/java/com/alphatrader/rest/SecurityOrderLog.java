@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
+@SuppressWarnings ({"ConstantConditions", "SameParameterValue"})
 public class SecurityOrderLog {
     /**
      * The logger for this class.

@@ -25,6 +25,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
+@SuppressWarnings("ConstantConditions")
 public class PriceSpread {
     /**
      * The logger for this class.
@@ -141,7 +142,7 @@ public class PriceSpread {
         PriceSpread myReturn = null;
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/pricespreads/");
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/pricespreads/" + securityIdentifier);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn = gson.fromJson(response.getBody()

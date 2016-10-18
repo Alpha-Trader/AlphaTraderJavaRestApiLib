@@ -17,6 +17,7 @@ import java.io.StringWriter;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
+@SuppressWarnings("ConstantConditions")
 public class CentralBankReserves {
     /**
      * The logger for this class.

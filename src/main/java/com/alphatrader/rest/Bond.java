@@ -25,6 +25,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
+@SuppressWarnings("ConstantConditions")
 public class Bond {
 
     /**

@@ -10,6 +10,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -25,6 +26,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
+@SuppressWarnings("ConstantConditions")
 public class Poll {
     /**
      * The logger for this class.
@@ -131,7 +133,7 @@ public class Poll {
         List<Poll> myReturn = new ArrayList<>();
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/");
+            HttpResponse<JsonNode> response = Http.getInstance().get("/api/" + suffix);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn.addAll(gson.fromJson(response.getBody()
@@ -154,7 +156,7 @@ public class Poll {
      * @param pollId the poll id
      * @return the poll with the given id
      */
-    @NotNull
+    @Nullable
     private static Poll getById(String pollId) {
         Poll myReturn = null;
 
@@ -253,7 +255,7 @@ public class Poll {
     }
 
     /**
-     * @return
+     * @return the expiry date of the result
      */
     public LocalDateTime getResultExpireDate() {
         return resultExpireDate;

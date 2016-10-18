@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.alphatrader.rest;
 
 import com.alphatrader.rest.util.LocalDateTimeDeserializer;
@@ -27,6 +24,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
+@SuppressWarnings("ConstantConditions")
 public class Order {
     /**
      * The logger for this class.
