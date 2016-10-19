@@ -217,25 +217,19 @@ public class Company {
     }
 
     /**
-     * Returns the portfolio of this company. This call will be evaluated lazily to avoid congesting the
-     * server.
-     *
-     * @return the company's portfolio.
-     */
-    public Portfolio getPortfolio() {
-        if (this.portfolio == null) {
-            this.portfolio = Portfolio.getCompanyPortfolio(this);
-        }
-        return this.portfolio;
-    }
-
-    /**
      * Sets the company portfolio to the provided one.
      *
      * @param portfolio the new portfolio
      */
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
+    }
+
+    /**
+     * @return the listing of the company
+     */
+    public Listing getListing() {
+        return listing;
     }
 
     @Override
@@ -258,26 +252,12 @@ public class Company {
 
         Company company = (Company) o;
 
-        if (id != null ? !id.equals(company.id) : company.id != null) {
-            return false;
-        }
-        if (name != null ? !name.equals(company.name) : company.name != null) {
-            return false;
-        }
-        return securitiesAccountId != null ? securitiesAccountId.equals(company.securitiesAccountId)
-            : company.securitiesAccountId == null;
+        return id != null ? id.equals(company.id) : company.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (securitiesAccountId != null ? securitiesAccountId.hashCode() : 0);
-        return result;
-    }
-
-    public Listing getListing() {
-        return listing;
+        return id != null ? id.hashCode() : 0;
     }
 }

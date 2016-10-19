@@ -159,12 +159,8 @@ public class BankingLicenseTest {
         assertFalse(toTest.equals("Test"));
 
         BankingLicense other = gson.fromJson("{\n" +
-        "  \"startDate\": 1475335931401,\n" +
-        "  \"company\": {\n" +
-        "    \"id\": \"12345\"\n" +
-        "  },\n" +
-        "  \"id\": \"257e1004-8c5e-4d09-beca-8377e8be070c\"\n" +
-        "}", BankingLicense.class);
+            "  \"id\": \"12345\"\n" +
+            "}", BankingLicense.class);
 
         assertFalse(toTest.equals(other));
     }

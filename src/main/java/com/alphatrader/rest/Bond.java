@@ -263,11 +263,7 @@ public class Bond {
 
         Bond bond = (Bond) o;
 
-        if (name != null ? !name.equals(bond.name) : bond.name != null) {
-            return false;
-        }
         return id != null ? id.equals(bond.id) : bond.id == null;
-
     }
 
     @Override

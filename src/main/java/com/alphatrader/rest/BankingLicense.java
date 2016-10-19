@@ -119,17 +119,12 @@ public class BankingLicense {
 
         BankingLicense that = (BankingLicense) o;
 
-        if (company != null ? !company.equals(that.company) : that.company != null) {
-            return false;
-        }
         return id != null ? id.equals(that.id) : that.id == null;
+
     }
 
     @Override
     public int hashCode() {
-        int result = startDate != null ? startDate.hashCode() : 0;
-        result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }

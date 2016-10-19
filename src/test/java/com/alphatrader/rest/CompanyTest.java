@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import java.time.ZonedDateTime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Test case for the {@link Company} class.
@@ -21,11 +21,7 @@ public class CompanyTest {
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
-    private Company toTest;
-
-    @Before
-    public void setUp() throws Exception {
-        toTest = gson.fromJson("{\n" +
+    private static final String JSON = "{\n" +
         "  \"securitiesAccountId\": \"57875cf3-de0a-48e4-a3bc-314d4550df12\",\n" +
         "  \"securityIdentifier\": \"STK0F513\",\n" +
         "  \"ceo\": {\n" +
@@ -43,7 +39,13 @@ public class CompanyTest {
         "  },\n" +
         "  \"name\": \"Katholische Kirche AG\",\n" +
         "  \"id\": \"81dcf5a1-b0b6-462a-a40c-e374619edc2f\"\n" +
-        "}", Company.class);
+        "}";
+
+    private Company toTest;
+
+    @Before
+    public void setUp() throws Exception {
+        toTest = gson.fromJson(JSON, Company.class);
     }
 
     @Test
@@ -64,5 +66,29 @@ public class CompanyTest {
     @Test
     public void testGetId() throws Exception {
         assertEquals("81dcf5a1-b0b6-462a-a40c-e374619edc2f", toTest.getId());
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+
+        Company other = gson.fromJson("{\n" +
+            "  \"id\": \"12345\"\n" +
+            "}", Company.class);
+
+        assertFalse(toTest.equals(other));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        Company reference = gson.fromJson(JSON, Company.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
     }
 }

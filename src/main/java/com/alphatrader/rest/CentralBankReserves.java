@@ -115,27 +115,12 @@ public class CentralBankReserves {
 
         CentralBankReserves that = (CentralBankReserves) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) {
-            return false;
-        }
-        if (bankingLicense != null ? !bankingLicense.equals(that.bankingLicense)
-            : that.bankingLicense != null) {
-            return false;
-        }
-        if (maxCentralBankLoans != null ? !maxCentralBankLoans.equals(that.maxCentralBankLoans)
-            : that.maxCentralBankLoans != null) {
-            return false;
-        }
-        return cashHolding != null ? cashHolding.equals(that.cashHolding) : that.cashHolding == null;
+        return id != null ? id.equals(that.id) : that.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (bankingLicense != null ? bankingLicense.hashCode() : 0);
-        result = 31 * result + (maxCentralBankLoans != null ? maxCentralBankLoans.hashCode() : 0);
-        result = 31 * result + (cashHolding != null ? cashHolding.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }

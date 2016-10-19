@@ -116,7 +116,7 @@ public class Chat {
     /**
      * @return true if the chat is readonly
      */
-    public Boolean getReadonly() {
+    public Boolean isReadonly() {
         return readonly;
     }
 
@@ -165,21 +165,12 @@ public class Chat {
 
         Chat chat = (Chat) o;
 
-        if (readonly != null ? !readonly.equals(chat.readonly) : chat.readonly != null) {
-            return false;
-        }
-        if (owner != null ? !owner.equals(chat.owner) : chat.owner != null) {
-            return false;
-        }
         return id != null ? id.equals(chat.id) : chat.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = readonly != null ? readonly.hashCode() : 0;
-        result = 31 * result + (owner != null ? owner.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }

@@ -4,7 +4,6 @@ import com.alphatrader.rest.util.ApiLibConfig;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -16,6 +15,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,14 +104,14 @@ class Http {
     @NotNull
     static <Type> List<Type> getMultipleObjectFromApi(Class<Type> typeParameterClass, String suffix) {
         List<Type> myReturn = new ArrayList<>();
-        java.lang.reflect.Type type = new TypeToken<ArrayList<Type>>() {
-        }.getType();
+
 
         try {
             HttpResponse<String> response = Http.getInstance().get(suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn.addAll(gson.fromJson(response.getBody(), type));
+                myReturn.addAll(gson.fromJson(response.getBody(),
+                    new ArrayListTypeToken<Type>(typeParameterClass)));
             }
         }
         catch (UnirestException ue) {
@@ -165,5 +166,31 @@ class Http {
         StringWriter stringWriter = new StringWriter();
         ue.printStackTrace(new PrintWriter(stringWriter));
         log.debug(stringWriter.toString());
+    }
+
+    /**
+     * Type token for array list. Necessary to avoid type erasure problems.
+     *
+     * @param <T> the type of object you want to store
+     */
+    private static class ArrayListTypeToken<T> implements ParameterizedType {
+        private Class<?> wrapped;
+
+        ArrayListTypeToken(Class<T> wrapped) {
+            this.wrapped = wrapped;
+        }
+
+        public Type[] getActualTypeArguments() {
+            return new Type[] {
+                wrapped};
+        }
+
+        public Type getRawType() {
+            return ArrayList.class;
+        }
+
+        public Type getOwnerType() {
+            return null;
+        }
     }
 }
