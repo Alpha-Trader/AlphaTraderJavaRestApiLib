@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.request.HttpRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,12 @@ class Http {
      * Singleton instance
      */
     private static Http instance = new Http();
+
+
+    /**
+     * The library configuration.
+     */
+    private final ApiLibConfig config = ApiLibConfig.getInstance();
 
     /**
      * Replaces the current instance with a different one. Use for testing only.
@@ -79,10 +86,7 @@ class Http {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching " + typeParameterClass.getSimpleName() + ": " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
+            handleException(ue, typeParameterClass);
         }
 
         return myReturn;
@@ -110,10 +114,7 @@ class Http {
             }
         }
         catch (UnirestException ue) {
-            log.error("Error fetching " + typeParameterClass.getSimpleName() + "s: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
+            handleException(ue, typeParameterClass);
         }
 
         return myReturn;
@@ -127,10 +128,7 @@ class Http {
      * @throws UnirestException if anything goes wrong with the request
      */
     public HttpResponse<String> get(String url) throws UnirestException {
-        return Unirest.get(ApiLibConfig.getInstance().getApiUrl() + url)
-            .header("accept", "*/*").header("Authorization", "Bearer "
-                + ApiLibConfig.getInstance().getUser().getToken())
-            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asString();
+        return decorateRequest(Unirest.get(config.getApiUrl() + url)).asString();
     }
 
     /**
@@ -141,9 +139,31 @@ class Http {
      * @throws UnirestException if anything goes wrong with the request
      */
     public HttpResponse<String> post(String url) throws UnirestException {
-        return Unirest.post(ApiLibConfig.getInstance().getApiUrl() + url)
-            .header("accept", "*/*").header("Authorization", "Bearer "
-                + ApiLibConfig.getInstance().getUser().getToken())
-            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asString();
+        return decorateRequest(Unirest.post(config.getApiUrl() + url)).asString();
+    }
+
+    /**
+     * Decorates the request with the necessary authorization headers.
+     *
+     * @param request the request to decorate
+     * @return the decorated request
+     */
+    private HttpRequest decorateRequest(HttpRequest request) {
+        return request.header("accept", "*/*").header("Authorization", "Bearer " + config.getUser()
+            .getToken()).header("X-Authorization", config.getPartnerId());
+    }
+
+    /**
+     * Logs any unirest exception thrown during an API request
+     *
+     * @param ue the exception thrown
+     * @param typeParameterClass the class of object the request tried to fetch
+     * @param <Type> the type of object the request tried to fetch
+     */
+    private static <Type> void handleException(UnirestException ue, Class<Type> typeParameterClass) {
+        log.error("Error fetching " + typeParameterClass.getSimpleName() + "s: " + ue.getMessage());
+        StringWriter stringWriter = new StringWriter();
+        ue.printStackTrace(new PrintWriter(stringWriter));
+        log.debug(stringWriter.toString());
     }
 }
