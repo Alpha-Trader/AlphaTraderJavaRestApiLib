@@ -96,12 +96,12 @@ public class BondTest {
         org.apache.http.HttpResponse responseArray = factory.newHttpResponse(new BasicStatusLine(
             HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
         responseArray.setEntity(new StringEntity("[" + JSON + "]"));
-        HttpResponse<JsonNode> httpResponseArray = new HttpResponse<>(responseArray, JsonNode.class);
+        HttpResponse<String> httpResponseArray = new HttpResponse<>(responseArray, String.class);
 
         org.apache.http.HttpResponse responseSingle = factory.newHttpResponse(new BasicStatusLine(
             HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
         responseSingle.setEntity(new StringEntity(JSON));
-        HttpResponse<JsonNode> httpResponseSingle = new HttpResponse<>(responseSingle, JsonNode.class);
+        HttpResponse<String> httpResponseSingle = new HttpResponse<>(responseSingle, String.class);
 
         Http mockHttp = mock(Http.class);
         when(mockHttp.get(eq("/api/bonds/"))).thenReturn(httpResponseArray);

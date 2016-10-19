@@ -4,7 +4,6 @@ import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -91,9 +90,9 @@ public class Listing {
     public static Double getOutstandingShares(String securityIdentifier) {
         Double myReturn = null;
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get("/api/listings/outstandingshares/"
+            HttpResponse<String> response = Http.getInstance().get("/api/listings/outstandingshares/"
                 + securityIdentifier);
-            myReturn = Double.valueOf(response.getBody().toString());
+            myReturn = Double.valueOf(response.getBody());
         }
         catch (UnirestException ue) {
             log.error("Error fetching outstanding shares: " + ue.getMessage());

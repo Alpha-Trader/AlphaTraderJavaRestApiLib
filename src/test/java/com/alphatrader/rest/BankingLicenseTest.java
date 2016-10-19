@@ -99,12 +99,12 @@ public class BankingLicenseTest {
         org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(
             HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
         response.setEntity(new StringEntity(JSON));
-        HttpResponse<JsonNode> httpResponse = new HttpResponse<>(response, JsonNode.class);
+        HttpResponse<String> httpResponse = new HttpResponse<>(response, String.class);
 
         org.apache.http.HttpResponse emptyResponse = factory.newHttpResponse(new BasicStatusLine(
             HttpVersion.HTTP_1_1, HttpStatus.SC_BAD_REQUEST, null), null);
         emptyResponse.setEntity(new StringEntity(NO_LICENSE));
-        HttpResponse<JsonNode> emptyHttpResponse = new HttpResponse<>(emptyResponse, JsonNode.class);
+        HttpResponse<String> emptyHttpResponse = new HttpResponse<>(emptyResponse, String.class);
 
         Http mockHttp = mock(Http.class);
         when(mockHttp.get(eq("/api/bankinglicense/?companyId=99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d")))

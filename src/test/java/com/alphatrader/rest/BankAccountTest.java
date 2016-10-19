@@ -45,7 +45,7 @@ public class BankAccountTest {
         org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(HttpVersion
             .HTTP_1_1, HttpStatus.SC_OK, null), null);
         response.setEntity(new StringEntity(JSON));
-        HttpResponse<JsonNode> httpResponse = new HttpResponse<>(response, JsonNode.class);
+        HttpResponse<String> httpResponse = new HttpResponse<>(response, String.class);
 
         Http mockHttp = mock(Http.class);
         when(mockHttp.get(any(String.class))).thenReturn(httpResponse);

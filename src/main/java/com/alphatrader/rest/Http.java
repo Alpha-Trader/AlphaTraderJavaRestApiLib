@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
@@ -73,11 +72,10 @@ class Http {
         Type myReturn = null;
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get(suffix);
+            HttpResponse<String> response = Http.getInstance().get(suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getObject().toString(), typeParameterClass);
+                myReturn = gson.fromJson(response.getBody(), typeParameterClass);
             }
         }
         catch (UnirestException ue) {
@@ -105,11 +103,10 @@ class Http {
         }.getType();
 
         try {
-            HttpResponse<JsonNode> response = Http.getInstance().get(suffix);
+            HttpResponse<String> response = Http.getInstance().get(suffix);
 
             if (response != null && response.getStatus() == 200) {
-                myReturn = gson.fromJson(response.getBody()
-                    .getArray().toString(), type);
+                myReturn.addAll(gson.fromJson(response.getBody(), type));
             }
         }
         catch (UnirestException ue) {
@@ -129,11 +126,11 @@ class Http {
      * @return the HttpResponse of the server
      * @throws UnirestException if anything goes wrong with the request
      */
-    public HttpResponse<JsonNode> get(String url) throws UnirestException {
+    public HttpResponse<String> get(String url) throws UnirestException {
         return Unirest.get(ApiLibConfig.getInstance().getApiUrl() + url)
             .header("accept", "*/*").header("Authorization", "Bearer "
                 + ApiLibConfig.getInstance().getUser().getToken())
-            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asJson();
+            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asString();
     }
 
     /**
@@ -143,10 +140,10 @@ class Http {
      * @return the HttpResponse of the server
      * @throws UnirestException if anything goes wrong with the request
      */
-    public HttpResponse<JsonNode> post(String url) throws UnirestException {
+    public HttpResponse<String> post(String url) throws UnirestException {
         return Unirest.post(ApiLibConfig.getInstance().getApiUrl() + url)
             .header("accept", "*/*").header("Authorization", "Bearer "
                 + ApiLibConfig.getInstance().getUser().getToken())
-            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asJson();
+            .header("X-Authorization", ApiLibConfig.getInstance().getPartnerId()).asString();
     }
 }
