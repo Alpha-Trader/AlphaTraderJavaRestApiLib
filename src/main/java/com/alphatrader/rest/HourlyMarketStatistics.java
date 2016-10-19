@@ -43,7 +43,7 @@ public class HourlyMarketStatistics {
     /**
      * The average designated sponsor rating.
      */
-    private final Double averageDesignatedSponsorRating = null;
+    private final SponsorRating.SponsorRatingLetter averageDesignatedSponsorRating = null;
 
     /**
      * The average yield to maturity.
@@ -88,7 +88,7 @@ public class HourlyMarketStatistics {
     /**
      * The number of active listings.
      */
-    private final Integer numberOfActiveListings = null;
+    private final Integer numberOfActiveOtherListings = null;
 
     /**
      * The number of banks.
@@ -246,7 +246,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average designated sponsor rating
      */
-    public Double getAverageDesignatedSponsorRating() {
+    public SponsorRating.SponsorRatingLetter getAverageDesignatedSponsorRating() {
         return averageDesignatedSponsorRating;
     }
 
@@ -309,8 +309,8 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of active listings
      */
-    public Integer getNumberOfActiveListings() {
-        return numberOfActiveListings;
+    public Integer getNumberOfActiveOtherListings() {
+        return numberOfActiveOtherListings;
     }
 
     /**
@@ -490,7 +490,7 @@ public class HourlyMarketStatistics {
             + ", date=" + date
             + ", mainInterestRate=" + mainInterestRate
             + ", marketCap=" + marketCap
-            + ", numberOfActiveListings=" + numberOfActiveListings
+            + ", numberOfActiveOtherListings=" + numberOfActiveOtherListings
             + ", numberOfBanks=" + numberOfBanks
             + ", numberOfBondOrders=" + numberOfBondOrders
             + ", numberOfCashoutPolls=" + numberOfCashoutPolls

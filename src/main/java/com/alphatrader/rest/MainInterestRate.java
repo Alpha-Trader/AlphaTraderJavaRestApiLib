@@ -34,7 +34,7 @@ public class MainInterestRate {
     /**
      * The date this main interest rate was put into place.
      */
-    private final ZonedDateTime dateTime = null;
+    private final ZonedDateTime date = null;
 
     /**
      * Fetches the latest main interest rate.
@@ -73,8 +73,8 @@ public class MainInterestRate {
     /**
      * @return the start date
      */
-    public ZonedDateTime getDateTime() {
-        return dateTime;
+    public ZonedDateTime getDate() {
+        return date;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class MainInterestRate {
         return "MainInterestRate{"
             + "id='" + id + '\''
             + ", value=" + value
-            + ", dateTime=" + dateTime
+            + ", date=" + date
             + '}';
     }
 
@@ -97,21 +97,12 @@ public class MainInterestRate {
 
         MainInterestRate that = (MainInterestRate) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) {
-            return false;
-        }
-        if (value != null ? !value.equals(that.value) : that.value != null) {
-            return false;
-        }
-        return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
+        return id != null ? id.equals(that.id) : that.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }

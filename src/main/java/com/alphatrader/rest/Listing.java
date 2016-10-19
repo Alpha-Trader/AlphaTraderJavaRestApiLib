@@ -3,15 +3,11 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -88,19 +84,8 @@ public class Listing {
      */
     @Nullable
     public static Double getOutstandingShares(String securityIdentifier) {
-        Double myReturn = null;
-        try {
-            HttpResponse<String> response = Http.getInstance().get("/api/listings/outstandingshares/"
-                + securityIdentifier);
-            myReturn = Double.valueOf(response.getBody());
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching outstanding shares: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-        return myReturn;
+        return Http.getSingleObjectFromApi(Double.class, "/api/listings/outstandingshares/"
+            + securityIdentifier);
     }
 
     @Nullable
@@ -209,31 +194,14 @@ public class Listing {
 
         Listing listing = (Listing) o;
 
-        if (startDate != null ? !startDate.equals(listing.startDate) : listing.startDate != null) {
-            return false;
-        }
-        if (endDate != null ? !endDate.equals(listing.endDate) : listing.endDate != null) {
-            return false;
-        }
-        if (securityIdentifier != null ? !securityIdentifier.equals(listing.securityIdentifier)
-            : listing.securityIdentifier != null) {
-            return false;
-        }
-        if (name != null ? !name.equals(listing.name) : listing.name != null) {
-            return false;
-        }
-        return type == listing.type;
+        return securityIdentifier != null ? securityIdentifier.equals(listing.securityIdentifier)
+            : listing.securityIdentifier == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = startDate != null ? startDate.hashCode() : 0;
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (securityIdentifier != null ? securityIdentifier.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        return result;
+        return securityIdentifier != null ? securityIdentifier.hashCode() : 0;
     }
 
     /**

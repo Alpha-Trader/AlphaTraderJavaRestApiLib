@@ -35,6 +35,14 @@ public class LastPrice {
     }
 
     @Override
+    public String toString() {
+        return "LastPrice{"
+            + "date=" + date
+            + ", value=" + value
+            + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

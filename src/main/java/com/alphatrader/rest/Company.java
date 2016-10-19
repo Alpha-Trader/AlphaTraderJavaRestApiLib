@@ -57,11 +57,6 @@ public class Company {
     private final BankAccount bankAccount = null;
 
     /**
-     * The company's portfolio.
-     */
-    private Portfolio portfolio;
-
-    /**
      * The current CEO.
      */
     private final User ceo = null;
@@ -214,15 +209,6 @@ public class Company {
      */
     public String getId() {
         return id;
-    }
-
-    /**
-     * Sets the company portfolio to the provided one.
-     *
-     * @param portfolio the new portfolio
-     */
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
     }
 
     /**

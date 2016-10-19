@@ -123,25 +123,12 @@ public class EmploymentAgreement {
 
         EmploymentAgreement that = (EmploymentAgreement) o;
 
-        if (company != null ? !company.equals(that.company) : that.company != null) {
-            return false;
-        }
-        if (dailyWage != null ? !dailyWage.equals(that.dailyWage) : that.dailyWage != null) {
-            return false;
-        }
-        if (id != null ? !id.equals(that.id) : that.id != null) {
-            return false;
-        }
-        return startDate != null ? startDate.equals(that.startDate) : that.startDate == null;
+        return id != null ? id.equals(that.id) : that.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = company != null ? company.hashCode() : 0;
-        result = 31 * result + (dailyWage != null ? dailyWage.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }

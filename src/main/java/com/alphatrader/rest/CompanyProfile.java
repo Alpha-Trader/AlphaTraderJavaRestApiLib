@@ -308,7 +308,6 @@ public class CompanyProfile {
         CompanyProfile that = (CompanyProfile) o;
 
         return id != null ? id.equals(that.id) : that.id == null;
-
     }
 
     @Override
