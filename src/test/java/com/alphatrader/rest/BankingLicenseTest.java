@@ -145,4 +145,33 @@ public class BankingLicenseTest {
     public void testGetByCompany() throws Exception {
         assertEquals(toTest, BankingLicense.getBankingLicenseOfCompany(testCompany));
     }
+
+
+    @Test
+    public void testToString() throws Exception {
+        assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+
+        BankingLicense other = gson.fromJson("{\n" +
+        "  \"startDate\": 1475335931401,\n" +
+        "  \"company\": {\n" +
+        "    \"id\": \"12345\"\n" +
+        "  },\n" +
+        "  \"id\": \"257e1004-8c5e-4d09-beca-8377e8be070c\"\n" +
+        "}", BankingLicense.class);
+
+        assertFalse(toTest.equals(other));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        BankingLicense reference = gson.fromJson(JSON, BankingLicense.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
+    }
 }

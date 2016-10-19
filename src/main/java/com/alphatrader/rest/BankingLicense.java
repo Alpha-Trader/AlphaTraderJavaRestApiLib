@@ -119,9 +119,6 @@ public class BankingLicense {
 
         BankingLicense that = (BankingLicense) o;
 
-        if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) {
-            return false;
-        }
         if (company != null ? !company.equals(that.company) : that.company != null) {
             return false;
         }

@@ -87,6 +87,7 @@ public class BankAccountTest {
 
     @Test
     public void testHashCode() throws Exception {
-        assertEquals(-1188920118, toTest.hashCode());
+        BankAccount reference = gson.fromJson(JSON, BankAccount.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
     }
 }
