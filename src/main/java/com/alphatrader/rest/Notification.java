@@ -59,7 +59,7 @@ public class Notification {
      */
     @NotNull
     public static List<Notification> getUnreadNotifications() {
-        return getMultipleNotificationsFromApi("/unread");
+        return getMultipleNotificationsFromApi("/unread/");
     }
 
     /**
