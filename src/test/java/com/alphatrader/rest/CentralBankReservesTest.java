@@ -4,6 +4,7 @@ import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
@@ -17,6 +18,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class CentralBankReservesTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -51,6 +53,11 @@ public class CentralBankReservesTest {
 
     private CentralBankReserves toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, CentralBankReserves.class);
@@ -58,12 +65,26 @@ public class CentralBankReservesTest {
 
     @Test
     public void testGetByCompany() throws Exception {
-
+        Company company = gson.fromJson("{" +
+            "\"id\": \"81dcf5a1-b0b6-462a-a40c-e374619edc2f\" " +
+            "}", Company.class);
+        CentralBankReserves testObject =  CentralBankReserves.getByCompany(company);
+        CentralBankReserves reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/centralbankreserves/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f"),
+            CentralBankReserves.class);
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
-    public void testGetByCompanyString() throws Exception {
-
+    public void testGetById() throws Exception {
+        CentralBankReserves testObject =  CentralBankReserves.getById(
+            "7cd2fa36-0c98-4a31-bb7f-8043f0dfa1c1");
+        CentralBankReserves reference = gson.fromJson(httpResponder.getJsonForRequest(
+                    "/api/centralbankreserves/7cd2fa36-0c98-4a31-bb7f-8043f0dfa1c1"),
+            CentralBankReserves.class);
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test

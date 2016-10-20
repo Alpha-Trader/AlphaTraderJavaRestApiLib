@@ -417,61 +417,967 @@
       }
     ]
   },
-  "/api/centralbankreserves/": {
+  "/api/centralbankreserves/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f": {
     "status": 200,
-    "content": {}
+    "content": {
+      "bankingLicense": {
+        "startDate": 1475335931401,
+        "company": {
+          "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "securityIdentifier": "STK0F513",
+          "ceo": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "name": "Katholische Kirche AG",
+          "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+        },
+        "id": "257e1004-8c5e-4d09-beca-8377e8be070c"
+      },
+      "maxCentralBankLoans": 11000000,
+      "cashHolding": 10000000,
+      "id": "7cd2fa36-0c98-4a31-bb7f-8043f0dfa1c1"
+    }
   },
-  "/api/centralbankreserves/todo": {
+  "/api/centralbankreserves/7cd2fa36-0c98-4a31-bb7f-8043f0dfa1c1": {
     "status": 200,
-    "content": {}
+    "content": {
+      "bankingLicense": {
+        "startDate": 1475335931401,
+        "company": {
+          "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "securityIdentifier": "STK0F513",
+          "ceo": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "name": "Katholische Kirche AG",
+          "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+        },
+        "id": "257e1004-8c5e-4d09-beca-8377e8be070c"
+      },
+      "maxCentralBankLoans": 11000000,
+      "cashHolding": 10000000,
+      "id": "7cd2fa36-0c98-4a31-bb7f-8043f0dfa1c1"
+    }
   },
   "/api/chats": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dateCreated": 1475661654855,
+        "lastMessage": {
+          "dateSent": 1475757449428,
+          "chatId": "ce6162c0-ea4f-4cf4-a442-6c699ed2e37a",
+          "sender": {
+            "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": "Egel stinkt"
+            },
+            "username": "Tr0nYx",
+            "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+          },
+          "read": true,
+          "id": "77f64764-6350-4e67-8c8f-3e77c7fba161",
+          "content": "denk ich mir :D"
+        },
+        "participants": [
+          {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          {
+            "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": "Egel stinkt"
+            },
+            "username": "Tr0nYx",
+            "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+          }
+        ],
+        "readonly": false,
+        "chatName": null,
+        "owner": {
+          "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": "Egel stinkt"
+          },
+          "username": "Tr0nYx",
+          "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+        },
+        "id": "ce6162c0-ea4f-4cf4-a442-6c699ed2e37a"
+      },
+      {
+        "dateCreated": 1475153983964,
+        "lastMessage": {
+          "dateSent": 1475154250577,
+          "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+          "sender": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "read": true,
+          "id": "e34f9a86-ed1b-4d1f-b057-bd095929f75e",
+          "content": "np"
+        },
+        "participants": [
+          {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          {
+            "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": false,
+              "premium": false,
+              "locale": null
+            },
+            "username": "Kalle",
+            "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+          }
+        ],
+        "readonly": false,
+        "chatName": null,
+        "owner": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "id": "959e870f-e6f9-48fd-960d-3bcabfda2089"
+      }
+    ]
   },
   "/api/chats/unread": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dateCreated": 1475661654855,
+        "lastMessage": {
+          "dateSent": 1475757449428,
+          "chatId": "ce6162c0-ea4f-4cf4-a442-6c699ed2e37a",
+          "sender": {
+            "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": "Egel stinkt"
+            },
+            "username": "Tr0nYx",
+            "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+          },
+          "read": true,
+          "id": "77f64764-6350-4e67-8c8f-3e77c7fba161",
+          "content": "denk ich mir :D"
+        },
+        "participants": [
+          {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          {
+            "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": "Egel stinkt"
+            },
+            "username": "Tr0nYx",
+            "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+          }
+        ],
+        "readonly": false,
+        "chatName": null,
+        "owner": {
+          "gravatarHash": "5eb59a013f7889d0c8c85129af673d0c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": "Egel stinkt"
+          },
+          "username": "Tr0nYx",
+          "id": "17c42de7-d3e2-4b8e-b67a-a4650a4d7eaf"
+        },
+        "id": "ce6162c0-ea4f-4cf4-a442-6c699ed2e37a"
+      },
+      {
+        "dateCreated": 1475153983964,
+        "lastMessage": {
+          "dateSent": 1475154250577,
+          "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+          "sender": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "read": true,
+          "id": "e34f9a86-ed1b-4d1f-b057-bd095929f75e",
+          "content": "np"
+        },
+        "participants": [
+          {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          {
+            "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": false,
+              "premium": false,
+              "locale": null
+            },
+            "username": "Kalle",
+            "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+          }
+        ],
+        "readonly": false,
+        "chatName": null,
+        "owner": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "id": "959e870f-e6f9-48fd-960d-3bcabfda2089"
+      }
+    ]
   },
-  "/api/chats/todo": {
+  "/api/chats/959e870f-e6f9-48fd-960d-3bcabfda2089": {
     "status": 200,
-    "content": {}
+    "content": {
+      "dateCreated": 1475153983964,
+      "lastMessage": {
+        "dateSent": 1475154250577,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "read": true,
+        "id": "e34f9a86-ed1b-4d1f-b057-bd095929f75e",
+        "content": "np"
+      },
+      "participants": [
+        {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        {
+          "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": false,
+            "premium": false,
+            "locale": null
+          },
+          "username": "Kalle",
+          "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+        }
+      ],
+      "readonly": false,
+      "chatName": null,
+      "owner": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "id": "959e870f-e6f9-48fd-960d-3bcabfda2089"
+    }
   },
   "/api/companies/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "securitiesAccountId": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "bankAccount": {
+          "cash": 0,
+          "id": "990f59cb-9b5c-491e-8fee-aafb042fc0c4"
+        },
+        "logoUrl": null,
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469981013745,
+          "endDate": null,
+          "securityIdentifier": "STFA423C",
+          "name": "FruchtgenuCo.",
+          "type": "STOCK"
+        },
+        "name": "FruchtgenuCo.",
+        "id": "99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d"
+      },
+      {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 12644600.24,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      }
+    ]
   },
-  "/api/companies/all": {
+  "/api/companies/all/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "securitiesAccountId": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "bankAccount": {
+          "cash": 0,
+          "id": "990f59cb-9b5c-491e-8fee-aafb042fc0c4"
+        },
+        "logoUrl": null,
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469981013745,
+          "endDate": null,
+          "securityIdentifier": "STFA423C",
+          "name": "FruchtgenuCo.",
+          "type": "STOCK"
+        },
+        "name": "FruchtgenuCo.",
+        "id": "99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d"
+      },
+      {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 12644600.24,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      }
+    ]
   },
-  "/api/companies/ceo/userid/todo": {
+  "/api/companies/ceo/userid/43986f13-edde-486c-9ef0-718b100a1949": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "securitiesAccountId": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "bankAccount": {
+          "cash": 0,
+          "id": "990f59cb-9b5c-491e-8fee-aafb042fc0c4"
+        },
+        "logoUrl": null,
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469981013745,
+          "endDate": null,
+          "securityIdentifier": "STFA423C",
+          "name": "FruchtgenuCo.",
+          "type": "STOCK"
+        },
+        "name": "FruchtgenuCo.",
+        "id": "99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d"
+      },
+      {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 12644600.24,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      }
+    ]
   },
-  "/api/companies/ceo/username/todo": {
+  "/api/companies/ceo/username/FauserneEist": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "securitiesAccountId": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "bankAccount": {
+          "cash": 0,
+          "id": "990f59cb-9b5c-491e-8fee-aafb042fc0c4"
+        },
+        "logoUrl": null,
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469981013745,
+          "endDate": null,
+          "securityIdentifier": "STFA423C",
+          "name": "FruchtgenuCo.",
+          "type": "STOCK"
+        },
+        "name": "FruchtgenuCo.",
+        "id": "99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d"
+      },
+      {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 12644600.24,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      }
+    ]
   },
-  "/api/companies/securitiesaccount/todo": {
+  "/api/companies/securitiesaccount/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
-    "content": {}
+    "content": {
+      "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+      "bankAccount": {
+        "cash": 12644600.24,
+        "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+      },
+      "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+      "ceo": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "name": "Katholische Kirche AG",
+      "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+    }
   },
-  "/api/companies/securityIdentifier/todo": {
+  "/api/companies/securityIdentifier/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": {
+      "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+      "bankAccount": {
+        "cash": 12644600.24,
+        "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+      },
+      "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+      "ceo": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "name": "Katholische Kirche AG",
+      "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+    }
   },
-  "/api/companies/todo": {
+  "/api/companies/81dcf5a1-b0b6-462a-a40c-e374619edc2f": {
     "status": 200,
-    "content": {}
+    "content": {
+      "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+      "bankAccount": {
+        "cash": 12644600.24,
+        "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+      },
+      "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+      "ceo": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "name": "Katholische Kirche AG",
+      "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+    }
   },
-  "/api/companyprofiles/todo": {
+  "/api/companyprofiles/81dcf5a1-b0b6-462a-a40c-e374619edc2f": {
     "status": 200,
-    "content": {}
+    "content": {
+      "ceoEmploymentAgreement": {
+        "dailyWage": 30000,
+        "startDate": 1475336107328,
+        "id": "7bdef87f-6f55-4a2e-9eb5-15559432d057"
+      },
+      "companyCapabilities": {
+        "bankReady": false,
+        "bank": true,
+        "takenCentralBankLoans": 11000000,
+        "designatedSponsor": false,
+        "reserves": 10000000,
+        "maxCentralBankLoans": 11000000,
+        "netCash": 1571207.99
+      },
+      "issuedBonds": [
+        {
+          "priceSpread": null,
+          "issuer": {
+            "securityIdentifier": "STK0F513",
+            "listing": {
+              "startDate": 1469951698361,
+              "endDate": null,
+              "securityIdentifier": "STK0F513",
+              "name": "Katholische Kirche AG",
+              "type": "STOCK"
+            },
+            "name": "Katholische Kirche AG",
+            "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+          },
+          "interestRate": 20,
+          "volume": 10000000,
+          "listing": {
+            "startDate": 1475267497534,
+            "endDate": null,
+            "securityIdentifier": "BOK8986B",
+            "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+            "type": "BOND"
+          },
+          "issueDate": 1475267497534,
+          "maturityDate": 1477773157000,
+          "faceValue": 100,
+          "repurchaseListing": {
+            "startDate": 1475267497534,
+            "endDate": null,
+            "securityIdentifier": "REK8986B",
+            "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+            "type": "REPO"
+          },
+          "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+          "id": "1e395cc4-b7e1-431b-8710-ceae653ec753"
+        }
+      ],
+      "lastTrades": [
+        {
+          "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "sellerSecuritiesAccount": "8a9745f6-d176-4073-85ef-a4f5c01ffe0b",
+          "numberOfShares": 1,
+          "volume": 0.02,
+          "securityIdentifier": "STSD64F5",
+          "price": 0.02,
+          "date": 1476997304505,
+          "id": "95439c8f-04e6-44a5-96be-c54218212cb9"
+        },
+        {
+          "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "sellerSecuritiesAccount": "d16e158b-a4f1-4411-af5d-e1aefe80bed9",
+          "numberOfShares": 1,
+          "volume": 0.02,
+          "securityIdentifier": "STSCA0F8",
+          "price": 0.02,
+          "date": 1476997308404,
+          "id": "3bfbae00-0e2b-4905-90f2-0931e24cff03"
+        }
+      ],
+      "sponsoredListings": [],
+      "currentSpread": {
+        "askSize": null,
+        "bidPrice": 25,
+        "askPrice": null,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1476375715646,
+          "value": 656.93
+        },
+        "maxBidPrice": 788.32,
+        "minAskPrice": 25,
+        "bidSize": 49701,
+        "date": 1476375717202
+      },
+      "designatedSponsors": [],
+      "lastOrderLogEntry": {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "77fbda7c-5790-4074-87d1-126561cd9cf5",
+        "numberOfShares": 3,
+        "volume": 1970.79,
+        "securityIdentifier": "STK0F513",
+        "price": 656.93,
+        "date": 1476375715662,
+        "id": "156503bc-380c-4bf0-8905-3bcbbe0c2f70"
+      },
+      "lastPrice": {
+        "date": 1476375715646,
+        "value": 656.93
+      },
+      "outstandingShares": 56947,
+      "prices14d": [
+        {
+          "date": 1476116914348,
+          "value": 25
+        },
+        {
+          "date": 1476375706503,
+          "value": 525.54
+        },
+        {
+          "date": 1476375715623,
+          "value": 656.93
+        },
+        {
+          "date": 1476375715646,
+          "value": 656.93
+        }
+      ],
+      "marketCap": 37410192.71,
+      "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+      "bankAccount": {
+        "cash": 13791217.99,
+        "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+      },
+      "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+      "ceo": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "name": "Katholische Kirche AG",
+      "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+    }
   },
-  "/api/search/companies/todo": {
+  "/api/search/companies/Katholische": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 12644600.24,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      }
+    ]
   },
   "/api/complaints/todo": {
     "status": 200,
@@ -561,13 +1467,62 @@
     "status": 200,
     "content": {}
   },
-  "/api/portfolios/fixedincome/todo": {
+  "/api/portfolios/fixedincome/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
     "content": {}
   },
-  "/api/portfolios/todo": {
+  "/api/portfolios/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
-    "content": {}
+    "content": {
+      "committedCash": 151430.34,
+      "cash": 13790216.21,
+      "positions": [
+        {
+          "currentAskPrice": 3500,
+          "currentAskSize": 850,
+          "currentBidPrice": null,
+          "currentBidSize": null,
+          "lastPrice": {
+            "date": 1475882777051,
+            "value": 2.88
+          },
+          "numberOfShares": 1712,
+          "volume": 4930.56,
+          "committedShares": 0,
+          "securityIdentifier": "ST57FA01",
+          "listing": {
+            "startDate": 1469951384818,
+            "endDate": null,
+            "securityIdentifier": "ST57FA01",
+            "name": "Argo",
+            "type": "STOCK"
+          },
+          "type": "STOCK"
+        },
+        {
+          "currentAskPrice": null,
+          "currentAskSize": null,
+          "currentBidPrice": 3.1,
+          "currentBidSize": 444,
+          "lastPrice": {
+            "date": 1475876875344,
+            "value": 3.43
+          },
+          "numberOfShares": 44904,
+          "volume": 154020.72,
+          "committedShares": 0,
+          "securityIdentifier": "STA48028",
+          "listing": {
+            "startDate": 1470077178096,
+            "endDate": null,
+            "securityIdentifier": "STA48028",
+            "name": "Arizona Invest AG",
+            "type": "STOCK"
+          },
+          "type": "STOCK"
+        }
+      ]
+    }
   },
   "/api/pricespreads/": {
     "status": 200,

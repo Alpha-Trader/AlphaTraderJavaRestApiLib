@@ -108,8 +108,9 @@ public class BondTest {
     public void testGetAllBonds() {
         List<Bond> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/bonds/"),
             new TypeToken<ArrayList<Bond>>() { }.getType());
-
-        assertEquals(new HashSet<>(reference), new HashSet<>(Bond.getAllBonds()));
+        List<Bond> testObject = Bond.getAllBonds();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test

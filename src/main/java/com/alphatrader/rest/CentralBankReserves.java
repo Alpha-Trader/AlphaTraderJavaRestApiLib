@@ -60,6 +60,17 @@ public class CentralBankReserves {
     }
 
     /**
+     * Fetches the central bank reserves with the given id.
+     *
+     * @param id the central bank reserve's id
+     * @return the central bank reserve
+     */
+    @Nullable
+    public static CentralBankReserves getById(String id) {
+        return Http.getSingleObjectFromApi(CentralBankReserves.class, "/api/centralbankreserves/" + id);
+    }
+
+    /**
      * @return the unique id of these reserves
      */
     public String getId() {

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -17,10 +18,13 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
+ * Test case for the {@link Chat} class.
+ *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
 public class ChatTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -94,6 +98,11 @@ public class ChatTest {
 
     private Chat toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, Chat.class);
@@ -101,17 +110,29 @@ public class ChatTest {
 
     @Test
     public void testGetAllChatsForThisUser() throws Exception {
-
+        List<Chat> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/chats"),
+            new TypeToken<ArrayList<Chat>>() { }.getType());
+        List<Chat> testObject = Chat.getAllChatsForThisUser();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void testGetAllUnreadChatsForThisUser() throws Exception {
-
+        List<Chat> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/chats/unread"),
+            new TypeToken<ArrayList<Chat>>() { }.getType());
+        List<Chat> testObject = Chat.getAllUnreadChatsForThisUser();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void testGetChatById() throws Exception {
-
+        Chat testObject = Chat.getChatById("959e870f-e6f9-48fd-960d-3bcabfda2089");
+        Chat reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/chats/959e870f-e6f9-48fd-960d-3bcabfda2089"),Chat.class);
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test

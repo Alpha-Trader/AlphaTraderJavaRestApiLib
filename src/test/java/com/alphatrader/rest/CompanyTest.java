@@ -3,10 +3,15 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
@@ -18,6 +23,7 @@ import static org.junit.Assert.assertFalse;
  * @version 1.0
  */
 public class CompanyTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -37,11 +43,23 @@ public class CompanyTest {
         "    \"username\": \"FauserneEist\",\n" +
         "    \"id\": \"43986f13-edde-486c-9ef0-718b100a1949\"\n" +
         "  },\n" +
+        "  \"listing\": {\n" +
+        "          \"startDate\": 1469951698361,\n" +
+        "          \"endDate\": null,\n" +
+        "          \"securityIdentifier\": \"STK0F513\",\n" +
+        "          \"name\": \"Katholische Kirche AG\",\n" +
+        "          \"type\": \"STOCK\"\n" +
+        "        }," +
         "  \"name\": \"Katholische Kirche AG\",\n" +
         "  \"id\": \"81dcf5a1-b0b6-462a-a40c-e374619edc2f\"\n" +
         "}";
 
     private Company toTest;
+
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -49,8 +67,80 @@ public class CompanyTest {
     }
 
     @Test
-    public void testCreateFromJson() throws Exception {
-        assertNotNull(toTest);
+    public void getAllUserCompanies() throws Exception {
+        List<Company> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/companies/"),
+            new TypeToken<ArrayList<Company>>() { }.getType());
+        List<Company> testObject = Company.getAllUserCompanies();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getAllUserCompaniesByUsername() throws Exception {
+        List<Company> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companies/ceo/username/FauserneEist"),
+            new TypeToken<ArrayList<Company>>() { }.getType());
+        List<Company> testObject = Company.getAllUserCompaniesByUsername("FauserneEist");
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getAllUserCompanies1() throws Exception {
+        User user = gson.fromJson("{" +
+            "\"id\": \"43986f13-edde-486c-9ef0-718b100a1949\"" +
+            "}", User.class);
+        List<Company> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companies/ceo/userid/43986f13-edde-486c-9ef0-718b100a1949"),
+            new TypeToken<ArrayList<Company>>() { }.getType());
+        List<Company> testObject = Company.getAllUserCompanies(user);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getAllCompanies() throws Exception {
+        List<Company> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/companies/all/"),
+            new TypeToken<ArrayList<Company>>() { }.getType());
+        List<Company> testObject = Company.getAllCompanies();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getBySecuritiesAccountId() throws Exception {
+        Company reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companies/securitiesaccount/57875cf3-de0a-48e4-a3bc-314d4550df12"), Company.class);
+        Company testObject = Company.getBySecuritiesAccountId("57875cf3-de0a-48e4-a3bc-314d4550df12");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void getBySecurityIdentifier() throws Exception {
+        Company reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companies/securityIdentifier/STK0F513"), Company.class);
+        Company testObject = Company.getBySecurityIdentifier("STK0F513");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void getById() throws Exception {
+        Company reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companies/81dcf5a1-b0b6-462a-a40c-e374619edc2f"), Company.class);
+        Company testObject = Company.getById("81dcf5a1-b0b6-462a-a40c-e374619edc2f");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void searchByName() throws Exception {
+        List<Company> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/search/companies/Katholische"), new TypeToken<ArrayList<Company>>() { }.getType());
+        List<Company> testObject = Company.searchByName("Katholische");
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
@@ -66,6 +156,36 @@ public class CompanyTest {
     @Test
     public void testGetId() throws Exception {
         assertEquals("81dcf5a1-b0b6-462a-a40c-e374619edc2f", toTest.getId());
+    }
+
+    @Test
+    public void testGetListing() throws Exception {
+        Listing reference = gson.fromJson("{\n" +
+            "  \"startDate\": 1469951698361,\n" +
+            "  \"endDate\": null,\n" +
+            "  \"securityIdentifier\": \"STK0F513\",\n" +
+            "  \"name\": \"Katholische Kirche AG\",\n" +
+            "  \"type\": \"STOCK\"\n" +
+            "}", Listing.class);
+        assertEquals(reference, toTest.getListing());
+    }
+
+    @Test
+    public void testGetProfile() throws Exception {
+        CompanyProfile reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/companyprofiles/81dcf5a1-b0b6-462a-a40c-e374619edc2f"), CompanyProfile.class);
+        assertEquals(reference, toTest.getProfile());
+        assertEquals(reference, toTest.getProfile());
+        assertNotNull(toTest.getProfile());
+    }
+
+    @Test
+    public void testGetPortfolio() throws Exception {
+        Portfolio reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/portfolios/57875cf3-de0a-48e4-a3bc-314d4550df12"), Portfolio.class);
+        assertEquals(reference, toTest.getPortfolio());
+        assertEquals(reference, toTest.getPortfolio());
+        assertNotNull(toTest.getPortfolio());
     }
 
     @Test
