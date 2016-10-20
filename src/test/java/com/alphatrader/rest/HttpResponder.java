@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -96,7 +95,7 @@ public class HttpResponder {
 
     private static class ApiResponse {
         public int status = 0;
-        public JsonObject content = null;
+        public JsonElement content = null;
 
         @Override
         public String toString() {

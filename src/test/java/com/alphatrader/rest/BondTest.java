@@ -3,6 +3,7 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import org.apache.http.HttpResponseFactory;
@@ -18,6 +19,8 @@ import org.junit.Test;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -34,6 +37,7 @@ import static org.mockito.Mockito.when;
  * @version 1.0
  */
 public class BondTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -92,23 +96,7 @@ public class BondTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        HttpResponseFactory factory = new DefaultHttpResponseFactory();
-        org.apache.http.HttpResponse responseArray = factory.newHttpResponse(new BasicStatusLine(
-            HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
-        responseArray.setEntity(new StringEntity("[" + JSON + "]"));
-        HttpResponse<String> httpResponseArray = new HttpResponse<>(responseArray, String.class);
-
-        org.apache.http.HttpResponse responseSingle = factory.newHttpResponse(new BasicStatusLine(
-            HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
-        responseSingle.setEntity(new StringEntity(JSON));
-        HttpResponse<String> httpResponseSingle = new HttpResponse<>(responseSingle, String.class);
-
-        Http mockHttp = mock(Http.class);
-        when(mockHttp.get(eq("/api/bonds/"))).thenReturn(httpResponseArray);
-        when(mockHttp.get(eq("/api/bonds/securityidentifier/BOS34377"))).thenReturn(httpResponseSingle);
-        when(mockHttp.get(eq("/api/bonds/8213bee0-b64a-46b8-bb9b-99ea7f67991d")))
-            .thenReturn(httpResponseSingle);
-        Http.setInstance(mockHttp);
+        Http.setInstance(httpResponder.getMock());
     }
 
     @Before
@@ -118,21 +106,55 @@ public class BondTest {
 
     @Test
     public void testGetAllBonds() {
-        List<Bond> bonds = Bond.getAllBonds();
-        assertEquals(1, bonds.size());
-        assertEquals(toTest, bonds.get(0));
+        List<Bond> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/bonds/"),
+            new TypeToken<ArrayList<Bond>>() { }.getType());
+
+        assertEquals(new HashSet<>(reference), new HashSet<>(Bond.getAllBonds()));
     }
 
     @Test
+    public void testGetAllSystemBonds() {
+        List<Bond> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/systembonds/"),
+            new TypeToken<ArrayList<Bond>>() { }.getType());
+
+        assertEquals(new HashSet<>(reference), new HashSet<>(Bond.getAllSystemBonds()));
+    }
+
+
+    @Test
     public void testGetBondById() {
-        Bond bond = Bond.getBondById("8213bee0-b64a-46b8-bb9b-99ea7f67991d");
-        assertEquals(toTest, bond);
+        Bond reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/bonds/1cee7473-b0e8-4e8b-a1ce-dba16d6be40e"), Bond.class);
+        Bond testObject = Bond.getBondById("1cee7473-b0e8-4e8b-a1ce-dba16d6be40e");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void testGetSystemBondById() {
+        Bond reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/systembonds/61c24773-9cf6-4444-956f-36f15ff21fb8"), Bond.class);
+        Bond testObject = Bond.getSystemBondById("61c24773-9cf6-4444-956f-36f15ff21fb8");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
     public void testGetBondBySecurityIdentifier() {
-        Bond bond = Bond.getBondBySecurityIdentifier("BOS34377");
-        assertEquals(toTest, bond);
+        Bond reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/bonds/securityidentifier/REAB58CC"), Bond.class);
+        Bond testObject = Bond.getBondBySecurityIdentifier("REAB58CC");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void testGetSystemBondBySecurityIdentifier() {
+        Bond reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/systembonds/securityidentifier/SBS037E1"), Bond.class);
+        Bond testObject = Bond.getSystemBondBySecurityIdentifier("SBS037E1");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test

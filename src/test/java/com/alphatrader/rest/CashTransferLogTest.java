@@ -3,12 +3,17 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +24,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class CashTransferLogTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -41,6 +47,11 @@ public class CashTransferLogTest {
 
     private CashTransferLog toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, CashTransferLog.class);
@@ -48,7 +59,56 @@ public class CashTransferLogTest {
 
     @Test
     public void testGetCashTransferLogs() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
 
+        List<CashTransferLog> reference = gson.fromJson(httpResponder
+            .getJsonForRequest("/api/cashtransferlogs/?startDate=0"),
+            new TypeToken<ArrayList<CashTransferLog>>() { }.getType());
+        List<CashTransferLog> testObject = CashTransferLog.getCashTransferLogs(date, null, null, null);
+
+        assertNotNull(testObject);
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void testGetCashTransferLogs1() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+
+        List<CashTransferLog> reference = gson.fromJson(httpResponder
+                .getJsonForRequest("/api/cashtransferlogs/?startDate=0&endDate=0"),
+            new TypeToken<ArrayList<CashTransferLog>>() { }.getType());
+        List<CashTransferLog> testObject = CashTransferLog.getCashTransferLogs(date, date, null, null);
+
+        assertNotNull(testObject);
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void testGetCashTransferLogs2() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+
+        List<CashTransferLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+                    "/api/cashtransferlogs/?senderBankAccountId=e542e37b-cb17-4575-ad80-d03d61cb4ffc"),
+            new TypeToken<ArrayList<CashTransferLog>>() { }.getType());
+        List<CashTransferLog> testObject = CashTransferLog.getCashTransferLogs(null, null,
+            "e542e37b-cb17-4575-ad80-d03d61cb4ffc", null);
+
+        assertNotNull(testObject);
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void testGetCashTransferLogs3() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+
+        List<CashTransferLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+                    "/api/cashtransferlogs/?receiverBankAccountId=3c58de5a-6c59-41bf-be48-bf387d56f3d0"),
+            new TypeToken<ArrayList<CashTransferLog>>() { }.getType());
+        List<CashTransferLog> testObject = CashTransferLog.getCashTransferLogs(null, null, null,
+            "3c58de5a-6c59-41bf-be48-bf387d56f3d0");
+
+        assertNotNull(testObject);
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test

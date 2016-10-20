@@ -4,6 +4,7 @@ import com.alphatrader.rest.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.junit.Assert.*;
@@ -32,6 +33,19 @@ public class ApiLibConfigTest {
         URL testUrl = new URL("http://example.org");
         toTest.setApiUrl(testUrl);
         assertEquals(testUrl, toTest.getApiUrl());
+    }
+
+    @Test
+    public void testGetSetApiUrl1() throws Exception {
+        URL testUrl = new URL("http://example.org");
+        toTest.setApiUrl(testUrl.toString());
+        assertEquals(testUrl, toTest.getApiUrl());
+    }
+
+    @Test
+    public void testGetSetApiUrl2() throws Exception {
+        toTest.setApiUrl("malformed-url");
+        assertNotNull(toTest.getApiUrl());
     }
 
     @Test

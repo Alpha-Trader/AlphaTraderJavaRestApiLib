@@ -76,7 +76,7 @@ public class CashTransferLog {
         }
 
         if (options.size() > 0) {
-            request += "?" + options.stream().reduce("", (a, b) -> (a + "&" + b));
+            request += "?" + String.join("&", options);
         }
 
         return Http.getMultipleObjectFromApi(CashTransferLog.class, request);

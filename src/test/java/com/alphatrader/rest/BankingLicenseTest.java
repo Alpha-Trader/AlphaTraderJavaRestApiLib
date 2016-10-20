@@ -114,8 +114,10 @@ public class BankingLicenseTest {
         BankingLicense reference = gson.fromJson(httpResponder
             .getJsonForRequest("/api/bankinglicense/257e1004-8c5e-4d09-beca-8377e8be070c"),
             BankingLicense.class);
-        assertEquals(reference, BankingLicense
-            .getBankingLicenseById("257e1004-8c5e-4d09-beca-8377e8be070c"));
+        BankingLicense testObject = BankingLicense
+            .getBankingLicenseById("257e1004-8c5e-4d09-beca-8377e8be070c");
+        assertNotNull(testObject);
+        assertEquals(reference,testObject );
     }
 
     @Test
@@ -123,7 +125,8 @@ public class BankingLicenseTest {
         BankingLicense reference = gson.fromJson(httpResponder
                 .getJsonForRequest("/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f"),
             BankingLicense.class);
-        assertEquals(reference, BankingLicense.getBankingLicenseOfCompany(testCompany));
+        BankingLicense testObject = BankingLicense.getBankingLicenseOfCompany(testCompany);
+        assertEquals(reference, testObject);
     }
 
 

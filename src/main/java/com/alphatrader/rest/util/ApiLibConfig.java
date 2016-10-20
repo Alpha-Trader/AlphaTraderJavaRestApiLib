@@ -30,12 +30,7 @@ public final class ApiLibConfig {
     private String partnerId;
 
     private ApiLibConfig() {
-        try {
-            setApiUrl(new URL("http://stable.alpha-trader.com"));
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        setApiUrl("http://stable.alpha-trader.com");
     }
 
     /**
@@ -61,6 +56,19 @@ public final class ApiLibConfig {
         this.apiUrl = apiUrl;
     }
 
+    /**
+     * Sets the API URL to a new value.
+     *
+     * @param apiUrl the new API URL
+     */
+    public void setApiUrl(String apiUrl) {
+        try {
+            setApiUrl(new URL(apiUrl));
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * @return the user
      */

@@ -1,12 +1,12 @@
 {
   "/api/bankaccounts/": {
     "status": 200,
-    "content" : {
+    "content": {
       "cash": 156187,
       "id": "443db0b7-c399-4252-8166-061d8de1d634"
     }
   },
-  "/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f":  {
+  "/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f": {
     "status": 200,
     "content": {
       "startDate": 1475335931401,
@@ -60,19 +60,362 @@
   },
   "/api/bonds/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "priceSpread": {
+          "askSize": null,
+          "bidPrice": null,
+          "askPrice": null,
+          "spreadAbs": null,
+          "spreadPercent": null,
+          "lastPrice": {
+            "date": 1474889953361,
+            "value": 80
+          },
+          "maxBidPrice": 96,
+          "minAskPrice": 64,
+          "bidSize": null,
+          "date": 1476172633027
+        },
+        "issuer": {
+          "securityIdentifier": "STDE4BBA",
+          "listing": {
+            "startDate": 1470596598746,
+            "endDate": null,
+            "securityIdentifier": "STDE4BBA",
+            "name": "Dachs Ltd.",
+            "type": "STOCK"
+          },
+          "name": "Dachs Ltd.",
+          "id": "f9f3bea8-7d62-4c03-bc5f-21f180662d89"
+        },
+        "interestRate": 15.5622,
+        "volume": 170000,
+        "listing": {
+          "startDate": 1474483025351,
+          "endDate": null,
+          "securityIdentifier": "BOD579B4",
+          "name": "Dachs Ltd. 15.5622% 20/10/2016",
+          "type": "BOND"
+        },
+        "issueDate": 1474483025351,
+        "maturityDate": 1476988685000,
+        "faceValue": 1700,
+        "repurchaseListing": {
+          "startDate": 1474483025351,
+          "endDate": null,
+          "securityIdentifier": "RED579B4",
+          "name": "Dachs Ltd. 15.5622% 20/10/2016",
+          "type": "REPO"
+        },
+        "name": "Dachs Ltd. 15.5622% 20/10/2016",
+        "id": "9fce722f-c6f9-45d8-8524-e00fab0dfd4a"
+      },
+      {
+        "priceSpread": {
+          "askSize": 10,
+          "bidPrice": null,
+          "askPrice": 100,
+          "spreadAbs": null,
+          "spreadPercent": null,
+          "lastPrice": {
+            "date": 1476723141448,
+            "value": 100
+          },
+          "maxBidPrice": 120,
+          "minAskPrice": 80,
+          "bidSize": null,
+          "date": 1476723141682
+        },
+        "issuer": {
+          "securityIdentifier": "STAF56F9",
+          "listing": {
+            "startDate": 1476722612780,
+            "endDate": null,
+            "securityIdentifier": "STAF56F9",
+            "name": "Allington AG",
+            "type": "STOCK"
+          },
+          "name": "Allington AG",
+          "id": "074afc0c-f98b-47b2-8f6c-75068cd5066b"
+        },
+        "interestRate": 15.5622,
+        "volume": 1000,
+        "listing": {
+          "startDate": 1476723141448,
+          "endDate": null,
+          "securityIdentifier": "BOAB58CC",
+          "name": "Allington AG 15.5622% 15/11/2016",
+          "type": "BOND"
+        },
+        "issueDate": 1476723141448,
+        "maturityDate": 1479228801000,
+        "faceValue": 100,
+        "repurchaseListing": {
+          "startDate": 1476723141448,
+          "endDate": null,
+          "securityIdentifier": "REAB58CC",
+          "name": "Allington AG 15.5622% 15/11/2016",
+          "type": "REPO"
+        },
+        "name": "Allington AG 15.5622% 15/11/2016",
+        "id": "1cee7473-b0e8-4e8b-a1ce-dba16d6be40e"
+      }
+    ]
   },
-  "/api/bonds/securityidentifier/todo": {
+  "/api/bonds/securityidentifier/REAB58CC": {
     "status": 200,
-    "content": {}
+    "content": {
+      "priceSpread": {
+        "askSize": 10,
+        "bidPrice": null,
+        "askPrice": 100,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1476723141448,
+          "value": 100
+        },
+        "maxBidPrice": 120,
+        "minAskPrice": 80,
+        "bidSize": null,
+        "date": 1476723141682
+      },
+      "issuer": {
+        "securityIdentifier": "STAF56F9",
+        "listing": {
+          "startDate": 1476722612780,
+          "endDate": null,
+          "securityIdentifier": "STAF56F9",
+          "name": "Allington AG",
+          "type": "STOCK"
+        },
+        "name": "Allington AG",
+        "id": "074afc0c-f98b-47b2-8f6c-75068cd5066b"
+      },
+      "interestRate": 15.5622,
+      "volume": 1000,
+      "listing": {
+        "startDate": 1476723141448,
+        "endDate": null,
+        "securityIdentifier": "BOAB58CC",
+        "name": "Allington AG 15.5622% 15/11/2016",
+        "type": "BOND"
+      },
+      "issueDate": 1476723141448,
+      "maturityDate": 1479228801000,
+      "faceValue": 100,
+      "repurchaseListing": {
+        "startDate": 1476723141448,
+        "endDate": null,
+        "securityIdentifier": "REAB58CC",
+        "name": "Allington AG 15.5622% 15/11/2016",
+        "type": "REPO"
+      },
+      "name": "Allington AG 15.5622% 15/11/2016",
+      "id": "1cee7473-b0e8-4e8b-a1ce-dba16d6be40e"
+    }
   },
-  "/api/bonds/todo": {
+  "/api/bonds/1cee7473-b0e8-4e8b-a1ce-dba16d6be40e": {
     "status": 200,
-    "content": {}
+    "content": {
+      "priceSpread": {
+        "askSize": 10,
+        "bidPrice": null,
+        "askPrice": 100,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1476723141448,
+          "value": 100
+        },
+        "maxBidPrice": 120,
+        "minAskPrice": 80,
+        "bidSize": null,
+        "date": 1476723141682
+      },
+      "issuer": {
+        "securityIdentifier": "STAF56F9",
+        "listing": {
+          "startDate": 1476722612780,
+          "endDate": null,
+          "securityIdentifier": "STAF56F9",
+          "name": "Allington AG",
+          "type": "STOCK"
+        },
+        "name": "Allington AG",
+        "id": "074afc0c-f98b-47b2-8f6c-75068cd5066b"
+      },
+      "interestRate": 15.5622,
+      "volume": 1000,
+      "listing": {
+        "startDate": 1476723141448,
+        "endDate": null,
+        "securityIdentifier": "BOAB58CC",
+        "name": "Allington AG 15.5622% 15/11/2016",
+        "type": "BOND"
+      },
+      "issueDate": 1476723141448,
+      "maturityDate": 1479228801000,
+      "faceValue": 100,
+      "repurchaseListing": {
+        "startDate": 1476723141448,
+        "endDate": null,
+        "securityIdentifier": "REAB58CC",
+        "name": "Allington AG 15.5622% 15/11/2016",
+        "type": "REPO"
+      },
+      "name": "Allington AG 15.5622% 15/11/2016",
+      "id": "1cee7473-b0e8-4e8b-a1ce-dba16d6be40e"
+    }
   },
-  "/api/cashtransferlogs/": {
+  "/api/cashtransferlogs/?startDate=0": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "3c58de5a-6c59-41bf-be48-bf387d56f3d0",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476984669021,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "nightowl Inc.",
+            "STNDE94A"
+          ],
+          "filledString": "Buy 1 shares of nightowl Inc. (STNDE94A)"
+        },
+        "id": "76ea7edb-bcb8-43c8-a12d-f93d35715e2d"
+      },
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "b5f7614c-b1ee-43a5-bdf4-9b925fa7ee55",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476987677872,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "hanaba Inc.",
+            "STHCED0D"
+          ],
+          "filledString": "Buy 1 shares of hanaba Inc. (STHCED0D)"
+        },
+        "id": "42aa8fb7-af9d-401b-ada0-583a901f8dea"
+      }
+    ]
+  },
+  "/api/cashtransferlogs/?startDate=0&endDate=0": {
+    "status": 200,
+    "content": [
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "3c58de5a-6c59-41bf-be48-bf387d56f3d0",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476984669021,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "nightowl Inc.",
+            "STNDE94A"
+          ],
+          "filledString": "Buy 1 shares of nightowl Inc. (STNDE94A)"
+        },
+        "id": "76ea7edb-bcb8-43c8-a12d-f93d35715e2d"
+      },
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "b5f7614c-b1ee-43a5-bdf4-9b925fa7ee55",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476987677872,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "hanaba Inc.",
+            "STHCED0D"
+          ],
+          "filledString": "Buy 1 shares of hanaba Inc. (STHCED0D)"
+        },
+        "id": "42aa8fb7-af9d-401b-ada0-583a901f8dea"
+      }
+    ]
+  },
+  "/api/cashtransferlogs/?senderBankAccountId=e542e37b-cb17-4575-ad80-d03d61cb4ffc": {
+    "status": 200,
+    "content": [
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "3c58de5a-6c59-41bf-be48-bf387d56f3d0",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476984669021,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "nightowl Inc.",
+            "STNDE94A"
+          ],
+          "filledString": "Buy 1 shares of nightowl Inc. (STNDE94A)"
+        },
+        "id": "76ea7edb-bcb8-43c8-a12d-f93d35715e2d"
+      },
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "b5f7614c-b1ee-43a5-bdf4-9b925fa7ee55",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476987677872,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "hanaba Inc.",
+            "STHCED0D"
+          ],
+          "filledString": "Buy 1 shares of hanaba Inc. (STHCED0D)"
+        },
+        "id": "42aa8fb7-af9d-401b-ada0-583a901f8dea"
+      }
+    ]
+  },
+  "/api/cashtransferlogs/?receiverBankAccountId=3c58de5a-6c59-41bf-be48-bf387d56f3d0": {
+    "status": 200,
+    "content": [
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "3c58de5a-6c59-41bf-be48-bf387d56f3d0",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476984669021,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "nightowl Inc.",
+            "STNDE94A"
+          ],
+          "filledString": "Buy 1 shares of nightowl Inc. (STNDE94A)"
+        },
+        "id": "76ea7edb-bcb8-43c8-a12d-f93d35715e2d"
+      },
+      {
+        "amount": 0.03,
+        "receiverBankAccount": "b5f7614c-b1ee-43a5-bdf4-9b925fa7ee55",
+        "senderBankAccount": "e542e37b-cb17-4575-ad80-d03d61cb4ffc",
+        "date": 1476987677872,
+        "message": {
+          "message": "Buy # shares of # (#)",
+          "substitutions": [
+            "1",
+            "hanaba Inc.",
+            "STHCED0D"
+          ],
+          "filledString": "Buy 1 shares of hanaba Inc. (STHCED0D)"
+        },
+        "id": "42aa8fb7-af9d-401b-ada0-583a901f8dea"
+      }
+    ]
   },
   "/api/centralbankreserves/": {
     "status": 200,
@@ -150,7 +493,7 @@
     "status": 200,
     "content": {}
   },
- "/api/search/events/todo": {
+  "/api/search/events/todo": {
     "status": 200,
     "content": {}
   },
@@ -270,7 +613,7 @@
     "status": 200,
     "content": {}
   },
- "/api/securityorders/todo": {
+  "/api/securityorders/todo": {
     "status": 200,
     "content": {}
   },
@@ -288,15 +631,100 @@
   },
   "/api/systembonds/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "priceSpread": {
+          "askSize": null,
+          "bidPrice": null,
+          "askPrice": null,
+          "spreadAbs": null,
+          "spreadPercent": null,
+          "lastPrice": {
+            "date": 1476727657873,
+            "value": 100
+          },
+          "maxBidPrice": 120,
+          "minAskPrice": 80,
+          "bidSize": null,
+          "date": 1476727662956
+        },
+        "interestRate": 2,
+        "volume": 11000000,
+        "listing": {
+          "startDate": 1476727656891,
+          "endDate": null,
+          "securityIdentifier": "SBS037E1",
+          "name": "System Bond 2.0000% 24/10/2016",
+          "type": "SYSTEM_BOND"
+        },
+        "issueDate": 1476727656891,
+        "maturityDate": 1477332456891,
+        "faceValue": 100,
+        "repurchaseListing": {
+          "startDate": 1476727656891,
+          "endDate": null,
+          "securityIdentifier": "SRS037E1",
+          "name": "System Bond 2.0000% 24/10/2016",
+          "type": "SYSTEM_REPO"
+        },
+        "name": "System Bond 2.0000% 24/10/2016",
+        "id": "61c24773-9cf6-4444-956f-36f15ff21fb8"
+      }
+    ]
   },
-  "/api/systembonds/securityidentifier/todo": {
+  "/api/systembonds/securityidentifier/SBS037E1": {
     "status": 200,
-    "content": {}
+    "content": {
+      "priceSpread": null,
+      "interestRate": 2,
+      "volume": 11000000,
+      "listing": {
+        "startDate": 1476727656891,
+        "endDate": null,
+        "securityIdentifier": "SBS037E1",
+        "name": "System Bond 2.0000% 24/10/2016",
+        "type": "SYSTEM_BOND"
+      },
+      "issueDate": 1476727656891,
+      "maturityDate": 1477332456891,
+      "faceValue": 100,
+      "repurchaseListing": {
+        "startDate": 1476727656891,
+        "endDate": null,
+        "securityIdentifier": "SRS037E1",
+        "name": "System Bond 2.0000% 24/10/2016",
+        "type": "SYSTEM_REPO"
+      },
+      "name": "System Bond 2.0000% 24/10/2016",
+      "id": "61c24773-9cf6-4444-956f-36f15ff21fb8"
+    }
   },
-  "/api/systembonds/todo": {
+  "/api/systembonds/61c24773-9cf6-4444-956f-36f15ff21fb8": {
     "status": 200,
-    "content": {}
+    "content": {
+      "priceSpread": null,
+      "interestRate": 2,
+      "volume": 11000000,
+      "listing": {
+        "startDate": 1476727656891,
+        "endDate": null,
+        "securityIdentifier": "SBS037E1",
+        "name": "System Bond 2.0000% 24/10/2016",
+        "type": "SYSTEM_BOND"
+      },
+      "issueDate": 1476727656891,
+      "maturityDate": 1477332456891,
+      "faceValue": 100,
+      "repurchaseListing": {
+        "startDate": 1476727656891,
+        "endDate": null,
+        "securityIdentifier": "SRS037E1",
+        "name": "System Bond 2.0000% 24/10/2016",
+        "type": "SYSTEM_REPO"
+      },
+      "name": "System Bond 2.0000% 24/10/2016",
+      "id": "61c24773-9cf6-4444-956f-36f15ff21fb8"
+    }
   },
   "/api/search/users/todo": {
     "status": 200,

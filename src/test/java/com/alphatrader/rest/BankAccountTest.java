@@ -55,6 +55,7 @@ public class BankAccountTest {
         BankAccount testAccount = BankAccount.getUserBankAccount();
         BankAccount reference = gson.fromJson(httpResponder.getJsonForRequest("/api/bankaccounts/"),
             BankAccount.class);
+        assertNotNull(testAccount);
         assertEquals(reference, testAccount);
     }
 
