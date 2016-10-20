@@ -14,6 +14,8 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.fail;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -86,6 +88,9 @@ public class HttpResponder {
     }
 
     public String getJsonForRequest(String key) {
+        if(!getResponses.containsKey(key)) {
+            fail("No response for '" + key + "' found");
+        }
         return getResponses.get(key).content.toString();
     }
 

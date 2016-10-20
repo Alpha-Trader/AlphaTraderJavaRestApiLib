@@ -6,13 +6,57 @@
       "id": "443db0b7-c399-4252-8166-061d8de1d634"
     }
   },
-  "/api/bankinglicense/":  {
+  "/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f":  {
     "status": 200,
-    "content": {}
+    "content": {
+      "startDate": 1475335931401,
+      "company": {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "securityIdentifier": "STK0F513",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      },
+      "id": "257e1004-8c5e-4d09-beca-8377e8be070c"
+    }
   },
-  "/api/bankinglicense/STK0F513": {
+  "/api/bankinglicense/257e1004-8c5e-4d09-beca-8377e8be070c": {
     "status": 200,
-    "content": {}
+    "content": {
+      "startDate": 1475335931401,
+      "company": {
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "securityIdentifier": "STK0F513",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      },
+      "id": "257e1004-8c5e-4d09-beca-8377e8be070c"
+    }
   },
   "/api/bonds/": {
     "status": 200,

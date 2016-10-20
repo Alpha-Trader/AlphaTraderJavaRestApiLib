@@ -31,6 +31,7 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class BankingLicenseTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -56,16 +57,6 @@ public class BankingLicenseTest {
         "    \"id\": \"81dcf5a1-b0b6-462a-a40c-e374619edc2f\"\n" +
         "  },\n" +
         "  \"id\": \"257e1004-8c5e-4d09-beca-8377e8be070c\"\n" +
-        "}";
-
-    private final static String NO_LICENSE = "{\n" +
-        "  \"code\": 400,\n" +
-        "  \"messagePrototype\": {\n" +
-        "    \"message\": \"Banking license does not exist\",\n" +
-        "    \"substitutions\": [],\n" +
-        "    \"filledString\": \"Banking license does not exist\"\n" +
-        "  },\n" +
-        "  \"message\": \"Banking license does not exist\"\n" +
         "}";
 
     private static final ZonedDateTime testDate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1475335931401L),
@@ -95,25 +86,7 @@ public class BankingLicenseTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        HttpResponseFactory factory = new DefaultHttpResponseFactory();
-        org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(
-            HttpVersion.HTTP_1_1, HttpStatus.SC_OK, null), null);
-        response.setEntity(new StringEntity(JSON));
-        HttpResponse<String> httpResponse = new HttpResponse<>(response, String.class);
-
-        org.apache.http.HttpResponse emptyResponse = factory.newHttpResponse(new BasicStatusLine(
-            HttpVersion.HTTP_1_1, HttpStatus.SC_BAD_REQUEST, null), null);
-        emptyResponse.setEntity(new StringEntity(NO_LICENSE));
-        HttpResponse<String> emptyHttpResponse = new HttpResponse<>(emptyResponse, String.class);
-
-        Http mockHttp = mock(Http.class);
-        when(mockHttp.get(eq("/api/bankinglicense/?companyId=99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d")))
-            .thenReturn(emptyHttpResponse);
-        when(mockHttp.get(eq("/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f")))
-            .thenReturn(httpResponse);
-        when(mockHttp.get(eq("/api/bankinglicense/257e1004-8c5e-4d09-beca-8377e8be070c")))
-            .thenReturn(httpResponse);
-        Http.setInstance(mockHttp);
+        Http.setInstance(httpResponder.getMock());
     }
 
     @Before
@@ -138,12 +111,19 @@ public class BankingLicenseTest {
 
     @Test
     public void testGetById() throws Exception {
-        assertEquals(toTest, BankingLicense.getBankingLicenseById("257e1004-8c5e-4d09-beca-8377e8be070c"));
+        BankingLicense reference = gson.fromJson(httpResponder
+            .getJsonForRequest("/api/bankinglicense/257e1004-8c5e-4d09-beca-8377e8be070c"),
+            BankingLicense.class);
+        assertEquals(reference, BankingLicense
+            .getBankingLicenseById("257e1004-8c5e-4d09-beca-8377e8be070c"));
     }
 
     @Test
     public void testGetByCompany() throws Exception {
-        assertEquals(toTest, BankingLicense.getBankingLicenseOfCompany(testCompany));
+        BankingLicense reference = gson.fromJson(httpResponder
+                .getJsonForRequest("/api/bankinglicense/?companyId=81dcf5a1-b0b6-462a-a40c-e374619edc2f"),
+            BankingLicense.class);
+        assertEquals(reference, BankingLicense.getBankingLicenseOfCompany(testCompany));
     }
 
 
