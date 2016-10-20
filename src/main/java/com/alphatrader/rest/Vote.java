@@ -10,17 +10,17 @@ public class Vote {
     /**
      * The answer
      */
-    private Answer type;
+    private final Answer type = null;
 
     /**
      * The number of voices.
      */
-    private Integer voices;
+    private final Integer voices = null;
 
     /**
      * The voter.
      */
-    private User voter;
+    private final User voter = null;
 
     /**
      * @return the result

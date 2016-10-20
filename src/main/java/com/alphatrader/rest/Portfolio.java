@@ -13,6 +13,7 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
+@SuppressWarnings("ConstantConditions")
 public class Portfolio {
     /**
      * The logger for this class.
@@ -30,7 +31,7 @@ public class Portfolio {
     /**
      * A list of all positions in this portfolio.
      */
-    private final Position[] positions = null;
+    private final Position[] positions = new Position[0];
 
     /**
      * Fetches a company's portfolio from the server.

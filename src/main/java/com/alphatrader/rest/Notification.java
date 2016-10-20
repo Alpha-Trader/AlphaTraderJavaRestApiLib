@@ -77,7 +77,7 @@ public class Notification {
         return getMultipleNotificationsFromApi("");
     }
 
-    /**
+    /*
      * Marks all notifications as read.
      */
     /*public static void markAllAsRead() {

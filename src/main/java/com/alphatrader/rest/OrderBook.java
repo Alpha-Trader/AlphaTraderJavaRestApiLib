@@ -84,8 +84,8 @@ public class OrderBook {
         return "OrderBook{"
             + "maxBuySize=" + maxBuySize
             + ", maxSellSize=" + maxSellSize
-            + ", buyEntries=" + buyEntries
-            + ", sellEntries=" + sellEntries
+            + ", buyEntries=" + Arrays.toString(buyEntries)
+            + ", sellEntries=" + Arrays.toString(sellEntries)
             + '}';
     }
 }

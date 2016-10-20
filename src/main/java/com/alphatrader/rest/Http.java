@@ -111,7 +111,7 @@ class Http {
 
             if (response != null && response.getStatus() == 200) {
                 myReturn.addAll(gson.fromJson(response.getBody(),
-                    new ArrayListTypeToken<Type>(typeParameterClass)));
+                    new ArrayListTypeToken<>(typeParameterClass)));
             }
         }
         catch (UnirestException ue) {
@@ -174,7 +174,7 @@ class Http {
      * @param <T> the type of object you want to store
      */
     private static class ArrayListTypeToken<T> implements ParameterizedType {
-        private Class<?> wrapped;
+        private final Class<?> wrapped;
 
         ArrayListTypeToken(Class<T> wrapped) {
             this.wrapped = wrapped;
