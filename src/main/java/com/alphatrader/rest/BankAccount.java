@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -12,11 +10,6 @@ import org.jetbrains.annotations.Nullable;
  */
 @SuppressWarnings("ConstantConditions")
 public class BankAccount {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(BankAccount.class);
-
     /**
      * The amount of cash stored in this bank account.
      */

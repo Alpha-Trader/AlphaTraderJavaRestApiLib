@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
@@ -17,11 +15,6 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class CompanyProfile {
     /**
-     * The logger for this class. Use this to write messages to the console.
-     */
-    private static final Log log = LogFactory.getLog(CompanyProfile.class);
-
-    /**
      * The ceo employment agreement.
      */
     private final EmploymentAgreement ceoEmploymentAgreement = null;
@@ -34,17 +27,17 @@ public class CompanyProfile {
     /**
      * The issued bonds of this company.
      */
-    private final Bond[] issuedBonds = null;
+    private final Bond[] issuedBonds = new Bond[0];
 
     /**
      * The last trades made by this company.
      */
-    private final SecurityOrderLog[] lastTrades = null;
+    private final SecurityOrderLog[] lastTrades = new SecurityOrderLog[0];
 
     /**
      * The sponsored listings.
      */
-    private final SecuritySponsorship[] sponsoredListings = null;
+    private final SecuritySponsorship[] sponsoredListings = new SecuritySponsorship[0];
 
     /**
      * The current price spread.
@@ -54,7 +47,7 @@ public class CompanyProfile {
     /**
      * The designated sponsors of this company.
      */
-    private final SecuritySponsorship[] designatedSponsors = null;
+    private final SecuritySponsorship[] designatedSponsors = new SecuritySponsorship[0];
 
     /**
      * The last order of this company.
@@ -74,7 +67,7 @@ public class CompanyProfile {
     /**
      * The trading prices of the company for the last 14 days.
      */
-    private final LastPrice[] prices14d = null;
+    private final LastPrice[] prices14d = new LastPrice[0];
 
     /**
      * The current market cap for the company.

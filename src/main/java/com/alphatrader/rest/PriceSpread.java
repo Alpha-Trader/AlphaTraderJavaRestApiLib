@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,11 +14,6 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class PriceSpread {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(PriceSpread.class);
-
     /**
      * The current ask size.
      */

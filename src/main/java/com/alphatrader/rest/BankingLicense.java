@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
@@ -14,11 +12,6 @@ import java.time.ZonedDateTime;
  */
 @SuppressWarnings("ConstantConditions")
 public class BankingLicense {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(BankingLicense.class);
-
     /**
      * The date the license has been issued.
      */

@@ -1,15 +1,9 @@
 package com.alphatrader.rest;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,22 +14,6 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class Company {
-    /**
-     * The logger for this company.
-     */
-    private static final Log log = LogFactory.getLog(Company.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new Gson();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final Type listType = new TypeToken<ArrayList<Company>>() {
-    }.getType();
-
     /**
      * The unique company identifier.
      */

@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -13,11 +11,6 @@ import java.util.List;
  * @version 1.0.0
  */
 public final class Partner {
-    /**
-     * The logger for this class. Use this to write messages to the console.
-     */
-    private static final Log log = LogFactory.getLog(Partner.class);
-
     /**
      * Avoid utility class instantiation.
      */

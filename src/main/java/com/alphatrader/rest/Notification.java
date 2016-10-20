@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -15,12 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class Notification {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Notification.class);
-
-    /**
+   /**
      * The content of the notification.
      */
     private final Message content = null;

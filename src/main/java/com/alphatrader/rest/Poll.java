@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,11 +16,6 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class Poll {
     /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Poll.class);
-
-    /**
      * The abstention rule.
      */
     private final AbstentionRule abstentionRule = null;
@@ -37,7 +30,7 @@ public class Poll {
     /**
      * All votes.
      */
-    private final Vote[] votes = null;
+    private final Vote[] votes = new Vote[0];
     /**
      * The motion text, describing the poll.
      */
@@ -53,7 +46,7 @@ public class Poll {
     /**
      * All group members of this poll.
      */
-    private final VotingGroupMember[] group = null;
+    private final VotingGroupMember[] group = new VotingGroupMember[0];
     /**
      * The percentage of votes already cast.
      */

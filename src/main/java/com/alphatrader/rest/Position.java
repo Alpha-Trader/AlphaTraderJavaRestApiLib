@@ -1,8 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  * Represents a single portfolio position in the game.
  *
@@ -11,11 +8,6 @@ import org.apache.commons.logging.LogFactory;
  */
 @SuppressWarnings("ConstantConditions")
 public class Position {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Position.class);
-
     /**
      * The security identifier of this position.
      */

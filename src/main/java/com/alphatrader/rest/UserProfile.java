@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -16,34 +14,29 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class UserProfile {
     /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(UserProfile.class);
-
-    /**
      * All cash transfer logs for this user's interactions.
      */
-    private final CashTransferLog[] cashTransferLogs = null;
+    private final CashTransferLog[] cashTransferLogs = new CashTransferLog[0];
 
     /**
      * All employment agreements of this user.
      */
-    private final EmploymentAgreement[] employments = null;
+    private final EmploymentAgreement[] employments = new EmploymentAgreement[0];
 
     /**
      * All polls that concern this user.
      */
-    private final Poll[] polls = null;
+    private final Poll[] polls = new Poll[0];
 
     /**
      * All polls that have been initiated by this user.
      */
-    private final Poll[] initiatedPolls = null;
+    private final Poll[] initiatedPolls = new Poll[0];
 
     /**
      * All salary payments this user has gotten.
      */
-    private final SalaryPayment[] salaryPayments = null;
+    private final SalaryPayment[] salaryPayments = new SalaryPayment[0];
 
     /**
      * The user with this profile.

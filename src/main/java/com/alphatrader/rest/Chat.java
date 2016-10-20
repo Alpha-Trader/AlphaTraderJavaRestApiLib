@@ -1,11 +1,10 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,11 +16,6 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class Chat {
     /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Chat.class);
-
-    /**
      * The date the chat was created.
      */
     private final ZonedDateTime dateCreated = null;
@@ -32,7 +26,7 @@ public class Chat {
     /**
      * All participants in this chat room.
      */
-    private final List<User> participants = null;
+    private final User[] participants = new User[0];
     /**
      * The readonly flag. If set, only the owner can send messages.
      */
@@ -110,7 +104,7 @@ public class Chat {
      * @return a list of all participants
      */
     public List<User> getParticipants() {
-        return participants;
+        return Arrays.asList(participants);
     }
 
     /**
@@ -146,7 +140,7 @@ public class Chat {
         return "Chat{"
             + "dateCreated=" + dateCreated
             + ", lastMessage=" + lastMessage
-            + ", participants=" + participants
+            + ", participants=" + Arrays.toString(participants)
             + ", readonly=" + readonly
             + ", chatName='" + chatName + '\''
             + ", owner=" + owner

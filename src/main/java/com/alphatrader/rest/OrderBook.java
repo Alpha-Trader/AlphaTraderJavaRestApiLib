@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -15,12 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class OrderBook {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Order.class);
-
-    /**
+   /**
      * The maximum buy size.
      */
     private final Double maxBuySize = null;
@@ -33,12 +26,12 @@ public class OrderBook {
     /**
      * List of buy orders.
      */
-    private final Order[] buyEntries = null;
+    private final Order[] buyEntries = new Order[0];
 
     /**
      * List of sell orders.
      */
-    private final Order[] sellEntries = null;
+    private final Order[] sellEntries = new Order[0];
 
     /**
      * Returns the order book for the specified company.

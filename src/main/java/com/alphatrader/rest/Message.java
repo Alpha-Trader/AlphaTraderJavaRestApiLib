@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,11 +17,6 @@ import java.util.List;
 @SuppressWarnings("ConstantConditions")
 public class Message {
     /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(MainInterestRate.class);
-
-    /**
      * The i18n string.
      */
     private final String message = null;
@@ -31,7 +24,7 @@ public class Message {
     /**
      * The substitutions for the i18n string.
      */
-    private final String[] substitutions = null;
+    private final String[] substitutions = new String[0];
 
     /**
      * The substituded message.

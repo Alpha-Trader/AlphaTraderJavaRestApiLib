@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -15,11 +13,6 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class Portfolio {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Portfolio.class);
-
     /**
      * The amount of cash in this portfolio.
      */

@@ -1,10 +1,5 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,17 +14,6 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class Listing {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(Listing.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
-
     /**
      * The start date of the listing.
      */

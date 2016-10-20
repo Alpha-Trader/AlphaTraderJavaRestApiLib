@@ -1,7 +1,5 @@
 package com.alphatrader.rest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -15,11 +13,6 @@ import java.util.List;
  */
 @SuppressWarnings("ConstantConditions")
 public class HourlyMarketStatistics {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(LastPrice.class);
-
     /**
      * The unique id of the statistics object.
      */

@@ -5,8 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,11 +22,6 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings({"ConstantConditions", "SameParameterValue"})
 public class SecurityOrderLog {
-    /**
-     * The logger for this class.
-     */
-    private static final Log log = LogFactory.getLog(SecurityOrderLog.class);
-
     /**
      * Gson instance for deserialization.
      */
