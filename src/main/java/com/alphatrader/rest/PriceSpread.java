@@ -17,7 +17,7 @@ public class PriceSpread {
     /**
      * The current ask size.
      */
-    private final Integer askSize = null;
+    private final Long askSize = null;
 
     /**
      * The current asking price.
@@ -27,7 +27,7 @@ public class PriceSpread {
     /**
      * The current bid size.
      */
-    private final Integer bidSize = null;
+    private final Long bidSize = null;
 
     /**
      * The current bid price.
@@ -99,7 +99,7 @@ public class PriceSpread {
     /**
      * @return the current ask size
      */
-    public Integer getAskSize() {
+    public Long getAskSize() {
         return askSize;
     }
 
@@ -113,7 +113,7 @@ public class PriceSpread {
     /**
      * @return the current bid size
      */
-    public Integer getBidSize() {
+    public Long getBidSize() {
         return bidSize;
     }
 

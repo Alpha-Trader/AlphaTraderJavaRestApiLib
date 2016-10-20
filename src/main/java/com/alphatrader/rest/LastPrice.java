@@ -18,7 +18,7 @@ public class LastPrice {
     /**
      * The last trade price of this position.
      */
-    private final Double value = null;
+    private final String value = null;
 
     /**
      * @return the time this trade took place
@@ -31,7 +31,7 @@ public class LastPrice {
      * @return the value of this trade
      */
     public Double getValue() {
-        return this.value;
+        return Double.valueOf(this.value.replaceAll("%", "").trim());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class LastPrice {
 
         LastPrice lastPrice = (LastPrice) o;
 
-        if (Double.compare(lastPrice.value, value) != 0) {
+        if (Double.compare(lastPrice.getValue(), getValue()) != 0) {
             return false;
         }
         return date != null ? date.equals(lastPrice.date) : lastPrice.date == null;
@@ -65,7 +65,7 @@ public class LastPrice {
         int result;
         long temp;
         result = date != null ? date.hashCode() : 0;
-        temp = Double.doubleToLongBits(value);
+        temp = Double.doubleToLongBits(this.getValue());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }

@@ -147,7 +147,7 @@ public class BondTest {
 
     @Test
     public void testGetVolume() throws Exception {
-        assertEquals(100000, toTest.getVolume());
+        assertEquals(100000, toTest.getVolume(), 0.0001);
     }
 
     @Test

@@ -62,7 +62,7 @@ public class VotingGroupMemberTest {
 
     @Test
     public void getNumberOfVoices() throws Exception {
-        assertEquals(Integer.valueOf(1000), toTest.getNumberOfVoices());
+        assertEquals(Long.valueOf(1000), toTest.getNumberOfVoices());
     }
 
     @Test

@@ -143,102 +143,102 @@ public class HourlyMarketStatisticsTest {
 
     @Test
     public void getNumberOfActiveListings() throws Exception {
-        assertEquals(Integer.valueOf(11), toTest.getNumberOfActiveOtherListings());
+        assertEquals(Long.valueOf(11), toTest.getNumberOfActiveOtherListings());
     }
 
     @Test
     public void getNumberOfBanks() throws Exception {
-        assertEquals(Integer.valueOf(12), toTest.getNumberOfBanks());
+        assertEquals(Long.valueOf(12), toTest.getNumberOfBanks());
     }
 
     @Test
     public void getNumberOfBondOrders() throws Exception {
-        assertEquals(Integer.valueOf(13), toTest.getNumberOfBondOrders());
+        assertEquals(Long.valueOf(13), toTest.getNumberOfBondOrders());
     }
 
     @Test
     public void getNumberOfCashoutPolls() throws Exception {
-        assertEquals(Integer.valueOf(14), toTest.getNumberOfCashoutPolls());
+        assertEquals(Long.valueOf(14), toTest.getNumberOfCashoutPolls());
     }
 
     @Test
     public void getNumberOfCommittedShares() throws Exception {
-        assertEquals(Integer.valueOf(15), toTest.getNumberOfCommittedShares());
+        assertEquals(Long.valueOf(15), toTest.getNumberOfCommittedShares());
     }
 
     @Test
     public void getNumberOfCompanies() throws Exception {
-        assertEquals(Integer.valueOf(16), toTest.getNumberOfCompanies());
+        assertEquals(Long.valueOf(16), toTest.getNumberOfCompanies());
     }
 
     @Test
     public void getNumberOfDesignatedSponsors() throws Exception {
-        assertEquals(Integer.valueOf(17), toTest.getNumberOfDesignatedSponsors());
+        assertEquals(Long.valueOf(17), toTest.getNumberOfDesignatedSponsors());
     }
 
     @Test
     public void getNumberOfLiquidationPolls() throws Exception {
-        assertEquals(Integer.valueOf(18), toTest.getNumberOfLiquidationPolls());
+        assertEquals(Long.valueOf(18), toTest.getNumberOfLiquidationPolls());
     }
 
     @Test
     public void getNumberOfOrders() throws Exception {
-        assertEquals(Integer.valueOf(19), toTest.getNumberOfOrders());
+        assertEquals(Long.valueOf(19), toTest.getNumberOfOrders());
     }
 
     @Test
     public void getNumberOfOrders24h() throws Exception {
-        assertEquals(Integer.valueOf(20), toTest.getNumberOfOrders24h());
+        assertEquals(Long.valueOf(20), toTest.getNumberOfOrders24h());
     }
 
     @Test
     public void getNumberOfOtcOrders() throws Exception {
-        assertEquals(Integer.valueOf(21), toTest.getNumberOfOtcOrders());
+        assertEquals(Long.valueOf(21), toTest.getNumberOfOtcOrders());
     }
 
     @Test
     public void getNumberOfOtherListings() throws Exception {
-        assertEquals(Integer.valueOf(22), toTest.getNumberOfOtherListings());
+        assertEquals(Long.valueOf(22), toTest.getNumberOfOtherListings());
     }
 
     @Test
     public void getNumberOfOtherOrders() throws Exception {
-        assertEquals(Integer.valueOf(23), toTest.getNumberOfOtherOrders());
+        assertEquals(Long.valueOf(23), toTest.getNumberOfOtherOrders());
     }
 
     @Test
     public void getNumberOfPartnerUsers() throws Exception {
-        assertEquals(Integer.valueOf(24), toTest.getNumberOfPartnerUsers());
+        assertEquals(Long.valueOf(24), toTest.getNumberOfPartnerUsers());
     }
 
     @Test
     public void getNumberOfPremiumUsers() throws Exception {
-        assertEquals(Integer.valueOf(25), toTest.getNumberOfPremiumUsers());
+        assertEquals(Long.valueOf(25), toTest.getNumberOfPremiumUsers());
     }
 
     @Test
     public void getNumberOfRepoOrders() throws Exception {
-        assertEquals(Integer.valueOf(26), toTest.getNumberOfRepoOrders());
+        assertEquals(Long.valueOf(26), toTest.getNumberOfRepoOrders());
     }
 
     @Test
     public void getNumberOfStockOrders() throws Exception {
-        assertEquals(Integer.valueOf(27), toTest.getNumberOfStockOrders());
+        assertEquals(Long.valueOf(27), toTest.getNumberOfStockOrders());
     }
 
     @Test
     public void getNumberOfSystemBondOrders() throws Exception {
-        assertEquals(Integer.valueOf(28), toTest.getNumberOfSystemBondOrders());
+        assertEquals(Long.valueOf(28), toTest.getNumberOfSystemBondOrders());
     }
 
     @Test
     public void getNumberOfSystemRepoOrders() throws Exception {
-        assertEquals(Integer.valueOf(29), toTest.getNumberOfSystemRepoOrders());
+        assertEquals(Long.valueOf(29), toTest.getNumberOfSystemRepoOrders());
     }
 
     @Test
     public void getNumberOfUsers() throws Exception {
-        assertEquals(Integer.valueOf(30), toTest.getNumberOfUsers());
+        assertEquals(Long.valueOf(30), toTest.getNumberOfUsers());
     }
 
     @Test

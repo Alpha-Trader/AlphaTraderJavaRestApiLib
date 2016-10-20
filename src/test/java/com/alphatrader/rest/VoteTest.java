@@ -52,7 +52,7 @@ public class VoteTest {
 
     @Test
     public void getVoices() throws Exception {
-        assertEquals(Integer.valueOf(96576), toTest.getVoices());
+        assertEquals(Long.valueOf(96576), toTest.getVoices());
     }
 
     @Test

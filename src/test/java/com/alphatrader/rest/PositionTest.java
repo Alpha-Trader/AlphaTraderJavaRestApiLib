@@ -68,7 +68,7 @@ public class PositionTest {
 
     @Test
     public void testGetNumberOfShares() throws Exception {
-        assertEquals(Integer.valueOf(1712), toTest.getNumberOfShares());
+        assertEquals(Long.valueOf(1712), toTest.getNumberOfShares());
     }
 
     @Test

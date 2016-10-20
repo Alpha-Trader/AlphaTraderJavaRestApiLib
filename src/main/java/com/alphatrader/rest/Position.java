@@ -21,7 +21,7 @@ public class Position {
     /**
      * The number of shares held in the portfolio.
      */
-    private final Integer numberOfShares = null;
+    private final Long numberOfShares = null;
 
     /**
      * The overall volume of this position.
@@ -45,7 +45,7 @@ public class Position {
     /**
      * @return the number of shares
      */
-    public Integer getNumberOfShares() {
+    public Long getNumberOfShares() {
         return numberOfShares;
     }
 

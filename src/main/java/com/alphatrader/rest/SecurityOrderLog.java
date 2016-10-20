@@ -47,7 +47,7 @@ public class SecurityOrderLog {
     /**
      * The number of shares.
      */
-    private final Integer numberOfShares = null;
+    private final Double numberOfShares = null;
 
     /**
      * The volume.
@@ -147,7 +147,7 @@ public class SecurityOrderLog {
     /**
      * @return the number of shares
      */
-    public Integer getNumberOfShares() {
+    public Double getNumberOfShares() {
         return numberOfShares;
     }
 

@@ -159,7 +159,7 @@ public class PollTest {
 
     @Test
     public void getTotalNumberOfVoices() throws Exception {
-        assertEquals(Integer.valueOf(107576), toTest.getTotalNumberOfVoices());
+        assertEquals(Long.valueOf(107576), toTest.getTotalNumberOfVoices());
     }
 
     @Test
@@ -252,7 +252,7 @@ public class PollTest {
 
     @Test
     public void getTotalNumberOfCastVotes() throws Exception {
-        assertEquals(Integer.valueOf(96576), toTest.getTotalNumberOfCastVotes());
+        assertEquals(Long.valueOf(96576), toTest.getTotalNumberOfCastVotes());
     }
 
     @Test

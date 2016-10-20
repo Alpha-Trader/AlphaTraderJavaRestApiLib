@@ -16,7 +16,7 @@ public class Vote {
     /**
      * The number of voices.
      */
-    private final Integer voices = null;
+    private final Long voices = null;
 
     /**
      * The voter.
@@ -33,7 +33,7 @@ public class Vote {
     /**
      * @return the number of voices
      */
-    public Integer getVoices() {
+    public Long getVoices() {
         return voices;
     }
 

@@ -75,7 +75,7 @@ public class OrderTest {
 
     @Test
     public void getNumberOfShares() throws Exception {
-        assertEquals(39359, toTest.getNumberOfShares());
+        assertEquals(Long.valueOf(39359), toTest.getNumberOfShares());
     }
 
     @Test

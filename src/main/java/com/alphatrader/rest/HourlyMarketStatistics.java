@@ -81,102 +81,102 @@ public class HourlyMarketStatistics {
     /**
      * The number of active listings.
      */
-    private final Integer numberOfActiveOtherListings = null;
+    private final Long numberOfActiveOtherListings = null;
 
     /**
      * The number of banks.
      */
-    private final Integer numberOfBanks = null;
+    private final Long numberOfBanks = null;
 
     /**
      * The number of bond orders.
      */
-    private final Integer numberOfBondOrders = null;
+    private final Long numberOfBondOrders = null;
 
     /**
      * The number of cashout polls.
      */
-    private final Integer numberOfCashoutPolls = null;
+    private final Long numberOfCashoutPolls = null;
 
     /**
      * The number of committed shares.
      */
-    private final Integer numberOfCommittedShares = null;
+    private final Long numberOfCommittedShares = null;
 
     /**
      * The number of companies.
      */
-    private final Integer numberOfCompanies = null;
+    private final Long numberOfCompanies = null;
 
     /**
      * The number of designated sponsors.
      */
-    private final Integer numberOfDesignatedSponsors = null;
+    private final Long numberOfDesignatedSponsors = null;
 
     /**
      * The number of liquidation polls.
      */
-    private final Integer numberOfLiquidationPolls = null;
+    private final Long numberOfLiquidationPolls = null;
 
     /**
      * The number of orders.
      */
-    private final Integer numberOfOrders = null;
+    private final Long numberOfOrders = null;
 
     /**
      * The number of orders in the last 24 hours.
      */
-    private final Integer numberOfOrders24h = null;
+    private final Long numberOfOrders24h = null;
 
     /**
      * The number of over the counter orders.
      */
-    private final Integer numberOfOtcOrders = null;
+    private final Long numberOfOtcOrders = null;
 
     /**
      * The number of other listings.
      */
-    private final Integer numberOfOtherListings = null;
+    private final Long numberOfOtherListings = null;
 
     /**
      * The number of other orders.
      */
-    private final Integer numberOfOtherOrders = null;
+    private final Long numberOfOtherOrders = null;
 
     /**
      * The number of users with partner status.
      */
-    private final Integer numberOfPartnerUsers = null;
+    private final Long numberOfPartnerUsers = null;
 
     /**
      * The number of users with premium status.
      */
-    private final Integer numberOfPremiumUsers = null;
+    private final Long numberOfPremiumUsers = null;
 
     /**
      * The number of repo orders.
      */
-    private final Integer numberOfRepoOrders = null;
+    private final Long numberOfRepoOrders = null;
 
     /**
      * The number of stock orders.
      */
-    private final Integer numberOfStockOrders = null;
+    private final Long numberOfStockOrders = null;
 
     /**
      * The number of system bond orders.
      */
-    private final Integer numberOfSystemBondOrders = null;
+    private final Long numberOfSystemBondOrders = null;
 
     /**
      * The number of system repo orders.
      */
-    private final Integer numberOfSystemRepoOrders = null;
+    private final Long numberOfSystemRepoOrders = null;
 
     /**
      * The number of users.
      */
-    private final Integer numberOfUsers = null;
+    private final Long numberOfUsers = null;
 
     /**
      * The order volume.
@@ -302,140 +302,140 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of active listings
      */
-    public Integer getNumberOfActiveOtherListings() {
+    public Long getNumberOfActiveOtherListings() {
         return numberOfActiveOtherListings;
     }
 
     /**
      * @return the number of banks
      */
-    public Integer getNumberOfBanks() {
+    public Long getNumberOfBanks() {
         return numberOfBanks;
     }
 
     /**
      * @return the number of bond orders
      */
-    public Integer getNumberOfBondOrders() {
+    public Long getNumberOfBondOrders() {
         return numberOfBondOrders;
     }
 
     /**
      * @return the number of cashout polls
      */
-    public Integer getNumberOfCashoutPolls() {
+    public Long getNumberOfCashoutPolls() {
         return numberOfCashoutPolls;
     }
 
     /**
      * @return the number of committed shares
      */
-    public Integer getNumberOfCommittedShares() {
+    public Long getNumberOfCommittedShares() {
         return numberOfCommittedShares;
     }
 
     /**
      * @return the number of companies
      */
-    public Integer getNumberOfCompanies() {
+    public Long getNumberOfCompanies() {
         return numberOfCompanies;
     }
 
     /**
      * @return the number of designated sponsors
      */
-    public Integer getNumberOfDesignatedSponsors() {
+    public Long getNumberOfDesignatedSponsors() {
         return numberOfDesignatedSponsors;
     }
 
     /**
      * @return the number of liquidation polls
      */
-    public Integer getNumberOfLiquidationPolls() {
+    public Long getNumberOfLiquidationPolls() {
         return numberOfLiquidationPolls;
     }
 
     /**
      * @return the number of orders
      */
-    public Integer getNumberOfOrders() {
+    public Long getNumberOfOrders() {
         return numberOfOrders;
     }
 
     /**
      * @return the number of orders in the last 24 hours
      */
-    public Integer getNumberOfOrders24h() {
+    public Long getNumberOfOrders24h() {
         return numberOfOrders24h;
     }
 
     /**
      * @return the number of over the counter orders
      */
-    public Integer getNumberOfOtcOrders() {
+    public Long getNumberOfOtcOrders() {
         return numberOfOtcOrders;
     }
 
     /**
      * @return the number of other listings
      */
-    public Integer getNumberOfOtherListings() {
+    public Long getNumberOfOtherListings() {
         return numberOfOtherListings;
     }
 
     /**
      * @return the number of other orders
      */
-    public Integer getNumberOfOtherOrders() {
+    public Long getNumberOfOtherOrders() {
         return numberOfOtherOrders;
     }
 
     /**
      * @return the number of users with partner status
      */
-    public Integer getNumberOfPartnerUsers() {
+    public Long getNumberOfPartnerUsers() {
         return numberOfPartnerUsers;
     }
 
     /**
      * @return the number of users with premium status
      */
-    public Integer getNumberOfPremiumUsers() {
+    public Long getNumberOfPremiumUsers() {
         return numberOfPremiumUsers;
     }
 
     /**
      * @return the number of repo orders
      */
-    public Integer getNumberOfRepoOrders() {
+    public Long getNumberOfRepoOrders() {
         return numberOfRepoOrders;
     }
 
     /**
      * @return the number of stock orders
      */
-    public Integer getNumberOfStockOrders() {
+    public Long getNumberOfStockOrders() {
         return numberOfStockOrders;
     }
 
     /**
      * @return the number of system bond orders
      */
-    public Integer getNumberOfSystemBondOrders() {
+    public Long getNumberOfSystemBondOrders() {
         return numberOfSystemBondOrders;
     }
 
     /**
      * @return the number of system repo orders
      */
-    public Integer getNumberOfSystemRepoOrders() {
+    public Long getNumberOfSystemRepoOrders() {
         return numberOfSystemRepoOrders;
     }
 
     /**
      * @return the number of users
      */
-    public Integer getNumberOfUsers() {
+    public Long getNumberOfUsers() {
         return numberOfUsers;
     }
 

@@ -49,6 +49,10 @@ public class Company {
      */
     private final URL logoUrl = null;
 
+    private Portfolio portfolio;
+
+    private CompanyProfile profile;
+
     /**
      * Fetches all companies currently employing the given user as a CEO.
      *
@@ -194,6 +198,27 @@ public class Company {
      */
     public Listing getListing() {
         return listing;
+    }
+
+    /**
+     * @return the company portfolio
+     */
+    public Portfolio getPortfolio() {
+        if (this.portfolio == null) {
+            portfolio = Portfolio.getCompanyPortfolio(this);
+        }
+        return this.portfolio;
+
+    }
+
+    /**
+     * @return the company profile
+     */
+    public CompanyProfile getProfile() {
+        if (this.profile == null) {
+            this.profile = CompanyProfile.getByCompany(this);
+        }
+        return this.profile;
     }
 
     @Override

@@ -37,7 +37,7 @@ public class Order {
     /**
      * Number of shares entailed in Order
      */
-    private final Integer numberOfShares = null;
+    private final Long numberOfShares = null;
 
     /**
      * The name of the counter party.
@@ -208,7 +208,7 @@ public class Order {
     /**
      * @return the number of shares
      */
-    public int getNumberOfShares() {
+    public Long getNumberOfShares() {
         return numberOfShares;
     }
 

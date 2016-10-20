@@ -16,7 +16,7 @@ public class VotingGroupMember {
     /**
      * The number of votes.
      */
-    private final Integer numberOfVoices = null;
+    private final Long numberOfVoices = null;
 
     /**
      * @return the group member
@@ -28,7 +28,7 @@ public class VotingGroupMember {
     /**
      * @return the number of votes
      */
-    public Integer getNumberOfVoices() {
+    public Long getNumberOfVoices() {
         return numberOfVoices;
     }
 

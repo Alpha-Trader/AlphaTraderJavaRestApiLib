@@ -62,7 +62,7 @@ public class CompanyProfile {
     /**
      * The number of outstanding shares.
      */
-    private final Integer outstandingShares = null;
+    private final Long outstandingShares = null;
 
     /**
      * The trading prices of the company for the last 14 days.
@@ -197,7 +197,7 @@ public class CompanyProfile {
     /**
      * @return the number of outstanding shares
      */
-    public Integer getOutstandingShares() {
+    public Long getOutstandingShares() {
         return outstandingShares;
     }
 

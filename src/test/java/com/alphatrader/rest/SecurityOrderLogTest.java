@@ -60,7 +60,7 @@ public class SecurityOrderLogTest {
 
     @Test
     public void getNumberOfShares() throws Exception {
-        assertEquals(Integer.valueOf(12), toTest.getNumberOfShares());
+        assertEquals(12.0, toTest.getNumberOfShares(), 0.0001);
     }
 
     @Test

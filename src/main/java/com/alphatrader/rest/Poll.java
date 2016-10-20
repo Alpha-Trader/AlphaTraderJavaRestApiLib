@@ -26,7 +26,7 @@ public class Poll {
     /**
      * The total number of voices.
      */
-    private final Integer totalNumberOfVoices = null;
+    private final Long totalNumberOfVoices = null;
     /**
      * All votes.
      */
@@ -54,7 +54,7 @@ public class Poll {
     /**
      * The total number of votes already cast.
      */
-    private final Integer totalNumberOfCastVotes = null;
+    private final Long totalNumberOfCastVotes = null;
     /**
      * The initiator of the poll.
      */
@@ -131,7 +131,7 @@ public class Poll {
     /**
      * @return the total number of voices
      */
-    public Integer getTotalNumberOfVoices() {
+    public Long getTotalNumberOfVoices() {
         return totalNumberOfVoices;
     }
 
@@ -180,7 +180,7 @@ public class Poll {
     /**
      * @return the total number of votes cast
      */
-    public Integer getTotalNumberOfCastVotes() {
+    public Long getTotalNumberOfCastVotes() {
         return totalNumberOfCastVotes;
     }
 

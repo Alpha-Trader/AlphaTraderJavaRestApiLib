@@ -22,7 +22,7 @@ public class Bond {
     /**
      * The bond's volume.
      */
-    private final Integer volume = null;
+    private final Double volume = null;
 
     /**
      * The overall interest rate of the bond.
@@ -165,7 +165,7 @@ public class Bond {
     /**
      * @return the volume
      */
-    public int getVolume() {
+    public Double getVolume() {
         return volume;
     }
 
