@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.http.HttpResponseFactory;
+import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.DefaultHttpResponseFactory;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Matchers.endsWith;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -81,6 +83,15 @@ public class HttpResponder {
             catch (UnirestException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
+        }
+        org.apache.http.HttpResponse response = factory.newHttpResponse(
+            new BasicStatusLine(HttpVersion.HTTP_1_1, HttpStatus.SC_BAD_REQUEST, ""), null);
+        HttpResponse<String> httpResponse = new HttpResponse<>(response, String.class);
+        try {
+            when(mockHttp.get(endsWith("invalid"))).thenReturn(httpResponse);
+        }
+        catch (UnirestException ue) {
+            ue.printStackTrace();
         }
 
         return mockHttp;
