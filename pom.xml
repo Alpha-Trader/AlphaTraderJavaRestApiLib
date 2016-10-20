@@ -72,14 +72,16 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
-                    <check />
+                    <check/>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.1</version>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repository</altDeploymentRepository>
+                    <altDeploymentRepository>
+                        internal.repo::default::file://${project.build.directory}/mvn-repository
+                    </altDeploymentRepository>
                 </configuration>
             </plugin>
             <plugin>
@@ -91,7 +93,9 @@
                     <noJekyll>true</noJekyll>
                     <outputDirectory>${project.build.directory}/mvn-repository</outputDirectory>
                     <branch>refs/heads/development</branch>
-                    <includes><include>**/*</include></includes>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
                     <repositoryName>maven-repository</repositoryName>
                     <repositoryOwner>Alpha-Trader</repositoryOwner>
                 </configuration>
@@ -113,7 +117,8 @@
                         <id>validate</id>
                         <phase>validate</phase>
                         <configuration>
-                            <configLocation>${project.basedir}/src/test/resources/checkstyle.xml</configLocation>
+                            <configLocation>${project.basedir}/src/test/resources/checkstyle.xml
+                            </configLocation>
                             <encoding>UTF-8</encoding>
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
@@ -139,5 +144,6 @@
     <properties>
         <github.global.server>github</github.global.server>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.exclusions>pom.xml</sonar.exclusions>
     </properties>
 </project>
