@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,12 +33,12 @@ public class OrderBook {
     /**
      * List of buy orders.
      */
-    private final List<Order> buyOrders = null;
+    private final Order[] buyEntries = null;
 
     /**
      * List of sell orders.
      */
-    private final List<Order> sellOrders = null;
+    private final Order[] sellEntries = null;
 
     /**
      * Returns the order book for the specified company.
@@ -67,15 +68,15 @@ public class OrderBook {
     /**
      * @return the list of buy orders
      */
-    public List<Order> getBuyOrders() {
-        return buyOrders;
+    public List<Order> getBuyEntries() {
+        return Arrays.asList(buyEntries);
     }
 
     /**
      * @return the list of sell orders
      */
-    public List<Order> getSellOrders() {
-        return sellOrders;
+    public List<Order> getSellEntries() {
+        return Arrays.asList(sellEntries);
     }
 
     @Override
@@ -83,45 +84,8 @@ public class OrderBook {
         return "OrderBook{"
             + "maxBuySize=" + maxBuySize
             + ", maxSellSize=" + maxSellSize
-            + ", buyOrders=" + buyOrders
-            + ", sellOrders=" + sellOrders
+            + ", buyEntries=" + buyEntries
+            + ", sellEntries=" + sellEntries
             + '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        OrderBook orderBook = (OrderBook) o;
-
-        if (maxBuySize != null ? !maxBuySize.equals(orderBook.maxBuySize)
-            : orderBook.maxBuySize != null) {
-            return false;
-        }
-        if (maxSellSize != null ? !maxSellSize.equals(orderBook.maxSellSize)
-            : orderBook.maxSellSize != null) {
-            return false;
-        }
-        if (buyOrders != null ? !buyOrders.equals(orderBook.buyOrders)
-            : orderBook.buyOrders != null) {
-            return false;
-        }
-        return sellOrders != null ? sellOrders.equals(orderBook.sellOrders)
-            : orderBook.sellOrders == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = maxBuySize != null ? maxBuySize.hashCode() : 0;
-        result = 31 * result + (maxSellSize != null ? maxSellSize.hashCode() : 0);
-        result = 31 * result + (buyOrders != null ? buyOrders.hashCode() : 0);
-        result = 31 * result + (sellOrders != null ? sellOrders.hashCode() : 0);
-        return result;
     }
 }

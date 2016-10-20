@@ -1,17 +1,11 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Type;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,17 +20,6 @@ public class PriceSpread {
      * The logger for this class.
      */
     private static final Log log = LogFactory.getLog(PriceSpread.class);
-
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final Type listType = new TypeToken<ArrayList<PriceSpread>>() { }.getType();
 
     /**
      * The current ask size.
@@ -188,6 +171,22 @@ public class PriceSpread {
      */
     public ZonedDateTime getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return "PriceSpread{"
+            + "askSize=" + askSize
+            + ", askPrice=" + askPrice
+            + ", bidSize=" + bidSize
+            + ", bidPrice=" + bidPrice
+            + ", spreadAbs=" + spreadAbs
+            + ", spreadPercent=" + spreadPercent
+            + ", lastPrice=" + lastPrice
+            + ", maxBidPrice=" + maxBidPrice
+            + ", minAskPrice=" + minAskPrice
+            + ", date=" + date
+            + '}';
     }
 
     @Override

@@ -45,7 +45,8 @@ public class SalaryPayment {
     private final String id = null;
 
     /**
-     * Fetches the salary payment with the given id.
+     * Fetches the salary payment with the given id. (Payment id is returned when executing payment post
+     * request)
      *
      * @param paymentId the identifier to look for
      * @return the salary payment or null if not found

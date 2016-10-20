@@ -32,11 +32,6 @@ public class UserCapabilities {
     private final Boolean partner = null;
 
     /**
-     * The partner id of this user.
-     */
-    private final String partnerId = null;
-
-    /**
      * True, if the user is a premium user.
      */
     private final Boolean premium = null;
@@ -75,13 +70,6 @@ public class UserCapabilities {
     }
 
     /**
-     * @return the user's partner id
-     */
-    public String getPartnerId() {
-        return partnerId;
-    }
-
-    /**
      * @return true, if the user is a premium user
      */
     public Boolean isPremium() {
@@ -102,7 +90,6 @@ public class UserCapabilities {
             + ", level2UserEndDate=" + level2UserEndDate
             + ", locale='" + locale + '\''
             + ", partner=" + partner
-            + ", partnerId='" + partnerId + '\''
             + ", premium=" + premium
             + ", premiumEndDate=" + premiumEndDate
             + '}';
@@ -132,9 +119,6 @@ public class UserCapabilities {
         if (partner != null ? !partner.equals(that.partner) : that.partner != null) {
             return false;
         }
-        if (partnerId != null ? !partnerId.equals(that.partnerId) : that.partnerId != null) {
-            return false;
-        }
         if (premium != null ? !premium.equals(that.premium) : that.premium != null) {
             return false;
         }
@@ -149,7 +133,6 @@ public class UserCapabilities {
         result = 31 * result + (level2UserEndDate != null ? level2UserEndDate.hashCode() : 0);
         result = 31 * result + (locale != null ? locale.hashCode() : 0);
         result = 31 * result + (partner != null ? partner.hashCode() : 0);
-        result = 31 * result + (partnerId != null ? partnerId.hashCode() : 0);
         result = 31 * result + (premium != null ? premium.hashCode() : 0);
         result = 31 * result + (premiumEndDate != null ? premiumEndDate.hashCode() : 0);
         return result;

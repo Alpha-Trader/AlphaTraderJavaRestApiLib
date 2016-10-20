@@ -161,8 +161,8 @@ public class Message {
     /**
      * @return the substitutions
      */
-    public String[] getSubstitutions() {
-        return substitutions;
+    public List<String> getSubstitutions() {
+        return Arrays.asList(substitutions);
     }
 
     /**
@@ -174,7 +174,6 @@ public class Message {
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) {
             return true;
         }
@@ -182,26 +181,16 @@ public class Message {
             return false;
         }
 
-        Message message1 = (Message) o;
+        Message message = (Message) o;
 
-        if (message != null ? !message.equals(message1.message) : message1.message != null) {
-            return false;
-        }
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        if (!Arrays.equals(substitutions, message1.substitutions)) {
-            return false;
-        }
-        return filledString != null ? filledString.equals(message1.filledString)
-            : message1.filledString == null;
+        return filledString != null ? filledString.equals(message.filledString)
+            : message.filledString == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = message != null ? message.hashCode() : 0;
-        result = 31 * result + Arrays.hashCode(substitutions);
-        result = 31 * result + (filledString != null ? filledString.hashCode() : 0);
-        return result;
+        return filledString != null ? filledString.hashCode() : 0;
     }
 
     @Override

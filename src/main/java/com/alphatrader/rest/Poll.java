@@ -53,7 +53,7 @@ public class Poll {
     /**
      * All group members of this poll.
      */
-    private final GroupMember[] group = null;
+    private final VotingGroupMember[] group = null;
     /**
      * The percentage of votes already cast.
      */
@@ -77,7 +77,7 @@ public class Poll {
     /**
      * The result of the poll.
      */
-    private final Answer type = null;
+    private final Type type = null;
 
     /**
      * Fetches all polls initiated by the current user.
@@ -173,7 +173,7 @@ public class Poll {
     /**
      * @return the group of users affected by the poll
      */
-    public List<GroupMember> getGroup() {
+    public List<VotingGroupMember> getGroup() {
         return Arrays.asList(group);
     }
 
@@ -215,7 +215,7 @@ public class Poll {
     /**
      * @return the current result
      */
-    public Answer getType() {
+    public Type getType() {
         return type;
     }
 
@@ -268,26 +268,9 @@ public class Poll {
     }
 
     /**
-     * The answer of the poll.
+     * The type of poll.
      */
-    public enum Answer {
-        YES, NO
-    }
-
-    /**
-     * A vote in the poll.
-     */
-    public static class Vote {
-        private Answer type;
-        private Integer voices;
-        private User voter;
-    }
-
-    /**
-     * A group member in a poll.
-     */
-    public static class GroupMember {
-        private final User groupMember = null;
-        private final Integer numberOfVotes = null;
+    public enum Type {
+        YES_NO
     }
 }

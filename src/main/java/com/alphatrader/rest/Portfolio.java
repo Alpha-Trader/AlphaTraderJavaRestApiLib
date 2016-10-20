@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class Portfolio {
     /**
      * A list of all positions in this portfolio.
      */
-    private final List<Position> positions = null;
+    private final Position[] positions = null;
 
     /**
      * Fetches a company's portfolio from the server.
@@ -82,6 +83,58 @@ public class Portfolio {
      * @return a list of all positions in this portfolio
      */
     public List<Position> getPositions() {
-        return positions;
+        return Arrays.asList(positions);
+    }
+
+    /**
+     * @return the amount of cash
+     */
+    public Double getCash() {
+        return cash;
+    }
+
+    /**
+     * @return the amount of committed cash
+     */
+    public Double getCommittedCash() {
+        return committedCash;
+    }
+
+    @Override
+    public String toString() {
+        return "Portfolio{"
+            + "cash=" + cash
+            + ", committedCash=" + committedCash
+            + ", positions=" + Arrays.toString(positions)
+            + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Portfolio portfolio = (Portfolio) o;
+
+        if (cash != null ? !cash.equals(portfolio.cash) : portfolio.cash != null) {
+            return false;
+        }
+        if (committedCash != null ? !committedCash.equals(portfolio.committedCash)
+            : portfolio.committedCash != null) {
+            return false;
+        }
+        return Arrays.equals(positions, portfolio.positions);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cash != null ? cash.hashCode() : 0;
+        result = 31 * result + (committedCash != null ? committedCash.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(positions);
+        return result;
     }
 }

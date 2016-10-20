@@ -343,8 +343,8 @@ public class CompanyProfileTest {
     @Test
     public void testGetDesignatedSponsors() throws Exception {
         List<SecuritySponsorship> reference = gson.fromJson("[]", new TypeToken<ArrayList<SecuritySponsorship>>() {}.getType());
-        assertEquals(new HashSet<SecuritySponsorship>(reference),
-            new HashSet<SecuritySponsorship>(toTest.getDesignatedSponsors()));
+        assertEquals(new HashSet<>(reference),
+            new HashSet<>(toTest.getDesignatedSponsors()));
     }
 
     @Test

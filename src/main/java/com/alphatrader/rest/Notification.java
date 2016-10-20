@@ -24,10 +24,31 @@ public class Notification {
      * The content of the notification.
      */
     private final Message content = null;
+
     /**
      * The date and time the notification was created.
      */
     private final ZonedDateTime date = null;
+
+    /**
+     * The subject of the notification.
+     */
+    private final Message subject = null;
+
+    /**
+     * The notification receiver.
+     */
+    private final User receiver = null;
+
+    /**
+     * True, if the receiver has read the message.
+     */
+    private final Boolean readByReceiver = null;
+
+    /**
+     * The unique notification id.
+     */
+    private final String id = null;
 
     /**
      * Fetches all unread events of the user and marks them as read
@@ -75,6 +96,48 @@ public class Notification {
         }
     } */
 
+    /**
+     * @return the message
+     */
+    public Message getMessage() {
+        return content;
+    }
+
+    /**
+     * @return the date
+     */
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    /**
+     * @return the notification subject
+     */
+    public Message getSubject() {
+        return subject;
+    }
+
+    /**
+     * @return the notification's receiver
+     */
+    public User getReceiver() {
+        return receiver;
+    }
+
+    /**
+     * @return true, if the notification was read
+     */
+    public Boolean isReadByReceiver() {
+        return readByReceiver;
+    }
+
+    /**
+     * @return the unique id
+     */
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Notification{"
@@ -83,11 +146,24 @@ public class Notification {
             + '}';
     }
 
-    /**
-     * @return the Message
-     */
-    public String getMessage() {
-        return content.getFilledString();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Notification that = (Notification) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
 

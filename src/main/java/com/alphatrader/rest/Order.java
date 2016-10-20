@@ -191,6 +191,9 @@ public class Order {
         return creationDate;
     }
 
+    /**
+     * @return the listing
+     */
     public Listing getListing() {
         return listing;
     }
@@ -214,6 +217,101 @@ public class Order {
      */
     public int getNumberOfShares() {
         return numberOfShares;
+    }
+
+    /**
+     * @return the counter party name
+     */
+    public String getCounterPartyName() {
+        return counterPartyName;
+    }
+
+    /**
+     * @return the counter party
+     */
+    public String getCounterParty() {
+        return counterParty;
+    }
+
+    /**
+     * @return the action
+     */
+    public Action getAction() {
+        return action;
+    }
+
+    /**
+     * @return the committed cash
+     */
+    public Double getCommittedCash() {
+        return committedCash;
+    }
+
+    /**
+     * @return the price
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * @return the owner name
+     */
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    /**
+     * @return the owner
+     */
+    public String getOwner() {
+        return owner;
+    }
+
+    /**
+     * @return the unique id
+     */
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{"
+            + "creationDate=" + creationDate
+            + ", listing=" + listing
+            + ", type=" + type
+            + ", securityIdentifier='" + securityIdentifier + '\''
+            + ", numberOfShares=" + numberOfShares
+            + ", counterPartyName='" + counterPartyName + '\''
+            + ", counterParty='" + counterParty + '\''
+            + ", action=" + action
+            + ", committedCash=" + committedCash
+            + ", price=" + price
+            + ", ownerName='" + ownerName + '\''
+            + ", owner='" + owner + '\''
+            + ", id='" + id + '\''
+            + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Order order = (Order) o;
+
+        return id != null ? id.equals(order.id) : order.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     /**
