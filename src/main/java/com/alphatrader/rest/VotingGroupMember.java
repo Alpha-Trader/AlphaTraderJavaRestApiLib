@@ -35,7 +35,7 @@ public class VotingGroupMember {
     public String toString() {
         return "VotingGroupMember{"
             + "groupMember=" + groupMember
-            + ", numberOfVotes=" + numberOfVoices
+            + ", numberOfVoices=" + numberOfVoices
             + '}';
     }
 
