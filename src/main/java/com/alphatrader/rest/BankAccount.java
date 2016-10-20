@@ -25,7 +25,7 @@ public class BankAccount {
      */
     @Nullable
     public static BankAccount getUserBankAccount() {
-        return Http.getSingleObjectFromApi(BankAccount.class, "/api/bankaccounts");
+        return Http.getSingleObjectFromApi(BankAccount.class, "/api/bankaccounts/");
     }
 
     /**

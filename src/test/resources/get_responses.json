@@ -1,0 +1,293 @@
+{
+  "/api/bankaccounts/": {
+    "status": 200,
+    "content" : {
+      "cash": 156187,
+      "id": "443db0b7-c399-4252-8166-061d8de1d634"
+    }
+  },
+  "/api/bankinglicense/":  {
+    "status": 200,
+    "content": {}
+  },
+  "/api/bankinglicense/STK0F513": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/bonds/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/bonds/securityidentifier/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/bonds/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/cashtransferlogs/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/centralbankreserves/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/centralbankreserves/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/chats": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/chats/unread": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/chats/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/all": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/ceo/userid/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/ceo/username/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/securitiesaccount/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/securityIdentifier/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companies/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/companyprofiles/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/search/companies/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/complaints/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/events/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/events/user/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/search/events/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/search/events/type/todo": {
+    "status": 200,
+    "content": {}
+  },
+ "/api/search/events/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/listingprofiles/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/listings/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/listings/outstandingshares/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/listings/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/search/listings/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/shareholders/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/locale": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/locales": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/maininterestrate/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/maininterestrate/latest/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/messages/chat/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/messages/unread": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/messages/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/notifications": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/notifications/unread/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/partners/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/portfolios/fixedincome/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/portfolios/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/pricespreads/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/pricespreads/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/employmentagreements/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/employmentagreements/company/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/salarypayments/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/multisearch/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/orderbook/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/orderlist/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/securityorders/check/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/securityorders/counterparty/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/securityorders/securitiesaccount/todo": {
+    "status": 200,
+    "content": {}
+  },
+ "/api/securityorders/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/securityorderlogs": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/securityPrices/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/marketstatistics/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/systembonds/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/systembonds/securityidentifier/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/systembonds/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/search/users/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/user": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/userprofiles/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/users": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/users/username/FauserneEist": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/users/todo": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/initiatedpolls/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/polls/": {
+    "status": 200,
+    "content": {}
+  },
+  "/api/polls/todo": {
+    "status": 200,
+    "content": {}
+  }
+}

@@ -29,6 +29,7 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class BankAccountTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -41,15 +42,7 @@ public class BankAccountTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        HttpResponseFactory factory = new DefaultHttpResponseFactory();
-        org.apache.http.HttpResponse response = factory.newHttpResponse(new BasicStatusLine(HttpVersion
-            .HTTP_1_1, HttpStatus.SC_OK, null), null);
-        response.setEntity(new StringEntity(JSON));
-        HttpResponse<String> httpResponse = new HttpResponse<>(response, String.class);
-
-        Http mockHttp = mock(Http.class);
-        when(mockHttp.get(any(String.class))).thenReturn(httpResponse);
-        Http.setInstance(mockHttp);
+        Http.setInstance(httpResponder.getMock());
     }
 
     @Before
@@ -60,7 +53,9 @@ public class BankAccountTest {
     @Test
     public void testGetUserBankAccount() throws Exception {
         BankAccount testAccount = BankAccount.getUserBankAccount();
-        assertEquals(toTest, testAccount);
+        BankAccount reference = gson.fromJson(httpResponder.getJsonForRequest("/api/bankaccounts/"),
+            BankAccount.class);
+        assertEquals(reference, testAccount);
     }
 
     @Test

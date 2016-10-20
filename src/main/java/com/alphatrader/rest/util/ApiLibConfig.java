@@ -2,6 +2,7 @@ package com.alphatrader.rest.util;
 
 import com.alphatrader.rest.User;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -10,7 +11,7 @@ import java.net.URL;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-public class ApiLibConfig {
+public final class ApiLibConfig {
     /**
      * The singleton instance.
      */
@@ -27,6 +28,15 @@ public class ApiLibConfig {
      * The partner id of the developer.
      */
     private String partnerId;
+
+    private ApiLibConfig() {
+        try {
+            setApiUrl(new URL("http://stable.alpha-trader.com"));
+        }
+        catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return the singleton instance.
