@@ -1534,55 +1534,651 @@
   },
   "/api/employmentagreements/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "company": {
+          "securitiesAccountId": "df539236-63dd-4d66-a003-6d41c64461a3",
+          "securityIdentifier": "STFA423C",
+          "ceo": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "name": "FruchtgenuCo.",
+          "id": "99cfe1b7-8bd5-42eb-aec7-8a98d7a3d63d"
+        },
+        "dailyWage": 0,
+        "startDate": 1475267309545,
+        "id": "af0d8be1-179b-48e4-b0b3-4f2e5cfbdbe1"
+      },
+      {
+        "company": {
+          "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "securityIdentifier": "STK0F513",
+          "ceo": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "name": "Katholische Kirche AG",
+          "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+        },
+        "dailyWage": 30000,
+        "startDate": 1475336107328,
+        "id": "7bdef87f-6f55-4a2e-9eb5-15559432d057"
+      }
+    ]
   },
-  "/api/employmentagreements/company/todo": {
+  "/api/employmentagreements/company/81dcf5a1-b0b6-462a-a40c-e374619edc2f": {
     "status": 200,
-    "content": {}
+    "content": {
+      "dailyWage": 30000,
+      "startDate": 1475336107328,
+      "id": "7bdef87f-6f55-4a2e-9eb5-15559432d057"
+    }
   },
-  "/api/salarypayments/todo": {
+  "/api/salarypayments/bf8d952f-65ac-474c-9a8d-ae7f2ef82cfa": {
     "status": 200,
-    "content": {}
+    "content": {
+      "companyId": "81dcf5a1-b0b6-462a-a40c-e374619edc2f",
+      "nextPossiblePaymentDate": 1477117894761,
+      "salaryAmount": 30000,
+      "date": 1477031494761,
+      "id": "bf8d952f-65ac-474c-9a8d-ae7f2ef82cfa"
+    }
   },
   "/api/multisearch/todo": {
     "status": 200,
     "content": {}
   },
-  "/api/orderbook/todo": {
+  "/api/orderbook/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": {
+      "buyEntries": [
+        {
+          "action": "BUY",
+          "priceLimit": 25,
+          "size": 49701
+        },
+        {
+          "action": "BUY",
+          "priceLimit": 20,
+          "size": 48768
+        },
+        {
+          "action": "SELL",
+          "priceLimit": 0.32,
+          "size": 292
+        }
+      ],
+      "sellEntries": [],
+      "maxBuySize": 49701,
+      "maxSellSize": 292
+    }
   },
-  "/api/orderlist/todo": {
+  "/api/orderlist/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "counterPartyName": null,
+        "creationDate": 1475877498027,
+        "committedCash": 1242525,
+        "numberOfShares": 49701,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": null,
+        "price": 25,
+        "ownerName": "Verteilungsbank II",
+        "owner": "22289c40-c383-43f1-871a-da088e448028",
+        "id": "d39eeaef-0884-4af0-a8f5-420b97974f71",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173697683,
+        "committedCash": 975360,
+        "numberOfShares": 48768,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": null,
+        "price": 20,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "bd2fb12c-2c4d-4501-b4dc-1785d21bf8dc",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173499827,
+        "committedCash": 93.44,
+        "numberOfShares": 292,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": null,
+        "price": 0.32,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "4a813308-a9ad-4755-876c-d46df4a723f0",
+        "type": "LIMIT"
+      }
+    ]
+  },
+  "/api/orderlist/STK0F513?securitiesAccountId=df539236-63dd-4d66-a003-6d41c64461a3": {
+    "status": 200,
+    "content": [
+      {
+        "counterPartyName": null,
+        "creationDate": 1475877498027,
+        "committedCash": 1242525,
+        "numberOfShares": 49701,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 25,
+        "ownerName": "Verteilungsbank II",
+        "owner": "22289c40-c383-43f1-871a-da088e448028",
+        "id": "d39eeaef-0884-4af0-a8f5-420b97974f71",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173697683,
+        "committedCash": 975360,
+        "numberOfShares": 48768,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 20,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "bd2fb12c-2c4d-4501-b4dc-1785d21bf8dc",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173499827,
+        "committedCash": 93.44,
+        "numberOfShares": 292,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 0.32,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "4a813308-a9ad-4755-876c-d46df4a723f0",
+        "type": "LIMIT"
+      }
+    ]
   },
   "/api/securityorders/check/": {
     "status": 200,
-    "content": {}
+    "content": {
+      "numberOfShares": 6020,
+      "spread": {
+        "askSize": null,
+        "bidPrice": 25,
+        "askPrice": null,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1476375715646,
+          "value": 656.93
+        },
+        "maxBidPrice": 788.32,
+        "minAskPrice": 25,
+        "bidSize": 49701,
+        "date": 1476375717202
+      },
+      "uncommittedCash": 4652377.62,
+      "volume": 230189.44
+    }
   },
-  "/api/securityorders/counterparty/todo": {
+  "/api/securityorders/counterparty/df539236-63dd-4d66-a003-6d41c64461a3": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173697683,
+        "committedCash": 975360,
+        "numberOfShares": 48768,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 20,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "bd2fb12c-2c4d-4501-b4dc-1785d21bf8dc",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173499827,
+        "committedCash": 93.44,
+        "numberOfShares": 292,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 0.32,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "4a813308-a9ad-4755-876c-d46df4a723f0",
+        "type": "LIMIT"
+      }
+    ]
   },
-  "/api/securityorders/securitiesaccount/todo": {
+  "/api/securityorders/securitiesaccount/df539236-63dd-4d66-a003-6d41c64461a3": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173697683,
+        "committedCash": 975360,
+        "numberOfShares": 48768,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 20,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "bd2fb12c-2c4d-4501-b4dc-1785d21bf8dc",
+        "type": "LIMIT"
+      },
+      {
+        "counterPartyName": null,
+        "creationDate": 1475173499827,
+        "committedCash": 93.44,
+        "numberOfShares": 292,
+        "action": "BUY",
+        "securityIdentifier": "STK0F513",
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+        "price": 0.32,
+        "ownerName": "Karl Marx Bank ",
+        "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+        "id": "4a813308-a9ad-4755-876c-d46df4a723f0",
+        "type": "LIMIT"
+      }
+    ]
   },
-  "/api/securityorders/todo": {
+  "/api/securityorders/4a813308-a9ad-4755-876c-d46df4a723f0": {
     "status": 200,
-    "content": {}
+    "content": {
+      "counterPartyName": null,
+      "creationDate": 1475173499827,
+      "committedCash": 93.44,
+      "numberOfShares": 292,
+      "action": "BUY",
+      "securityIdentifier": "STK0F513",
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "counterParty": "df539236-63dd-4d66-a003-6d41c64461a3",
+      "price": 0.32,
+      "ownerName": "Karl Marx Bank ",
+      "owner": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+      "id": "4a813308-a9ad-4755-876c-d46df4a723f0",
+      "type": "LIMIT"
+    }
   },
-  "/api/securityorderlogs": {
+  "/api/securityorderlogs?startDate=1477030780257": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
   },
-  "/api/securityPrices/": {
+  "/api/securityorderlogs?startDate=1477030780257&endDate=1477030780258": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
+  },
+  "/api/securityorderlogs?securityIdentifier=STBDD981&startDate=1477030780257&endDate=1477030780258": {
+    "status": 200,
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
+  },
+  "/api/securityorderlogs?buyerSecuritiesAccount=57875cf3-de0a-48e4-a3bc-314d4550df12": {
+    "status": 200,
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
+  },
+  "/api/securityorderlogs?sellerSecuritiesAccount=95088a4d-cbaf-47a6-8d37-6a45263ad3fa": {
+    "status": 200,
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
+  },
+  "/api/securityPrices/?securityIdentifier=STGE25F1": {
+    "status": 200,
+    "content": [
+      {
+        "date": 1474194147801,
+        "value": 0.28
+      },
+      {
+        "date": 1474284838614,
+        "value": 0.05
+      },
+      {
+        "date": 1474329384614,
+        "value": 0.02
+      },
+      {
+        "date": 1474365429818,
+        "value": 0.02
+      }
+    ]
+  },
+  "/api/securityPrices/?securityIdentifier=STGE25F1&startDate=1474365429817": {
+    "status": 200,
+    "content": [
+      {
+        "date": 1474194147801,
+        "value": 0.28
+      },
+      {
+        "date": 1474284838614,
+        "value": 0.05
+      },
+      {
+        "date": 1474329384614,
+        "value": 0.02
+      },
+      {
+        "date": 1474365429818,
+        "value": 0.02
+      }
+    ]
+  },
+  "/api/securityPrices/?securityIdentifier=STGE25F1&endDate=1474194147802": {
+    "status": 200,
+    "content": [
+      {
+        "date": 1474194147801,
+        "value": 0.28
+      },
+      {
+        "date": 1474284838614,
+        "value": 0.05
+      },
+      {
+        "date": 1474329384614,
+        "value": 0.02
+      },
+      {
+        "date": 1474365429818,
+        "value": 0.02
+      }
+    ]
   },
   "/api/marketstatistics/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "id": "b6800547-d4bb-44b8-a109-33574f91b10e",
+        "averageBondDurationInDays": 0,
+        "averageBookValue": 0,
+        "averageDailyWage": 0,
+        "averageDesignatedSponsorRating": "D",
+        "averageYieldToMaturity": 0,
+        "bondFaceVolume": 0,
+        "centralBankReserves": 0,
+        "committedCash": 0,
+        "corporateCash": 0,
+        "date": 1469950287872,
+        "mainInterestRate": 2,
+        "marketCap": 0,
+        "numberOfActiveOtherListings": 0,
+        "numberOfBanks": 0,
+        "numberOfBondOrders": 0,
+        "numberOfCashoutPolls": 0,
+        "numberOfCommittedShares": 0,
+        "numberOfCompanies": 0,
+        "numberOfDesignatedSponsors": 0,
+        "numberOfLiquidationPolls": 0,
+        "numberOfOrders": 0,
+        "numberOfOrders24h": 0,
+        "numberOfOtcOrders": 0,
+        "numberOfOtherListings": 0,
+        "numberOfOtherOrders": 0,
+        "numberOfPartnerUsers": 8,
+        "numberOfPremiumUsers": 0,
+        "numberOfRepoOrders": 0,
+        "numberOfStockOrders": 0,
+        "numberOfSystemBondOrders": 0,
+        "numberOfSystemRepoOrders": 0,
+        "numberOfUsers": 336,
+        "orderVolume": 0,
+        "orderVolume24h": 0,
+        "privateCash": 16800000,
+        "systemBondFaceVolume": 0
+      },
+      {
+        "id": "a78d8751-ad5f-46a3-b68f-b3ef38a99330",
+        "averageBondDurationInDays": 7,
+        "averageBookValue": 110000,
+        "averageDailyWage": 150,
+        "averageDesignatedSponsorRating": "D",
+        "averageYieldToMaturity": 3.5529,
+        "bondFaceVolume": 1000000,
+        "centralBankReserves": 10000000,
+        "committedCash": 0,
+        "corporateCash": 100300000,
+        "date": 1469952000993,
+        "mainInterestRate": 2,
+        "marketCap": 100340000,
+        "numberOfActiveOtherListings": 0,
+        "numberOfBanks": 1,
+        "numberOfBondOrders": 1,
+        "numberOfCashoutPolls": 0,
+        "numberOfCommittedShares": 9920,
+        "numberOfCompanies": 7,
+        "numberOfDesignatedSponsors": 0,
+        "numberOfLiquidationPolls": 0,
+        "numberOfOrders": 3,
+        "numberOfOrders24h": 7,
+        "numberOfOtcOrders": 0,
+        "numberOfOtherListings": 0,
+        "numberOfOtherOrders": 0,
+        "numberOfPartnerUsers": 8,
+        "numberOfPremiumUsers": 0,
+        "numberOfRepoOrders": 0,
+        "numberOfStockOrders": 2,
+        "numberOfSystemBondOrders": 0,
+        "numberOfSystemRepoOrders": 0,
+        "numberOfUsers": 336,
+        "orderVolume": 990028.8,
+        "orderVolume24h": 38036,
+        "privateCash": 16500000,
+        "systemBondFaceVolume": 0
+      }
+    ]
   },
   "/api/systembonds/": {
     "status": 200,
@@ -1681,40 +2277,594 @@
       "id": "61c24773-9cf6-4444-956f-36f15ff21fb8"
     }
   },
-  "/api/search/users/todo": {
+  "/api/search/users/Fauser": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      }
+    ]
   },
   "/api/user": {
     "status": 200,
-    "content": {}
+    "content": {
+      "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+      "jwtToken": "invalid",
+      "userCapabilities": {
+        "partnerId": "529a97c2-a3b8-4530-8c06-9521c2ab056d",
+        "level2UserEndDate": null,
+        "premiumEndDate": null,
+        "level2User": false,
+        "partner": true,
+        "premium": false,
+        "locale": null
+      },
+      "username": "FauserneEist",
+      "emailAddress": "nice@try.jackass",
+      "id": "43986f13-edde-486c-9ef0-718b100a1949"
+    }
   },
-  "/api/userprofiles/todo": {
+  "/api/userprofiles/FauerneEist": {
     "status": 200,
-    "content": {}
-  },
-  "/api/users": {
-    "status": 200,
-    "content": {}
+    "content": {
+      "bankAccount": {
+        "cash": 0,
+        "id": "string"
+      },
+      "cashTransferLogs": [
+        {
+          "amount": 0,
+          "date": 0,
+          "id": "string",
+          "message": {
+            "filledString": "string",
+            "message": "string",
+            "substitutions": [
+              "string"
+            ]
+          },
+          "receiverBankAccount": "string",
+          "senderBankAccount": "string"
+        }
+      ],
+      "employments": [
+        {
+          "company": {
+            "ceo": {
+              "gravatarHash": "string",
+              "id": "string",
+              "userCapabilities": {
+                "level2User": true,
+                "level2UserEndDate": 0,
+                "locale": "string",
+                "partner": true,
+                "premium": true,
+                "premiumEndDate": 0
+              },
+              "username": "string"
+            },
+            "id": "string",
+            "name": "string",
+            "securitiesAccountId": "string",
+            "securityIdentifier": "string"
+          },
+          "dailyWage": 0,
+          "id": "string",
+          "startDate": 0
+        }
+      ],
+      "initiatedPolls": [
+        {
+          "abstentionRule": "COUNTS_AS_APPROVAL",
+          "castVotesPercentage": 0,
+          "endDate": 0,
+          "group": [
+            {
+              "groupMember": {
+                "gravatarHash": "string",
+                "id": "string",
+                "userCapabilities": {
+                  "level2User": true,
+                  "level2UserEndDate": 0,
+                  "locale": "string",
+                  "partner": true,
+                  "premium": true,
+                  "premiumEndDate": 0
+                },
+                "username": "string"
+              },
+              "numberOfVoices": 0
+            }
+          ],
+          "id": "string",
+          "motion": "string",
+          "pollInitiator": {
+            "gravatarHash": "string",
+            "id": "string",
+            "userCapabilities": {
+              "level2User": true,
+              "level2UserEndDate": 0,
+              "locale": "string",
+              "partner": true,
+              "premium": true,
+              "premiumEndDate": 0
+            },
+            "username": "string"
+          },
+          "resultExpireDate": 0,
+          "startDate": 0,
+          "totalNumberOfCastVotes": 0,
+          "totalNumberOfVoices": 0,
+          "type": "YES_NO",
+          "votes": [
+            {
+              "type": "YES",
+              "voices": 0,
+              "voter": {
+                "gravatarHash": "string",
+                "id": "string",
+                "userCapabilities": {
+                  "level2User": true,
+                  "level2UserEndDate": 0,
+                  "locale": "string",
+                  "partner": true,
+                  "premium": true,
+                  "premiumEndDate": 0
+                },
+                "username": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "locale": "string",
+      "polls": [
+        {
+          "abstentionRule": "COUNTS_AS_APPROVAL",
+          "castVotesPercentage": 0,
+          "endDate": 0,
+          "group": [
+            {
+              "groupMember": {
+                "gravatarHash": "string",
+                "id": "string",
+                "userCapabilities": {
+                  "level2User": true,
+                  "level2UserEndDate": 0,
+                  "locale": "string",
+                  "partner": true,
+                  "premium": true,
+                  "premiumEndDate": 0
+                },
+                "username": "string"
+              },
+              "numberOfVoices": 0
+            }
+          ],
+          "id": "string",
+          "motion": "string",
+          "pollInitiator": {
+            "gravatarHash": "string",
+            "id": "string",
+            "userCapabilities": {
+              "level2User": true,
+              "level2UserEndDate": 0,
+              "locale": "string",
+              "partner": true,
+              "premium": true,
+              "premiumEndDate": 0
+            },
+            "username": "string"
+          },
+          "resultExpireDate": 0,
+          "startDate": 0,
+          "totalNumberOfCastVotes": 0,
+          "totalNumberOfVoices": 0,
+          "type": "YES_NO",
+          "votes": [
+            {
+              "type": "YES",
+              "voices": 0,
+              "voter": {
+                "gravatarHash": "string",
+                "id": "string",
+                "userCapabilities": {
+                  "level2User": true,
+                  "level2UserEndDate": 0,
+                  "locale": "string",
+                  "partner": true,
+                  "premium": true,
+                  "premiumEndDate": 0
+                },
+                "username": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "salaryPayments": [
+        {
+          "companyId": "string",
+          "date": 0,
+          "id": "string",
+          "nextPossiblePaymentDate": 0,
+          "salaryAmount": 0
+        }
+      ],
+      "user": {
+        "gravatarHash": "string",
+        "id": "string",
+        "userCapabilities": {
+          "level2User": true,
+          "level2UserEndDate": 0,
+          "locale": "string",
+          "partner": true,
+          "premium": true,
+          "premiumEndDate": 0
+        },
+        "username": "string"
+      },
+      "userCapabilities": {
+        "level2User": true,
+        "level2UserEndDate": 0,
+        "locale": "string",
+        "partner": true,
+        "premium": true,
+        "premiumEndDate": 0
+      }
+    }
   },
   "/api/users/username/FauserneEist": {
     "status": 200,
-    "content": {}
+    "content": {
+      "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+      "userCapabilities": {
+        "level2UserEndDate": null,
+        "premiumEndDate": null,
+        "level2User": false,
+        "partner": true,
+        "premium": false,
+        "locale": null
+      },
+      "username": "FauserneEist",
+      "id": "43986f13-edde-486c-9ef0-718b100a1949"
+    }
   },
-  "/api/users/todo": {
+  "/api/users": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "gravatarHash": "5fa36546bf773c86332e718c317f5ae2",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": false,
+          "premium": false,
+          "locale": null
+        },
+        "username": "1",
+        "id": "4b0aa5bc-efa1-45bd-88cb-40a9ad9718c7"
+      },
+      {
+        "gravatarHash": "b40fd4d0cd8ff684dd4cac7f5c750302",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": false,
+          "premium": false,
+          "locale": null
+        },
+        "username": "123456",
+        "id": "05ccd280-e1b4-49a0-aac8-b413ffabf1f7"
+      }
+    ]
+  },
+  "/api/users/43986f13-edde-486c-9ef0-718b100a1949": {
+    "status": 200,
+    "content": {
+      "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+      "userCapabilities": {
+        "level2UserEndDate": null,
+        "premiumEndDate": null,
+        "level2User": false,
+        "partner": true,
+        "premium": false,
+        "locale": null
+      },
+      "username": "FauserneEist",
+      "id": "43986f13-edde-486c-9ef0-718b100a1949"
+    }
   },
   "/api/initiatedpolls/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dailyWage": 0,
+        "applicant": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "abstentionRule": "COUNTS_AS_REFUSAL",
+        "approvalVotesPercentage": 0,
+        "company": {
+          "securityIdentifier": "STSB8312",
+          "listing": {
+            "startDate": 1475678348697,
+            "endDate": null,
+            "securityIdentifier": "STSB8312",
+            "name": "randolphduke",
+            "type": "STOCK"
+          },
+          "name": "randolphduke",
+          "id": "cb1cbdfe-d23e-42a7-b840-0eec1d00c85f"
+        },
+        "totalNumberOfVoices": 107576,
+        "votes": [
+          {
+            "voices": 96576,
+            "voter": {
+              "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+              "userCapabilities": {
+                "level2UserEndDate": null,
+                "premiumEndDate": null,
+                "level2User": false,
+                "partner": true,
+                "premium": false,
+                "locale": null
+              },
+              "username": "FauserneEist",
+              "id": "43986f13-edde-486c-9ef0-718b100a1949"
+            },
+            "type": "NO"
+          }
+        ],
+        "motion": "Employ new CEO or change the employment agreement of current CEO",
+        "startDate": 1476525024497,
+        "endDate": 1477129824497,
+        "group": [
+          {
+            "groupMember": {
+              "gravatarHash": "935898e6728ebf500286179394800122",
+              "userCapabilities": {
+                "level2UserEndDate": null,
+                "premiumEndDate": null,
+                "level2User": false,
+                "partner": false,
+                "premium": false,
+                "locale": null
+              },
+              "username": "Alphabank",
+              "id": "fe97f737-09b2-4a20-a2bd-1bb4c504a687"
+            },
+            "numberOfVoices": 1000
+          }
+        ],
+        "castVotesPercentage": 89.77467093,
+        "totalNumberOfCastVotes": 96576,
+        "pollInitiator": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "resultExpireDate": 1477734624497,
+        "id": "f1672fda-6689-414c-b68e-94477905e672",
+        "type": "YES_NO"
+      }
+    ]
   },
   "/api/polls/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dailyWage": 0,
+        "applicant": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "abstentionRule": "COUNTS_AS_REFUSAL",
+        "approvalVotesPercentage": 0,
+        "company": {
+          "securityIdentifier": "STSB8312",
+          "listing": {
+            "startDate": 1475678348697,
+            "endDate": null,
+            "securityIdentifier": "STSB8312",
+            "name": "randolphduke",
+            "type": "STOCK"
+          },
+          "name": "randolphduke",
+          "id": "cb1cbdfe-d23e-42a7-b840-0eec1d00c85f"
+        },
+        "totalNumberOfVoices": 107576,
+        "votes": [
+          {
+            "voices": 96576,
+            "voter": {
+              "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+              "userCapabilities": {
+                "level2UserEndDate": null,
+                "premiumEndDate": null,
+                "level2User": false,
+                "partner": true,
+                "premium": false,
+                "locale": null
+              },
+              "username": "FauserneEist",
+              "id": "43986f13-edde-486c-9ef0-718b100a1949"
+            },
+            "type": "NO"
+          }
+        ],
+        "motion": "Employ new CEO or change the employment agreement of current CEO",
+        "startDate": 1476525024497,
+        "endDate": 1477129824497,
+        "group": [
+          {
+            "groupMember": {
+              "gravatarHash": "935898e6728ebf500286179394800122",
+              "userCapabilities": {
+                "level2UserEndDate": null,
+                "premiumEndDate": null,
+                "level2User": false,
+                "partner": false,
+                "premium": false,
+                "locale": null
+              },
+              "username": "Alphabank",
+              "id": "fe97f737-09b2-4a20-a2bd-1bb4c504a687"
+            },
+            "numberOfVoices": 1000
+          }
+        ],
+        "castVotesPercentage": 89.77467093,
+        "totalNumberOfCastVotes": 96576,
+        "pollInitiator": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "resultExpireDate": 1477734624497,
+        "id": "f1672fda-6689-414c-b68e-94477905e672",
+        "type": "YES_NO"
+      }
+    ]
   },
-  "/api/polls/todo": {
+  "/api/polls/f1672fda-6689-414c-b68e-94477905e672": {
     "status": 200,
-    "content": {}
+    "content": {
+      "dailyWage": 0,
+      "applicant": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "abstentionRule": "COUNTS_AS_REFUSAL",
+      "approvalVotesPercentage": 0,
+      "company": {
+        "securityIdentifier": "STSB8312",
+        "listing": {
+          "startDate": 1475678348697,
+          "endDate": null,
+          "securityIdentifier": "STSB8312",
+          "name": "randolphduke",
+          "type": "STOCK"
+        },
+        "name": "randolphduke",
+        "id": "cb1cbdfe-d23e-42a7-b840-0eec1d00c85f"
+      },
+      "totalNumberOfVoices": 107576,
+      "votes": [
+        {
+          "voices": 96576,
+          "voter": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "type": "NO"
+        }
+      ],
+      "motion": "Employ new CEO or change the employment agreement of current CEO",
+      "startDate": 1476525024497,
+      "endDate": 1477129824497,
+      "group": [
+        {
+          "groupMember": {
+            "gravatarHash": "935898e6728ebf500286179394800122",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": false,
+              "premium": false,
+              "locale": null
+            },
+            "username": "Alphabank",
+            "id": "fe97f737-09b2-4a20-a2bd-1bb4c504a687"
+          },
+          "numberOfVoices": 1000
+        }
+      ],
+      "castVotesPercentage": 89.77467093,
+      "totalNumberOfCastVotes": 96576,
+      "pollInitiator": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "resultExpireDate": 1477734624497,
+      "id": "f1672fda-6689-414c-b68e-94477905e672",
+      "type": "YES_NO"
+    }
   }
 }
