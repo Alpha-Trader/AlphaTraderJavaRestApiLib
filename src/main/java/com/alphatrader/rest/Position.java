@@ -1,17 +1,18 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.*;
+
 /**
  * Represents a single portfolio position in the game.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Position {
     /**
      * The security identifier of this position.
      */
-    private final String securityIdentifier = null;
+    private final StringProperty securityIdentifier = new SimpleStringProperty();
 
     /**
      * The price this position was traded for in the last trade.
@@ -21,18 +22,18 @@ public class Position {
     /**
      * The number of shares held in the portfolio.
      */
-    private final Long numberOfShares = null;
+    private final LongProperty numberOfShares = new SimpleLongProperty();
 
     /**
      * The overall volume of this position.
      */
-    private final Double volume = null;
+    private final DoubleProperty volume = new SimpleDoubleProperty();
 
     /**
      * @return the security identifier
      */
     public String getSecurityIdentifier() {
-        return securityIdentifier;
+        return securityIdentifier.getValue();
     }
 
     /**
@@ -46,23 +47,23 @@ public class Position {
      * @return the number of shares
      */
     public Long getNumberOfShares() {
-        return numberOfShares;
+        return numberOfShares.getValue();
     }
 
     /**
      * @return the overall volume
      */
     public Double getVolume() {
-        return volume;
+        return volume.getValue();
     }
 
     @Override
     public String toString() {
         return "Position{"
-            + "securityIdentifier='" + securityIdentifier + '\''
+            + "securityIdentifier='" + securityIdentifier.getValue() + '\''
             + ", lastPrice=" + lastPrice
-            + ", numberOfShares=" + numberOfShares
-            + ", volume=" + volume
+            + ", numberOfShares=" + numberOfShares.getValue()
+            + ", volume=" + volume.getValue()
             + '}';
     }
 
@@ -77,27 +78,30 @@ public class Position {
 
         Position position = (Position) o;
 
-        if (securityIdentifier != null ? !securityIdentifier.equals(position.securityIdentifier)
-            : position.securityIdentifier != null) {
+        if (securityIdentifier.getValue() != null ? !securityIdentifier.getValue().equals(position
+            .securityIdentifier.getValue()) : position.securityIdentifier.getValue() != null) {
             return false;
         }
         if (lastPrice != null ? !lastPrice.equals(position.lastPrice) : position.lastPrice != null) {
             return false;
         }
-        if (numberOfShares != null ? !numberOfShares.equals(position.numberOfShares)
-            : position.numberOfShares != null) {
+        if (numberOfShares.getValue() != null ? !numberOfShares.getValue().equals(position.numberOfShares
+            .getValue()) : position.numberOfShares.getValue() != null) {
             return false;
         }
-        return volume != null ? volume.equals(position.volume) : position.volume == null;
+        return volume.getValue() != null ? volume.getValue().equals(position.volume.getValue())
+            : position.volume.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = securityIdentifier != null ? securityIdentifier.hashCode() : 0;
+        int result = securityIdentifier.getValue() != null ? securityIdentifier.getValue().hashCode()
+            : 0;
         result = 31 * result + (lastPrice != null ? lastPrice.hashCode() : 0);
-        result = 31 * result + (numberOfShares != null ? numberOfShares.hashCode() : 0);
-        result = 31 * result + (volume != null ? volume.hashCode() : 0);
+        result = 31 * result + (numberOfShares.getValue() != null ? numberOfShares.getValue().hashCode()
+            : 0);
+        result = 31 * result + (volume.getValue() != null ? volume.getValue().hashCode() : 0);
         return result;
     }
 }

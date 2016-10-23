@@ -1,20 +1,17 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertFalse;
 
 /**
  * Test case for the {@link Company} class.
@@ -24,8 +21,7 @@ import static org.junit.Assert.assertFalse;
  */
 public class CompanyTest {
     private static HttpResponder httpResponder = HttpResponder.getInstance();
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private static final String JSON = "{\n" +
         "  \"securitiesAccountId\": \"57875cf3-de0a-48e4-a3bc-314d4550df12\",\n" +

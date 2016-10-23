@@ -1,9 +1,11 @@
 package com.alphatrader.rest;
 
 import com.alphatrader.rest.util.ApiLibConfig;
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -17,9 +19,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Wrapper to allow testing of all webservice classes.
@@ -36,14 +39,26 @@ class Http {
     /**
      * Gson instance for deserialization.
      */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     /**
      * Singleton instance
      */
     private static Http instance = new Http();
 
+    /**
+     * The http request cache. Pretty simple for now, mainly caches answers.
+     */
+    private static final LoadingCache<String, HttpResponse<String>> httpAnswerCache = CacheBuilder
+        .newBuilder()
+        .maximumSize(1000)
+        .expireAfterAccess(5, TimeUnit.MINUTES)
+        .build(new CacheLoader<String, HttpResponse<String>>() {
+            @Override
+            public HttpResponse<String> load(String suffix) throws Exception {
+                return Http.getInstance().get(suffix);
+            }
+        });
 
     /**
      * The library configuration.
@@ -80,13 +95,13 @@ class Http {
         Type myReturn = null;
 
         try {
-            HttpResponse<String> response = Http.getInstance().get(suffix);
+            HttpResponse<String> response = httpAnswerCache.get(suffix);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn = gson.fromJson(response.getBody(), typeParameterClass);
             }
         }
-        catch (UnirestException ue) {
+        catch (ExecutionException ue) {
             handleException(ue, typeParameterClass);
         }
 
@@ -107,14 +122,14 @@ class Http {
 
 
         try {
-            HttpResponse<String> response = Http.getInstance().get(suffix);
+            HttpResponse<String> response = httpAnswerCache.get(suffix);
 
             if (response != null && response.getStatus() == 200) {
                 myReturn.addAll(gson.fromJson(response.getBody(),
                     new ArrayListTypeToken<>(typeParameterClass)));
             }
         }
-        catch (UnirestException ue) {
+        catch (ExecutionException ue) {
             handleException(ue, typeParameterClass);
         }
 
@@ -161,7 +176,7 @@ class Http {
      * @param typeParameterClass the class of object the request tried to fetch
      * @param <Type> the type of object the request tried to fetch
      */
-    private static <Type> void handleException(UnirestException ue, Class<Type> typeParameterClass) {
+    private static <Type> void handleException(Exception ue, Class<Type> typeParameterClass) {
         log.error("Error fetching " + typeParameterClass.getSimpleName() + "s: " + ue.getMessage());
         StringWriter stringWriter = new StringWriter();
         ue.printStackTrace(new PrintWriter(stringWriter));

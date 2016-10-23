@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +17,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Chat {
     /**
      * The date the chat was created.
@@ -30,11 +33,11 @@ public class Chat {
     /**
      * The readonly flag. If set, only the owner can send messages.
      */
-    private final Boolean readonly = null;
+    private final BooleanProperty readonly = new SimpleBooleanProperty();
     /**
      * The name of the chat.
      */
-    private final String chatName = null;
+    private final StringProperty chatName = new SimpleStringProperty();
     /**
      * The owner of the chat.
      */
@@ -42,7 +45,7 @@ public class Chat {
     /**
      * The unique id of the chat.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Lists all chats for the logged-in user.
@@ -111,14 +114,14 @@ public class Chat {
      * @return true if the chat is readonly
      */
     public Boolean isReadonly() {
-        return readonly;
+        return readonly.getValue();
     }
 
     /**
      * @return the name of the chat
      */
     public String getChatName() {
-        return chatName;
+        return chatName.getValue();
     }
 
     /**
@@ -132,7 +135,7 @@ public class Chat {
      * @return the unique identifier
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
@@ -159,12 +162,13 @@ public class Chat {
 
         Chat chat = (Chat) o;
 
-        return id != null ? id.equals(chat.id) : chat.id == null;
+        return id.getValue() != null ? id.getValue().equals(chat.id.getValue())
+            : chat.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

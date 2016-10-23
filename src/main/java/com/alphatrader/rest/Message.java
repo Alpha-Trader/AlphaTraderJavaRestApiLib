@@ -1,5 +1,8 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,12 +12,11 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Message {
     /**
      * The i18n string.
      */
-    private final String message = null;
+    private final StringProperty message = new SimpleStringProperty();
 
     /**
      * The substitutions for the i18n string.
@@ -24,13 +26,13 @@ public class Message {
     /**
      * The substituded message.
      */
-    private final String filledString = null;
+    private final StringProperty filledString = new SimpleStringProperty();
 
     /**
      * @return the i18n string.
      */
     public String getMessage() {
-        return message;
+        return message.getValue();
     }
 
     /**
@@ -44,7 +46,7 @@ public class Message {
      * @return the substituted message
      */
     public String getFilledString() {
-        return filledString;
+        return filledString.getValue();
     }
 
     @Override
@@ -58,22 +60,22 @@ public class Message {
 
         Message message = (Message) o;
 
-        return filledString != null ? filledString.equals(message.filledString)
-            : message.filledString == null;
+        return filledString.getValue() != null ? filledString.getValue().equals(message.filledString
+            .getValue()) : message.filledString.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return filledString != null ? filledString.hashCode() : 0;
+        return filledString.getValue() != null ? filledString.getValue().hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Message{"
-            + "message='" + message + '\''
+            + "message='" + message.getValue() + '\''
             + ", substitutions=" + Arrays.toString(substitutions)
-            + ", filledString='" + filledString + '\''
+            + ", filledString='" + filledString.getValue() + '\''
             + '}';
     }
 }

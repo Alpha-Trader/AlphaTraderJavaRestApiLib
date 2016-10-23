@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -12,22 +16,21 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class CashTransferLog {
     /**
      * The amount of cash transfered.
      */
-    private final Double amount = null;
+    private final DoubleProperty amount = new SimpleDoubleProperty();
 
     /**
      * The bank account id of the receiver.
      */
-    private final String receiverBankAccount = null;
+    private final StringProperty receiverBankAccount = new SimpleStringProperty();
 
     /**
      * The bank account id of the sender.
      */
-    private final String senderBankAccount = null;
+    private final StringProperty senderBankAccount = new SimpleStringProperty();
 
     /**
      * The date the transfer took place.
@@ -42,7 +45,7 @@ public class CashTransferLog {
     /**
      * The id of this transfer.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Returns all cash transfer logs that fit the provided filters. All filters are optional. They are
@@ -86,21 +89,21 @@ public class CashTransferLog {
      * @return the amount that was transferred
      */
     public Double getAmount() {
-        return amount;
+        return amount.getValue();
     }
 
     /**
      * @return the receiver's bank account id
      */
     public String getReceiverBankAccount() {
-        return receiverBankAccount;
+        return receiverBankAccount.getValue();
     }
 
     /**
      * @return the sender's bank account id
      */
     public String getSenderBankAccount() {
-        return senderBankAccount;
+        return senderBankAccount.getValue();
     }
 
     /**
@@ -121,18 +124,18 @@ public class CashTransferLog {
      * @return the transfer id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
     public String toString() {
         return "CashTransferLog{"
-            + "amount=" + amount
-            + ", receiverBankAccount='" + receiverBankAccount + '\''
-            + ", senderBankAccount='" + senderBankAccount + '\''
+            + "amount=" + amount.getValue()
+            + ", receiverBankAccount='" + receiverBankAccount.getValue() + '\''
+            + ", senderBankAccount='" + senderBankAccount.getValue() + '\''
             + ", date=" + date
             + ", message=" + message
-            + ", id='" + id + '\''
+            + ", id='" + id.getValue() + '\''
             + '}';
     }
 
@@ -148,12 +151,13 @@ public class CashTransferLog {
 
         CashTransferLog that = (CashTransferLog) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

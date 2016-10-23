@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,17 +16,16 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class MainInterestRate {
     /**
      * The unique id of this main interest rate.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The interest rate of this main interest rate.
      */
-    private final Double value = null;
+    private final DoubleProperty value = new SimpleDoubleProperty();
 
     /**
      * The date this main interest rate was put into place.
@@ -53,14 +56,14 @@ public class MainInterestRate {
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
      * @return the interest rate
      */
     public Double getValue() {
-        return value;
+        return value.getValue();
     }
 
     /**
@@ -90,12 +93,13 @@ public class MainInterestRate {
 
         MainInterestRate that = (MainInterestRate) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

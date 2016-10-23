@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -11,7 +13,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class UserProfile {
     /**
      * All cash transfer logs for this user's interactions.
@@ -51,7 +52,7 @@ public class UserProfile {
     /**
      * The user's locale.
      */
-    private final String locale = null;
+    private final StringProperty locale = new SimpleStringProperty();
 
     /**
      * Returns the profile of the given user.
@@ -128,7 +129,7 @@ public class UserProfile {
      * @return the user's locale
      */
     public String getLocale() {
-        return locale;
+        return locale.getValue();
     }
 
     @Override

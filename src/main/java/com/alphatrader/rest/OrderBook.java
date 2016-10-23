@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -11,17 +13,16 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class OrderBook {
    /**
      * The maximum buy size.
      */
-    private final Double maxBuySize = null;
+    private final DoubleProperty maxBuySize = new SimpleDoubleProperty();
 
     /**
      * The maximum sell size.
      */
-    private final Double maxSellSize = null;
+    private final DoubleProperty maxSellSize = new SimpleDoubleProperty();
 
     /**
      * List of buy orders.
@@ -48,14 +49,14 @@ public class OrderBook {
      * @return the maximum buy size
      */
     public Double getMaxBuySize() {
-        return maxBuySize;
+        return maxBuySize.getValue();
     }
 
     /**
      * @return the maximum sell size
      */
     public Double getMaxSellSize() {
-        return maxSellSize;
+        return maxSellSize.getValue();
     }
 
     /**
@@ -93,19 +94,19 @@ public class OrderBook {
 
         OrderBook orderBook = (OrderBook) o;
 
-        if (maxBuySize != null ? !maxBuySize.equals(orderBook.maxBuySize)
-            : orderBook.maxBuySize != null) {
+        if (maxBuySize.getValue() != null ? !maxBuySize.getValue().equals(orderBook.maxBuySize
+            .getValue()) : orderBook.maxBuySize.getValue() != null) {
             return false;
         }
-        return maxSellSize != null ? maxSellSize.equals(orderBook.maxSellSize)
-            : orderBook.maxSellSize == null;
+        return maxSellSize.getValue() != null ? maxSellSize.getValue().equals(orderBook.maxSellSize
+            .getValue()) : orderBook.maxSellSize.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = maxBuySize != null ? maxBuySize.hashCode() : 0;
-        result = 31 * result + (maxSellSize != null ? maxSellSize.hashCode() : 0);
+        int result = maxBuySize.getValue() != null ? maxBuySize.getValue().hashCode() : 0;
+        result = 31 * result + (maxSellSize.getValue() != null ? maxSellSize.getValue().hashCode() : 0);
         return result;
     }
 }

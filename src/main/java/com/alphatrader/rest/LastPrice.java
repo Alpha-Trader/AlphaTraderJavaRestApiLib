@@ -1,5 +1,8 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.time.ZonedDateTime;
 
 /**
@@ -8,7 +11,6 @@ import java.time.ZonedDateTime;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class LastPrice {
     /**
      * The date of the last transaction resulting in this price.
@@ -18,7 +20,7 @@ public class LastPrice {
     /**
      * The last trade price of this position.
      */
-    private final String value = null;
+    private final StringProperty value = new SimpleStringProperty();
 
     /**
      * @return the time this trade took place
@@ -31,7 +33,7 @@ public class LastPrice {
      * @return the value of this trade
      */
     public Double getValue() {
-        return Double.valueOf(this.value.replaceAll("%", "").trim());
+        return Double.valueOf(this.value.getValue().replaceAll("%", "").trim());
     }
 
     @Override

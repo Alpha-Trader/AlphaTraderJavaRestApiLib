@@ -1,12 +1,14 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+
 /**
  * A vote in a poll in the game.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Vote {
     /**
      * The answer
@@ -16,7 +18,7 @@ public class Vote {
     /**
      * The number of voices.
      */
-    private final Long voices = null;
+    private final LongProperty voices = new SimpleLongProperty();
 
     /**
      * The voter.
@@ -34,7 +36,7 @@ public class Vote {
      * @return the number of voices
      */
     public Long getVoices() {
-        return voices;
+        return voices.getValue();
     }
 
     /**
@@ -48,7 +50,7 @@ public class Vote {
     public String toString() {
         return "Vote{"
             + "type=" + type
-            + ", voices=" + voices
+            + ", voices=" + voices.getValue()
             + ", voter=" + voter
             + '}';
     }
@@ -74,7 +76,8 @@ public class Vote {
         if (type != vote.type) {
             return false;
         }
-        if (voices != null ? !voices.equals(vote.voices) : vote.voices != null) {
+        if (voices.getValue() != null ? !voices.getValue().equals(vote.voices.getValue())
+            : vote.voices.getValue() != null) {
             return false;
         }
         return voter != null ? voter.equals(vote.voter) : vote.voter == null;
@@ -84,7 +87,7 @@ public class Vote {
     @Override
     public int hashCode() {
         int result = type != null ? type.hashCode() : 0;
-        result = 31 * result + (voices != null ? voices.hashCode() : 0);
+        result = 31 * result + (voices.getValue() != null ? voices.getValue().hashCode() : 0);
         result = 31 * result + (voter != null ? voter.hashCode() : 0);
         return result;
     }

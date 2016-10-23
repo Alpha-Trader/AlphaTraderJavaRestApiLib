@@ -1,5 +1,6 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -11,27 +12,26 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class HourlyMarketStatistics {
     /**
      * The unique id of the statistics object.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The average bond duration in days.
      */
-    private final Double averageBondDurationInDays = null;
+    private final DoubleProperty averageBondDurationInDays = new SimpleDoubleProperty();
 
     /**
      * The average book value.
      */
-    private final Double averageBookValue = null;
+    private final DoubleProperty averageBookValue = new SimpleDoubleProperty();
 
     /**
      * The average daily wage.
      */
-    private final Double averageDailyWage = null;
+    private final DoubleProperty averageDailyWage = new SimpleDoubleProperty();
 
     /**
      * The average designated sponsor rating.
@@ -41,27 +41,27 @@ public class HourlyMarketStatistics {
     /**
      * The average yield to maturity.
      */
-    private final Double averageYieldToMaturity = null;
+    private final DoubleProperty averageYieldToMaturity = new SimpleDoubleProperty();
 
     /**
      * The cumulative face volume of all bonds.
      */
-    private final Double bondFaceVolume = null;
+    private final DoubleProperty bondFaceVolume = new SimpleDoubleProperty();
 
     /**
      * The cumulative central bank reserves.
      */
-    private final Double centralBankReserves = null;
+    private final DoubleProperty centralBankReserves = new SimpleDoubleProperty();
 
     /**
      * The cumulative committed cash.
      */
-    private final Double committedCash = null;
+    private final DoubleProperty committedCash = new SimpleDoubleProperty();
 
     /**
      * The cumulative corporate cash.
      */
-    private final Double corporateCash = null;
+    private final DoubleProperty corporateCash = new SimpleDoubleProperty();
 
     /**
      * The date the statistics was created.
@@ -71,132 +71,132 @@ public class HourlyMarketStatistics {
     /**
      * The current main interest rate.
      */
-    private final Double mainInterestRate = null;
+    private final DoubleProperty mainInterestRate = new SimpleDoubleProperty();
 
     /**
      * The current market cap.
      */
-    private final Double marketCap = null;
+    private final DoubleProperty marketCap = new SimpleDoubleProperty();
 
     /**
      * The number of active listings.
      */
-    private final Long numberOfActiveOtherListings = null;
+    private final LongProperty numberOfActiveOtherListings = new SimpleLongProperty();
 
     /**
      * The number of banks.
      */
-    private final Long numberOfBanks = null;
+    private final LongProperty numberOfBanks = new SimpleLongProperty();
 
     /**
      * The number of bond orders.
      */
-    private final Long numberOfBondOrders = null;
+    private final LongProperty numberOfBondOrders = new SimpleLongProperty();
 
     /**
      * The number of cashout polls.
      */
-    private final Long numberOfCashoutPolls = null;
+    private final LongProperty numberOfCashoutPolls = new SimpleLongProperty();
 
     /**
      * The number of committed shares.
      */
-    private final Long numberOfCommittedShares = null;
+    private final LongProperty numberOfCommittedShares = new SimpleLongProperty();
 
     /**
      * The number of companies.
      */
-    private final Long numberOfCompanies = null;
+    private final LongProperty numberOfCompanies = new SimpleLongProperty();
 
     /**
      * The number of designated sponsors.
      */
-    private final Long numberOfDesignatedSponsors = null;
+    private final LongProperty numberOfDesignatedSponsors = new SimpleLongProperty();
 
     /**
      * The number of liquidation polls.
      */
-    private final Long numberOfLiquidationPolls = null;
+    private final LongProperty numberOfLiquidationPolls = new SimpleLongProperty();
 
     /**
      * The number of orders.
      */
-    private final Long numberOfOrders = null;
+    private final LongProperty numberOfOrders = new SimpleLongProperty();
 
     /**
      * The number of orders in the last 24 hours.
      */
-    private final Long numberOfOrders24h = null;
+    private final LongProperty numberOfOrders24h = new SimpleLongProperty();
 
     /**
      * The number of over the counter orders.
      */
-    private final Long numberOfOtcOrders = null;
+    private final LongProperty numberOfOtcOrders = new SimpleLongProperty();
 
     /**
      * The number of other listings.
      */
-    private final Long numberOfOtherListings = null;
+    private final LongProperty numberOfOtherListings = new SimpleLongProperty();
 
     /**
      * The number of other orders.
      */
-    private final Long numberOfOtherOrders = null;
+    private final LongProperty numberOfOtherOrders = new SimpleLongProperty();
 
     /**
      * The number of users with partner status.
      */
-    private final Long numberOfPartnerUsers = null;
+    private final LongProperty numberOfPartnerUsers = new SimpleLongProperty();
 
     /**
      * The number of users with premium status.
      */
-    private final Long numberOfPremiumUsers = null;
+    private final LongProperty numberOfPremiumUsers = new SimpleLongProperty();
 
     /**
      * The number of repo orders.
      */
-    private final Long numberOfRepoOrders = null;
+    private final LongProperty numberOfRepoOrders = new SimpleLongProperty();
 
     /**
      * The number of stock orders.
      */
-    private final Long numberOfStockOrders = null;
+    private final LongProperty numberOfStockOrders = new SimpleLongProperty();
 
     /**
      * The number of system bond orders.
      */
-    private final Long numberOfSystemBondOrders = null;
+    private final LongProperty numberOfSystemBondOrders = new SimpleLongProperty();
 
     /**
      * The number of system repo orders.
      */
-    private final Long numberOfSystemRepoOrders = null;
+    private final LongProperty numberOfSystemRepoOrders = new SimpleLongProperty();
 
     /**
      * The number of users.
      */
-    private final Long numberOfUsers = null;
+    private final LongProperty numberOfUsers = new SimpleLongProperty();
 
     /**
      * The order volume.
      */
-    private final Double orderVolume = null;
+    private final DoubleProperty orderVolume = new SimpleDoubleProperty();
 
     /**
      * The order volume in the last 24 hours.
      */
-    private final Double orderVolume24h = null;
+    private final DoubleProperty orderVolume24h = new SimpleDoubleProperty();
 
     /**
      * The cumulative amount of private cash.
      */
-    private final Double privateCash = null;
+    private final DoubleProperty privateCash = new SimpleDoubleProperty();
 
     /**
      * The cumulative amount of system bond face volumes.
      */
-    private final Double systemBondFaceVolume = null;
+    private final DoubleProperty systemBondFaceVolume = new SimpleDoubleProperty();
 
     /**
      * Fetches the hourly market statistics from the server.
@@ -212,28 +212,28 @@ public class HourlyMarketStatistics {
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
      * @return the average bond duration in days
      */
     public Double getAverageBondDurationInDays() {
-        return averageBondDurationInDays;
+        return averageBondDurationInDays.getValue();
     }
 
     /**
      * @return the average book value
      */
     public Double getAverageBookValue() {
-        return averageBookValue;
+        return averageBookValue.getValue();
     }
 
     /**
      * @return the average daily wage
      */
     public Double getAverageDailyWage() {
-        return averageDailyWage;
+        return averageDailyWage.getValue();
     }
 
     /**
@@ -247,35 +247,35 @@ public class HourlyMarketStatistics {
      * @return the average yield to maturity
      */
     public Double getAverageYieldToMaturity() {
-        return averageYieldToMaturity;
+        return averageYieldToMaturity.getValue();
     }
 
     /**
      * @return the cumulative bond face volume
      */
     public Double getBondFaceVolume() {
-        return bondFaceVolume;
+        return bondFaceVolume.getValue();
     }
 
     /**
      * @return the amount of central bank reserves
      */
     public Double getCentralBankReserves() {
-        return centralBankReserves;
+        return centralBankReserves.getValue();
     }
 
     /**
      * @return the amount of committed cash
      */
     public Double getCommittedCash() {
-        return committedCash;
+        return committedCash.getValue();
     }
 
     /**
      * @return the amount of corporate cash
      */
     public Double getCorporateCash() {
-        return corporateCash;
+        return corporateCash.getValue();
     }
 
     /**
@@ -289,224 +289,224 @@ public class HourlyMarketStatistics {
      * @return the main interest rate
      */
     public Double getMainInterestRate() {
-        return mainInterestRate;
+        return mainInterestRate.getValue();
     }
 
     /**
      * @return the market cap
      */
     public Double getMarketCap() {
-        return marketCap;
+        return marketCap.getValue();
     }
 
     /**
      * @return the number of active listings
      */
     public Long getNumberOfActiveOtherListings() {
-        return numberOfActiveOtherListings;
+        return numberOfActiveOtherListings.getValue();
     }
 
     /**
      * @return the number of banks
      */
     public Long getNumberOfBanks() {
-        return numberOfBanks;
+        return numberOfBanks.getValue();
     }
 
     /**
      * @return the number of bond orders
      */
     public Long getNumberOfBondOrders() {
-        return numberOfBondOrders;
+        return numberOfBondOrders.getValue();
     }
 
     /**
      * @return the number of cashout polls
      */
     public Long getNumberOfCashoutPolls() {
-        return numberOfCashoutPolls;
+        return numberOfCashoutPolls.getValue();
     }
 
     /**
      * @return the number of committed shares
      */
     public Long getNumberOfCommittedShares() {
-        return numberOfCommittedShares;
+        return numberOfCommittedShares.getValue();
     }
 
     /**
      * @return the number of companies
      */
     public Long getNumberOfCompanies() {
-        return numberOfCompanies;
+        return numberOfCompanies.getValue();
     }
 
     /**
      * @return the number of designated sponsors
      */
     public Long getNumberOfDesignatedSponsors() {
-        return numberOfDesignatedSponsors;
+        return numberOfDesignatedSponsors.getValue();
     }
 
     /**
      * @return the number of liquidation polls
      */
     public Long getNumberOfLiquidationPolls() {
-        return numberOfLiquidationPolls;
+        return numberOfLiquidationPolls.getValue();
     }
 
     /**
      * @return the number of orders
      */
     public Long getNumberOfOrders() {
-        return numberOfOrders;
+        return numberOfOrders.getValue();
     }
 
     /**
      * @return the number of orders in the last 24 hours
      */
     public Long getNumberOfOrders24h() {
-        return numberOfOrders24h;
+        return numberOfOrders24h.getValue();
     }
 
     /**
      * @return the number of over the counter orders
      */
     public Long getNumberOfOtcOrders() {
-        return numberOfOtcOrders;
+        return numberOfOtcOrders.getValue();
     }
 
     /**
      * @return the number of other listings
      */
     public Long getNumberOfOtherListings() {
-        return numberOfOtherListings;
+        return numberOfOtherListings.getValue();
     }
 
     /**
      * @return the number of other orders
      */
     public Long getNumberOfOtherOrders() {
-        return numberOfOtherOrders;
+        return numberOfOtherOrders.getValue();
     }
 
     /**
      * @return the number of users with partner status
      */
     public Long getNumberOfPartnerUsers() {
-        return numberOfPartnerUsers;
+        return numberOfPartnerUsers.getValue();
     }
 
     /**
      * @return the number of users with premium status
      */
     public Long getNumberOfPremiumUsers() {
-        return numberOfPremiumUsers;
+        return numberOfPremiumUsers.getValue();
     }
 
     /**
      * @return the number of repo orders
      */
     public Long getNumberOfRepoOrders() {
-        return numberOfRepoOrders;
+        return numberOfRepoOrders.getValue();
     }
 
     /**
      * @return the number of stock orders
      */
     public Long getNumberOfStockOrders() {
-        return numberOfStockOrders;
+        return numberOfStockOrders.getValue();
     }
 
     /**
      * @return the number of system bond orders
      */
     public Long getNumberOfSystemBondOrders() {
-        return numberOfSystemBondOrders;
+        return numberOfSystemBondOrders.getValue();
     }
 
     /**
      * @return the number of system repo orders
      */
     public Long getNumberOfSystemRepoOrders() {
-        return numberOfSystemRepoOrders;
+        return numberOfSystemRepoOrders.getValue();
     }
 
     /**
      * @return the number of users
      */
     public Long getNumberOfUsers() {
-        return numberOfUsers;
+        return numberOfUsers.getValue();
     }
 
     /**
      * @return the cumulative order volume
      */
     public Double getOrderVolume() {
-        return orderVolume;
+        return orderVolume.getValue();
     }
 
     /**
      * @return the cumulative order volume in the last 24 hours
      */
     public Double getOrderVolume24h() {
-        return orderVolume24h;
+        return orderVolume24h.getValue();
     }
 
     /**
      * @return the cumulative private cash
      */
     public Double getPrivateCash() {
-        return privateCash;
+        return privateCash.getValue();
     }
 
     /**
      * @return the cumulative system bond face volume
      */
     public Double getSystemBondFaceVolume() {
-        return systemBondFaceVolume;
+        return systemBondFaceVolume.getValue();
     }
 
     @Override
     public String toString() {
         return "HourlyMarketStatistics{"
-            + "id='" + id + '\''
-            + ", averageBondDurationInDays=" + averageBondDurationInDays
-            + ", averageBookValue=" + averageBookValue
-            + ", averageDailyWage=" + averageDailyWage
+            + "id='" + id.getValue() + '\''
+            + ", averageBondDurationInDays=" + averageBondDurationInDays.getValue()
+            + ", averageBookValue=" + averageBookValue.getValue()
+            + ", averageDailyWage=" + averageDailyWage.getValue()
             + ", averageDesignatedSponsorRating=" + averageDesignatedSponsorRating
-            + ", averageYieldToMaturity=" + averageYieldToMaturity
-            + ", bondFaceVolume=" + bondFaceVolume
-            + ", centralBankReserves=" + centralBankReserves
-            + ", committedCash=" + committedCash
-            + ", corporateCash=" + corporateCash
+            + ", averageYieldToMaturity=" + averageYieldToMaturity.getValue()
+            + ", bondFaceVolume=" + bondFaceVolume.getValue()
+            + ", centralBankReserves=" + centralBankReserves.getValue()
+            + ", committedCash=" + committedCash.getValue()
+            + ", corporateCash=" + corporateCash.getValue()
             + ", date=" + date
-            + ", mainInterestRate=" + mainInterestRate
-            + ", marketCap=" + marketCap
-            + ", numberOfActiveOtherListings=" + numberOfActiveOtherListings
-            + ", numberOfBanks=" + numberOfBanks
-            + ", numberOfBondOrders=" + numberOfBondOrders
-            + ", numberOfCashoutPolls=" + numberOfCashoutPolls
-            + ", numberOfCommittedShares=" + numberOfCommittedShares
-            + ", numberOfCompanies=" + numberOfCompanies
-            + ", numberOfDesignatedSponsors=" + numberOfDesignatedSponsors
-            + ", numberOfLiquidationPolls=" + numberOfLiquidationPolls
-            + ", numberOfOrders=" + numberOfOrders
-            + ", numberOfOrders24h=" + numberOfOrders24h
-            + ", numberOfOtcOrders=" + numberOfOtcOrders
-            + ", numberOfOtherListings=" + numberOfOtherListings
-            + ", numberOfOtherOrders=" + numberOfOtherOrders
-            + ", numberOfPartnerUsers=" + numberOfPartnerUsers
-            + ", numberOfPremiumUsers=" + numberOfPremiumUsers
-            + ", numberOfRepoOrders=" + numberOfRepoOrders
-            + ", numberOfStockOrders=" + numberOfStockOrders
-            + ", numberOfSystemBondOrders=" + numberOfSystemBondOrders
-            + ", numberOfSystemRepoOrders=" + numberOfSystemRepoOrders
-            + ", numberOfUsers=" + numberOfUsers
-            + ", orderVolume=" + orderVolume
-            + ", orderVolume24h=" + orderVolume24h
-            + ", privateCash=" + privateCash
-            + ", systemBondFaceVolume=" + systemBondFaceVolume
+            + ", mainInterestRate=" + mainInterestRate.getValue()
+            + ", marketCap=" + marketCap.getValue()
+            + ", numberOfActiveOtherListings=" + numberOfActiveOtherListings.getValue()
+            + ", numberOfBanks=" + numberOfBanks.getValue()
+            + ", numberOfBondOrders=" + numberOfBondOrders.getValue()
+            + ", numberOfCashoutPolls=" + numberOfCashoutPolls.getValue()
+            + ", numberOfCommittedShares=" + numberOfCommittedShares.getValue()
+            + ", numberOfCompanies=" + numberOfCompanies.getValue()
+            + ", numberOfDesignatedSponsors=" + numberOfDesignatedSponsors.getValue()
+            + ", numberOfLiquidationPolls=" + numberOfLiquidationPolls.getValue()
+            + ", numberOfOrders=" + numberOfOrders.getValue()
+            + ", numberOfOrders24h=" + numberOfOrders24h.getValue()
+            + ", numberOfOtcOrders=" + numberOfOtcOrders.getValue()
+            + ", numberOfOtherListings=" + numberOfOtherListings.getValue()
+            + ", numberOfOtherOrders=" + numberOfOtherOrders.getValue()
+            + ", numberOfPartnerUsers=" + numberOfPartnerUsers.getValue()
+            + ", numberOfPremiumUsers=" + numberOfPremiumUsers.getValue()
+            + ", numberOfRepoOrders=" + numberOfRepoOrders.getValue()
+            + ", numberOfStockOrders=" + numberOfStockOrders.getValue()
+            + ", numberOfSystemBondOrders=" + numberOfSystemBondOrders.getValue()
+            + ", numberOfSystemRepoOrders=" + numberOfSystemRepoOrders.getValue()
+            + ", numberOfUsers=" + numberOfUsers.getValue()
+            + ", orderVolume=" + orderVolume.getValue()
+            + ", orderVolume24h=" + orderVolume24h.getValue()
+            + ", privateCash=" + privateCash.getValue()
+            + ", systemBondFaceVolume=" + systemBondFaceVolume.getValue()
             + '}';
     }
 
@@ -521,12 +521,12 @@ public class HourlyMarketStatistics {
 
         HourlyMarketStatistics that = (HourlyMarketStatistics) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
-
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

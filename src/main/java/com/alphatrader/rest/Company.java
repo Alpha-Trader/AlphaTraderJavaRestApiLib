@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,22 +14,21 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Company {
     /**
      * The unique company identifier.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The company name.
      */
-    private final String name = null;
+    private final StringProperty name = new SimpleStringProperty();
 
     /**
      * The securities account id.
      */
-    private final String securitiesAccountId = null;
+    private final StringProperty securitiesAccountId = new SimpleStringProperty();
 
     /**
      * The current amount of uncommitted cash.
@@ -176,21 +177,21 @@ public class Company {
      * @return the name
      */
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     /**
      * @return the securities accounts unique identifier.
      */
     public String getSecuritiesAccountId() {
-        return securitiesAccountId;
+        return securitiesAccountId.getValue();
     }
 
     /**
      * @return the company's unique id.
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
@@ -224,9 +225,9 @@ public class Company {
     @Override
     public String toString() {
         return "Company{"
-            + "id='" + id + '\''
-            + ", name='" + name + '\''
-            + ", securitiesAccountId='" + securitiesAccountId + '\''
+            + "id='" + id.getValue() + '\''
+            + ", name='" + name.getValue() + '\''
+            + ", securitiesAccountId='" + securitiesAccountId.getValue() + '\''
             + '}';
     }
 
@@ -241,12 +242,13 @@ public class Company {
 
         Company company = (Company) o;
 
-        return id != null ? id.equals(company.id) : company.id == null;
+        return id.getValue() != null ? id.getValue().equals(company.id.getValue())
+            : company.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

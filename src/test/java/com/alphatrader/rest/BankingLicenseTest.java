@@ -1,28 +1,16 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import org.apache.http.HttpResponseFactory;
-import org.apache.http.HttpStatus;
-import org.apache.http.HttpVersion;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.DefaultHttpResponseFactory;
-import org.apache.http.message.BasicStatusLine;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
-import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * Test case for the {@link BankingLicense} class.
@@ -32,8 +20,7 @@ import static org.mockito.Mockito.when;
  */
 public class BankingLicenseTest {
     private static HttpResponder httpResponder = HttpResponder.getInstance();
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private final static String JSON = "{\n" +
         "  \"startDate\": 1475335931401,\n" +

@@ -6,7 +6,6 @@ package com.alphatrader.rest;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class SecuritySponsorship {
     /**
      * The company which is sponsoring the listing.

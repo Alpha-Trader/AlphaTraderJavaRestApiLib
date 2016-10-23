@@ -1,8 +1,7 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -23,8 +22,7 @@ import static org.junit.Assert.*;
  */
 public class PriceSpreadTest {
     private static HttpResponder httpResponder = HttpResponder.getInstance();
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private static final String JSON = "{\n" +
         "  \"listing\": {\n" +
@@ -79,32 +77,32 @@ public class PriceSpreadTest {
 
     @Test
     public void getAskSize() throws Exception {
-        assertEquals(null, toTest.getAskSize());
+        assertEquals(Long.valueOf(0), toTest.getAskSize());
     }
 
     @Test
     public void getAskPrice() throws Exception {
-        assertEquals(null, toTest.getAskPrice());
+        assertEquals(Double.valueOf(0.0), toTest.getAskPrice());
     }
 
     @Test
     public void getBidSize() throws Exception {
-        assertEquals(49701, toTest.getBidSize(), 0.0001);
+        assertEquals(Long.valueOf(49701), toTest.getBidSize());
     }
 
     @Test
     public void getBidPrice() throws Exception {
-        assertEquals(25, toTest.getBidPrice(), 0.0001);
+        assertEquals(Double.valueOf(25.0), toTest.getBidPrice());
     }
 
     @Test
     public void getSpreadAbs() throws Exception {
-        assertEquals(null, toTest.getSpreadAbs());
+        assertEquals(Double.valueOf(0.0), toTest.getSpreadAbs());
     }
 
     @Test
     public void getSpreadPercent() throws Exception {
-        assertEquals(null, toTest.getSpreadPercent());
+        assertEquals(Double.valueOf(0.0), toTest.getSpreadPercent());
     }
 
     @Test
@@ -118,12 +116,12 @@ public class PriceSpreadTest {
 
     @Test
     public void getMaxBidPrice() throws Exception {
-        assertEquals(null, toTest.getMaxBidPrice());
+        assertEquals(Double.valueOf(0.0), toTest.getMaxBidPrice());
     }
 
     @Test
     public void getMinAskPrice() throws Exception {
-        assertEquals(null, toTest.getMinAskPrice());
+        assertEquals(Double.valueOf(0.0), toTest.getMinAskPrice());
     }
 
     @Test

@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
@@ -10,7 +12,6 @@ import java.time.ZonedDateTime;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class BankingLicense {
     /**
      * The date the license has been issued.
@@ -25,7 +26,7 @@ public class BankingLicense {
     /**
      * The id of this banking license.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Fetches the banking license for the specified company from the API.
@@ -89,7 +90,7 @@ public class BankingLicense {
      * @return the id of this license
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
@@ -97,7 +98,7 @@ public class BankingLicense {
         return "BankingLicense{"
             + "startDate=" + startDate
             + ", company=" + company
-            + ", id='" + id + '\''
+            + ", id='" + id.getValue() + '\''
             + '}';
     }
 
@@ -112,12 +113,12 @@ public class BankingLicense {
 
         BankingLicense that = (BankingLicense) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
-
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

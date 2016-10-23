@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -11,16 +13,15 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Portfolio {
     /**
      * The amount of cash in this portfolio.
      */
-    private final Double cash = null;
+    private final DoubleProperty cash = new SimpleDoubleProperty();
     /**
      * The amount of committed cash in this portfolio.
      */
-    private final Double committedCash = null;
+    private final DoubleProperty committedCash = new SimpleDoubleProperty();
     /**
      * A list of all positions in this portfolio.
      */
@@ -84,21 +85,21 @@ public class Portfolio {
      * @return the amount of cash
      */
     public Double getCash() {
-        return cash;
+        return cash.getValue();
     }
 
     /**
      * @return the amount of committed cash
      */
     public Double getCommittedCash() {
-        return committedCash;
+        return committedCash.getValue();
     }
 
     @Override
     public String toString() {
         return "Portfolio{"
-            + "cash=" + cash
-            + ", committedCash=" + committedCash
+            + "cash=" + cash.getValue()
+            + ", committedCash=" + committedCash.getValue()
             + ", positions=" + Arrays.toString(positions)
             + '}';
     }
@@ -114,11 +115,12 @@ public class Portfolio {
 
         Portfolio portfolio = (Portfolio) o;
 
-        if (cash != null ? !cash.equals(portfolio.cash) : portfolio.cash != null) {
+        if (cash.getValue() != null ? !cash.getValue().equals(portfolio.cash.getValue()) : portfolio
+            .cash.getValue() != null) {
             return false;
         }
-        if (committedCash != null ? !committedCash.equals(portfolio.committedCash)
-            : portfolio.committedCash != null) {
+        if (committedCash.getValue() != null ? !committedCash.getValue().equals(portfolio.committedCash
+            .getValue()) : portfolio.committedCash.getValue() != null) {
             return false;
         }
         return Arrays.equals(positions, portfolio.positions);
@@ -126,8 +128,9 @@ public class Portfolio {
 
     @Override
     public int hashCode() {
-        int result = cash != null ? cash.hashCode() : 0;
-        result = 31 * result + (committedCash != null ? committedCash.hashCode() : 0);
+        int result = cash.getValue() != null ? cash.getValue().hashCode() : 0;
+        result = 31 * result + (committedCash.getValue() != null ? committedCash.getValue().hashCode()
+            : 0);
         result = 31 * result + Arrays.hashCode(positions);
         return result;
     }

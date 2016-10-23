@@ -5,6 +5,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +21,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class User {
     /**
      * The logger for this class.
@@ -29,26 +30,26 @@ public class User {
     /**
      * The username.
      */
-    private final String username;
+    private final StringProperty username = new SimpleStringProperty();
     /**
      * De passwoord.
      */
-    private final String password;
+    private final StringProperty password = new SimpleStringProperty();
 
     /**
      * The user's email address.
      */
-    private final String emailAddress = null;
+    private final StringProperty emailAddress = new SimpleStringProperty();
 
     /**
      * The gravatar hash of the user's profile image.
      */
-    private final String gravatarHash = null;
+    private final StringProperty gravatarHash = new SimpleStringProperty();
 
     /**
      * The unique id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The user capabilities.
@@ -58,7 +59,7 @@ public class User {
     /**
      * The current session web token to use as login credentials.
      */
-    private String jwtToken;
+    private final StringProperty jwtToken = new SimpleStringProperty();
 
     /**
      * Creates a new user object with the given parameters.
@@ -67,8 +68,8 @@ public class User {
      * @param password the password
      */
     public User(String name, String password) {
-        this.username = name;
-        this.password = password;
+        this.username.setValue(name);
+        this.password.setValue(password);
     }
 
     /**
@@ -160,7 +161,7 @@ public class User {
             JSONObject body = response.getBody().getObject();
 
             if (body.optInt("code", -1) == 200) {
-                jwtToken = body.getString("message");
+                jwtToken.setValue(body.getString("message"));
             }
             else {
                 log.warn("Login failed.");
@@ -175,42 +176,42 @@ public class User {
      * @return the name
      */
     public String getUsername() {
-        return username;
+        return username.getValue();
     }
 
     /**
      * @return the password
      */
     public String getPassword() {
-        return password;
+        return password.getValue();
     }
 
     /**
      * @return the token
      */
     public String getToken() {
-        return jwtToken;
+        return jwtToken.getValue();
     }
 
     /**
      * @return the unique user id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
      * @return the user's email address
      */
     public String getEmailAddress() {
-        return emailAddress;
+        return emailAddress.getValue();
     }
 
     /**
      * @return the gravatar hash
      */
     public String getGravatarHash() {
-        return gravatarHash;
+        return gravatarHash.getValue();
     }
 
     /**
@@ -223,12 +224,13 @@ public class User {
     @Override
     public String toString() {
         return "User{"
-            + "username='" + username + '\''
-            + ", emailAddress='" + emailAddress + '\''
-            + ", gravatarHash='" + gravatarHash + '\''
-            + ", id='" + id + '\''
+            + "username=" + username
+            + ", password=" + password
+            + ", emailAddress=" + emailAddress
+            + ", gravatarHash=" + gravatarHash
+            + ", id=" + id
             + ", userCapabilities=" + userCapabilities
-            + ", jwtToken='" + jwtToken + '\''
+            + ", jwtToken=" + jwtToken
             + '}';
     }
 
@@ -243,12 +245,13 @@ public class User {
 
         User user = (User) o;
 
-        return id != null ? id.equals(user.id) : user.id == null;
+        return id.getValue() != null ? id.getValue().equals(user.id.getValue())
+            : user.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

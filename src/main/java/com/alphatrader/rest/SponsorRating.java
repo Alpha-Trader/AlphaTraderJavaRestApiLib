@@ -1,17 +1,19 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 /**
  * Represents a sponsor rating in the game.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class SponsorRating {
     /**
      * The salary paid for the sponsorship
      */
-    private final Double salary = null;
+    private final DoubleProperty salary = new SimpleDoubleProperty();
 
     /**
      * The rating classification.
@@ -22,7 +24,7 @@ public class SponsorRating {
      * @return the sponsor salary
      */
     public Double getSalary() {
-        return salary;
+        return salary.getValue();
     }
 
     /**
@@ -58,7 +60,8 @@ public class SponsorRating {
 
         SponsorRating that = (SponsorRating) o;
 
-        if (salary != null ? !salary.equals(that.salary) : that.salary != null) {
+        if (salary.getValue() != null ? !salary.getValue().equals(that.salary.getValue())
+            : that.salary.getValue() != null) {
             return false;
         }
         return value == that.value;
@@ -67,7 +70,7 @@ public class SponsorRating {
 
     @Override
     public int hashCode() {
-        int result = salary != null ? salary.hashCode() : 0;
+        int result = salary.getValue() != null ? salary.getValue().hashCode() : 0;
         result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
     }

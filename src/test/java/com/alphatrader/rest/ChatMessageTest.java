@@ -1,8 +1,7 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -25,8 +24,7 @@ import static org.junit.Assert.*;
  */
 public class ChatMessageTest {
     private static HttpResponder httpResponder = HttpResponder.getInstance();
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private static final String JSON = "{\n" +
         "  \"dateSent\": 1475154250577,\n" +
@@ -177,12 +175,6 @@ public class ChatMessageTest {
         assertTrue(toTest.equals(toTest));
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
-
-        ChatMessage other = gson.fromJson("{\n" +
-            "  \"id\": \"12345\"\n" +
-            "}", ChatMessage.class);
-
-        assertFalse(toTest.equals(other));
     }
 
     @Test

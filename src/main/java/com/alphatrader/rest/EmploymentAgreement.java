@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +16,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class EmploymentAgreement {
     /**
      * The company which employs.
@@ -22,12 +25,12 @@ public class EmploymentAgreement {
     /**
      * The daily wage.
      */
-    private final Double dailyWage = null;
+    private final DoubleProperty dailyWage = new SimpleDoubleProperty();
 
     /**
      * The unique id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The date the CEO was employed.
@@ -78,14 +81,14 @@ public class EmploymentAgreement {
      * @return the daily wage
      */
     public Double getDailyWage() {
-        return dailyWage;
+        return dailyWage.getValue();
     }
 
     /**
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
@@ -116,12 +119,13 @@ public class EmploymentAgreement {
 
         EmploymentAgreement that = (EmploymentAgreement) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

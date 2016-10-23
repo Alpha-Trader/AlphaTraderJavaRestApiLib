@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleLongProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,57 +16,72 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class PriceSpread {
     /**
      * The current ask size.
      */
-    private final Long askSize = null;
+    private final LongProperty askSize;
 
     /**
      * The current asking price.
      */
-    private final Double askPrice = null;
+    private final DoubleProperty askPrice;
 
     /**
      * The current bid size.
      */
-    private final Long bidSize = null;
+    private final LongProperty bidSize;
 
     /**
      * The current bid price.
      */
-    private final Double bidPrice = null;
+    private final DoubleProperty bidPrice;
 
     /**
      * The absolute spread.
      */
-    private final Double spreadAbs = null;
+    private final DoubleProperty spreadAbs;
 
     /**
      * The spread percentage.
      */
-    private final Double spreadPercent = null;
+    private final DoubleProperty spreadPercent;
 
     /**
      * The last price the listing was traded.
      */
-    private final LastPrice lastPrice = null;
+    private final LastPrice lastPrice;
 
     /**
      * The maximum bid price allowed by the market.
      */
-    private final Double maxBidPrice = null;
+    private final DoubleProperty maxBidPrice;
 
     /**
      * The minimal asking price allowed by the market.
      */
-    private final Double minAskPrice = null;
+    private final DoubleProperty minAskPrice;
 
     /**
      * The date the spread was created.
      */
-    private final ZonedDateTime date = null;
+    private final ZonedDateTime date;
+
+    /**
+     * Creates a default price spread object.
+     */
+    public PriceSpread() {
+        askSize = new SimpleLongProperty();
+        askPrice = new SimpleDoubleProperty();
+        bidSize = new SimpleLongProperty();
+        bidPrice = new SimpleDoubleProperty();
+        spreadAbs = new SimpleDoubleProperty();
+        spreadPercent = new SimpleDoubleProperty();
+        lastPrice = new LastPrice();
+        maxBidPrice = new SimpleDoubleProperty();
+        minAskPrice = new SimpleDoubleProperty();
+        date = ZonedDateTime.now();
+    }
 
     /**
      * Fetches all price spreads currently on the market from the server.
@@ -100,42 +119,42 @@ public class PriceSpread {
      * @return the current ask size
      */
     public Long getAskSize() {
-        return askSize;
+        return askSize.getValue();
     }
 
     /**
      * @return the current asking price
      */
     public Double getAskPrice() {
-        return askPrice;
+        return askPrice.getValue();
     }
 
     /**
      * @return the current bid size
      */
     public Long getBidSize() {
-        return bidSize;
+        return bidSize.getValue();
     }
 
     /**
      * @return the current bid price
      */
     public Double getBidPrice() {
-        return bidPrice;
+        return bidPrice.getValue();
     }
 
     /**
      * @return the current absolute spread
      */
     public Double getSpreadAbs() {
-        return spreadAbs;
+        return spreadAbs.getValue();
     }
 
     /**
      * @return the current spread percentage
      */
     public Double getSpreadPercent() {
-        return spreadPercent;
+        return spreadPercent.getValue();
     }
 
     /**
@@ -149,14 +168,14 @@ public class PriceSpread {
      * @return the maximum bid price
      */
     public Double getMaxBidPrice() {
-        return maxBidPrice;
+        return maxBidPrice.getValue();
     }
 
     /**
      * @return the minimum asking price
      */
     public Double getMinAskPrice() {
-        return minAskPrice;
+        return minAskPrice.getValue();
     }
 
     /**
@@ -165,6 +184,7 @@ public class PriceSpread {
     public ZonedDateTime getDate() {
         return date;
     }
+
 
     @Override
     public String toString() {
@@ -193,26 +213,40 @@ public class PriceSpread {
 
         PriceSpread that = (PriceSpread) o;
 
-        if (askSize != null ? !askSize.equals(that.askSize) : that.askSize != null) {
+        if (askSize.getValue() != null ? !askSize.getValue().equals(that.askSize.getValue()) : that
+            .askSize.getValue() != null) {
             return false;
         }
-        if (askPrice != null ? !askPrice.equals(that.askPrice) : that.askPrice != null) {
+        if (askPrice.getValue() != null ? !askPrice.getValue().equals(that.askPrice.getValue())
+            : that.askPrice.getValue() != null) {
             return false;
         }
-        if (bidSize != null ? !bidSize.equals(that.bidSize) : that.bidSize != null) {
+        if (bidSize.getValue() != null ? !bidSize.getValue().equals(that.bidSize.getValue()) : that
+            .bidSize.getValue() != null) {
             return false;
         }
-        if (bidPrice != null ? !bidPrice.equals(that.bidPrice) : that.bidPrice != null) {
+        if (bidPrice.getValue() != null ? !bidPrice.getValue().equals(that.bidPrice.getValue()) : that
+            .bidPrice.getValue() != null) {
             return false;
         }
-        if (spreadAbs != null ? !spreadAbs.equals(that.spreadAbs) : that.spreadAbs != null) {
+        if (spreadAbs.getValue() != null ? !spreadAbs.getValue().equals(that.spreadAbs.getValue()) : that
+            .spreadAbs.getValue() != null) {
             return false;
         }
-        if (spreadPercent != null ? !spreadPercent.equals(that.spreadPercent)
-            : that.spreadPercent != null) {
+        if (spreadPercent.getValue() != null ? !spreadPercent.getValue().equals(that.spreadPercent
+            .getValue()) : that.spreadPercent.getValue()
+            != null) {
             return false;
         }
         if (lastPrice != null ? !lastPrice.equals(that.lastPrice) : that.lastPrice != null) {
+            return false;
+        }
+        if (maxBidPrice.getValue() != null ? !maxBidPrice.getValue().equals(that.maxBidPrice.getValue())
+            : that.maxBidPrice.getValue() != null) {
+            return false;
+        }
+        if (minAskPrice.getValue() != null ? !minAskPrice.getValue().equals(that.minAskPrice.getValue())
+            : that.minAskPrice.getValue() != null) {
             return false;
         }
         return date != null ? date.equals(that.date) : that.date == null;
@@ -221,15 +255,16 @@ public class PriceSpread {
 
     @Override
     public int hashCode() {
-        int result = askSize != null ? askSize.hashCode() : 0;
-        result = 31 * result + (askPrice != null ? askPrice.hashCode() : 0);
-        result = 31 * result + (bidSize != null ? bidSize.hashCode() : 0);
-        result = 31 * result + (bidPrice != null ? bidPrice.hashCode() : 0);
-        result = 31 * result + (spreadAbs != null ? spreadAbs.hashCode() : 0);
-        result = 31 * result + (spreadPercent != null ? spreadPercent.hashCode() : 0);
+        int result = askSize.getValue() != null ? askSize.getValue().hashCode() : 0;
+        result = 31 * result + (askPrice.getValue() != null ? askPrice.getValue().hashCode() : 0);
+        result = 31 * result + (bidSize.getValue() != null ? bidSize.getValue().hashCode() : 0);
+        result = 31 * result + (bidPrice.getValue() != null ? bidPrice.getValue().hashCode() : 0);
+        result = 31 * result + (spreadAbs.getValue() != null ? spreadAbs.getValue().hashCode() : 0);
+        result = 31 * result + (spreadPercent.getValue() != null ? spreadPercent.getValue().hashCode()
+            : 0);
         result = 31 * result + (lastPrice != null ? lastPrice.hashCode() : 0);
-        result = 31 * result + (maxBidPrice != null ? maxBidPrice.hashCode() : 0);
-        result = 31 * result + (minAskPrice != null ? minAskPrice.hashCode() : 0);
+        result = 31 * result + (maxBidPrice.getValue() != null ? maxBidPrice.getValue().hashCode() : 0);
+        result = 31 * result + (minAskPrice.getValue() != null ? minAskPrice.getValue().hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }

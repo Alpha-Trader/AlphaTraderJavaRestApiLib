@@ -50,13 +50,12 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
         </dependency>
- 				<dependency>
-				    <groupId>com.google.guava</groupId>
-				    <artifactId>guava</artifactId>
-				    <version>20.0-rc1</version>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0-rc1</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -135,20 +134,20 @@
                     </execution>
                 </executions>
             </plugin>
-       </plugins>
+        </plugins>
     </build>
 
-		<reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
-        <configuration>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <distributionManagement>
         <repository>

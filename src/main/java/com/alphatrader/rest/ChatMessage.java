@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +17,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class ChatMessage {
     /**
      * The date the message was sent.
@@ -23,7 +26,7 @@ public class ChatMessage {
     /**
      * The id of the chat the message was sent in.
      */
-    private final String chatId = null;
+    private final StringProperty chatId = new SimpleStringProperty();
 
     /**
      * The user who sent the message.
@@ -33,17 +36,17 @@ public class ChatMessage {
     /**
      * Is the message unread?
      */
-    private final Boolean read = null;
+    private final BooleanProperty read = new SimpleBooleanProperty();
 
     /**
      * The unique message id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The content of the message.
      */
-    private final String content = null;
+    private final StringProperty content = new SimpleStringProperty();
 
     /**
      * Fetches all chat messages from the given chat.
@@ -170,7 +173,7 @@ public class ChatMessage {
      * @return the chat id.
      */
     public String getChatId() {
-        return chatId;
+        return chatId.getValue();
     }
 
     /**
@@ -184,32 +187,32 @@ public class ChatMessage {
      * @return true if the message was read.
      */
     public Boolean isRead() {
-        return read;
+        return read.getValue();
     }
 
     /**
      * @return the unique id of the message.
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
      * @return the message content.
      */
     public String getContent() {
-        return content;
+        return content.getValue();
     }
 
     @Override
     public String toString() {
         return "ChatMessage{"
             + "dateSent=" + dateSent
-            + ", chatId='" + chatId + '\''
+            + ", chatId='" + chatId.getValueSafe() + '\''
             + ", sender=" + sender
-            + ", read=" + read
-            + ", id='" + id + '\''
-            + ", content='" + content + '\''
+            + ", read=" + read.getValue()
+            + ", id='" + id.getValueSafe() + '\''
+            + ", content='" + content.getValueSafe() + '\''
             + '}';
     }
 
@@ -224,17 +227,19 @@ public class ChatMessage {
 
         ChatMessage that = (ChatMessage) o;
 
-        if (chatId != null ? !chatId.equals(that.chatId) : that.chatId != null) {
+        if (chatId.getValue() != null ? !chatId.getValue().equals(that.chatId.getValue())
+            : that.chatId.getValue() != null) {
             return false;
         }
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = chatId != null ? chatId.hashCode() : 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
+        int result = chatId.getValue() != null ? chatId.getValue().hashCode() : 0;
+        result = 31 * result + (id.getValue() != null ? id.getValue().hashCode() : 0);
         return result;
     }
 }

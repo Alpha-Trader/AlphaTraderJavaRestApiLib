@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,27 +16,26 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Bond {
     /**
      * The bond's name.
      */
-    private final String name = null;
+    private final StringProperty name = new SimpleStringProperty();
 
     /**
      * The bond's volume.
      */
-    private final Double volume = null;
+    private final DoubleProperty volume = new SimpleDoubleProperty();
 
     /**
      * The overall interest rate of the bond.
      */
-    private final Double interestRate = null;
+    private final DoubleProperty interestRate = new SimpleDoubleProperty();
 
     /**
      * The face value the bond was issued for.
      */
-    private final Double faceValue = null;
+    private final DoubleProperty faceValue = new SimpleDoubleProperty();
 
     /**
      * The bond's date of maturity.
@@ -67,7 +70,7 @@ public class Bond {
     /**
      * The unique bond id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Fetches all bonds currently on the market from the server.
@@ -159,28 +162,28 @@ public class Bond {
      * @return the name
      */
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     /**
      * @return the volume
      */
     public Double getVolume() {
-        return volume;
+        return volume.getValue();
     }
 
     /**
      * @return the interest rate
      */
-    public double getInterestRate() {
-        return interestRate;
+    public Double getInterestRate() {
+        return interestRate.getValue();
     }
 
     /**
      * @return the face value
      */
-    public double getFaceValue() {
-        return faceValue;
+    public Double getFaceValue() {
+        return faceValue.getValue();
     }
 
     /**
@@ -230,16 +233,16 @@ public class Bond {
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
     public String toString() {
         return "Bond{"
-            + "name='" + name + '\''
-            + ", volume=" + volume
-            + ", interestRate=" + interestRate
-            + ", faceValue=" + faceValue
+            + "name='" + name.getValue() + '\''
+            + ", volume=" + volume.getValue()
+            + ", interestRate=" + interestRate.getValue()
+            + ", faceValue=" + faceValue.getValue()
             + ", maturityDate=" + maturityDate
             + '}';
     }
@@ -255,13 +258,14 @@ public class Bond {
 
         Bond bond = (Bond) o;
 
-        return id != null ? id.equals(bond.id) : bond.id == null;
+        return id.getValue() != null ? id.getValue().equals(bond.id.getValue())
+            : bond.id.getValue() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
+        int result = name.getValue() != null ? name.getValue().hashCode() : 0;
+        result = 31 * result + (id.getValue() != null ? id.getValue().hashCode() : 0);
         return result;
     }
 }

@@ -1,22 +1,20 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.time.ZonedDateTime;
 
 import static org.junit.Assert.*;
 
 /**
+ * Test case for the {@link VotingGroupMember} class.
+ *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
 public class VotingGroupMemberTest {
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private static final String JSON = "{\n" +
         "  \"groupMember\": {\n" +
@@ -75,12 +73,6 @@ public class VotingGroupMemberTest {
         assertTrue(toTest.equals(toTest));
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
-
-        VotingGroupMember other = gson.fromJson("{\n" +
-            "  \"id\": \"12345\"\n" +
-            "}", VotingGroupMember.class);
-
-        assertFalse(toTest.equals(other));
     }
 
     @Test

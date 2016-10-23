@@ -1,6 +1,10 @@
 package com.alphatrader.rest;
 
 import com.google.gson.Gson;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -9,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class CentralBankReserves {
     /**
      * Gson instance for deserialization.
@@ -19,7 +22,7 @@ public class CentralBankReserves {
     /**
      * The unique identifier for the central bank reserves.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * The banking license associated with these reserves.
@@ -29,12 +32,12 @@ public class CentralBankReserves {
     /**
      * The maximum amount of loans allowed for this company.
      */
-    private final Double maxCentralBankLoans = null;
+    private final DoubleProperty maxCentralBankLoans = new SimpleDoubleProperty();
 
     /**
      * The current amount of cash held in the reserve.
      */
-    private final Double cashHolding = null;
+    private final DoubleProperty cashHolding = new SimpleDoubleProperty();
 
     /**
      * Returns the central bank loans for a certain company.
@@ -74,7 +77,7 @@ public class CentralBankReserves {
      * @return the unique id of these reserves
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
@@ -88,23 +91,23 @@ public class CentralBankReserves {
      * @return the maximum of central bank loans
      */
     public Double getMaxCentralBankLoans() {
-        return maxCentralBankLoans;
+        return maxCentralBankLoans.getValue();
     }
 
     /**
      * @return the currently held cash
      */
     public Double getCashHolding() {
-        return cashHolding;
+        return cashHolding.getValue();
     }
 
     @Override
     public String toString() {
         return "CentralBankReserves{"
-            + "id='" + id + '\''
+            + "id='" + id.getValue() + '\''
             + ", bankingLicense=" + bankingLicense
-            + ", maxCentralBankLoans=" + maxCentralBankLoans
-            + ", cashHolding=" + cashHolding
+            + ", maxCentralBankLoans=" + maxCentralBankLoans.getValue()
+            + ", cashHolding=" + cashHolding.getValue()
             + '}';
     }
 
@@ -119,12 +122,13 @@ public class CentralBankReserves {
 
         CentralBankReserves that = (CentralBankReserves) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

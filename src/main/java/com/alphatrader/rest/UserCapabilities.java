@@ -1,6 +1,11 @@
 package com.alphatrader.rest;
 
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.time.ZonedDateTime;
 
 /**
@@ -9,43 +14,54 @@ import java.time.ZonedDateTime;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class UserCapabilities {
     /**
      * True, if the user is a level 2 user.
      */
-    private final Boolean level2User = null;
+    private final BooleanProperty level2User;
 
     /**
      * The date the level 2 user status is revoked.
      */
-    private final ZonedDateTime level2UserEndDate = null;
+    private final ZonedDateTime level2UserEndDate;
 
     /**
      * The user's locale.
      */
-    private final String locale = null;
+    private final StringProperty locale;
 
     /**
      * True, if the user is a partner.
      */
-    private final Boolean partner = null;
+    private final BooleanProperty partner;
 
     /**
      * True, if the user is a premium user.
      */
-    private final Boolean premium = null;
+    private final BooleanProperty premium;
 
     /**
      * The date, the premium status runs out.
      */
-    private final ZonedDateTime premiumEndDate = null;
+    private final ZonedDateTime premiumEndDate;
+
+    /**
+     * Creates a new default user capabilities object.
+     */
+    public UserCapabilities() {
+        level2User = new SimpleBooleanProperty();
+        level2UserEndDate = ZonedDateTime.now();
+        locale = new SimpleStringProperty();
+        partner = new SimpleBooleanProperty();
+        premium = new SimpleBooleanProperty();
+        premiumEndDate = ZonedDateTime.now();
+    }
 
     /**
      * @return true, if the user is a level 2 user
      */
     public Boolean isLevel2User() {
-        return level2User;
+        return level2User.getValue();
     }
 
     /**
@@ -59,21 +75,21 @@ public class UserCapabilities {
      * @return the user's locale
      */
     public String getLocale() {
-        return locale;
+        return locale.getValue();
     }
 
     /**
      * @return true, if the user is a partner
      */
     public Boolean isPartner() {
-        return partner;
+        return partner.getValue();
     }
 
     /**
      * @return true, if the user is a premium user
      */
     public Boolean isPremium() {
-        return premium;
+        return premium.getValue();
     }
 
     /**
@@ -106,20 +122,24 @@ public class UserCapabilities {
 
         UserCapabilities that = (UserCapabilities) o;
 
-        if (level2User != null ? !level2User.equals(that.level2User) : that.level2User != null) {
+        if (level2User.getValue() != null ? !level2User.getValue().equals(that.level2User.getValue())
+            : that.level2User.getValue() != null) {
             return false;
         }
         if (level2UserEndDate != null ? !level2UserEndDate.equals(that.level2UserEndDate)
             : that.level2UserEndDate != null) {
             return false;
         }
-        if (locale != null ? !locale.equals(that.locale) : that.locale != null) {
+        if (locale.getValue() != null ? !locale.getValue().equals(that.locale.getValue())
+            : that.locale.getValue() != null) {
             return false;
         }
-        if (partner != null ? !partner.equals(that.partner) : that.partner != null) {
+        if (partner.getValue() != null ? !partner.getValue().equals(that.partner.getValue())
+            : that.partner.getValue() != null) {
             return false;
         }
-        if (premium != null ? !premium.equals(that.premium) : that.premium != null) {
+        if (premium.getValue() != null ? !premium.getValue().equals(that.premium.getValue())
+            : that.premium.getValue() != null) {
             return false;
         }
         return premiumEndDate != null ? premiumEndDate.equals(that.premiumEndDate)
@@ -129,11 +149,11 @@ public class UserCapabilities {
 
     @Override
     public int hashCode() {
-        int result = level2User != null ? level2User.hashCode() : 0;
+        int result = level2User.getValue() != null ? level2User.getValue().hashCode() : 0;
         result = 31 * result + (level2UserEndDate != null ? level2UserEndDate.hashCode() : 0);
-        result = 31 * result + (locale != null ? locale.hashCode() : 0);
-        result = 31 * result + (partner != null ? partner.hashCode() : 0);
-        result = 31 * result + (premium != null ? premium.hashCode() : 0);
+        result = 31 * result + (locale.getValue() != null ? locale.getValue().hashCode() : 0);
+        result = 31 * result + (partner.getValue() != null ? partner.getValue().hashCode() : 0);
+        result = 31 * result + (premium.getValue() != null ? premium.getValue().hashCode() : 0);
         result = 31 * result + (premiumEndDate != null ? premiumEndDate.hashCode() : 0);
         return result;
     }

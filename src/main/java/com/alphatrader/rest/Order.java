@@ -1,5 +1,6 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,17 +13,16 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Order {
     /**
      * The date and time the order was created
      */
-    private final ZonedDateTime creationDate = null;
+    private final ZonedDateTime creationDate;
 
     /**
      * Name of Security
      */
-    private final Listing listing = null;
+    private final Listing listing;
 
     /**
      * Type of Security
@@ -32,22 +32,22 @@ public class Order {
     /**
      * Unique securityIdentifier of security
      */
-    private final String securityIdentifier = null;
+    private final StringProperty securityIdentifier;
 
     /**
      * Number of shares entailed in Order
      */
-    private final Long numberOfShares = null;
+    private final LongProperty numberOfShares;
 
     /**
      * The name of the counter party.
      */
-    private final String counterPartyName = null;
+    private final StringProperty counterPartyName;
 
     /**
      * The security account id of the counter party.
      */
-    private final String counterParty = null;
+    private final StringProperty counterParty;
 
     /**
      * The type of action this order represents.
@@ -57,27 +57,44 @@ public class Order {
     /**
      * The committed cash of this order.
      */
-    private final Double committedCash = null;
+    private final DoubleProperty committedCash;
 
     /**
      * The price.
      */
-    private final Double price = null;
+    private final DoubleProperty price;
 
     /**
      * The name of the owner.
      */
-    private final String ownerName = null;
+    private final StringProperty ownerName;
 
     /**
      * The security account identifier of the owner.
      */
-    private final String owner = null;
+    private final StringProperty owner;
 
     /**
      * The unique id of the order.
      */
-    private final String id = null;
+    private final StringProperty id;
+
+    /**
+     * Creates a new default order object.
+     */
+    public Order() {
+        creationDate = ZonedDateTime.now();
+        listing = new Listing();
+        securityIdentifier = new SimpleStringProperty();
+        numberOfShares = new SimpleLongProperty();
+        counterPartyName = new SimpleStringProperty();
+        counterParty = new SimpleStringProperty();
+        committedCash = new SimpleDoubleProperty();
+        price = new SimpleDoubleProperty();
+        ownerName = new SimpleStringProperty();
+        owner = new SimpleStringProperty();
+        id = new SimpleStringProperty();
+    }
 
     /**
      * Fetches all otc orders of the given company.
@@ -200,28 +217,28 @@ public class Order {
      * @return the security identifier
      */
     public String getSecurityIdentifier() {
-        return securityIdentifier;
+        return securityIdentifier.getValue();
     }
 
     /**
      * @return the number of shares
      */
     public Long getNumberOfShares() {
-        return numberOfShares;
+        return numberOfShares.getValue();
     }
 
     /**
      * @return the counter party name
      */
     public String getCounterPartyName() {
-        return counterPartyName;
+        return counterPartyName.getValue();
     }
 
     /**
      * @return the counter party
      */
     public String getCounterParty() {
-        return counterParty;
+        return counterParty.getValue();
     }
 
     /**
@@ -235,35 +252,35 @@ public class Order {
      * @return the committed cash
      */
     public Double getCommittedCash() {
-        return committedCash;
+        return committedCash.getValue();
     }
 
     /**
      * @return the price
      */
     public Double getPrice() {
-        return price;
+        return price.getValue();
     }
 
     /**
      * @return the owner name
      */
     public String getOwnerName() {
-        return ownerName;
+        return ownerName.getValue();
     }
 
     /**
      * @return the owner
      */
     public String getOwner() {
-        return owner;
+        return owner.getValue();
     }
 
     /**
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
@@ -272,16 +289,16 @@ public class Order {
             + "creationDate=" + creationDate
             + ", listing=" + listing
             + ", type=" + type
-            + ", securityIdentifier='" + securityIdentifier + '\''
-            + ", numberOfShares=" + numberOfShares
-            + ", counterPartyName='" + counterPartyName + '\''
-            + ", counterParty='" + counterParty + '\''
+            + ", securityIdentifier='" + securityIdentifier.getValue() + '\''
+            + ", numberOfShares=" + numberOfShares.getValue()
+            + ", counterPartyName='" + counterPartyName.getValue() + '\''
+            + ", counterParty='" + counterParty.getValue() + '\''
             + ", action=" + action
-            + ", committedCash=" + committedCash
-            + ", price=" + price
-            + ", ownerName='" + ownerName + '\''
-            + ", owner='" + owner + '\''
-            + ", id='" + id + '\''
+            + ", committedCash=" + committedCash.getValue()
+            + ", price=" + price.getValue()
+            + ", ownerName='" + ownerName.getValue() + '\''
+            + ", owner='" + owner.getValue() + '\''
+            + ", id='" + id.getValue() + '\''
             + '}';
     }
 
@@ -296,13 +313,14 @@ public class Order {
 
         Order order = (Order) o;
 
-        return id != null ? id.equals(order.id) : order.id == null;
+        return id.getValue() != null ? id.getValue().equals(order.id.getValue())
+            : order.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 
     /**

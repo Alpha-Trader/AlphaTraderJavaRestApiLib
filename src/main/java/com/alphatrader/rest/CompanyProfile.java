@@ -1,5 +1,6 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
@@ -12,7 +13,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class CompanyProfile {
     /**
      * The ceo employment agreement.
@@ -62,7 +62,7 @@ public class CompanyProfile {
     /**
      * The number of outstanding shares.
      */
-    private final Long outstandingShares = null;
+    private final LongProperty outstandingShares = new SimpleLongProperty();
 
     /**
      * The trading prices of the company for the last 14 days.
@@ -72,12 +72,12 @@ public class CompanyProfile {
     /**
      * The current market cap for the company.
      */
-    private final Double marketCap = null;
+    private final DoubleProperty marketCap = new SimpleDoubleProperty();
 
     /**
      * The company's securities account id.
      */
-    private final String securitiesAccountId = null;
+    private final StringProperty securitiesAccountId = new SimpleStringProperty();
 
     /**
      * The company's bank account.
@@ -102,12 +102,12 @@ public class CompanyProfile {
     /**
      * The company name.
      */
-    private final String name = null;
+    private final StringProperty name = new SimpleStringProperty();
 
     /**
      * The unique id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Returns the profile of the given company.
@@ -198,7 +198,7 @@ public class CompanyProfile {
      * @return the number of outstanding shares
      */
     public Long getOutstandingShares() {
-        return outstandingShares;
+        return outstandingShares.getValue();
     }
 
     /**
@@ -212,14 +212,14 @@ public class CompanyProfile {
      * @return the market cap
      */
     public Double getMarketCap() {
-        return marketCap;
+        return marketCap.getValue();
     }
 
     /**
      * @return the securities account id
      */
     public String getSecuritiesAccountId() {
-        return securitiesAccountId;
+        return securitiesAccountId.getValue();
     }
 
     /**
@@ -254,14 +254,14 @@ public class CompanyProfile {
      * @return the company name
      */
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     /**
      * @return the company id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
@@ -284,8 +284,8 @@ public class CompanyProfile {
             + ", logoUrl=" + logoUrl
             + ", ceo=" + ceo
             + ", listing=" + listing
-            + ", name='" + name + '\''
-            + ", id='" + id + '\''
+            + ", name='" + name.getValue() + '\''
+            + ", id='" + id.getValue() + '\''
             + '}';
     }
 
@@ -300,11 +300,12 @@ public class CompanyProfile {
 
         CompanyProfile that = (CompanyProfile) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }

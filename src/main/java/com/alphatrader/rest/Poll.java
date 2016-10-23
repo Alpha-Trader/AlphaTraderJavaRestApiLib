@@ -1,5 +1,6 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +14,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Poll {
     /**
      * The abstention rule.
@@ -22,11 +22,11 @@ public class Poll {
     /**
      * The percentage of approval votes.
      */
-    private final Double approvalVotesPercentage = null;
+    private final DoubleProperty approvalVotesPercentage = new SimpleDoubleProperty();
     /**
      * The total number of voices.
      */
-    private final Long totalNumberOfVoices = null;
+    private final LongProperty totalNumberOfVoices = new SimpleLongProperty();
     /**
      * All votes.
      */
@@ -34,7 +34,7 @@ public class Poll {
     /**
      * The motion text, describing the poll.
      */
-    private final String motion = null;
+    private final StringProperty motion = new SimpleStringProperty();
     /**
      * The start date.
      */
@@ -50,11 +50,11 @@ public class Poll {
     /**
      * The percentage of votes already cast.
      */
-    private final Double castVotesPercentage = null;
+    private final DoubleProperty castVotesPercentage = new SimpleDoubleProperty();
     /**
      * The total number of votes already cast.
      */
-    private final Long totalNumberOfCastVotes = null;
+    private final LongProperty totalNumberOfCastVotes = new SimpleLongProperty();
     /**
      * The initiator of the poll.
      */
@@ -66,7 +66,7 @@ public class Poll {
     /**
      * The unique id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
     /**
      * The result of the poll.
      */
@@ -125,14 +125,14 @@ public class Poll {
      * @return the percentage of approval votes
      */
     public Double getApprovalVotesPercentage() {
-        return approvalVotesPercentage;
+        return approvalVotesPercentage.getValue();
     }
 
     /**
      * @return the total number of voices
      */
     public Long getTotalNumberOfVoices() {
-        return totalNumberOfVoices;
+        return totalNumberOfVoices.getValue();
     }
 
     /**
@@ -146,7 +146,7 @@ public class Poll {
      * @return the motion text
      */
     public String getMotion() {
-        return motion;
+        return motion.getValue();
     }
 
     /**
@@ -174,14 +174,14 @@ public class Poll {
      * @return the percentage of votes cast
      */
     public Double getCastVotesPercentage() {
-        return castVotesPercentage;
+        return castVotesPercentage.getValue();
     }
 
     /**
      * @return the total number of votes cast
      */
     public Long getTotalNumberOfCastVotes() {
-        return totalNumberOfCastVotes;
+        return totalNumberOfCastVotes.getValue();
     }
 
     /**
@@ -202,7 +202,7 @@ public class Poll {
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     /**
@@ -216,18 +216,18 @@ public class Poll {
     public String toString() {
         return "Poll{"
             + "abstentionRule=" + abstentionRule
-            + ", approvalVotesPercentage=" + approvalVotesPercentage
-            + ", totalNumberOfVoices=" + totalNumberOfVoices
+            + ", approvalVotesPercentage=" + approvalVotesPercentage.getValue()
+            + ", totalNumberOfVoices=" + totalNumberOfVoices.getValue()
             + ", votes=" + Arrays.toString(votes)
-            + ", motion='" + motion + '\''
+            + ", motion='" + motion.getValue() + '\''
             + ", startDate=" + startDate
             + ", endDate=" + endDate
             + ", group=" + Arrays.toString(group)
-            + ", castVotesPercentage=" + castVotesPercentage
-            + ", totalNumberOfCastVotes=" + totalNumberOfCastVotes
+            + ", castVotesPercentage=" + castVotesPercentage.getValue()
+            + ", totalNumberOfCastVotes=" + totalNumberOfCastVotes.getValue()
             + ", pollInitiator=" + pollInitiator
             + ", resultExpireDate=" + resultExpireDate
-            + ", id='" + id + '\''
+            + ", id='" + id.getValue() + '\''
             + ", type=" + type
             + '}';
     }
@@ -243,13 +243,14 @@ public class Poll {
 
         Poll poll = (Poll) o;
 
-        return id != null ? id.equals(poll.id) : poll.id == null;
+        return id.getValue() != null ? id.getValue().equals(poll.id.getValue())
+            : poll.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 
     /**

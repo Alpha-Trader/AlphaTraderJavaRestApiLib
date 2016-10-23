@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +14,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Listing {
     /**
      * The start date of the listing.
@@ -27,12 +28,12 @@ public class Listing {
     /**
      * The listing's security identifier.
      */
-    private final String securityIdentifier = null;
+    private final StringProperty securityIdentifier = new SimpleStringProperty();
 
     /**
      * The name of the company, bond or repo this listing concerns.
      */
-    private final String name = null;
+    private final StringProperty name = new SimpleStringProperty();
 
     /**
      * The type of this listing.
@@ -139,14 +140,14 @@ public class Listing {
      * @return the security identifier
      */
     public String getSecurityIdentifier() {
-        return securityIdentifier;
+        return securityIdentifier.getValue();
     }
 
     /**
      * @return the company, bond or repo name
      */
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     /**
@@ -161,8 +162,8 @@ public class Listing {
         return "Listing{"
             + "startDate=" + startDate
             + ", endDate=" + endDate
-            + ", securityIdentifier='" + securityIdentifier + '\''
-            + ", name='" + name + '\''
+            + ", securityIdentifier='" + securityIdentifier.getValue() + '\''
+            + ", name='" + name.getValue() + '\''
             + ", type=" + type
             + '}';
     }
@@ -178,14 +179,15 @@ public class Listing {
 
         Listing listing = (Listing) o;
 
-        return securityIdentifier != null ? securityIdentifier.equals(listing.securityIdentifier)
-            : listing.securityIdentifier == null;
+        return securityIdentifier.getValue() != null ? securityIdentifier.getValue()
+            .equals(listing.securityIdentifier.getValue())
+            : listing.securityIdentifier.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return securityIdentifier != null ? securityIdentifier.hashCode() : 0;
+        return securityIdentifier.getValue() != null ? securityIdentifier.getValue().hashCode() : 0;
     }
 
     /**

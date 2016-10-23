@@ -1,8 +1,7 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
+import com.alphatrader.rest.util.PropertyGson;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
 import org.junit.Before;
@@ -24,8 +23,7 @@ import static org.junit.Assert.*;
  */
 public class SecurityOrderLogTest {
     private static HttpResponder httpResponder = HttpResponder.getInstance();
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
+    private static final Gson gson = new PropertyGson().create();
 
     private static final String JSON = "{\n" +
         "  \"buyerSecuritiesAccount\": \"ca74b0ce-b77a-4125-93c8-bb7a2d2cb920\",\n" +

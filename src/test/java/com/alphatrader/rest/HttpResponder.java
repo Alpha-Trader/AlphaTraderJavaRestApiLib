@@ -1,6 +1,8 @@
 package com.alphatrader.rest;
 
-import com.google.gson.*;
+import com.alphatrader.rest.util.PropertyGson;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -28,8 +30,8 @@ import static org.mockito.Mockito.when;
  * @version 1.0.0
  */
 public class HttpResponder {
-    private static Gson gson = new Gson();
     private static HttpResponder instance;
+    private static final Gson gson = new PropertyGson().create();
 
     public static HttpResponder getInstance() {
         if (instance == null) {

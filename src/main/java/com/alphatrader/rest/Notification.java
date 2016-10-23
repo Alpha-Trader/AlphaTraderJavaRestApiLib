@@ -1,5 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -11,7 +15,6 @@ import java.util.List;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class Notification {
    /**
      * The content of the notification.
@@ -36,12 +39,12 @@ public class Notification {
     /**
      * True, if the receiver has read the message.
      */
-    private final Boolean readByReceiver = null;
+    private final BooleanProperty readByReceiver = new SimpleBooleanProperty();
 
     /**
      * The unique notification id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Fetches all unread events of the user and marks them as read
@@ -121,14 +124,14 @@ public class Notification {
      * @return true, if the notification was read
      */
     public Boolean isReadByReceiver() {
-        return readByReceiver;
+        return readByReceiver.getValue();
     }
 
     /**
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
@@ -150,13 +153,14 @@ public class Notification {
 
         Notification that = (Notification) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 }
 

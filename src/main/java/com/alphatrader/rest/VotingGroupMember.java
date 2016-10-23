@@ -1,12 +1,14 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+
 /**
  * A group member in a poll in the game.
  *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0
  */
-@SuppressWarnings("ConstantConditions")
 public class VotingGroupMember {
     /**
      * The group member.
@@ -16,7 +18,7 @@ public class VotingGroupMember {
     /**
      * The number of votes.
      */
-    private final Long numberOfVoices = null;
+    private final LongProperty numberOfVoices = new SimpleLongProperty();
 
     /**
      * @return the group member
@@ -29,14 +31,14 @@ public class VotingGroupMember {
      * @return the number of votes
      */
     public Long getNumberOfVoices() {
-        return numberOfVoices;
+        return numberOfVoices.getValue();
     }
 
     @Override
     public String toString() {
         return "VotingGroupMember{"
             + "groupMember=" + groupMember
-            + ", numberOfVoices=" + numberOfVoices
+            + ", numberOfVoices=" + numberOfVoices.getValue()
             + '}';
     }
 
@@ -54,15 +56,16 @@ public class VotingGroupMember {
         if (groupMember != null ? !groupMember.equals(that.groupMember) : that.groupMember != null) {
             return false;
         }
-        return numberOfVoices != null ? numberOfVoices.equals(that.numberOfVoices)
-            : that.numberOfVoices == null;
+        return numberOfVoices.getValue() != null ? numberOfVoices.getValue().equals(that.numberOfVoices
+            .getValue()) : that.numberOfVoices.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = groupMember != null ? groupMember.hashCode() : 0;
-        result = 31 * result + (numberOfVoices != null ? numberOfVoices.hashCode() : 0);
+        result = 31 * result + (numberOfVoices.getValue() != null ? numberOfVoices.getValue().hashCode()
+            : 0);
         return result;
     }
 }

@@ -1,15 +1,14 @@
 package com.alphatrader.rest;
 
-import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.util.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,49 +20,36 @@ import java.util.stream.Collectors;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-@SuppressWarnings({"ConstantConditions", "SameParameterValue"})
 public class SecurityOrderLog {
-    /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
-        new ZonedDateTimeDeserializer()).create();
-
-    /**
-     * List type for gson deserialization.
-     */
-    private static final java.lang.reflect.Type listType = new TypeToken<ArrayList<SecurityOrderLog>>() {
-    }.getType();
-
     /**
      * The buyer securities account id.
      */
-    private final String buyerSecuritiesAccount = null;
+    private final StringProperty buyerSecuritiesAccount = new SimpleStringProperty();
 
     /**
      * The seller securities account id.
      */
-    private final String sellerSecuritiesAccount = null;
+    private final StringProperty sellerSecuritiesAccount = new SimpleStringProperty();
 
     /**
      * The number of shares.
      */
-    private final Double numberOfShares = null;
+    private final DoubleProperty numberOfShares = new SimpleDoubleProperty();
 
     /**
      * The volume.
      */
-    private final Double volume = null;
+    private final DoubleProperty volume = new SimpleDoubleProperty();
 
     /**
      * The security identifier.
      */
-    private final String securityIdentifier = null;
+    private final StringProperty securityIdentifier = new SimpleStringProperty();
 
     /**
      * The price.
      */
-    private final Double price = null;
+    private final DoubleProperty price = new SimpleDoubleProperty();
 
     /**
      * The date.
@@ -73,7 +59,7 @@ public class SecurityOrderLog {
     /**
      * The unique id.
      */
-    private final String id = null;
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * @return a list of all security order logs
@@ -139,42 +125,42 @@ public class SecurityOrderLog {
      * @return the buyer's securities account id
      */
     public String getBuyerSecuritiesAccount() {
-        return buyerSecuritiesAccount;
+        return buyerSecuritiesAccount.getValue();
     }
 
     /**
      * @return the seller's securities account id
      */
     public String getSellerSecuritiesAccount() {
-        return sellerSecuritiesAccount;
+        return sellerSecuritiesAccount.getValue();
     }
 
     /**
      * @return the number of shares
      */
     public Double getNumberOfShares() {
-        return numberOfShares;
+        return numberOfShares.getValue();
     }
 
     /**
      * @return the overall volume of the order
      */
     public Double getVolume() {
-        return volume;
+        return volume.getValue();
     }
 
     /**
      * @return the security identifier of the traded asset
      */
     public String getSecurityIdentifier() {
-        return securityIdentifier;
+        return securityIdentifier.getValue();
     }
 
     /**
      * @return the price the asset was traded for
      */
     public Double getPrice() {
-        return price;
+        return price.getValue();
     }
 
     /**
@@ -188,20 +174,20 @@ public class SecurityOrderLog {
      * @return the unique id
      */
     public String getId() {
-        return id;
+        return id.getValue();
     }
 
     @Override
     public String toString() {
         return "SecurityOrderLog{"
-            + "buyerSecuritiesAccount='" + buyerSecuritiesAccount + '\''
-            + ", sellerSecuritiesAccount='" + sellerSecuritiesAccount + '\''
-            + ", numberOfShares=" + numberOfShares
-            + ", volume=" + volume
-            + ", securityIdentifier='" + securityIdentifier + '\''
-            + ", price=" + price
+            + "buyerSecuritiesAccount='" + buyerSecuritiesAccount.getValue() + '\''
+            + ", sellerSecuritiesAccount='" + sellerSecuritiesAccount.getValue() + '\''
+            + ", numberOfShares=" + numberOfShares.getValue()
+            + ", volume=" + volume.getValue()
+            + ", securityIdentifier='" + securityIdentifier.getValue() + '\''
+            + ", price=" + price.getValue()
             + ", date=" + date
-            + ", id='" + id + '\''
+            + ", id='" + id.getValue() + '\''
             + '}';
     }
 
@@ -216,13 +202,13 @@ public class SecurityOrderLog {
 
         SecurityOrderLog that = (SecurityOrderLog) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
-
+        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
+            : that.id.getValue() == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id.getValue() != null ? id.getValue().hashCode() : 0;
     }
 
     /**
