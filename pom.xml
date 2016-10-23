@@ -50,6 +50,11 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
         </dependency>
+ 				<dependency>
+				    <groupId>com.google.guava</groupId>
+				    <artifactId>guava</artifactId>
+				    <version>20.0-hal</version>
+				</dependency>
     </dependencies>
 
     <build>
@@ -130,12 +135,7 @@
                     </execution>
                 </executions>
             </plugin>
-						<dependency>
-						    <groupId>com.google.guava</groupId>
-						    <artifactId>guava</artifactId>
-						    <version>20.0-hal</version>
-						</dependency>
-        </plugins>
+       </plugins>
     </build>
 
 		<reporting>
