@@ -53,8 +53,8 @@
  				<dependency>
 				    <groupId>com.google.guava</groupId>
 				    <artifactId>guava</artifactId>
-				    <version>20.0-hal</version>
-				</dependency>
+				    <version>20.0-rc1</version>
+        </dependency>
     </dependencies>
 
     <build>
