@@ -34,7 +34,11 @@ The library needs to be initialized by providing a partnerId and a login like so
     user.login();
     config.setUser(user);
     
-After these lines, you can use any function of the library as the logged in user.
+After these lines, you can use any function of the library as the logged in user. For example, the following code fetches all companies in the game:
+
+    List<Company> allCompanies = Company.getAllCompanies();
+
+Almost all of the data classes feature static functions you can use to retreive objects from the API. Version 1.0.0 only features read-only API access. Stay tuned for more features in upcoming versions. 
 
 If you want to use a different API url, you can set it by calling setApiUrl() on the config object.
 
