@@ -23,7 +23,7 @@ And then this dependency:
     <dependency>                                                                
         <groupId>com.alphatrader.rest</groupId>                                                  
         <artifactId>atrest-java</artifactId>                                            
-        <version>0.9.0</version>                                                   
+        <version>1.0.0</version>                                                   
     </dependency>
 
 The library needs to be initialized by providing a partnerId and a login like so:
