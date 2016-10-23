@@ -51,7 +51,8 @@ public class ChatMessage {
      * @param chatId the id of the chat room
      * @return the list of all messages in that room
      */
-    public static @NotNull List<ChatMessage> getChatMessages(String chatId) {
+    @NotNull
+    public static List<ChatMessage> getChatMessages(String chatId) {
         return getChatMessages(chatId, null, null);
     }
 
