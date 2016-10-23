@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -21,6 +22,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class PollTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -132,6 +134,11 @@ public class PollTest {
 
     private Poll toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, Poll.class);
@@ -139,12 +146,29 @@ public class PollTest {
 
     @Test
     public void getInitiatedPolls() throws Exception {
-
+        List<Poll> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/initiatedpolls/"),
+            new TypeToken<ArrayList<Poll>>() { }.getType());
+        List<Poll> testObject = Poll.getInitiatedPolls();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getPolls() throws Exception {
+        List<Poll> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/polls/"),
+            new TypeToken<ArrayList<Poll>>() { }.getType());
+        List<Poll> testObject = Poll.getPolls();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
 
+    @Test
+    public void getById() throws Exception {
+        Poll reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/polls/f1672fda-6689-414c-b68e-94477905e672"), Poll.class);
+        Poll testObject = Poll.getById("f1672fda-6689-414c-b68e-94477905e672");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test

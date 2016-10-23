@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
@@ -20,6 +21,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class UserProfileTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -231,6 +233,11 @@ public class UserProfileTest {
 
     private UserProfile toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, UserProfile.class);
@@ -238,11 +245,12 @@ public class UserProfileTest {
 
     @Test
     public void getUserProfile() throws Exception {
-    }
-
-    @Test
-    public void getUserProfile1() throws Exception {
-
+        User user = User.getLoggedInUser();
+        UserProfile reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/userprofiles/FauserneEist"), UserProfile.class);
+        UserProfile testObject = UserProfile.getUserProfile(user);
+        assertNotNull(user);
+        assertEquals(reference, testObject);
     }
 
     @Test

@@ -215,12 +215,6 @@ public class PriceSpread {
         if (lastPrice != null ? !lastPrice.equals(that.lastPrice) : that.lastPrice != null) {
             return false;
         }
-        if (maxBidPrice != null ? !maxBidPrice.equals(that.maxBidPrice) : that.maxBidPrice != null) {
-            return false;
-        }
-        if (minAskPrice != null ? !minAskPrice.equals(that.minAskPrice) : that.minAskPrice != null) {
-            return false;
-        }
         return date != null ? date.equals(that.date) : that.date == null;
 
     }

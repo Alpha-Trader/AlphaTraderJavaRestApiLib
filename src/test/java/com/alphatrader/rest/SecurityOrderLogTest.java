@@ -3,12 +3,18 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import javafx.util.Pair;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +23,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class SecurityOrderLogTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -33,6 +40,11 @@ public class SecurityOrderLogTest {
 
     private SecurityOrderLog toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, SecurityOrderLog.class);
@@ -40,12 +52,51 @@ public class SecurityOrderLogTest {
 
     @Test
     public void getAllLogs() throws Exception {
-
+        List<SecurityOrderLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorderlogs"),
+            new TypeToken<ArrayList<SecurityOrderLog>>() { }.getType());
+        List<SecurityOrderLog> testObject = SecurityOrderLog.getAllLogs();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void searchLogs() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1477030780257L),
+            ZoneId.systemDefault());
+        List<SecurityOrderLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorderlogs?startDate=1477030780257"),
+            new TypeToken<ArrayList<SecurityOrderLog>>() { }.getType());
+        List<SecurityOrderLog> testObject = SecurityOrderLog.searchLogs(date, null, null);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
 
+    @Test
+    public void searchLogs1() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1477030780257L),
+            ZoneId.systemDefault());
+        List<SecurityOrderLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorderlogs?startDate=1477030780257&endDate=1477030780257"),
+            new TypeToken<ArrayList<SecurityOrderLog>>() { }.getType());
+        List<SecurityOrderLog> testObject = SecurityOrderLog.searchLogs(date, date, null);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void searchLogs2() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(1477030780257L),
+            ZoneId.systemDefault());
+        List<SecurityOrderLog> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorderlogs?securityIdentifier=STBDD981&startDate=1477030780257" +
+                "&endDate=1477030780257"),
+            new TypeToken<ArrayList<SecurityOrderLog>>() { }.getType());
+        List<SecurityOrderLog> testObject = SecurityOrderLog.searchLogs(date, date,
+            new Pair<SecurityOrderLog.SearchType, String>(
+                SecurityOrderLog.SearchType.SECURITY_IDENTIFIER, "STBDD981"));
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test

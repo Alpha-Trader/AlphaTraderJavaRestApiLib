@@ -52,6 +52,12 @@ public class SponsorRatingTest {
         assertTrue(toTest.equals(toTest));
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
+
+        SponsorRating other = gson.fromJson("{\n" +
+            "  \"salary\": 2000.00,\n" +
+            "  \"value\": \"A\"\n" +
+            "}", SponsorRating.class);
+        assertFalse(toTest.equals(other));
     }
 
     @Test

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
@@ -21,6 +22,7 @@ import static org.junit.Assert.*;
  * @version 1.0
  */
 public class PortfolioTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -55,9 +57,34 @@ public class PortfolioTest {
 
     private Portfolio toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, Portfolio.class);
+    }
+
+    @Test
+    public void getCompanyPortfolio() throws Exception {
+        Company company = Company.getBySecurityIdentifier("STK0F513");
+        Portfolio reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/portfolios/57875cf3-de0a-48e4-a3bc-314d4550df12"), Portfolio.class);
+        Portfolio testObject = Portfolio.getCompanyPortfolio(company);
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void getFixedIncomePortfolio() throws Exception {
+        Company company = Company.getBySecurityIdentifier("STK0F513");
+        Portfolio reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/portfolios/fixedincome/57875cf3-de0a-48e4-a3bc-314d4550df12"), Portfolio.class);
+        Portfolio testObject = Portfolio.getFixedIncomePortfolio(company);
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
@@ -110,11 +137,66 @@ public class PortfolioTest {
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
 
-        Portfolio other = gson.fromJson("{\n" +
-            "  \"id\": \"12345\"\n" +
+        Portfolio other1 = gson.fromJson("{\n" +
+        "  \"committedCash\": 10,\n" +
+        "  \"cash\": 400,\n" +
+        "  \"positions\": [\n" +
+        "    {\n" +
+        "      \"currentAskPrice\": 3500,\n" +
+        "      \"currentAskSize\": 850,\n" +
+        "      \"currentBidPrice\": null,\n" +
+        "      \"currentBidSize\": null,\n" +
+        "      \"lastPrice\": {\n" +
+        "        \"date\": 1475882777051,\n" +
+        "        \"value\": 10\n" +
+        "      },\n" +
+        "      \"numberOfShares\": 100,\n" +
+        "      \"volume\": 1000,\n" +
+        "      \"committedShares\": 0,\n" +
+        "      \"securityIdentifier\": \"ST57FA01\",\n" +
+        "      \"listing\": {\n" +
+        "        \"startDate\": 1469951384818,\n" +
+        "        \"endDate\": null,\n" +
+        "        \"securityIdentifier\": \"ST57FA01\",\n" +
+        "        \"name\": \"Argo\",\n" +
+        "        \"type\": \"STOCK\"\n" +
+        "      },\n" +
+        "      \"type\": \"STOCK\"\n" +
+        "    }\n" +
+        "  ]\n" +
+        "}", Portfolio.class);
+
+        Portfolio other2 = gson.fromJson("{\n" +
+            "  \"committedCash\": 0,\n" +
+            "  \"cash\": 300,\n" +
+            "  \"positions\": [\n" +
+            "    {\n" +
+            "      \"currentAskPrice\": 3500,\n" +
+            "      \"currentAskSize\": 850,\n" +
+            "      \"currentBidPrice\": null,\n" +
+            "      \"currentBidSize\": null,\n" +
+            "      \"lastPrice\": {\n" +
+            "        \"date\": 1475882777051,\n" +
+            "        \"value\": 10\n" +
+            "      },\n" +
+            "      \"numberOfShares\": 100,\n" +
+            "      \"volume\": 1000,\n" +
+            "      \"committedShares\": 0,\n" +
+            "      \"securityIdentifier\": \"ST57FA01\",\n" +
+            "      \"listing\": {\n" +
+            "        \"startDate\": 1469951384818,\n" +
+            "        \"endDate\": null,\n" +
+            "        \"securityIdentifier\": \"ST57FA01\",\n" +
+            "        \"name\": \"Argo\",\n" +
+            "        \"type\": \"STOCK\"\n" +
+            "      },\n" +
+            "      \"type\": \"STOCK\"\n" +
+            "    }\n" +
+            "  ]\n" +
             "}", Portfolio.class);
 
-        assertFalse(toTest.equals(other));
+        assertFalse(toTest.equals(other1));
+        assertFalse(toTest.equals(other2));
     }
 
     @Test

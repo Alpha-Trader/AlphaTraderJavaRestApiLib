@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,8 +97,12 @@ public class SecurityOrderLog {
                                                     Pair<SearchType, String>... params) {
         String suffix = "";
 
-        if (startDate != null || endDate != null || params.length > 0) {
-            List<Pair<SearchType, String>> parameters = Arrays.asList(params);
+        if (startDate != null || endDate != null || (params != null && params.length > 0)) {
+            List<Pair<SearchType, String>> parameters = new LinkedList<>();
+
+            if (params != null) {
+                parameters.addAll(Arrays.asList(params));
+            }
 
             if (startDate != null) {
                 parameters.add(new Pair<>(

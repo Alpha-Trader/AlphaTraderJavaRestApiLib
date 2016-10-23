@@ -3,14 +3,21 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Testcase for the {@link Order} class.
@@ -19,6 +26,7 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0
  */
 public class OrderTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -45,6 +53,11 @@ public class OrderTest {
         "  }";
 
     private Order toTest;
+
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
 
     @Before
     public void setUp() {
@@ -80,37 +93,44 @@ public class OrderTest {
 
     @Test
     public void getOtcOrders() throws Exception {
-
+        Company company = Company.getById("81dcf5a1-b0b6-462a-a40c-e374619edc2f");
+        List<Order> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorders/counterparty/57875cf3-de0a-48e4-a3bc-314d4550df12"),
+            new TypeToken<ArrayList<Order>>() { }.getType());
+        List<Order> testObject = Order.getOtcOrders(company);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
-    public void getOtcOrders1() throws Exception {
-
-    }
-
-    @Test
-    public void getOrderForCompany() throws Exception {
-
-    }
-
-    @Test
-    public void getOrderForCompany1() throws Exception {
-
+    public void getOrdersForCompany() throws Exception {
+        Company company = Company.getById("81dcf5a1-b0b6-462a-a40c-e374619edc2f");
+        List<Order> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/orderlist/STK0F513"),
+            new TypeToken<ArrayList<Order>>() { }.getType());
+        List<Order> testObject = Order.getOrdersForCompany(company);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getOrders() throws Exception {
-
-    }
-
-    @Test
-    public void getOrders1() throws Exception {
-
+        Company company = Company.getById("81dcf5a1-b0b6-462a-a40c-e374619edc2f");
+        List<Order> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorders/securitiesaccount/57875cf3-de0a-48e4-a3bc-314d4550df12"),
+            new TypeToken<ArrayList<Order>>() { }.getType());
+        List<Order> testObject = Order.getOrders(company);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getById() throws Exception {
-
+        Order reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/securityorders/4a813308-a9ad-4755-876c-d46df4a723f0"), Order.class);
+        Order testObject = Order.getById("4a813308-a9ad-4755-876c-d46df4a723f0");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
@@ -163,5 +183,29 @@ public class OrderTest {
     @Test
     public void getId() throws Exception {
         assertEquals("a7859ce3-75d0-44fd-98ab-bfc77aa205d5", toTest.getId());
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+
+        Order other = gson.fromJson("{\n" +
+            "  \"id\": \"12345\"\n" +
+            "}", Order.class);
+
+        assertFalse(toTest.equals(other));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        Order reference = gson.fromJson(JSON, Order.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
     }
 }

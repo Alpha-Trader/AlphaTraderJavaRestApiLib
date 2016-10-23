@@ -67,13 +67,13 @@ public class Listing {
      * @return the number of outstanding shares
      */
     @Nullable
-    public static Double getOutstandingShares(String securityIdentifier) {
-        return Http.getSingleObjectFromApi(Double.class, "/api/listings/outstandingshares/"
+    public static Long getOutstandingShares(String securityIdentifier) {
+        return Http.getSingleObjectFromApi(Long.class, "/api/listings/outstandingshares/"
             + securityIdentifier);
     }
 
     @Nullable
-    public static Double getOutstandingShares(Listing listing) {
+    public static Long getOutstandingShares(Listing listing) {
         return getOutstandingShares(listing.getSecurityIdentifier());
     }
 

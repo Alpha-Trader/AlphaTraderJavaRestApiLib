@@ -3,20 +3,28 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 /**
+ * Test case for the {@link EmploymentAgreement} class.
+ *
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
 public class EmploymentAgreementTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -47,6 +55,11 @@ public class EmploymentAgreementTest {
 
     private EmploymentAgreement toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, EmploymentAgreement.class);
@@ -54,17 +67,23 @@ public class EmploymentAgreementTest {
 
     @Test
     public void getEmploymentAgreement() throws Exception {
-
+        Company company = gson.fromJson("{\"id\": \"81dcf5a1-b0b6-462a-a40c-e374619edc2f\"}"
+            , Company.class);
+        EmploymentAgreement reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/employmentagreements/company/81dcf5a1-b0b6-462a-a40c-e374619edc2f"),
+            EmploymentAgreement.class);
+        EmploymentAgreement testObject = EmploymentAgreement.getEmploymentAgreement(company);
+        assertEquals(reference, testObject);
     }
 
     @Test
     public void getEmploymentAgreements() throws Exception {
-
-    }
-
-    @Test
-    public void getEmploymentAgreement1() throws Exception {
-
+        List<EmploymentAgreement> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/employmentagreements/"), new TypeToken<ArrayList<EmploymentAgreement>>() { }
+            .getType());
+        List<EmploymentAgreement> testObject = EmploymentAgreement.getEmploymentAgreements();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test

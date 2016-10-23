@@ -118,6 +118,46 @@ public class SecuritySponsorshipTest {
         assertTrue(toTest.equals(toTest));
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
+
+        SecuritySponsorship other1 = gson.fromJson("{\n" +
+            "  \"id\": \"12345\"\n" +
+            "}", SecuritySponsorship.class);
+
+        SecuritySponsorship other2 = gson.fromJson("{\n" +
+            "  \"designatedSponsor\": {\n" +
+            "    \"ceo\": {\n" +
+            "      \"gravatarHash\": \"hash\",\n" +
+            "      \"id\": \"id\",\n" +
+            "      \"userCapabilities\": {\n" +
+            "        \"level2User\": true,\n" +
+            "        \"level2UserEndDate\": 0,\n" +
+            "        \"locale\": \"string\",\n" +
+            "        \"partner\": true,\n" +
+            "        \"premium\": true,\n" +
+            "        \"premiumEndDate\": 1\n" +
+            "      },\n" +
+            "      \"username\": \"username\"\n" +
+            "    },\n" +
+            "    \"id\": \"id\",\n" +
+            "    \"name\": \"name\",\n" +
+            "    \"securitiesAccountId\": \"securitiesAccountId\",\n" +
+            "    \"securityIdentifier\": \"securityIdentifier\"\n" +
+            "  },\n" +
+            "  \"listing\": {\n" +
+            "    \"endDate\": 2,\n" +
+            "    \"name\": \"name\",\n" +
+            "    \"securityIdentifier\": \"otherSecId\",\n" +
+            "    \"startDate\": 3,\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"sponsorRating\": {\n" +
+            "    \"salary\": 4,\n" +
+            "    \"value\": \"value\"\n" +
+            "  }\n" +
+        "}", SecuritySponsorship.class);
+
+        assertFalse(toTest.equals(other1));
+        assertFalse(toTest.equals(other2));
     }
 
     @Test

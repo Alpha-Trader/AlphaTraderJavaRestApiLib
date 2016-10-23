@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -23,6 +24,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class EventTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -61,6 +63,11 @@ public class EventTest {
 
     private Event toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, Event.class);
@@ -68,42 +75,40 @@ public class EventTest {
 
     @Test
     public void getAllEvents() throws Exception {
-
+        List<Event> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/events/"),
+            new TypeToken<ArrayList<Event>>() { }.getType());
+        List<Event> testObject = Event.getAllEvents();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getAllEvents1() throws Exception {
-
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+        List<Event> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/events/?afterDate=0"),
+            new TypeToken<ArrayList<Event>>() { }.getType());
+        List<Event> testObject = Event.getAllEvents(date);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getAllUserEvents() throws Exception {
-
+        List<Event> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/events/user/"),
+            new TypeToken<ArrayList<Event>>() { }.getType());
+        List<Event> testObject = Event.getAllUserEvents();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getAllUserEvents1() throws Exception {
-
-    }
-
-    @Test
-    public void getEventsByType() throws Exception {
-
-    }
-
-    @Test
-    public void getEventsByType1() throws Exception {
-
-    }
-
-    @Test
-    public void searchEvents() throws Exception {
-
-    }
-
-    @Test
-    public void searchEvents1() throws Exception {
-
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+        List<Event> reference = gson.fromJson(httpResponder.getJsonForRequest("/api/events/user/?afterDate=0"),
+            new TypeToken<ArrayList<Event>>() { }.getType());
+        List<Event> testObject = Event.getAllUserEvents(date);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
@@ -154,11 +159,86 @@ public class EventTest {
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
 
-        Event other = gson.fromJson("{\n" +
-            "  \"id\": \"12345\"\n" +
+        Event other1 = gson.fromJson("{\n" +
+            "  \"content\": {},\n" +
+            "  \"date\": 1476896236112,\n" +
+            "  \"realms\": [\n" +
+            "    \"868e59cf-1170-4fee-a40a-8647d56e3b02\",\n" +
+            "    \"BUY\",\n" +
+            "    \"LIMIT\",\n" +
+            "    \"STSD64F5\",\n" +
+            "    \"57875cf3-de0a-48e4-a3bc-314d4550df12\"\n" +
+            "  ],\n" +
+            "  \"type\": \"ORDER_DELETED\"\n" +
+            "}", Event.class);
+        Event other2 = gson.fromJson("{\n" +
+            "  \"content\": {\n" +
+            "    \"counterPartyName\": null,\n" +
+            "    \"creationDate\": 1476876989631,\n" +
+            "    \"committedCash\": 9985.88,\n" +
+            "    \"numberOfShares\": 499294,\n" +
+            "    \"action\": \"BUY\",\n" +
+            "    \"securityIdentifier\": \"STSD64F5\",\n" +
+            "    \"listing\": {\n" +
+            "      \"startDate\": 1474099135309,\n" +
+            "      \"endDate\": null,\n" +
+            "      \"securityIdentifier\": \"STSD64F5\",\n" +
+            "      \"name\": \"superJbobo Inc.\",\n" +
+            "      \"type\": \"STOCK\"\n" +
+            "    },\n" +
+            "    \"counterParty\": null,\n" +
+            "    \"price\": 0.02,\n" +
+            "    \"ownerName\": \"Katholische Kirche AG\",\n" +
+            "    \"owner\": \"57875cf3-de0a-48e4-a3bc-314d4550df12\",\n" +
+            "    \"id\": \"868e59cf-1170-4fee-a40a-8647d56e3b02\",\n" +
+            "    \"type\": \"LIMIT\"\n" +
+            "  },\n" +
+            "  \"date\": 1476896236112,\n" +
+            "  \"realms\": [\n" +
+            "    \"868e59cf-1170-4fee-a40a-8647d56e3b02\",\n" +
+            "    \"BUY\",\n" +
+            "    \"LIMIT\",\n" +
+            "    \"STSD64F5\",\n" +
+            "    \"57875cf3-de0a-48e4-a3bc-314d4550df12\"\n" +
+            "  ],\n" +
+            "  \"type\": \"ORDER_FILLED\"\n" +
+            "}", Event.class);
+        Event other3 = gson.fromJson("{\n" +
+            "  \"content\": {\n" +
+            "    \"counterPartyName\": null,\n" +
+            "    \"creationDate\": 1476876989631,\n" +
+            "    \"committedCash\": 9985.88,\n" +
+            "    \"numberOfShares\": 499294,\n" +
+            "    \"action\": \"BUY\",\n" +
+            "    \"securityIdentifier\": \"STSD64F5\",\n" +
+            "    \"listing\": {\n" +
+            "      \"startDate\": 1474099135309,\n" +
+            "      \"endDate\": null,\n" +
+            "      \"securityIdentifier\": \"STSD64F5\",\n" +
+            "      \"name\": \"superJbobo Inc.\",\n" +
+            "      \"type\": \"STOCK\"\n" +
+            "    },\n" +
+            "    \"counterParty\": null,\n" +
+            "    \"price\": 0.02,\n" +
+            "    \"ownerName\": \"Katholische Kirche AG\",\n" +
+            "    \"owner\": \"57875cf3-de0a-48e4-a3bc-314d4550df12\",\n" +
+            "    \"id\": \"868e59cf-1170-4fee-a40a-8647d56e3b02\",\n" +
+            "    \"type\": \"LIMIT\"\n" +
+            "  },\n" +
+            "  \"date\": 1,\n" +
+            "  \"realms\": [\n" +
+            "    \"868e59cf-1170-4fee-a40a-8647d56e3b02\",\n" +
+            "    \"BUY\",\n" +
+            "    \"LIMIT\",\n" +
+            "    \"STSD64F5\",\n" +
+            "    \"57875cf3-de0a-48e4-a3bc-314d4550df12\"\n" +
+            "  ],\n" +
+            "  \"type\": \"ORDER_DELETED\"\n" +
             "}", Event.class);
 
-        assertFalse(toTest.equals(other));
+        assertFalse(toTest.equals(other1));
+        assertFalse(toTest.equals(other2));
+        assertFalse(toTest.equals(other3));
     }
 
     @Test

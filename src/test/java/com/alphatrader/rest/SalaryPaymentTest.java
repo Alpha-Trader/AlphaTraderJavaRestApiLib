@@ -4,6 +4,7 @@ import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -19,6 +20,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class SalaryPaymentTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -32,6 +34,11 @@ public class SalaryPaymentTest {
 
     private SalaryPayment toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, SalaryPayment.class);
@@ -39,7 +46,11 @@ public class SalaryPaymentTest {
 
     @Test
     public void getById() throws Exception {
-
+        SalaryPayment reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/salarypayments/bf8d952f-65ac-474c-9a8d-ae7f2ef82cfa"), SalaryPayment.class);
+        SalaryPayment testObject = SalaryPayment.getById("bf8d952f-65ac-474c-9a8d-ae7f2ef82cfa");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test

@@ -3,12 +3,17 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +24,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class ChatMessageTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -45,9 +51,73 @@ public class ChatMessageTest {
 
     private ChatMessage toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, ChatMessage.class);
+    }
+
+
+    @Test
+    public void getChatMessages() throws Exception {
+        Chat chat = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/chats/959e870f-e6f9-48fd-960d-3bcabfda2089"), Chat.class);
+        List<ChatMessage> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089"),
+            new TypeToken<ArrayList<ChatMessage>>() { }.getType());
+        List<ChatMessage> testObject = ChatMessage.getChatMessages(chat);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getChatMessages1() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+        Chat chat = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/chats/959e870f-e6f9-48fd-960d-3bcabfda2089"), Chat.class);
+        List<ChatMessage> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089?afterDate=0"),
+            new TypeToken<ArrayList<ChatMessage>>() { }.getType());
+
+        List<ChatMessage> testObject = ChatMessage.getChatMessages(chat, date);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getChatMessages2() throws Exception {
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+        Chat chat = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/chats/959e870f-e6f9-48fd-960d-3bcabfda2089"), Chat.class);
+        List<ChatMessage> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089?afterDate=0&beforeDate=0"),
+            new TypeToken<ArrayList<ChatMessage>>() { }.getType());
+        List<ChatMessage> testObject = ChatMessage.getChatMessages(chat, date, date);
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));    }
+
+
+    @Test
+    public void getById() throws Exception {
+        ChatMessage reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/messages/61fd4b1d-226b-4a66-97ef-0f404c6b7f40"), ChatMessage.class);
+        ChatMessage testObject = ChatMessage.getById("61fd4b1d-226b-4a66-97ef-0f404c6b7f40");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
+    }
+
+    @Test
+    public void getUnreadMessages() throws Exception {
+       List<ChatMessage> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/messages/unread"),
+            new TypeToken<ArrayList<ChatMessage>>() { }.getType());
+        List<ChatMessage> testObject = ChatMessage.getUnreadMessages();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test

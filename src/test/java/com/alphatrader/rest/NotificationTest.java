@@ -3,15 +3,20 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Test case for the {@link Notification} class.
@@ -20,6 +25,7 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  */
 public class NotificationTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -62,14 +68,32 @@ public class NotificationTest {
 
     private Notification toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() {
         toTest = gson.fromJson(JSON, Notification.class);
     }
 
     @Test
-    public void testCreateFromJson() throws Exception {
-        assertNotNull(toTest);
+    public void getNotifications() throws Exception {
+        List<Notification> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/notifications"), new TypeToken<ArrayList<Notification>>() { }.getType());
+        List<Notification> testObject = Notification.getNotifications();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
+    }
+
+    @Test
+    public void getUnreadNotifications() throws Exception {
+        List<Notification> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/notifications/unread/"), new TypeToken<ArrayList<Notification>>() { }.getType());
+        List<Notification> testObject = Notification.getUnreadNotifications();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
@@ -134,5 +158,30 @@ public class NotificationTest {
     @Test
     public void testIsReadByReceiver() {
         assertEquals(false, toTest.isReadByReceiver());
+    }
+
+
+    @Test
+    public void testToString() throws Exception {
+        assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+
+        Notification other = gson.fromJson("{\n" +
+            "  \"id\": \"12345\"\n" +
+            "}", Notification.class);
+
+        assertFalse(toTest.equals(other));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        Notification reference = gson.fromJson(JSON, Notification.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
     }
 }

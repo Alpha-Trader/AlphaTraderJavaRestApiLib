@@ -40,7 +40,7 @@ public class OrderBook {
      * @return the order book
      */
     @Nullable
-    public final OrderBook getOrderBook(String securityIdentifier) {
+    public static OrderBook getOrderBook(String securityIdentifier) {
         return Http.getSingleObjectFromApi(OrderBook.class, "/api/orderbook/" + securityIdentifier);
     }
 
@@ -80,5 +80,32 @@ public class OrderBook {
             + ", buyEntries=" + Arrays.toString(buyEntries)
             + ", sellEntries=" + Arrays.toString(sellEntries)
             + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        OrderBook orderBook = (OrderBook) o;
+
+        if (maxBuySize != null ? !maxBuySize.equals(orderBook.maxBuySize)
+            : orderBook.maxBuySize != null) {
+            return false;
+        }
+        return maxSellSize != null ? maxSellSize.equals(orderBook.maxSellSize)
+            : orderBook.maxSellSize == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = maxBuySize != null ? maxBuySize.hashCode() : 0;
+        result = 31 * result + (maxSellSize != null ? maxSellSize.hashCode() : 0);
+        return result;
     }
 }

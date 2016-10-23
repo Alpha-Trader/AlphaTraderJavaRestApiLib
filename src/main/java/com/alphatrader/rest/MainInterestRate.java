@@ -35,8 +35,8 @@ public class MainInterestRate {
      * @return the latest main interest rate
      */
     @Nullable
-    private static MainInterestRate getCurrent() {
-        return Http.getSingleObjectFromApi(MainInterestRate.class, "/api/maininterrestrate/latest/");
+    public static MainInterestRate getCurrent() {
+        return Http.getSingleObjectFromApi(MainInterestRate.class, "/api/maininterestrate/latest/");
     }
 
     /**
@@ -45,8 +45,8 @@ public class MainInterestRate {
      * @return all main interest rates
      */
     @NotNull
-    private static List<MainInterestRate> getAll() {
-        return Http.getMultipleObjectFromApi(MainInterestRate.class, "/api/maininterrestrate/");
+    public static List<MainInterestRate> getAll() {
+        return Http.getMultipleObjectFromApi(MainInterestRate.class, "/api/maininterestrate/");
     }
 
     /**

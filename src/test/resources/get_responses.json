@@ -1385,47 +1385,776 @@
   },
   "/api/events/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "content": {
+          "order": {
+            "counterPartyName": null,
+            "creationDate": 1477218739878,
+            "committedCash": 0,
+            "numberOfShares": 1000,
+            "action": "SELL",
+            "securityIdentifier": "STS2DF3A",
+            "listing": {
+              "startDate": 1475658804608,
+              "endDate": null,
+              "securityIdentifier": "STS2DF3A",
+              "name": "test3141",
+              "type": "STOCK"
+            },
+            "counterParty": null,
+            "price": 0.19,
+            "ownerName": "sommerino Inc.",
+            "owner": "60f257b2-1847-41af-aa39-6b66a8ef170f",
+            "id": "41b96d86-a078-4420-b358-4e44419c70a0",
+            "type": "LIMIT"
+          },
+          "numberOfShares": 1000,
+          "price": 0.19
+        },
+        "date": 1477219428113,
+        "realms": [
+          "41b96d86-a078-4420-b358-4e44419c70a0",
+          "SELL",
+          "LIMIT",
+          "STS2DF3A",
+          "60f257b2-1847-41af-aa39-6b66a8ef170f"
+        ],
+        "type": "ORDER_FILLED"
+      },
+      {
+        "content": {
+          "counterPartyName": null,
+          "creationDate": 1477219227031,
+          "committedCash": 0,
+          "numberOfShares": 89,
+          "action": "SELL",
+          "securityIdentifier": "STF0519F",
+          "listing": {
+            "startDate": 1469971058246,
+            "endDate": null,
+            "securityIdentifier": "STF0519F",
+            "name": "fertig6",
+            "type": "STOCK"
+          },
+          "counterParty": null,
+          "price": 4.21,
+          "ownerName": "MasterMixer Inc.",
+          "owner": "53ddbc44-1b08-42cf-b557-a16e11940162",
+          "id": "1b773019-112b-4201-80e2-d7c87795a02f",
+          "type": "LIMIT"
+        },
+        "date": 1477219435887,
+        "realms": [
+          "1b773019-112b-4201-80e2-d7c87795a02f",
+          "SELL",
+          "LIMIT",
+          "STF0519F",
+          "53ddbc44-1b08-42cf-b557-a16e11940162"
+        ],
+        "type": "ORDER_DELETED"
+      }
+    ]
+  },
+  "/api/events/?afterDate=0": {
+    "status": 200,
+    "content": [
+      {
+        "content": {
+          "order": {
+            "counterPartyName": null,
+            "creationDate": 1477218739878,
+            "committedCash": 0,
+            "numberOfShares": 1000,
+            "action": "SELL",
+            "securityIdentifier": "STS2DF3A",
+            "listing": {
+              "startDate": 1475658804608,
+              "endDate": null,
+              "securityIdentifier": "STS2DF3A",
+              "name": "test3141",
+              "type": "STOCK"
+            },
+            "counterParty": null,
+            "price": 0.19,
+            "ownerName": "sommerino Inc.",
+            "owner": "60f257b2-1847-41af-aa39-6b66a8ef170f",
+            "id": "41b96d86-a078-4420-b358-4e44419c70a0",
+            "type": "LIMIT"
+          },
+          "numberOfShares": 1000,
+          "price": 0.19
+        },
+        "date": 1477219428113,
+        "realms": [
+          "41b96d86-a078-4420-b358-4e44419c70a0",
+          "SELL",
+          "LIMIT",
+          "STS2DF3A",
+          "60f257b2-1847-41af-aa39-6b66a8ef170f"
+        ],
+        "type": "ORDER_FILLED"
+      },
+      {
+        "content": {
+          "counterPartyName": null,
+          "creationDate": 1477219227031,
+          "committedCash": 0,
+          "numberOfShares": 89,
+          "action": "SELL",
+          "securityIdentifier": "STF0519F",
+          "listing": {
+            "startDate": 1469971058246,
+            "endDate": null,
+            "securityIdentifier": "STF0519F",
+            "name": "fertig6",
+            "type": "STOCK"
+          },
+          "counterParty": null,
+          "price": 4.21,
+          "ownerName": "MasterMixer Inc.",
+          "owner": "53ddbc44-1b08-42cf-b557-a16e11940162",
+          "id": "1b773019-112b-4201-80e2-d7c87795a02f",
+          "type": "LIMIT"
+        },
+        "date": 1477219435887,
+        "realms": [
+          "1b773019-112b-4201-80e2-d7c87795a02f",
+          "SELL",
+          "LIMIT",
+          "STF0519F",
+          "53ddbc44-1b08-42cf-b557-a16e11940162"
+        ],
+        "type": "ORDER_DELETED"
+      }
+    ]
   },
   "/api/events/user/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "content": {
+          "order": {
+            "counterPartyName": null,
+            "creationDate": 1477218739878,
+            "committedCash": 0,
+            "numberOfShares": 1000,
+            "action": "SELL",
+            "securityIdentifier": "STS2DF3A",
+            "listing": {
+              "startDate": 1475658804608,
+              "endDate": null,
+              "securityIdentifier": "STS2DF3A",
+              "name": "test3141",
+              "type": "STOCK"
+            },
+            "counterParty": null,
+            "price": 0.19,
+            "ownerName": "sommerino Inc.",
+            "owner": "60f257b2-1847-41af-aa39-6b66a8ef170f",
+            "id": "41b96d86-a078-4420-b358-4e44419c70a0",
+            "type": "LIMIT"
+          },
+          "numberOfShares": 1000,
+          "price": 0.19
+        },
+        "date": 1477219428113,
+        "realms": [
+          "41b96d86-a078-4420-b358-4e44419c70a0",
+          "SELL",
+          "LIMIT",
+          "STS2DF3A",
+          "60f257b2-1847-41af-aa39-6b66a8ef170f"
+        ],
+        "type": "ORDER_FILLED"
+      },
+      {
+        "content": {
+          "counterPartyName": null,
+          "creationDate": 1477219227031,
+          "committedCash": 0,
+          "numberOfShares": 89,
+          "action": "SELL",
+          "securityIdentifier": "STF0519F",
+          "listing": {
+            "startDate": 1469971058246,
+            "endDate": null,
+            "securityIdentifier": "STF0519F",
+            "name": "fertig6",
+            "type": "STOCK"
+          },
+          "counterParty": null,
+          "price": 4.21,
+          "ownerName": "MasterMixer Inc.",
+          "owner": "53ddbc44-1b08-42cf-b557-a16e11940162",
+          "id": "1b773019-112b-4201-80e2-d7c87795a02f",
+          "type": "LIMIT"
+        },
+        "date": 1477219435887,
+        "realms": [
+          "1b773019-112b-4201-80e2-d7c87795a02f",
+          "SELL",
+          "LIMIT",
+          "STF0519F",
+          "53ddbc44-1b08-42cf-b557-a16e11940162"
+        ],
+        "type": "ORDER_DELETED"
+      }
+    ]
+  },
+  "/api/events/user/?afterDate=0": {
+    "status": 200,
+    "content": [
+      {
+        "content": {
+          "order": {
+            "counterPartyName": null,
+            "creationDate": 1477218739878,
+            "committedCash": 0,
+            "numberOfShares": 1000,
+            "action": "SELL",
+            "securityIdentifier": "STS2DF3A",
+            "listing": {
+              "startDate": 1475658804608,
+              "endDate": null,
+              "securityIdentifier": "STS2DF3A",
+              "name": "test3141",
+              "type": "STOCK"
+            },
+            "counterParty": null,
+            "price": 0.19,
+            "ownerName": "sommerino Inc.",
+            "owner": "60f257b2-1847-41af-aa39-6b66a8ef170f",
+            "id": "41b96d86-a078-4420-b358-4e44419c70a0",
+            "type": "LIMIT"
+          },
+          "numberOfShares": 1000,
+          "price": 0.19
+        },
+        "date": 1477219428113,
+        "realms": [
+          "41b96d86-a078-4420-b358-4e44419c70a0",
+          "SELL",
+          "LIMIT",
+          "STS2DF3A",
+          "60f257b2-1847-41af-aa39-6b66a8ef170f"
+        ],
+        "type": "ORDER_FILLED"
+      },
+      {
+        "content": {
+          "counterPartyName": null,
+          "creationDate": 1477219227031,
+          "committedCash": 0,
+          "numberOfShares": 89,
+          "action": "SELL",
+          "securityIdentifier": "STF0519F",
+          "listing": {
+            "startDate": 1469971058246,
+            "endDate": null,
+            "securityIdentifier": "STF0519F",
+            "name": "fertig6",
+            "type": "STOCK"
+          },
+          "counterParty": null,
+          "price": 4.21,
+          "ownerName": "MasterMixer Inc.",
+          "owner": "53ddbc44-1b08-42cf-b557-a16e11940162",
+          "id": "1b773019-112b-4201-80e2-d7c87795a02f",
+          "type": "LIMIT"
+        },
+        "date": 1477219435887,
+        "realms": [
+          "1b773019-112b-4201-80e2-d7c87795a02f",
+          "SELL",
+          "LIMIT",
+          "STF0519F",
+          "53ddbc44-1b08-42cf-b557-a16e11940162"
+        ],
+        "type": "ORDER_DELETED"
+      }
+    ]
   },
   "/api/search/events/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "content": {
+          "order": {
+            "counterPartyName": null,
+            "creationDate": 1477218739878,
+            "committedCash": 0,
+            "numberOfShares": 1000,
+            "action": "SELL",
+            "securityIdentifier": "STS2DF3A",
+            "listing": {
+              "startDate": 1475658804608,
+              "endDate": null,
+              "securityIdentifier": "STS2DF3A",
+              "name": "test3141",
+              "type": "STOCK"
+            },
+            "counterParty": null,
+            "price": 0.19,
+            "ownerName": "sommerino Inc.",
+            "owner": "60f257b2-1847-41af-aa39-6b66a8ef170f",
+            "id": "41b96d86-a078-4420-b358-4e44419c70a0",
+            "type": "LIMIT"
+          },
+          "numberOfShares": 1000,
+          "price": 0.19
+        },
+        "date": 1477219428113,
+        "realms": [
+          "41b96d86-a078-4420-b358-4e44419c70a0",
+          "SELL",
+          "LIMIT",
+          "STS2DF3A",
+          "60f257b2-1847-41af-aa39-6b66a8ef170f"
+        ],
+        "type": "ORDER_FILLED"
+      },
+      {
+        "content": {
+          "counterPartyName": null,
+          "creationDate": 1477219227031,
+          "committedCash": 0,
+          "numberOfShares": 89,
+          "action": "SELL",
+          "securityIdentifier": "STF0519F",
+          "listing": {
+            "startDate": 1469971058246,
+            "endDate": null,
+            "securityIdentifier": "STF0519F",
+            "name": "fertig6",
+            "type": "STOCK"
+          },
+          "counterParty": null,
+          "price": 4.21,
+          "ownerName": "MasterMixer Inc.",
+          "owner": "53ddbc44-1b08-42cf-b557-a16e11940162",
+          "id": "1b773019-112b-4201-80e2-d7c87795a02f",
+          "type": "LIMIT"
+        },
+        "date": 1477219435887,
+        "realms": [
+          "1b773019-112b-4201-80e2-d7c87795a02f",
+          "SELL",
+          "LIMIT",
+          "STF0519F",
+          "53ddbc44-1b08-42cf-b557-a16e11940162"
+        ],
+        "type": "ORDER_DELETED"
+      }
+    ]
   },
-  "/api/search/events/type/todo": {
+  "/api/search/events/type/SALARY_PAYMENT": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "content": {
+          "companyId": "35e7e976-cda2-4d7c-8f9e-80f2f9ef6c6b",
+          "nextPossiblePaymentDate": 1477316514033,
+          "salaryAmount": 150,
+          "date": 1477230114033,
+          "id": "d1eeeec0-ffd7-4f33-a0de-5ea2b61706e0"
+        },
+        "date": 1477230114033,
+        "realms": [
+          "d1eeeec0-ffd7-4f33-a0de-5ea2b61706e0",
+          "35e7e976-cda2-4d7c-8f9e-80f2f9ef6c6b",
+          "Trololski AG",
+          "4f26a8a8-78f9-4239-a83b-138aeb7f6f6a",
+          "Annie",
+          "e8475102-664b-419b-8b04-967a28d6c1e0"
+        ],
+        "type": "SALARY_PAYMENT"
+      },
+      {
+        "content": {
+          "companyId": "85d2a2c3-4d35-4455-99d9-79097b4b153b",
+          "nextPossiblePaymentDate": 1477317859146,
+          "salaryAmount": 9060,
+          "date": 1477231459146,
+          "id": "d8b951a5-21db-4a00-b57c-f602c1b453ee"
+        },
+        "date": 1477231459146,
+        "realms": [
+          "d8b951a5-21db-4a00-b57c-f602c1b453ee",
+          "85d2a2c3-4d35-4455-99d9-79097b4b153b",
+          "Der Ag 3",
+          "0e9468b8-6e72-4382-91d7-c94d34d41df3",
+          "Kalle",
+          "15641cbc-3161-4d39-932f-1ba867ef483d"
+        ],
+        "type": "SALARY_PAYMENT"
+      }
+    ]
   },
   "/api/search/events/todo": {
     "status": 200,
     "content": {}
   },
-  "/api/listingprofiles/todo": {
+  "/api/listingprofiles/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": {
+      "bond": null,
+      "company": {
+        "ceoEmploymentAgreement": {
+          "dailyWage": 30000,
+          "startDate": 1475336107328,
+          "id": "7bdef87f-6f55-4a2e-9eb5-15559432d057"
+        },
+        "companyCapabilities": {
+          "bankReady": false,
+          "bank": true,
+          "takenCentralBankLoans": 11000000,
+          "designatedSponsor": false,
+          "reserves": 10000000,
+          "maxCentralBankLoans": 11000000,
+          "netCash": 1435445.78
+        },
+        "issuedBonds": [
+          {
+            "priceSpread": null,
+            "issuer": {
+              "securityIdentifier": "STK0F513",
+              "listing": {
+                "startDate": 1469951698361,
+                "endDate": null,
+                "securityIdentifier": "STK0F513",
+                "name": "Katholische Kirche AG",
+                "type": "STOCK"
+              },
+              "name": "Katholische Kirche AG",
+              "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+            },
+            "interestRate": 0.001,
+            "volume": 10000000,
+            "listing": {
+              "startDate": 1475149866541,
+              "endDate": null,
+              "securityIdentifier": "BOK115E0",
+              "name": "Katholische Kirche AG 0.0010% 28/10/2016",
+              "type": "BOND"
+            },
+            "issueDate": 1475149866540,
+            "maturityDate": 1477655526000,
+            "faceValue": 100,
+            "repurchaseListing": {
+              "startDate": 1475149866541,
+              "endDate": null,
+              "securityIdentifier": "REK115E0",
+              "name": "Katholische Kirche AG 0.0010% 28/10/2016",
+              "type": "REPO"
+            },
+            "name": "Katholische Kirche AG 0.0010% 28/10/2016",
+            "id": "bdb3c306-a158-4834-8b34-ad53081d99e4"
+          },
+          {
+            "priceSpread": null,
+            "issuer": {
+              "securityIdentifier": "STK0F513",
+              "listing": {
+                "startDate": 1469951698361,
+                "endDate": null,
+                "securityIdentifier": "STK0F513",
+                "name": "Katholische Kirche AG",
+                "type": "STOCK"
+              },
+              "name": "Katholische Kirche AG",
+              "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+            },
+            "interestRate": 20,
+            "volume": 10000000,
+            "listing": {
+              "startDate": 1475267497534,
+              "endDate": null,
+              "securityIdentifier": "BOK8986B",
+              "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+              "type": "BOND"
+            },
+            "issueDate": 1475267497534,
+            "maturityDate": 1477773157000,
+            "faceValue": 100,
+            "repurchaseListing": {
+              "startDate": 1475267497534,
+              "endDate": null,
+              "securityIdentifier": "REK8986B",
+              "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+              "type": "REPO"
+            },
+            "name": "Katholische Kirche AG 20.0000% 29/10/2016",
+            "id": "1e395cc4-b7e1-431b-8710-ceae653ec753"
+          }
+        ],
+        "lastTrades": [
+          {
+            "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+            "sellerSecuritiesAccount": "9ed46012-7af3-45e5-84d3-f90e26aad913",
+            "numberOfShares": 1,
+            "volume": 0.02,
+            "securityIdentifier": "STQA98BF",
+            "price": 0.02,
+            "date": 1477217007167,
+            "id": "3f4a6221-2f65-4892-8030-527e32cf2dd1"
+          },
+          {
+            "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+            "sellerSecuritiesAccount": "c987c07f-7217-45ee-ab8b-1cfebd8f380f",
+            "numberOfShares": 1,
+            "volume": 0.02,
+            "securityIdentifier": "STN1CA81",
+            "price": 0.02,
+            "date": 1477217012167,
+            "id": "ffa3f5a1-bdca-49c8-a971-afebaf160059"
+          }
+        ],
+        "sponsoredListings": [],
+        "currentSpread": {
+          "askSize": null,
+          "bidPrice": 25,
+          "askPrice": null,
+          "spreadAbs": null,
+          "spreadPercent": null,
+          "lastPrice": {
+            "date": 1476375715646,
+            "value": 656.93
+          },
+          "maxBidPrice": 788.32,
+          "minAskPrice": 25,
+          "bidSize": 49701,
+          "date": 1476375717202
+        },
+        "designatedSponsors": [],
+        "lastOrderLogEntry": {
+          "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "sellerSecuritiesAccount": "77fbda7c-5790-4074-87d1-126561cd9cf5",
+          "numberOfShares": 3,
+          "volume": 1970.79,
+          "securityIdentifier": "STK0F513",
+          "price": 656.93,
+          "date": 1476375715662,
+          "id": "156503bc-380c-4bf0-8905-3bcbbe0c2f70"
+        },
+        "lastPrice": {
+          "date": 1476375715646,
+          "value": 656.93
+        },
+        "outstandingShares": 56947,
+        "prices14d": [
+          {
+            "date": 1476116914348,
+            "value": 25
+          },
+          {
+            "date": 1476375706503,
+            "value": 525.54
+          },
+          {
+            "date": 1476375715623,
+            "value": 656.93
+          },
+          {
+            "date": 1476375715646,
+            "value": 656.93
+          }
+        ],
+        "marketCap": 37410192.71,
+        "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "bankAccount": {
+          "cash": 13655455.78,
+          "id": "c4d789b2-5e74-4618-a62e-fedc37fc2e4f"
+        },
+        "logoUrl": "http://fs5.directupload.net/images/161015/ovahdq4p.jpg",
+        "ceo": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "listing": {
+          "startDate": 1469951698361,
+          "endDate": null,
+          "securityIdentifier": "STK0F513",
+          "name": "Katholische Kirche AG",
+          "type": "STOCK"
+        },
+        "name": "Katholische Kirche AG",
+        "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+      },
+      "currentSpread": {
+        "askSize": null,
+        "bidPrice": 25,
+        "askPrice": null,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1476375715646,
+          "value": 656.93
+        },
+        "maxBidPrice": 788.32,
+        "minAskPrice": 25,
+        "bidSize": 49701,
+        "date": 1476375717202
+      },
+      "designatedSponsors": [],
+      "lastOrderLogEntry": {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "77fbda7c-5790-4074-87d1-126561cd9cf5",
+        "numberOfShares": 3,
+        "volume": 1970.79,
+        "securityIdentifier": "STK0F513",
+        "price": 656.93,
+        "date": 1476375715662,
+        "id": "156503bc-380c-4bf0-8905-3bcbbe0c2f70"
+      },
+      "lastPrice": {
+        "date": 1476375715646,
+        "value": 656.93
+      },
+      "outstandingShares": 56947,
+      "prices14d": [
+        {
+          "date": 1476116914348,
+          "value": 25
+        },
+        {
+          "date": 1476375706503,
+          "value": 525.54
+        },
+        {
+          "date": 1476375715623,
+          "value": 656.93
+        },
+        {
+          "date": 1476375715646,
+          "value": 656.93
+        }
+      ],
+      "systemBond": null,
+      "marketCap": 37410192.71,
+      "startDate": 1469951698361,
+      "endDate": null,
+      "securityIdentifier": "STK0F513",
+      "name": "Katholische Kirche AG",
+      "id": "2b2e048d-f478-46bc-a198-651384d90c90",
+      "type": "STOCK"
+    }
   },
   "/api/listings/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "startDate": 1469950288064,
+        "endDate": null,
+        "securityIdentifier": "STS63548",
+        "name": "Solid Profit AG",
+        "type": "STOCK"
+      },
+      {
+        "startDate": 1469950565972,
+        "endDate": null,
+        "securityIdentifier": "STT55E02",
+        "name": "Thunderbird AG",
+        "type": "STOCK"
+      }
+    ]
   },
-  "/api/listings/outstandingshares/todo": {
+  "/api/listings/outstandingshares/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": 56947
   },
-  "/api/listings/todo": {
+  "/api/listings/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": {
+      "startDate": 1469951698361,
+      "endDate": null,
+      "securityIdentifier": "STK0F513",
+      "name": "Katholische Kirche AG",
+      "type": "STOCK"
+    }
   },
-  "/api/search/listings/todo": {
+  "/api/search/listings/STK0F": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      {
+        "startDate": 1470479425997,
+        "endDate": null,
+        "securityIdentifier": "STK07502",
+        "name": "Knickers Inc.",
+        "type": "STOCK"
+      }
+    ]
   },
-  "/api/shareholders/todo": {
+  "/api/shareholders/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "company": {
+          "securitiesAccountId": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+          "securityIdentifier": "STK0F513",
+          "ceo": {
+            "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": null
+            },
+            "username": "FauserneEist",
+            "id": "43986f13-edde-486c-9ef0-718b100a1949"
+          },
+          "name": "Katholische Kirche AG",
+          "id": "81dcf5a1-b0b6-462a-a40c-e374619edc2f"
+        },
+        "numberOfShares": 38347,
+        "outstandingShares": 56947,
+        "securityIdentifier": "STK0F513",
+        "shareInPercent": 67.33805117
+      },
+      {
+        "company": {
+          "securitiesAccountId": "63dea2c7-c094-4ddc-badb-17902e3a44fc",
+          "securityIdentifier": "STK05F5C",
+          "ceo": {
+            "gravatarHash": "2dd05f8986ce0d0d05f48cfb77e19fdc",
+            "userCapabilities": {
+              "level2UserEndDate": null,
+              "premiumEndDate": null,
+              "level2User": false,
+              "partner": true,
+              "premium": false,
+              "locale": "."
+            },
+            "username": "Forg",
+            "id": "5212eaeb-0fb4-4c1c-9288-7db4c6534a46"
+          },
+          "name": "Karl Marx Bank ",
+          "id": "42f97aba-48f8-4d62-9f31-087b4ac4c37e"
+        },
+        "numberOfShares": 6020,
+        "outstandingShares": 56947,
+        "securityIdentifier": "STK0F513",
+        "shareInPercent": 10.5712329
+      }
+    ]
   },
   "/api/locale": {
     "status": 200,
@@ -1437,35 +2166,409 @@
   },
   "/api/maininterestrate/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "date": 1465585935322,
+        "value": 2,
+        "id": "9682dab9-b0de-4d59-b1ac-42b7f85bede2"
+      }
+    ]
   },
   "/api/maininterestrate/latest/": {
     "status": 200,
-    "content": {}
+    "content": {
+      "date": 1465585935322,
+      "value": 2,
+      "id": "9682dab9-b0de-4d59-b1ac-42b7f85bede2"
+    }
   },
-  "/api/messages/chat/todo": {
+  "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dateSent": 1475154125356,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": false,
+            "premium": false,
+            "locale": null
+          },
+          "username": "Kalle",
+          "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+        },
+        "read": true,
+        "id": "1fc4fd6e-69dc-4107-b40a-3dd68f9eb209",
+        "content": "bla2 "
+      },
+      {
+        "dateSent": 1475154071252,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "read": true,
+        "id": "61fd4b1d-226b-4a66-97ef-0f404c6b7f40",
+        "content": "bla1"
+      }
+    ]
+  },
+  "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089?afterDate=0": {
+    "status": 200,
+    "content": [
+      {
+        "dateSent": 1475154125356,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": false,
+            "premium": false,
+            "locale": null
+          },
+          "username": "Kalle",
+          "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+        },
+        "read": true,
+        "id": "1fc4fd6e-69dc-4107-b40a-3dd68f9eb209",
+        "content": "bla2 "
+      },
+      {
+        "dateSent": 1475154071252,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "read": true,
+        "id": "61fd4b1d-226b-4a66-97ef-0f404c6b7f40",
+        "content": "bla1"
+      }
+    ]
+  },
+  "/api/messages/chat/959e870f-e6f9-48fd-960d-3bcabfda2089?afterDate=0&beforeDate=0": {
+    "status": 200,
+    "content": [
+      {
+        "dateSent": 1475154125356,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": false,
+            "premium": false,
+            "locale": null
+          },
+          "username": "Kalle",
+          "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+        },
+        "read": true,
+        "id": "1fc4fd6e-69dc-4107-b40a-3dd68f9eb209",
+        "content": "bla2 "
+      },
+      {
+        "dateSent": 1475154071252,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "read": true,
+        "id": "61fd4b1d-226b-4a66-97ef-0f404c6b7f40",
+        "content": "bla1"
+      }
+    ]
   },
   "/api/messages/unread": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "dateSent": 1475154125356,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "11594bc5f6299ebf37a400c6b5c0b38c",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": false,
+            "premium": false,
+            "locale": null
+          },
+          "username": "Kalle",
+          "id": "0e9468b8-6e72-4382-91d7-c94d34d41df3"
+        },
+        "read": true,
+        "id": "1fc4fd6e-69dc-4107-b40a-3dd68f9eb209",
+        "content": "bla2 "
+      },
+      {
+        "dateSent": 1475154071252,
+        "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+        "sender": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "read": true,
+        "id": "61fd4b1d-226b-4a66-97ef-0f404c6b7f40",
+        "content": "bla1"
+      }
+    ]
   },
-  "/api/messages/todo": {
+  "/api/messages/61fd4b1d-226b-4a66-97ef-0f404c6b7f40": {
     "status": 200,
-    "content": {}
+    "content": {
+      "dateSent": 1475154071252,
+      "chatId": "959e870f-e6f9-48fd-960d-3bcabfda2089",
+      "sender": {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      "read": true,
+      "id": "61fd4b1d-226b-4a66-97ef-0f404c6b7f40",
+      "content": "bla1"
+    }
   },
   "/api/notifications": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "subject": {
+          "message": "Order filled",
+          "substitutions": [],
+          "filledString": "Order filled"
+        },
+        "receiver": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "readByReceiver": false,
+        "date": 1477220341119,
+        "id": "4ba552eb-e3ee-4c6a-8042-4b87d8f6b7d0",
+        "content": {
+          "message": "#: Your order was filled: # # # shares of # (#) at #.",
+          "substitutions": [
+            "Church of Scientology AG",
+            "LIMIT",
+            "BUY",
+            "1",
+            "schorschbusch Inc.",
+            "STS27332",
+            "0.02"
+          ],
+          "filledString": "Church of Scientology AG: Your order was filled: LIMIT BUY 1 shares of schorschbusch Inc. (STS27332) at 0.02."
+        }
+      },
+      {
+        "subject": {
+          "message": "Order filled",
+          "substitutions": [],
+          "filledString": "Order filled"
+        },
+        "receiver": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "readByReceiver": false,
+        "date": 1477220331980,
+        "id": "7b3d23df-b9b7-48d6-aedb-4a1268ecb071",
+        "content": {
+          "message": "#: Your order was filled: # # # shares of # (#) at #.",
+          "substitutions": [
+            "Katholische Kirche AG",
+            "LIMIT",
+            "BUY",
+            "1",
+            "FarrisonHord Inc.",
+            "STFE411B",
+            "0.02"
+          ],
+          "filledString": "Katholische Kirche AG: Your order was filled: LIMIT BUY 1 shares of FarrisonHord Inc. (STFE411B) at 0.02."
+        }
+      }
+    ]
   },
   "/api/notifications/unread/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "subject": {
+          "message": "Order filled",
+          "substitutions": [],
+          "filledString": "Order filled"
+        },
+        "receiver": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "readByReceiver": false,
+        "date": 1477220341119,
+        "id": "4ba552eb-e3ee-4c6a-8042-4b87d8f6b7d0",
+        "content": {
+          "message": "#: Your order was filled: # # # shares of # (#) at #.",
+          "substitutions": [
+            "Church of Scientology AG",
+            "LIMIT",
+            "BUY",
+            "1",
+            "schorschbusch Inc.",
+            "STS27332",
+            "0.02"
+          ],
+          "filledString": "Church of Scientology AG: Your order was filled: LIMIT BUY 1 shares of schorschbusch Inc. (STS27332) at 0.02."
+        }
+      },
+      {
+        "subject": {
+          "message": "Order filled",
+          "substitutions": [],
+          "filledString": "Order filled"
+        },
+        "receiver": {
+          "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+          "userCapabilities": {
+            "level2UserEndDate": null,
+            "premiumEndDate": null,
+            "level2User": false,
+            "partner": true,
+            "premium": false,
+            "locale": null
+          },
+          "username": "FauserneEist",
+          "id": "43986f13-edde-486c-9ef0-718b100a1949"
+        },
+        "readByReceiver": false,
+        "date": 1477220331980,
+        "id": "7b3d23df-b9b7-48d6-aedb-4a1268ecb071",
+        "content": {
+          "message": "#: Your order was filled: # # # shares of # (#) at #.",
+          "substitutions": [
+            "Katholische Kirche AG",
+            "LIMIT",
+            "BUY",
+            "1",
+            "FarrisonHord Inc.",
+            "STFE411B",
+            "0.02"
+          ],
+          "filledString": "Katholische Kirche AG: Your order was filled: LIMIT BUY 1 shares of FarrisonHord Inc. (STFE411B) at 0.02."
+        }
+      }
+    ]
   },
   "/api/partners/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "gravatarHash": "7b7f03e2a716b0efaf4ff8728ad070c3",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": null
+        },
+        "username": "FauserneEist",
+        "id": "43986f13-edde-486c-9ef0-718b100a1949"
+      },
+      {
+        "gravatarHash": "2dd05f8986ce0d0d05f48cfb77e19fdc",
+        "userCapabilities": {
+          "level2UserEndDate": null,
+          "premiumEndDate": null,
+          "level2User": false,
+          "partner": true,
+          "premium": false,
+          "locale": "."
+        },
+        "username": "Forg",
+        "id": "5212eaeb-0fb4-4c1c-9288-7db4c6534a46"
+      }
+    ]
   },
   "/api/portfolios/fixedincome/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
@@ -1526,11 +2629,71 @@
   },
   "/api/pricespreads/": {
     "status": 200,
-    "content": {}
+    "content": [
+      {
+        "listing": {
+          "startDate": 1469950288064,
+          "endDate": null,
+          "securityIdentifier": "STS63548",
+          "name": "Solid Profit AG",
+          "type": "STOCK"
+        },
+        "askSize": 1,
+        "bidPrice": 5.01,
+        "askPrice": 513.94,
+        "spreadAbs": 508.93,
+        "spreadPercent": 99.02517804,
+        "lastPrice": {
+          "date": 1477182660852,
+          "value": 489.47
+        },
+        "bidSize": 12726,
+        "date": 1477220358090
+      },
+      {
+        "listing": {
+          "startDate": 1469950565972,
+          "endDate": null,
+          "securityIdentifier": "STT55E02",
+          "name": "Thunderbird AG",
+          "type": "STOCK"
+        },
+        "askSize": null,
+        "bidPrice": null,
+        "askPrice": null,
+        "spreadAbs": null,
+        "spreadPercent": null,
+        "lastPrice": {
+          "date": 1475933307471,
+          "value": 90.8
+        },
+        "bidSize": null,
+        "date": 1476172633292
+      }
+    ]
   },
-  "/api/pricespreads/todo": {
+  "/api/pricespreads/STK0F513": {
     "status": 200,
-    "content": {}
+    "content": {
+      "listing": {
+        "startDate": 1469951698361,
+        "endDate": null,
+        "securityIdentifier": "STK0F513",
+        "name": "Katholische Kirche AG",
+        "type": "STOCK"
+      },
+      "askSize": null,
+      "bidPrice": 25,
+      "askPrice": null,
+      "spreadAbs": null,
+      "spreadPercent": null,
+      "lastPrice": {
+        "date": 1476375715646,
+        "value": 656.93
+      },
+      "bidSize": 49701,
+      "date": 1476375717202
+    }
   },
   "/api/employmentagreements/": {
     "status": 200,
@@ -1791,7 +2954,7 @@
       "volume": 230189.44
     }
   },
-  "/api/securityorders/counterparty/df539236-63dd-4d66-a003-6d41c64461a3": {
+  "/api/securityorders/counterparty/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
     "content": [
       {
@@ -1838,7 +3001,7 @@
       }
     ]
   },
-  "/api/securityorders/securitiesaccount/df539236-63dd-4d66-a003-6d41c64461a3": {
+  "/api/securityorders/securitiesaccount/57875cf3-de0a-48e4-a3bc-314d4550df12": {
     "status": 200,
     "content": [
       {
@@ -1909,6 +3072,31 @@
       "type": "LIMIT"
     }
   },
+  "/api/securityorderlogs": {
+    "status": 200,
+    "content": [
+      {
+        "buyerSecuritiesAccount": "57875cf3-de0a-48e4-a3bc-314d4550df12",
+        "sellerSecuritiesAccount": "95088a4d-cbaf-47a6-8d37-6a45263ad3fa",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STBDD981",
+        "price": 0.02,
+        "date": 1477030780257,
+        "id": "bb57814f-144c-41d9-8449-9857156069e4"
+      },
+      {
+        "buyerSecuritiesAccount": "f69a4b1d-b968-4e7a-abf4-29e802cd2869",
+        "sellerSecuritiesAccount": "5822c2f7-8ae5-4ada-8a29-726901e5b5b0",
+        "numberOfShares": 1,
+        "volume": 0.02,
+        "securityIdentifier": "STGE25F1",
+        "price": 0.02,
+        "date": 1477030786255,
+        "id": "f7489c62-2a35-4277-aea6-11eecc9d6b34"
+      }
+    ]
+  },
   "/api/securityorderlogs?startDate=1477030780257": {
     "status": 200,
     "content": [
@@ -1934,7 +3122,7 @@
       }
     ]
   },
-  "/api/securityorderlogs?startDate=1477030780257&endDate=1477030780258": {
+  "/api/securityorderlogs?startDate=1477030780257&endDate=1477030780257": {
     "status": 200,
     "content": [
       {
@@ -1959,7 +3147,7 @@
       }
     ]
   },
-  "/api/securityorderlogs?securityIdentifier=STBDD981&startDate=1477030780257&endDate=1477030780258": {
+  "/api/securityorderlogs?securityIdentifier=STBDD981&startDate=1477030780257&endDate=1477030780257": {
     "status": 200,
     "content": [
       {
@@ -2034,7 +3222,7 @@
       }
     ]
   },
-  "/api/securityPrices/?securityIdentifier=STGE25F1": {
+  "/api/securityPrices/?securityIdentifier=STK0F513": {
     "status": 200,
     "content": [
       {
@@ -2055,7 +3243,7 @@
       }
     ]
   },
-  "/api/securityPrices/?securityIdentifier=STGE25F1&startDate=1474365429817": {
+  "/api/securityPrices/?securityIdentifier=STK0F513&startDate=0": {
     "status": 200,
     "content": [
       {
@@ -2076,7 +3264,7 @@
       }
     ]
   },
-  "/api/securityPrices/?securityIdentifier=STGE25F1&endDate=1474194147802": {
+  "/api/securityPrices/?securityIdentifier=STK0F513&startDate=0&endDate=0": {
     "status": 200,
     "content": [
       {
@@ -2314,7 +3502,7 @@
       "id": "43986f13-edde-486c-9ef0-718b100a1949"
     }
   },
-  "/api/userprofiles/FauerneEist": {
+  "/api/userprofiles/FauserneEist": {
     "status": 200,
     "content": {
       "bankAccount": {
@@ -2585,6 +3773,12 @@
       },
       "username": "FauserneEist",
       "id": "43986f13-edde-486c-9ef0-718b100a1949"
+    }
+  },
+  "/user/token": {
+    "status": 200,
+    "content": {
+      "message": "testToken"
     }
   },
   "/api/initiatedpolls/": {

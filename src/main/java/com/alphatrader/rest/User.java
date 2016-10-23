@@ -78,7 +78,7 @@ public class User {
      */
     @Nullable
     public static User getLoggedInUser() {
-        return getSingleUser("user/");
+        return getSingleUser("user");
     }
 
     /**

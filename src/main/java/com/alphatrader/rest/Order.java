@@ -98,8 +98,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOtcOrders(Company company) {
-        return getMultipleOrdersFromApi("securityorders/counterparty/"
-            + company.getSecuritiesAccountId());
+        return getOtcOrders(company.getSecuritiesAccountId());
     }
 
     /**
@@ -109,7 +108,7 @@ public class Order {
      * @return all orders concerning the given identifier
      */
     @NotNull
-    public static List<Order> getOrderForCompany(String securityIdentifier) {
+    public static List<Order> getOrdersForCompany(String securityIdentifier) {
         return getMultipleOrdersFromApi("orderlist/" + securityIdentifier);
     }
 
@@ -120,8 +119,8 @@ public class Order {
      * @return all orders concerning the given identifier
      */
     @NotNull
-    public static List<Order> getOrderForCompany(Company company) {
-        return getMultipleOrdersFromApi("orderlist/" + company.getListing().getSecurityIdentifier());
+    public static List<Order> getOrdersForCompany(Company company) {
+        return getOrdersForCompany(company.getListing().getSecurityIdentifier());
     }
 
     /**
@@ -143,8 +142,7 @@ public class Order {
      */
     @NotNull
     public static List<Order> getOrders(Company company) {
-        return getMultipleOrdersFromApi("securityorders/securitiesaccount/"
-            + company.getSecuritiesAccountId());
+        return getOrders(company.getSecuritiesAccountId());
     }
 
     /**

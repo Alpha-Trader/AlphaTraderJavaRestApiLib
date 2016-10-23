@@ -166,6 +166,7 @@ class Http {
         StringWriter stringWriter = new StringWriter();
         ue.printStackTrace(new PrintWriter(stringWriter));
         log.debug(stringWriter.toString());
+
     }
 
     /**

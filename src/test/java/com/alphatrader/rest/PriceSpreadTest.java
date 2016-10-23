@@ -3,12 +3,17 @@ package com.alphatrader.rest;
 import com.alphatrader.rest.util.ZonedDateTimeDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +22,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class PriceSpreadTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -43,6 +49,11 @@ public class PriceSpreadTest {
 
     private PriceSpread toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, PriceSpread.class);
@@ -50,17 +61,20 @@ public class PriceSpreadTest {
 
     @Test
     public void getAllPriceSpreads() throws Exception {
-
+        List<PriceSpread> reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/pricespreads/"), new TypeToken<ArrayList<PriceSpread>>() { }.getType());
+        List<PriceSpread> testObject = PriceSpread.getAllPriceSpreads();
+        assertNotEquals(0, testObject.size());
+        assertEquals(new HashSet<>(reference), new HashSet<>(testObject));
     }
 
     @Test
     public void getPriceSpread() throws Exception {
-
-    }
-
-    @Test
-    public void getPriceSpread1() throws Exception {
-
+        PriceSpread reference = gson.fromJson(httpResponder.getJsonForRequest(
+            "/api/pricespreads/STK0F513"), PriceSpread.class);
+        PriceSpread testObject = PriceSpread.getPriceSpread(Listing.getById("STK0F513"));
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
@@ -129,6 +143,175 @@ public class PriceSpreadTest {
         assertTrue(toTest.equals(toTest));
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
+
+        PriceSpread other1 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": 1,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other1));
+        PriceSpread other2 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other2));
+        PriceSpread other3 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": 1,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other3));
+        PriceSpread other4 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 1,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other4));
+        PriceSpread other5 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 1,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other5));
+        PriceSpread other6 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": 1,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other6));
+        PriceSpread other8 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": 1,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 656.93\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other8));
+        PriceSpread other9 = gson.fromJson("{\n" +
+            "  \"listing\": {\n" +
+            "    \"startDate\": 1469951698361,\n" +
+            "    \"endDate\": null,\n" +
+            "    \"securityIdentifier\": \"STK0F513\",\n" +
+            "    \"name\": \"Katholische Kirche AG\",\n" +
+            "    \"type\": \"STOCK\"\n" +
+            "  },\n" +
+            "  \"askSize\": null,\n" +
+            "  \"bidPrice\": 25,\n" +
+            "  \"askPrice\": null,\n" +
+            "  \"spreadAbs\": null,\n" +
+            "  \"spreadPercent\": null,\n" +
+            "  \"lastPrice\": {\n" +
+            "    \"date\": 1476375715646,\n" +
+            "    \"value\": 1\n" +
+            "  },\n" +
+            "  \"bidSize\": 49701,\n" +
+            "  \"date\": 1476375717202\n" +
+            "}", PriceSpread.class);
+        assertFalse(toTest.equals(other9));
     }
 
     @Test

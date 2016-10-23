@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
@@ -21,6 +22,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class MessageTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -32,44 +34,14 @@ public class MessageTest {
 
     private Message toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, Message.class);
-    }
-
-    @Test
-    public void getChatMessages() throws Exception {
-
-    }
-
-    @Test
-    public void getChatMessages1() throws Exception {
-
-    }
-
-    @Test
-    public void getChatMessages2() throws Exception {
-
-    }
-
-    @Test
-    public void getChatMessages3() throws Exception {
-
-    }
-
-    @Test
-    public void getChatMessages4() throws Exception {
-
-    }
-
-    @Test
-    public void getChatMessages5() throws Exception {
-
-    }
-
-    @Test
-    public void getUnreadMessages() throws Exception {
-
     }
 
     @Test

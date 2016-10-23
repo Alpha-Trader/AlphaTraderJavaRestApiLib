@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.ZonedDateTime;
@@ -21,6 +22,7 @@ import static org.junit.Assert.*;
  * @version 1.0.0
  */
 public class OrderBookTest {
+    private static HttpResponder httpResponder = HttpResponder.getInstance();
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class,
         new ZonedDateTimeDeserializer()).create();
 
@@ -49,6 +51,11 @@ public class OrderBookTest {
 
     private OrderBook toTest;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        Http.setInstance(httpResponder.getMock());
+    }
+
     @Before
     public void setUp() throws Exception {
         toTest = gson.fromJson(JSON, OrderBook.class);
@@ -56,7 +63,11 @@ public class OrderBookTest {
 
     @Test
     public void getOrderBook() throws Exception {
-
+        OrderBook reference = gson.fromJson(httpResponder.getJsonForRequest("/api/orderbook/STK0F513"),
+            OrderBook.class);
+        OrderBook testObject = OrderBook.getOrderBook("STK0F513");
+        assertNotNull(testObject);
+        assertEquals(reference, testObject);
     }
 
     @Test
@@ -100,5 +111,24 @@ public class OrderBookTest {
     @Test
     public void testToString() throws Exception {
         assertTrue(toTest.toString().startsWith(toTest.getClass().getSimpleName()));
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertTrue(toTest.equals(toTest));
+        assertFalse(toTest.equals(null));
+        assertFalse(toTest.equals("Test"));
+
+        OrderBook other = gson.fromJson("{\n" +
+            "  \"id\": \"12345\"\n" +
+            "}", OrderBook.class);
+
+        assertFalse(toTest.equals(other));
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        OrderBook reference = gson.fromJson(JSON, OrderBook.class);
+        assertEquals(reference.hashCode(), toTest.hashCode());
     }
 }

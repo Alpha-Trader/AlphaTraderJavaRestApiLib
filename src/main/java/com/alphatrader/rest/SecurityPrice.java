@@ -38,7 +38,7 @@ public final class SecurityPrice {
      */
     @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate) {
-        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
+        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate="
             + startDate.toInstant().toEpochMilli());
     }
 
@@ -53,8 +53,8 @@ public final class SecurityPrice {
     @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate,
                                                     ZonedDateTime endDate) {
-        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate"
-            + startDate.toInstant().toEpochMilli() + "&endDate" + endDate.toInstant().toEpochMilli());
+        return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate="
+            + startDate.toInstant().toEpochMilli() + "&endDate=" + endDate.toInstant().toEpochMilli());
     }
 
     /**

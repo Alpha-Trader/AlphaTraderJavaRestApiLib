@@ -110,7 +110,7 @@ public class Poll {
      * @return the poll with the given id
      */
     @Nullable
-    private static Poll getById(String pollId) {
+    public static Poll getById(String pollId) {
         return Http.getSingleObjectFromApi(Poll.class, "/api/polls/" + pollId);
     }
 
