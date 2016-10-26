@@ -75,7 +75,7 @@ public class CashTransferLog {
             options.add("receiverBankAccountId=" + receiverBankAccountId);
         }
 
-        if (options.isEmpty()) {
+        if (!options.isEmpty()) {
             request += "?" + String.join("&", options);
         }
 

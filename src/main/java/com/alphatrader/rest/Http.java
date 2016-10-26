@@ -120,7 +120,6 @@ class Http {
     static <T> List<T> getMultipleObjectFromApi(Class<T> typeParameterClass, String suffix) {
         List<T> myReturn = new ArrayList<>();
 
-
         try {
             HttpResponse<String> response = httpAnswerCache.get(suffix);
 
@@ -174,9 +173,9 @@ class Http {
      *
      * @param ue the exception thrown
      * @param typeParameterClass the class of object the request tried to fetch
-     * @param <Type> the type of object the request tried to fetch
+     * @param <T> the type of object the request tried to fetch
      */
-    private static <Type> void handleException(Exception ue, Class<Type> typeParameterClass) {
+    private static <T> void handleException(Exception ue, Class<T> typeParameterClass) {
         log.error("Error fetching " + typeParameterClass.getSimpleName() + "s: " + ue.getMessage());
         StringWriter stringWriter = new StringWriter();
         ue.printStackTrace(new PrintWriter(stringWriter));

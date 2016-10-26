@@ -64,6 +64,7 @@ public class Vote {
         YES, NO
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -75,12 +76,16 @@ public class Vote {
 
         Vote vote = (Vote) o;
 
-        return type.getValue() == vote.type.getValue()
-            && (voices.getValue() != null ? voices.getValue().equals(vote.voices.getValue())
-            : vote.voices.getValue() == null
-            && (voter.getValue() != null ? voter.getValue().equals(vote.voter.getValue())
-            : vote.voter.getValue() == null));
-
+        if (type.getValue() != null ? !type.getValue().equals(vote.type.getValue())
+            : vote.type.getValue() != null) {
+            return false;
+        }
+        if (voices.getValue() != null ? !voices.getValue().equals(vote.voices.getValue())
+            : vote.voices.getValue() != null) {
+            return false;
+        }
+        return voter.getValue() != null ? voter.getValue().equals(vote.voter.getValue())
+            : vote.voter.getValue() == null;
     }
 
     @Override
