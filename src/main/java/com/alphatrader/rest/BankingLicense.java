@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.Nullable;
@@ -16,12 +18,12 @@ public class BankingLicense {
     /**
      * The date the license has been issued.
      */
-    private final ZonedDateTime startDate = null;
+    private final ObjectProperty<ZonedDateTime> startDate = new SimpleObjectProperty<>();
 
     /**
      * The company this license enables banking functions for.
      */
-    private final Company company = null;
+    private final ObjectProperty<Company> company = new SimpleObjectProperty<>();
 
     /**
      * The id of this banking license.
@@ -76,14 +78,14 @@ public class BankingLicense {
      * @return the issue date of this license
      */
     public ZonedDateTime getStartDate() {
-        return startDate;
+        return startDate.getValue();
     }
 
     /**
      * @return the company this license belongs to
      */
     public Company getCompany() {
-        return company;
+        return company.getValue();
     }
 
     /**
@@ -96,8 +98,8 @@ public class BankingLicense {
     @Override
     public String toString() {
         return "BankingLicense{"
-            + "startDate=" + startDate
-            + ", company=" + company
+            + "startDate=" + startDate.getValue()
+            + ", company=" + company.getValue()
             + ", id='" + id.getValue() + '\''
             + '}';
     }

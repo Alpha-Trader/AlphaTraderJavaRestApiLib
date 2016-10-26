@@ -1,7 +1,9 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 /**
  * Represents a sponsor rating in the game.
@@ -18,7 +20,7 @@ public class SponsorRating {
     /**
      * The rating classification.
      */
-    private final SponsorRatingLetter value = null;
+    private final ObjectProperty<SponsorRatingLetter> value = new SimpleObjectProperty<>();
 
     /**
      * @return the sponsor salary
@@ -31,7 +33,7 @@ public class SponsorRating {
      * @return the valuation of the sponsor
      */
     public SponsorRatingLetter getValue() {
-        return value;
+        return value.getValue();
     }
 
     /**
@@ -60,18 +62,15 @@ public class SponsorRating {
 
         SponsorRating that = (SponsorRating) o;
 
-        if (salary.getValue() != null ? !salary.getValue().equals(that.salary.getValue())
-            : that.salary.getValue() != null) {
-            return false;
-        }
-        return value == that.value;
+        return salary.getValue() != null ? salary.getValue().equals(that.salary.getValue()) : that
+            .salary.getValue() == null && value.getValue() == that.value.getValue();
 
     }
 
     @Override
     public int hashCode() {
         int result = salary.getValue() != null ? salary.getValue().hashCode() : 0;
-        result = 31 * result + (value != null ? value.hashCode() : 0);
+        result = 31 * result + (value.getValue() != null ? value.getValue().hashCode() : 0);
         return result;
     }
 }

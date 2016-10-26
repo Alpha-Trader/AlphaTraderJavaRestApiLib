@@ -109,6 +109,7 @@ public class CompanyCapabilities {
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,23 +129,20 @@ public class CompanyCapabilities {
             : that.bank.getValue() != null) {
             return false;
         }
-        if (takenCentralBankLoans.getValue() != null ? !takenCentralBankLoans.getValue()
-            .equals(that.takenCentralBankLoans.getValue()) : that.takenCentralBankLoans
-            .getValue() != null) {
+        if (takenCentralBankLoans.getValue() != null ? !takenCentralBankLoans.getValue().equals(
+            that.takenCentralBankLoans.getValue()) : that.takenCentralBankLoans.getValue() != null) {
             return false;
         }
-        if (designatedSponsor.getValue() != null ? !designatedSponsor.getValue()
-            .equals(that.designatedSponsor.getValue())
-            : that.designatedSponsor.getValue() != null) {
+        if (designatedSponsor.getValue() != null ? !designatedSponsor.getValue().equals(
+            that.designatedSponsor.getValue()) : that.designatedSponsor.getValue() != null) {
             return false;
         }
         if (reserves.getValue() != null ? !reserves.getValue().equals(that.reserves.getValue())
             : that.reserves.getValue() != null) {
             return false;
         }
-        if (maxCentralBankLoans.getValue() != null ? !maxCentralBankLoans.getValue()
-            .equals(that.maxCentralBankLoans.getValue())
-            : that.maxCentralBankLoans.getValue() != null) {
+        if (maxCentralBankLoans.getValue() != null ? !maxCentralBankLoans.getValue().equals(
+            that.maxCentralBankLoans.getValue()) : that.maxCentralBankLoans.getValue() != null) {
             return false;
         }
         return netCash.getValue() != null ? netCash.getValue().equals(that.netCash.getValue())

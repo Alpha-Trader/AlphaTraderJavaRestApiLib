@@ -16,7 +16,7 @@ import java.io.IOException;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-final class BooleanPropertyDeserializer extends TypeAdapter<BooleanProperty> {
+public final class BooleanPropertyDeserializer extends TypeAdapter<BooleanProperty> {
     @Override
     public void write(JsonWriter jsonWriter, BooleanProperty doubleProperty) throws IOException {
         jsonWriter.value(doubleProperty.getValue());

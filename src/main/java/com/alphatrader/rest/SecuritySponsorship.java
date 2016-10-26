@@ -1,5 +1,8 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 /**
  * Represents a security sponsorship in the game.
  *
@@ -10,48 +13,49 @@ public class SecuritySponsorship {
     /**
      * The company which is sponsoring the listing.
      */
-    private final Company designatedSponsor = null;
+    private final ObjectProperty<Company> designatedSponsor = new SimpleObjectProperty<>();
 
     /**
      * The listing being sponsored.
      */
-    private final Listing listing = null;
+    private final ObjectProperty<Listing> listing = new SimpleObjectProperty<>();
 
     /**
      * The rating of the sponsor concerning this listing.
      */
-    private final SponsorRating sponsorRating = null;
+    private final ObjectProperty<SponsorRating> sponsorRating = new SimpleObjectProperty<>();
 
     /**
      * @return the designated sponsor
      */
     public Company getDesignatedSponsor() {
-        return designatedSponsor;
+        return designatedSponsor.getValue();
     }
 
     /**
      * @return the listing
      */
     public Listing getListing() {
-        return listing;
+        return listing.getValue();
     }
 
     /**
      * @return the sponsor rating
      */
     public SponsorRating getSponsorRating() {
-        return sponsorRating;
+        return sponsorRating.getValue();
     }
 
     @Override
     public String toString() {
         return "SecuritySponsorship{"
-            + "designatedSponsor=" + designatedSponsor
-            + ", listing=" + listing
-            + ", sponsorRating=" + sponsorRating
+            + "designatedSponsor=" + designatedSponsor.getValue()
+            + ", listing=" + listing.getValue()
+            + ", sponsorRating=" + sponsorRating.getValue()
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -63,18 +67,23 @@ public class SecuritySponsorship {
 
         SecuritySponsorship that = (SecuritySponsorship) o;
 
-        if (designatedSponsor != null ? !designatedSponsor.equals(that.designatedSponsor)
-            : that.designatedSponsor != null) {
+        if (designatedSponsor.getValue() != null ? !designatedSponsor.getValue().equals(
+            that.designatedSponsor.getValue()) : that.designatedSponsor.getValue() != null) {
             return false;
         }
-        return listing != null ? listing.equals(that.listing) : that.listing == null;
+        if (listing.getValue() != null ? !listing.getValue().equals(that.listing.getValue())
+            : that.listing.getValue() != null) {
+            return false;
+        }
+        return sponsorRating.getValue() != null ? sponsorRating.getValue().equals(
+            that.sponsorRating.getValue()) : that.sponsorRating.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = designatedSponsor != null ? designatedSponsor.hashCode() : 0;
-        result = 31 * result + (listing != null ? listing.hashCode() : 0);
+        int result = designatedSponsor.getValue() != null ? designatedSponsor.getValue().hashCode() : 0;
+        result = 31 * result + (listing.getValue() != null ? listing.getValue().hashCode() : 0);
         return result;
     }
 }

@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
@@ -18,12 +20,12 @@ public class Listing {
     /**
      * The start date of the listing.
      */
-    private final ZonedDateTime startDate = null;
+    private final ObjectProperty<ZonedDateTime> startDate = new SimpleObjectProperty<>();
 
     /**
      * The end date of the listing.
      */
-    private final ZonedDateTime endDate = null;
+    private final ObjectProperty<ZonedDateTime> endDate = new SimpleObjectProperty<>();
 
     /**
      * The listing's security identifier.
@@ -38,7 +40,7 @@ public class Listing {
     /**
      * The type of this listing.
      */
-    private final Type type = null;
+    private final ObjectProperty<Type> type = new SimpleObjectProperty<>();
 
     /**
      * Fetches all listings currently on the market from the server.
@@ -126,14 +128,14 @@ public class Listing {
      * @return the start date
      */
     public ZonedDateTime getStartDate() {
-        return startDate;
+        return startDate.getValue();
     }
 
     /**
      * @return the end date
      */
     public ZonedDateTime getEndDate() {
-        return endDate;
+        return endDate.getValue();
     }
 
     /**
@@ -154,7 +156,7 @@ public class Listing {
      * @return the listing type
      */
     public Type getType() {
-        return type;
+        return type.getValue();
     }
 
     @Override

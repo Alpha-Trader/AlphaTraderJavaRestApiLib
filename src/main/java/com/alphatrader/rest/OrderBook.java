@@ -94,12 +94,10 @@ public class OrderBook {
 
         OrderBook orderBook = (OrderBook) o;
 
-        if (maxBuySize.getValue() != null ? !maxBuySize.getValue().equals(orderBook.maxBuySize
-            .getValue()) : orderBook.maxBuySize.getValue() != null) {
-            return false;
-        }
-        return maxSellSize.getValue() != null ? maxSellSize.getValue().equals(orderBook.maxSellSize
-            .getValue()) : orderBook.maxSellSize.getValue() == null;
+        return maxBuySize.getValue() != null ? maxBuySize.getValue().equals(orderBook.maxBuySize
+            .getValue()) : orderBook.maxBuySize.getValue() == null && (maxSellSize.getValue() != null
+            ? maxSellSize.getValue().equals(orderBook.maxSellSize.getValue())
+            : orderBook.maxSellSize.getValue() == null);
 
     }
 

@@ -17,84 +17,67 @@ public class Order {
     /**
      * The date and time the order was created
      */
-    private final ZonedDateTime creationDate;
+    private final ObjectProperty<ZonedDateTime> creationDate = new SimpleObjectProperty<>();
 
     /**
      * Name of Security
      */
-    private final Listing listing;
+    private final ObjectProperty<Listing> listing = new SimpleObjectProperty<>();
 
     /**
      * Type of Security
      */
-    private final Type type = null;
+    private final ObjectProperty<Type> type = new SimpleObjectProperty<>();
 
     /**
      * Unique securityIdentifier of security
      */
-    private final StringProperty securityIdentifier;
+    private final StringProperty securityIdentifier = new SimpleStringProperty();
 
     /**
      * Number of shares entailed in Order
      */
-    private final LongProperty numberOfShares;
+    private final LongProperty numberOfShares = new SimpleLongProperty();
 
     /**
      * The name of the counter party.
      */
-    private final StringProperty counterPartyName;
+    private final StringProperty counterPartyName = new SimpleStringProperty();
 
     /**
      * The security account id of the counter party.
      */
-    private final StringProperty counterParty;
+    private final StringProperty counterParty = new SimpleStringProperty();
 
     /**
      * The type of action this order represents.
      */
-    private final Action action = null;
+    private final ObjectProperty<Action> action = new SimpleObjectProperty<>();
 
     /**
      * The committed cash of this order.
      */
-    private final DoubleProperty committedCash;
+    private final DoubleProperty committedCash = new SimpleDoubleProperty();
 
     /**
      * The price.
      */
-    private final DoubleProperty price;
+    private final DoubleProperty price = new SimpleDoubleProperty();
 
     /**
      * The name of the owner.
      */
-    private final StringProperty ownerName;
+    private final StringProperty ownerName = new SimpleStringProperty();
 
     /**
      * The security account identifier of the owner.
      */
-    private final StringProperty owner;
+    private final StringProperty owner = new SimpleStringProperty();
 
     /**
      * The unique id of the order.
      */
-    private final StringProperty id;
-
-    /**
-     * Creates a new default order object.
-     */
-    public Order() {
-        creationDate = ZonedDateTime.now();
-        listing = new Listing();
-        securityIdentifier = new SimpleStringProperty();
-        numberOfShares = new SimpleLongProperty();
-        counterPartyName = new SimpleStringProperty();
-        counterParty = new SimpleStringProperty();
-        committedCash = new SimpleDoubleProperty();
-        price = new SimpleDoubleProperty();
-        ownerName = new SimpleStringProperty();
-        owner = new SimpleStringProperty();
-        id = new SimpleStringProperty();
-    }
+    private final StringProperty id = new SimpleStringProperty();
 
     /**
      * Fetches all otc orders of the given company.
@@ -195,22 +178,21 @@ public class Order {
      * return the date of creation
      */
     public ZonedDateTime getCreationDate() {
-
-        return creationDate;
+        return creationDate.getValue();
     }
 
     /**
      * @return the listing
      */
     public Listing getListing() {
-        return listing;
+        return listing.getValue();
     }
 
     /**
      * @return the type of security
      */
     public Type getType() {
-        return type;
+        return type.getValue();
     }
 
     /**
@@ -245,7 +227,7 @@ public class Order {
      * @return the action
      */
     public Action getAction() {
-        return action;
+        return action.getValue();
     }
 
     /**
@@ -286,14 +268,14 @@ public class Order {
     @Override
     public String toString() {
         return "Order{"
-            + "creationDate=" + creationDate
-            + ", listing=" + listing
-            + ", type=" + type
+            + "creationDate=" + creationDate.getValue()
+            + ", listing=" + listing.getValue()
+            + ", type=" + type.getValue()
             + ", securityIdentifier='" + securityIdentifier.getValue() + '\''
             + ", numberOfShares=" + numberOfShares.getValue()
             + ", counterPartyName='" + counterPartyName.getValue() + '\''
             + ", counterParty='" + counterParty.getValue() + '\''
-            + ", action=" + action
+            + ", action=" + action.getValue()
             + ", committedCash=" + committedCash.getValue()
             + ", price=" + price.getValue()
             + ", ownerName='" + ownerName.getValue() + '\''

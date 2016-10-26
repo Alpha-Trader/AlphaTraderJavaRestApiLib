@@ -5,6 +5,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.apache.commons.logging.Log;
@@ -54,12 +56,17 @@ public class User {
     /**
      * The user capabilities.
      */
-    private final UserCapabilities userCapabilities = null;
+    private final ObjectProperty<UserCapabilities> userCapabilities = new SimpleObjectProperty<>();
 
     /**
      * The current session web token to use as login credentials.
      */
     private final StringProperty jwtToken = new SimpleStringProperty();
+
+    /**
+     * Default constructor for gson generation.
+     */
+    public User() { }
 
     /**
      * Creates a new user object with the given parameters.
@@ -155,8 +162,8 @@ public class User {
             HttpResponse<JsonNode> response = Unirest
                 .post(ApiLibConfig.getInstance().getApiUrl() + "/user/token/")
                 .header("accept", "*/*")
-                .queryString("username", username)
-                .field("password", password)
+                .queryString("username", username.getValueSafe())
+                .field("password", password.getValueSafe())
                 .asJson();
             JSONObject body = response.getBody().getObject();
 
@@ -218,19 +225,18 @@ public class User {
      * @return the user's capabilities
      */
     public UserCapabilities getUserCapabilities() {
-        return userCapabilities;
+        return userCapabilities.getValue();
     }
 
     @Override
     public String toString() {
         return "User{"
-            + "username=" + username
-            + ", password=" + password
-            + ", emailAddress=" + emailAddress
-            + ", gravatarHash=" + gravatarHash
-            + ", id=" + id
-            + ", userCapabilities=" + userCapabilities
-            + ", jwtToken=" + jwtToken
+            + "username=" + username.getValue()
+            + ", emailAddress=" + emailAddress.getValue()
+            + ", gravatarHash=" + gravatarHash.getValue()
+            + ", id=" + id.getValue()
+            + ", userCapabilities=" + userCapabilities.getValue()
+            + ", jwtToken=" + jwtToken.getValue()
             + '}';
     }
 

@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -35,12 +32,12 @@ public class CashTransferLog {
     /**
      * The date the transfer took place.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The message describing this transfer.
      */
-    private final Message message = null;
+    private final ObjectProperty<Message> message = new SimpleObjectProperty<>();
 
     /**
      * The id of this transfer.
@@ -110,14 +107,14 @@ public class CashTransferLog {
      * @return the date the transfer took place
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**
      * @return the subject message of the transfer
      */
     public Message getMessage() {
-        return message;
+        return message.getValue();
     }
 
     /**
@@ -133,8 +130,8 @@ public class CashTransferLog {
             + "amount=" + amount.getValue()
             + ", receiverBankAccount='" + receiverBankAccount.getValue() + '\''
             + ", senderBankAccount='" + senderBankAccount.getValue() + '\''
-            + ", date=" + date
-            + ", message=" + message
+            + ", date=" + date.getValue()
+            + ", message=" + message.getValue()
             + ", id='" + id.getValue() + '\''
             + '}';
     }

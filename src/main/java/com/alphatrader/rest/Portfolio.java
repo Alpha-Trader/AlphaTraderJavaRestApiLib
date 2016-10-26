@@ -104,6 +104,7 @@ public class Portfolio {
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -115,15 +116,16 @@ public class Portfolio {
 
         Portfolio portfolio = (Portfolio) o;
 
-        if (cash.getValue() != null ? !cash.getValue().equals(portfolio.cash.getValue()) : portfolio
-            .cash.getValue() != null) {
+        if (cash.getValue() != null ? !cash.getValue().equals(portfolio.cash.getValue())
+            : portfolio.cash.getValue() != null) {
             return false;
         }
-        if (committedCash.getValue() != null ? !committedCash.getValue().equals(portfolio.committedCash
-            .getValue()) : portfolio.committedCash.getValue() != null) {
+        if (committedCash.getValue() != null ? !committedCash.getValue().equals(
+            portfolio.committedCash.getValue()) : portfolio.committedCash.getValue() != null) {
             return false;
         }
         return Arrays.equals(positions, portfolio.positions);
+
     }
 
     @Override

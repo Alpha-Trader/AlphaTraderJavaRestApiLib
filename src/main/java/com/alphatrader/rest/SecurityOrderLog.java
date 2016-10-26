@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.util.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +51,7 @@ public class SecurityOrderLog {
     /**
      * The date.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The unique id.
@@ -167,7 +164,7 @@ public class SecurityOrderLog {
      * @return the date the order was placed
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.Nullable;
@@ -42,12 +44,12 @@ public class UserProfile {
     /**
      * The user with this profile.
      */
-    private final User user = null;
+    private final ObjectProperty<User> user = new SimpleObjectProperty<>();
 
     /**
      * The user's bank account.
      */
-    private final BankAccount bankAccount = null;
+    private final ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
 
     /**
      * The user's locale.
@@ -80,49 +82,49 @@ public class UserProfile {
      * @return the user's cash transfer logs
      */
     public List<CashTransferLog> getCashTransferLogs() {
-        return Arrays.asList(cashTransferLogs != null ? cashTransferLogs : new CashTransferLog[0]);
+        return Arrays.asList(cashTransferLogs);
     }
 
     /**
      * @return the user's employments
      */
     public List<EmploymentAgreement> getEmployments() {
-        return Arrays.asList(employments != null ? employments : new EmploymentAgreement[0]);
+        return Arrays.asList(employments);
     }
 
     /**
      * @return the polls concerning the user
      */
     public List<Poll> getPolls() {
-        return Arrays.asList(polls != null ? polls : new Poll[0]);
+        return Arrays.asList(polls);
     }
 
     /**
      * @return the polls initiated by the user
      */
     public List<Poll> getInitiatedPolls() {
-        return Arrays.asList(initiatedPolls != null ? initiatedPolls : new Poll[0]);
+        return Arrays.asList(initiatedPolls);
     }
 
     /**
      * @return a list of the user's salary payments
      */
     public List<SalaryPayment> getSalaryPayments() {
-        return Arrays.asList(salaryPayments != null ? salaryPayments : new SalaryPayment[0]);
+        return Arrays.asList(salaryPayments);
     }
 
     /**
      * @return the user this profile belongs to
      */
     public User getUser() {
-        return user;
+        return user.getValue();
     }
 
     /**
      * @return the user's bank account
      */
     public BankAccount getBankAccount() {
-        return bankAccount;
+        return bankAccount.getValue();
     }
 
     /**
@@ -140,7 +142,7 @@ public class UserProfile {
             + ", polls=" + Arrays.toString(polls)
             + ", initiatedPolls=" + Arrays.toString(initiatedPolls)
             + ", salaryPayments=" + Arrays.toString(salaryPayments)
-            + ", user=" + user
+            + ", user=" + user.getValue()
             + ", bankAccount=" + bankAccount
             + ", locale='" + locale + '\''
             + '}';
@@ -157,12 +159,13 @@ public class UserProfile {
 
         UserProfile that = (UserProfile) o;
 
-        return user != null ? user.equals(that.user) : that.user == null;
+        return user.getValue() != null ? user.getValue().equals(that.user.getValue())
+            : that.user.getValue() == null;
 
     }
 
     @Override
     public int hashCode() {
-        return user != null ? user.hashCode() : 0;
+        return user.getValue() != null ? user.getValue().hashCode() : 0;
     }
 }

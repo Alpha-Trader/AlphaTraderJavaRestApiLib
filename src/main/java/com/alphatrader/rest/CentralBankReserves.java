@@ -1,10 +1,6 @@
 package com.alphatrader.rest;
 
-import com.google.gson.Gson;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -15,11 +11,6 @@ import org.jetbrains.annotations.Nullable;
  */
 public class CentralBankReserves {
     /**
-     * Gson instance for deserialization.
-     */
-    private static final Gson gson = new Gson();
-
-    /**
      * The unique identifier for the central bank reserves.
      */
     private final StringProperty id = new SimpleStringProperty();
@@ -27,7 +18,7 @@ public class CentralBankReserves {
     /**
      * The banking license associated with these reserves.
      */
-    private final BankingLicense bankingLicense = null;
+    private final ObjectProperty<BankingLicense> bankingLicense = new SimpleObjectProperty<>();
 
     /**
      * The maximum amount of loans allowed for this company.
@@ -84,7 +75,7 @@ public class CentralBankReserves {
      * @return the associated banking license
      */
     public BankingLicense getBankingLicense() {
-        return bankingLicense;
+        return bankingLicense.getValue();
     }
 
     /**

@@ -45,7 +45,7 @@ public class SecuritySponsorshipTest {
         "  },\n" +
         "  \"sponsorRating\": {\n" +
         "    \"salary\": 4,\n" +
-        "    \"value\": \"value\"\n" +
+        "    \"value\": \"D\"\n" +
         "  }\n" +
         "}";
 
@@ -98,7 +98,7 @@ public class SecuritySponsorshipTest {
     public void testGetSponsorRating() throws Exception {
         SponsorRating reference = gson.fromJson("{\n" +
         "    \"salary\": 4,\n" +
-        "    \"value\": \"value\"\n" +
+        "    \"value\": \"D\"\n" +
         "  }", SponsorRating.class);
 
         assertEquals(reference, toTest.getSponsorRating());
@@ -136,8 +136,8 @@ public class SecuritySponsorshipTest {
             "    },\n" +
             "    \"id\": \"id\",\n" +
             "    \"name\": \"name\",\n" +
-            "    \"securitiesAccountId\": \"securitiesAccountId\",\n" +
-            "    \"securityIdentifier\": \"securityIdentifier\"\n" +
+            "    \"securitiesAccountId\": \"securitiesAccountId1\",\n" +
+            "    \"securityIdentifier\": \"securityIdentifier1\"\n" +
             "  },\n" +
             "  \"listing\": {\n" +
             "    \"endDate\": 2,\n" +
@@ -148,7 +148,7 @@ public class SecuritySponsorshipTest {
             "  },\n" +
             "  \"sponsorRating\": {\n" +
             "    \"salary\": 4,\n" +
-            "    \"value\": \"value\"\n" +
+            "    \"value\": \"A\"\n" +
             "  }\n" +
         "}", SecuritySponsorship.class);
 

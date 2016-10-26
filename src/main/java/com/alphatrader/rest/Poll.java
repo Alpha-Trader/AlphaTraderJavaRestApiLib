@@ -18,7 +18,7 @@ public class Poll {
     /**
      * The abstention rule.
      */
-    private final AbstentionRule abstentionRule = null;
+    private final ObjectProperty<AbstentionRule> abstentionRule = new SimpleObjectProperty<>();
     /**
      * The percentage of approval votes.
      */
@@ -38,11 +38,11 @@ public class Poll {
     /**
      * The start date.
      */
-    private final ZonedDateTime startDate = null;
+    private final ObjectProperty<ZonedDateTime> startDate = new SimpleObjectProperty<>();
     /**
      * The end date.
      */
-    private final ZonedDateTime endDate = null;
+    private final ObjectProperty<ZonedDateTime> endDate = new SimpleObjectProperty<>();
     /**
      * All group members of this poll.
      */
@@ -58,11 +58,11 @@ public class Poll {
     /**
      * The initiator of the poll.
      */
-    private final User pollInitiator = null;
+    private final ObjectProperty<User> pollInitiator = new SimpleObjectProperty<>();
     /**
      * The date the result expires.
      */
-    private final ZonedDateTime resultExpireDate = null;
+    private final ObjectProperty<ZonedDateTime> resultExpireDate = new SimpleObjectProperty<>();
     /**
      * The unique id.
      */
@@ -70,7 +70,7 @@ public class Poll {
     /**
      * The result of the poll.
      */
-    private final Type type = null;
+    private final ObjectProperty<Type> type = new SimpleObjectProperty<>();
 
     /**
      * Fetches all polls initiated by the current user.
@@ -118,7 +118,7 @@ public class Poll {
      * @return the abstention rule
      */
     public AbstentionRule getAbstentionRule() {
-        return abstentionRule;
+        return abstentionRule.getValue();
     }
 
     /**
@@ -153,14 +153,14 @@ public class Poll {
      * @return the start date
      */
     public ZonedDateTime getStartDate() {
-        return startDate;
+        return startDate.getValue();
     }
 
     /**
      * @return the end date
      */
     public ZonedDateTime getEndDate() {
-        return endDate;
+        return endDate.getValue();
     }
 
     /**
@@ -188,14 +188,14 @@ public class Poll {
      * @return the initiator of the poll
      */
     public User getPollInitiator() {
-        return pollInitiator;
+        return pollInitiator.getValue();
     }
 
     /**
      * @return the expiry date of the result
      */
     public ZonedDateTime getResultExpireDate() {
-        return resultExpireDate;
+        return resultExpireDate.getValue();
     }
 
     /**
@@ -209,26 +209,24 @@ public class Poll {
      * @return the current result
      */
     public Type getType() {
-        return type;
+        return type.getValue();
     }
 
     @Override
     public String toString() {
         return "Poll{"
-            + "abstentionRule=" + abstentionRule
+            + "abstentionRule=" + abstentionRule.getValue()
             + ", approvalVotesPercentage=" + approvalVotesPercentage.getValue()
             + ", totalNumberOfVoices=" + totalNumberOfVoices.getValue()
-            + ", votes=" + Arrays.toString(votes)
             + ", motion='" + motion.getValue() + '\''
-            + ", startDate=" + startDate
-            + ", endDate=" + endDate
-            + ", group=" + Arrays.toString(group)
+            + ", startDate=" + startDate.getValue()
+            + ", endDate=" + endDate.getValue()
             + ", castVotesPercentage=" + castVotesPercentage.getValue()
             + ", totalNumberOfCastVotes=" + totalNumberOfCastVotes.getValue()
-            + ", pollInitiator=" + pollInitiator
-            + ", resultExpireDate=" + resultExpireDate
+            + ", pollInitiator=" + pollInitiator.getValue()
+            + ", resultExpireDate=" + resultExpireDate.getValue()
             + ", id='" + id.getValue() + '\''
-            + ", type=" + type
+            + ", type=" + type.getValue()
             + '}';
     }
 

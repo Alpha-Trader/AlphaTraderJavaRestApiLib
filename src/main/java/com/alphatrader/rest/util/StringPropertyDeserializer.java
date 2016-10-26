@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-class StringPropertyDeserializer extends TypeAdapter<StringProperty> {
+public class StringPropertyDeserializer extends TypeAdapter<StringProperty> {
     @Override
     public void write(JsonWriter jsonWriter, StringProperty stringProperty) throws IOException {
         jsonWriter.value(stringProperty.getValue());

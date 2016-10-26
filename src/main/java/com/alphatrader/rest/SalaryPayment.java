@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
@@ -23,7 +20,7 @@ public class SalaryPayment {
     /**
      * The next possible payment date.
      */
-    private final ZonedDateTime nextPossiblePaymentDate = null;
+    private final ObjectProperty<ZonedDateTime> nextPossiblePaymentDate = new SimpleObjectProperty<>();
 
     /**
      * The salary amount.
@@ -33,7 +30,7 @@ public class SalaryPayment {
     /**
      * The date the salary was paid.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The unique id of this payment.
@@ -63,7 +60,7 @@ public class SalaryPayment {
      * @return the date at which the next payment can be made
      */
     public ZonedDateTime getNextPossiblePaymentDate() {
-        return nextPossiblePaymentDate;
+        return nextPossiblePaymentDate.getValue();
     }
 
     /**
@@ -77,7 +74,7 @@ public class SalaryPayment {
      * @return the date this salary was paid
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**
@@ -91,9 +88,9 @@ public class SalaryPayment {
     public String toString() {
         return "SalaryPayment{"
             + "companyId='" + companyId.getValue() + '\''
-            + ", nextPossiblePaymentDate=" + nextPossiblePaymentDate
+            + ", nextPossiblePaymentDate=" + nextPossiblePaymentDate.getValue()
             + ", salaryAmount=" + salaryAmount.getValue()
-            + ", date=" + date
+            + ", date=" + date.getValue()
             + ", id='" + id.getValue() + '\''
             + '}';
     }

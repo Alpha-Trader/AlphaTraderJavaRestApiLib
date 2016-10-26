@@ -1,8 +1,12 @@
 package com.alphatrader.rest;
 
+import com.google.gson.JsonElement;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,22 +19,22 @@ public class Event {
     /**
      * The content of the event.
      */
-    private final Object content = null;
+    private final ObjectProperty<JsonElement> content = new SimpleObjectProperty<>();
 
     /**
      * The event type.
      */
-    private final Type type = null;
+    private final ObjectProperty<Type> type = new SimpleObjectProperty<>();
 
     /**
      * The date the event was triggered.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The list of realms.
      */
-    private final List<String> realms = null;
+    private final String[] realms = new String[0];
 
     /**
      * @return all non-persistent events in the game
@@ -126,29 +130,29 @@ public class Event {
     /**
      * @return the contained object
      */
-    public Object getContent() {
-        return content;
+    public JsonElement getContent() {
+        return content.getValue();
     }
 
     /**
      * @return the event type
      */
     public Type getType() {
-        return type;
+        return type.getValue();
     }
 
     /**
      * @return the event trigger date
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**
      * @return the realms
      */
     public List<String> getRealms() {
-        return realms;
+        return Arrays.asList(realms);
     }
 
     @Override
@@ -160,6 +164,7 @@ public class Event {
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -171,25 +176,28 @@ public class Event {
 
         Event event = (Event) o;
 
-        if (content != null ? !content.equals(event.content) : event.content != null) {
+        if (content.getValue() != null ? !content.getValue().equals(event.content.getValue())
+            : event.content.getValue() != null) {
             return false;
         }
-        if (type != event.type) {
+        if (type.getValue() != null ? !type.getValue().equals(event.type.getValue())
+            : event.type.getValue() != null) {
             return false;
         }
-        if (date != null ? !date.equals(event.date) : event.date != null) {
+        if (date.getValue() != null ? !date.getValue().equals(event.date.getValue())
+            : event.date.getValue() != null) {
             return false;
         }
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        return realms.equals(event.realms);
+        return Arrays.equals(realms, event.realms);
+
     }
 
     @Override
     public int hashCode() {
-        int result = content != null ? content.hashCode() : 0;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + realms.hashCode();
+        int result = content.getValue() != null ? content.getValue().hashCode() : 0;
+        result = 31 * result + (type.getValue() != null ? type.getValue().hashCode() : 0);
+        result = 31 * result + (date.getValue() != null ? date.getValue().hashCode() : 0);
+//        result = 31 * result + realms.hashCode();
         return result;
     }
 

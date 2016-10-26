@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.jetbrains.annotations.NotNull;
@@ -33,26 +35,22 @@ public class Company {
     /**
      * The current amount of uncommitted cash.
      */
-    private final BankAccount bankAccount = null;
+    private final ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
 
     /**
      * The current CEO.
      */
-    private final User ceo = null;
+    private final ObjectProperty<User> ceo = new SimpleObjectProperty<>();
 
     /**
      * The company listing on the market.
      */
-    private final Listing listing = null;
+    private final ObjectProperty<Listing> listing = new SimpleObjectProperty<>();
 
     /**
      * The URL of the company logo.
      */
-    private final URL logoUrl = null;
-
-    private Portfolio portfolio;
-
-    private CompanyProfile profile;
+    private final ObjectProperty<URL> logoUrl = new SimpleObjectProperty<>();
 
     /**
      * Fetches all companies currently employing the given user as a CEO.
@@ -198,28 +196,21 @@ public class Company {
      * @return the listing of the company
      */
     public Listing getListing() {
-        return listing;
+        return listing.getValue();
     }
 
     /**
      * @return the company portfolio
      */
     public Portfolio getPortfolio() {
-        if (this.portfolio == null) {
-            portfolio = Portfolio.getCompanyPortfolio(this);
-        }
-        return this.portfolio;
-
+        return Portfolio.getCompanyPortfolio(this);
     }
 
     /**
      * @return the company profile
      */
     public CompanyProfile getProfile() {
-        if (this.profile == null) {
-            this.profile = CompanyProfile.getByCompany(this);
-        }
-        return this.profile;
+        return CompanyProfile.getByCompany(this);
     }
 
     @Override

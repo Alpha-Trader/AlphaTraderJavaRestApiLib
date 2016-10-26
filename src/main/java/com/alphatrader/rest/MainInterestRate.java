@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,7 +27,7 @@ public class MainInterestRate {
     /**
      * The date this main interest rate was put into place.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * Fetches the latest main interest rate.
@@ -70,7 +67,7 @@ public class MainInterestRate {
      * @return the start date
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     @Override

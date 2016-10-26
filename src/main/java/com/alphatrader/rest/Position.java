@@ -17,7 +17,7 @@ public class Position {
     /**
      * The price this position was traded for in the last trade.
      */
-    private final LastPrice lastPrice = null;
+    private final ObjectProperty<LastPrice> lastPrice = new SimpleObjectProperty<>();
 
     /**
      * The number of shares held in the portfolio.
@@ -40,7 +40,7 @@ public class Position {
      * @return the last trading price
      */
     public LastPrice getLastPrice() {
-        return lastPrice;
+        return lastPrice.getValue();
     }
 
     /**
@@ -67,6 +67,7 @@ public class Position {
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -78,15 +79,16 @@ public class Position {
 
         Position position = (Position) o;
 
-        if (securityIdentifier.getValue() != null ? !securityIdentifier.getValue().equals(position
-            .securityIdentifier.getValue()) : position.securityIdentifier.getValue() != null) {
+        if (securityIdentifier.getValue() != null ? !securityIdentifier.getValue().equals(
+            position.securityIdentifier.getValue()) : position.securityIdentifier.getValue() != null) {
             return false;
         }
-        if (lastPrice != null ? !lastPrice.equals(position.lastPrice) : position.lastPrice != null) {
+        if (lastPrice.getValue() != null ? !lastPrice.getValue().equals(position.lastPrice.getValue())
+            : position.lastPrice.getValue() != null) {
             return false;
         }
-        if (numberOfShares.getValue() != null ? !numberOfShares.getValue().equals(position.numberOfShares
-            .getValue()) : position.numberOfShares.getValue() != null) {
+        if (numberOfShares.getValue() != null ? !numberOfShares.getValue().equals(
+            position.numberOfShares.getValue()) : position.numberOfShares.getValue() != null) {
             return false;
         }
         return volume.getValue() != null ? volume.getValue().equals(position.volume.getValue())
@@ -98,7 +100,7 @@ public class Position {
     public int hashCode() {
         int result = securityIdentifier.getValue() != null ? securityIdentifier.getValue().hashCode()
             : 0;
-        result = 31 * result + (lastPrice != null ? lastPrice.hashCode() : 0);
+        result = 31 * result + (lastPrice.getValue() != null ? lastPrice.getValue().hashCode() : 0);
         result = 31 * result + (numberOfShares.getValue() != null ? numberOfShares.getValue().hashCode()
             : 0);
         result = 31 * result + (volume.getValue() != null ? volume.getValue().hashCode() : 0);

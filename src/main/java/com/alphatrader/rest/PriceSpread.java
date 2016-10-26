@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,68 +17,52 @@ public class PriceSpread {
     /**
      * The current ask size.
      */
-    private final LongProperty askSize;
+    private final LongProperty askSize = new SimpleLongProperty();
 
     /**
      * The current asking price.
      */
-    private final DoubleProperty askPrice;
+    private final DoubleProperty askPrice = new SimpleDoubleProperty();
 
     /**
      * The current bid size.
      */
-    private final LongProperty bidSize;
+    private final LongProperty bidSize = new SimpleLongProperty();
 
     /**
      * The current bid price.
      */
-    private final DoubleProperty bidPrice;
+    private final DoubleProperty bidPrice = new SimpleDoubleProperty();
 
     /**
      * The absolute spread.
      */
-    private final DoubleProperty spreadAbs;
+    private final DoubleProperty spreadAbs = new SimpleDoubleProperty();
 
     /**
      * The spread percentage.
      */
-    private final DoubleProperty spreadPercent;
+    private final DoubleProperty spreadPercent = new SimpleDoubleProperty();
 
     /**
      * The last price the listing was traded.
      */
-    private final LastPrice lastPrice;
+    private final ObjectProperty<LastPrice> lastPrice = new SimpleObjectProperty<>();
 
     /**
      * The maximum bid price allowed by the market.
      */
-    private final DoubleProperty maxBidPrice;
+    private final DoubleProperty maxBidPrice = new SimpleDoubleProperty();
 
     /**
      * The minimal asking price allowed by the market.
      */
-    private final DoubleProperty minAskPrice;
+    private final DoubleProperty minAskPrice = new SimpleDoubleProperty();
 
     /**
      * The date the spread was created.
      */
-    private final ZonedDateTime date;
-
-    /**
-     * Creates a default price spread object.
-     */
-    public PriceSpread() {
-        askSize = new SimpleLongProperty();
-        askPrice = new SimpleDoubleProperty();
-        bidSize = new SimpleLongProperty();
-        bidPrice = new SimpleDoubleProperty();
-        spreadAbs = new SimpleDoubleProperty();
-        spreadPercent = new SimpleDoubleProperty();
-        lastPrice = new LastPrice();
-        maxBidPrice = new SimpleDoubleProperty();
-        minAskPrice = new SimpleDoubleProperty();
-        date = ZonedDateTime.now();
-    }
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * Fetches all price spreads currently on the market from the server.
@@ -161,7 +142,7 @@ public class PriceSpread {
      * @return the last price
      */
     public LastPrice getLastPrice() {
-        return lastPrice;
+        return lastPrice.getValue();
     }
 
     /**
@@ -182,7 +163,7 @@ public class PriceSpread {
      * @return the date of the last trade
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
 
@@ -202,6 +183,7 @@ public class PriceSpread {
             + '}';
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -213,32 +195,32 @@ public class PriceSpread {
 
         PriceSpread that = (PriceSpread) o;
 
-        if (askSize.getValue() != null ? !askSize.getValue().equals(that.askSize.getValue()) : that
-            .askSize.getValue() != null) {
+        if (askSize.getValue() != null ? !askSize.getValue().equals(that.askSize.getValue())
+            : that.askSize.getValue() != null) {
             return false;
         }
         if (askPrice.getValue() != null ? !askPrice.getValue().equals(that.askPrice.getValue())
             : that.askPrice.getValue() != null) {
             return false;
         }
-        if (bidSize.getValue() != null ? !bidSize.getValue().equals(that.bidSize.getValue()) : that
-            .bidSize.getValue() != null) {
+        if (bidSize.getValue() != null ? !bidSize.getValue().equals(that.bidSize.getValue())
+            : that.bidSize.getValue() != null) {
             return false;
         }
-        if (bidPrice.getValue() != null ? !bidPrice.getValue().equals(that.bidPrice.getValue()) : that
-            .bidPrice.getValue() != null) {
+        if (bidPrice.getValue() != null ? !bidPrice.getValue().equals(that.bidPrice.getValue())
+            : that.bidPrice.getValue() != null) {
             return false;
         }
-        if (spreadAbs.getValue() != null ? !spreadAbs.getValue().equals(that.spreadAbs.getValue()) : that
-            .spreadAbs.getValue() != null) {
+        if (spreadAbs.getValue() != null ? !spreadAbs.getValue().equals(that.spreadAbs.getValue())
+            : that.spreadAbs.getValue() != null) {
             return false;
         }
-        if (spreadPercent.getValue() != null ? !spreadPercent.getValue().equals(that.spreadPercent
-            .getValue()) : that.spreadPercent.getValue()
-            != null) {
+        if (spreadPercent.getValue() != null ? !spreadPercent.getValue().equals(
+            that.spreadPercent.getValue()) : that.spreadPercent.getValue() != null) {
             return false;
         }
-        if (lastPrice != null ? !lastPrice.equals(that.lastPrice) : that.lastPrice != null) {
+        if (lastPrice.getValue() != null ? !lastPrice.getValue().equals(that.lastPrice.getValue())
+            : that.lastPrice.getValue() != null) {
             return false;
         }
         if (maxBidPrice.getValue() != null ? !maxBidPrice.getValue().equals(that.maxBidPrice.getValue())
@@ -249,7 +231,8 @@ public class PriceSpread {
             : that.minAskPrice.getValue() != null) {
             return false;
         }
-        return date != null ? date.equals(that.date) : that.date == null;
+        return date.getValue() != null ? date.getValue().equals(that.date.getValue())
+            : that.date.getValue() == null;
 
     }
 
@@ -262,10 +245,10 @@ public class PriceSpread {
         result = 31 * result + (spreadAbs.getValue() != null ? spreadAbs.getValue().hashCode() : 0);
         result = 31 * result + (spreadPercent.getValue() != null ? spreadPercent.getValue().hashCode()
             : 0);
-        result = 31 * result + (lastPrice != null ? lastPrice.hashCode() : 0);
+        result = 31 * result + (lastPrice.getValue() != null ? lastPrice.getValue().hashCode() : 0);
         result = 31 * result + (maxBidPrice.getValue() != null ? maxBidPrice.getValue().hashCode() : 0);
         result = 31 * result + (minAskPrice.getValue() != null ? minAskPrice.getValue().hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (date.getValue() != null ? date.getValue().hashCode() : 0);
         return result;
     }
 }

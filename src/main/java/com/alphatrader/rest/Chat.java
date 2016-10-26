@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,11 +18,11 @@ public class Chat {
     /**
      * The date the chat was created.
      */
-    private final ZonedDateTime dateCreated = null;
+    private final ObjectProperty<ZonedDateTime> dateCreated = new SimpleObjectProperty<>();
     /**
      * The last message sent in the chat.
      */
-    private final ChatMessage lastMessage = null;
+    private final ObjectProperty<ChatMessage> lastMessage = new SimpleObjectProperty<>();
     /**
      * All participants in this chat room.
      */
@@ -41,7 +38,7 @@ public class Chat {
     /**
      * The owner of the chat.
      */
-    private final User owner = null;
+    private final ObjectProperty<User> owner = new SimpleObjectProperty<>();
     /**
      * The unique id of the chat.
      */
@@ -93,14 +90,14 @@ public class Chat {
      * @return the creation date
      */
     public ZonedDateTime getDateCreated() {
-        return dateCreated;
+        return dateCreated.getValue();
     }
 
     /**
      * @return the last message
      */
     public ChatMessage getLastMessage() {
-        return lastMessage;
+        return lastMessage.getValue();
     }
 
     /**
@@ -128,7 +125,7 @@ public class Chat {
      * @return the owner of the chat
      */
     public User getOwner() {
-        return owner;
+        return owner.getValue();
     }
 
     /**
@@ -143,7 +140,6 @@ public class Chat {
         return "Chat{"
             + "dateCreated=" + dateCreated
             + ", lastMessage=" + lastMessage
-            + ", participants=" + Arrays.toString(participants)
             + ", readonly=" + readonly
             + ", chatName='" + chatName + '\''
             + ", owner=" + owner

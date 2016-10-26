@@ -474,11 +474,7 @@ public class CompanyProfileTest {
         assertFalse(toTest.equals(null));
         assertFalse(toTest.equals("Test"));
 
-        CompanyProfile other = gson.fromJson("{\n" +
-            "  \"id\": \"12345\"\n" +
-            "}", CompanyProfile.class);
 
-        assertFalse(toTest.equals(other));
     }
 
     @Test

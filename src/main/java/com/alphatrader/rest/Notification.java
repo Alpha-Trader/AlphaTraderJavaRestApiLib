@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -19,22 +16,22 @@ public class Notification {
    /**
      * The content of the notification.
      */
-    private final Message content = null;
+    private final ObjectProperty<Message> content = new SimpleObjectProperty<>();
 
     /**
      * The date and time the notification was created.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The subject of the notification.
      */
-    private final Message subject = null;
+    private final ObjectProperty<Message> subject = new SimpleObjectProperty<>();
 
     /**
      * The notification receiver.
      */
-    private final User receiver = null;
+    private final ObjectProperty<User> receiver = new SimpleObjectProperty<>();
 
     /**
      * True, if the receiver has read the message.
@@ -96,28 +93,28 @@ public class Notification {
      * @return the message
      */
     public Message getMessage() {
-        return content;
+        return content.getValue();
     }
 
     /**
      * @return the date
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**
      * @return the notification subject
      */
     public Message getSubject() {
-        return subject;
+        return subject.getValue();
     }
 
     /**
      * @return the notification's receiver
      */
     public User getReceiver() {
-        return receiver;
+        return receiver.getValue();
     }
 
     /**
@@ -137,7 +134,7 @@ public class Notification {
     @Override
     public String toString() {
         return "Notification{"
-            + "content='" + content.getFilledString() + '\''
+            + "content='" + content.getValue().getFilledString() + '\''
             + ", date=" + date
             + '}';
     }

@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-class LongPropertyDeserializer extends TypeAdapter<LongProperty> {
+public class LongPropertyDeserializer extends TypeAdapter<LongProperty> {
     @Override
     public void write(JsonWriter jsonWriter, LongProperty longProperty) throws IOException {
         jsonWriter.value(longProperty.getValue());

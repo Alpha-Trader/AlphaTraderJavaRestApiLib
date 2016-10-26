@@ -36,7 +36,8 @@ public class HourlyMarketStatistics {
     /**
      * The average designated sponsor rating.
      */
-    private final SponsorRating.SponsorRatingLetter averageDesignatedSponsorRating = null;
+    private final ObjectProperty<SponsorRating.SponsorRatingLetter> averageDesignatedSponsorRating
+        = new SimpleObjectProperty<>();
 
     /**
      * The average yield to maturity.
@@ -66,7 +67,7 @@ public class HourlyMarketStatistics {
     /**
      * The date the statistics was created.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The current main interest rate.
@@ -240,7 +241,7 @@ public class HourlyMarketStatistics {
      * @return the average designated sponsor rating
      */
     public SponsorRating.SponsorRatingLetter getAverageDesignatedSponsorRating() {
-        return averageDesignatedSponsorRating;
+        return averageDesignatedSponsorRating.getValue();
     }
 
     /**
@@ -282,7 +283,7 @@ public class HourlyMarketStatistics {
      * @return the date
      */
     public ZonedDateTime getDate() {
-        return date;
+        return date.getValue();
     }
 
     /**
@@ -474,13 +475,13 @@ public class HourlyMarketStatistics {
             + ", averageBondDurationInDays=" + averageBondDurationInDays.getValue()
             + ", averageBookValue=" + averageBookValue.getValue()
             + ", averageDailyWage=" + averageDailyWage.getValue()
-            + ", averageDesignatedSponsorRating=" + averageDesignatedSponsorRating
+            + ", averageDesignatedSponsorRating=" + averageDesignatedSponsorRating.getValue()
             + ", averageYieldToMaturity=" + averageYieldToMaturity.getValue()
             + ", bondFaceVolume=" + bondFaceVolume.getValue()
             + ", centralBankReserves=" + centralBankReserves.getValue()
             + ", committedCash=" + committedCash.getValue()
             + ", corporateCash=" + corporateCash.getValue()
-            + ", date=" + date
+            + ", date=" + date.getValue()
             + ", mainInterestRate=" + mainInterestRate.getValue()
             + ", marketCap=" + marketCap.getValue()
             + ", numberOfActiveOtherListings=" + numberOfActiveOtherListings.getValue()

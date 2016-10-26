@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,32 +37,32 @@ public class Bond {
     /**
      * The bond's date of maturity.
      */
-    private final ZonedDateTime maturityDate = null;
+    private final ObjectProperty<ZonedDateTime> maturityDate = new SimpleObjectProperty<>();
 
     /**
      * The date the bond was issued.
      */
-    private final ZonedDateTime issueDate = null;
+    private final ObjectProperty<ZonedDateTime> issueDate = new SimpleObjectProperty<>();
 
     /**
      * The price spread
      */
-    private final PriceSpread priceSpread = null;
+    private final ObjectProperty<PriceSpread> priceSpread = new SimpleObjectProperty<>();
 
     /**
      * The company that issued the bond.
      */
-    private final Company issuer = null;
+    private final ObjectProperty<Company> issuer = new SimpleObjectProperty<>();
 
     /**
      * The listing as present on the market.
      */
-    private final Listing listing = null;
+    private final ObjectProperty<Listing> listing = new SimpleObjectProperty<>();
 
     /**
      * The repurchase listing as present on the market.
      */
-    private final Listing repurchaseListing = null;
+    private final ObjectProperty<Listing> repurchaseListing = new SimpleObjectProperty<>();
 
     /**
      * The unique bond id.
@@ -190,7 +187,7 @@ public class Bond {
      * @return the maturity date
      */
     public ZonedDateTime getMaturityDate() {
-        return maturityDate;
+        return maturityDate.getValue();
     }
 
 
@@ -198,35 +195,35 @@ public class Bond {
      * @return the issue date
      */
     public ZonedDateTime getIssueDate() {
-        return issueDate;
+        return issueDate.getValue();
     }
 
     /**
      * @return the price spread
      */
     public PriceSpread getPriceSpread() {
-        return priceSpread;
+        return priceSpread.getValue();
     }
 
     /**
      * @return the issuer
      */
     public Company getIssuer() {
-        return issuer;
+        return issuer.getValue();
     }
 
     /**
      * @return the listing
      */
     public Listing getListing() {
-        return listing;
+        return listing.getValue();
     }
 
     /**
      * @return the repurchase listing
      */
     public Listing getRepurchaseListing() {
-        return repurchaseListing;
+        return repurchaseListing.getValue();
     }
 
     /**
@@ -243,7 +240,7 @@ public class Bond {
             + ", volume=" + volume.getValue()
             + ", interestRate=" + interestRate.getValue()
             + ", faceValue=" + faceValue.getValue()
-            + ", maturityDate=" + maturityDate
+            + ", maturityDate=" + maturityDate.getValue()
             + '}';
     }
 

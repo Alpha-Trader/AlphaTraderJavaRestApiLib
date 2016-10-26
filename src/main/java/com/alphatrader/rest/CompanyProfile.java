@@ -17,12 +17,13 @@ public class CompanyProfile {
     /**
      * The ceo employment agreement.
      */
-    private final EmploymentAgreement ceoEmploymentAgreement = null;
+    private final ObjectProperty<EmploymentAgreement> ceoEmploymentAgreement
+        = new SimpleObjectProperty<>();
 
     /**
      * The company capabilities.
      */
-    private final CompanyCapabilities companyCapabilities = null;
+    private final ObjectProperty<CompanyCapabilities> companyCapabilities = new SimpleObjectProperty<>();
 
     /**
      * The issued bonds of this company.
@@ -42,7 +43,7 @@ public class CompanyProfile {
     /**
      * The current price spread.
      */
-    private final PriceSpread currentSpread = null;
+    private final ObjectProperty<PriceSpread> currentSpread = new SimpleObjectProperty<>();
 
     /**
      * The designated sponsors of this company.
@@ -52,12 +53,12 @@ public class CompanyProfile {
     /**
      * The last order of this company.
      */
-    private final SecurityOrderLog lastOrderLogEntry = null;
+    private final ObjectProperty<SecurityOrderLog> lastOrderLogEntry = new SimpleObjectProperty<>();
 
     /**
      * The last trading price of this company.
      */
-    private final LastPrice lastPrice = null;
+    private final ObjectProperty<LastPrice> lastPrice = new SimpleObjectProperty<>();
 
     /**
      * The number of outstanding shares.
@@ -82,22 +83,22 @@ public class CompanyProfile {
     /**
      * The company's bank account.
      */
-    private final BankAccount bankAccount = null;
+    private final ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
 
     /**
      * The URL of the company logo.
      */
-    private final URL logoUrl = null;
+    private final ObjectProperty<URL> logoUrl = new SimpleObjectProperty<>();
 
     /**
      * The CEO of the company.
      */
-    private final User ceo = null;
+    private final ObjectProperty<User> ceo = new SimpleObjectProperty<>();
 
     /**
      * The company listing.
      */
-    private final Listing listing = null;
+    private final ObjectProperty<Listing> listing = new SimpleObjectProperty<>();
 
     /**
      * The company name.
@@ -135,14 +136,14 @@ public class CompanyProfile {
      * @return the current CEO employment agreement
      */
     public EmploymentAgreement getCeoEmploymentAgreement() {
-        return ceoEmploymentAgreement;
+        return ceoEmploymentAgreement.getValue();
     }
 
     /**
      * @return the company capabilities
      */
     public CompanyCapabilities getCompanyCapabilities() {
-        return companyCapabilities;
+        return companyCapabilities.getValue();
     }
 
     /**
@@ -170,7 +171,7 @@ public class CompanyProfile {
      * @return the current price spread
      */
     public PriceSpread getCurrentSpread() {
-        return currentSpread;
+        return currentSpread.getValue();
     }
 
     /**
@@ -184,14 +185,14 @@ public class CompanyProfile {
      * @return the last order of this company
      */
     public SecurityOrderLog getLastOrderLogEntry() {
-        return lastOrderLogEntry;
+        return lastOrderLogEntry.getValue();
     }
 
     /**
      * @return the last price of this company
      */
     public LastPrice getLastPrice() {
-        return lastPrice;
+        return lastPrice.getValue();
     }
 
     /**
@@ -226,28 +227,28 @@ public class CompanyProfile {
      * @return the bank account
      */
     public BankAccount getBankAccount() {
-        return bankAccount;
+        return bankAccount.getValue();
     }
 
     /**
      * @return the company logo URL
      */
     public URL getLogoUrl() {
-        return logoUrl;
+        return logoUrl.getValue();
     }
 
     /**
      * @return the current CEO
      */
     public User getCeo() {
-        return ceo;
+        return ceo.getValue();
     }
 
     /**
      * @return the company listing
      */
     public Listing getListing() {
-        return listing;
+        return listing.getValue();
     }
 
     /**
@@ -267,23 +268,23 @@ public class CompanyProfile {
     @Override
     public String toString() {
         return "CompanyProfile{"
-            + "ceoEmploymentAgreement=" + ceoEmploymentAgreement
-            + ", companyCapabilities=" + companyCapabilities
+            + "ceoEmploymentAgreement=" + ceoEmploymentAgreement.getValue()
+            + ", companyCapabilities=" + companyCapabilities.getValue()
             + ", issuedBonds=" + Arrays.toString(issuedBonds)
             + ", lastTrades=" + Arrays.toString(lastTrades)
             + ", sponsoredListings=" + Arrays.toString(sponsoredListings)
-            + ", currentSpread=" + currentSpread
+            + ", currentSpread=" + currentSpread.getValue()
             + ", designatedSponsors=" + Arrays.toString(designatedSponsors)
-            + ", lastOrderLogEntry=" + lastOrderLogEntry
-            + ", lastPrice=" + lastPrice
-            + ", outstandingShares=" + outstandingShares
+            + ", lastOrderLogEntry=" + lastOrderLogEntry.getValue()
+            + ", lastPrice=" + lastPrice.getValue()
+            + ", outstandingShares=" + outstandingShares.getValue()
             + ", prices14d=" + Arrays.toString(prices14d)
-            + ", marketCap=" + marketCap
-            + ", securitiesAccountId='" + securitiesAccountId + '\''
-            + ", bankAccount=" + bankAccount
-            + ", logoUrl=" + logoUrl
-            + ", ceo=" + ceo
-            + ", listing=" + listing
+            + ", marketCap=" + marketCap.getValue()
+            + ", securitiesAccountId='" + securitiesAccountId.getValue() + '\''
+            + ", bankAccount=" + bankAccount.getValue()
+            + ", logoUrl=" + logoUrl.getValue()
+            + ", ceo=" + ceo.getValue()
+            + ", listing=" + listing.getValue()
             + ", name='" + name.getValue() + '\''
             + ", id='" + id.getValue() + '\''
             + '}';

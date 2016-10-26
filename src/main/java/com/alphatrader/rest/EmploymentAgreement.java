@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,7 +17,7 @@ public class EmploymentAgreement {
     /**
      * The company which employs.
      */
-    private final Company company = null;
+    private final ObjectProperty<Company> company = new SimpleObjectProperty<>();
 
     /**
      * The daily wage.
@@ -35,7 +32,7 @@ public class EmploymentAgreement {
     /**
      * The date the CEO was employed.
      */
-    private final ZonedDateTime startDate = null;
+    private final ObjectProperty<ZonedDateTime> startDate = new SimpleObjectProperty<>();
 
     /**
      * Fetches the current employment agreement of the given company.
@@ -74,7 +71,7 @@ public class EmploymentAgreement {
      * @return the employing company
      */
     public Company getCompany() {
-        return company;
+        return company.getValue();
     }
 
     /**
@@ -95,7 +92,7 @@ public class EmploymentAgreement {
      * @return the start date
      */
     public ZonedDateTime getStartDate() {
-        return startDate;
+        return startDate.getValue();
     }
 
     @Override

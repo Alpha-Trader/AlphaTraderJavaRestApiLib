@@ -1,7 +1,9 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 /**
  * A group member in a poll in the game.
@@ -13,7 +15,7 @@ public class VotingGroupMember {
     /**
      * The group member.
      */
-    private final User groupMember = null;
+    private final ObjectProperty<User> groupMember = new SimpleObjectProperty<>();
 
     /**
      * The number of votes.
@@ -24,7 +26,7 @@ public class VotingGroupMember {
      * @return the group member
      */
     public User getGroupMember() {
-        return groupMember;
+        return groupMember.getValue();
     }
 
     /**
@@ -37,7 +39,7 @@ public class VotingGroupMember {
     @Override
     public String toString() {
         return "VotingGroupMember{"
-            + "groupMember=" + groupMember
+            + "groupMember=" + groupMember.getValue()
             + ", numberOfVoices=" + numberOfVoices.getValue()
             + '}';
     }
@@ -53,17 +55,16 @@ public class VotingGroupMember {
 
         VotingGroupMember that = (VotingGroupMember) o;
 
-        if (groupMember != null ? !groupMember.equals(that.groupMember) : that.groupMember != null) {
-            return false;
-        }
-        return numberOfVoices.getValue() != null ? numberOfVoices.getValue().equals(that.numberOfVoices
-            .getValue()) : that.numberOfVoices.getValue() == null;
+        return groupMember.getValue() != null ? groupMember.getValue().equals(that.groupMember.
+            getValue()) : that.groupMember.getValue() == null && (numberOfVoices.getValue() != null
+            ? numberOfVoices.getValue().equals(that.numberOfVoices.getValue())
+            : that.numberOfVoices.getValue() == null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = groupMember != null ? groupMember.hashCode() : 0;
+        int result = groupMember.getValue() != null ? groupMember.getValue().hashCode() : 0;
         result = 31 * result + (numberOfVoices.getValue() != null ? numberOfVoices.getValue().hashCode()
             : 0);
         return result;

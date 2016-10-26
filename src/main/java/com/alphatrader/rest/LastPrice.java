@@ -1,5 +1,7 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -15,7 +17,7 @@ public class LastPrice {
     /**
      * The date of the last transaction resulting in this price.
      */
-    private final ZonedDateTime date = null;
+    private final ObjectProperty<ZonedDateTime> date = new SimpleObjectProperty<>();
 
     /**
      * The last trade price of this position.
@@ -26,7 +28,7 @@ public class LastPrice {
      * @return the time this trade took place
      */
     public ZonedDateTime getDate() {
-        return this.date;
+        return this.date.getValue();
     }
 
     /**
@@ -55,10 +57,8 @@ public class LastPrice {
 
         LastPrice lastPrice = (LastPrice) o;
 
-        if (Double.compare(lastPrice.getValue(), getValue()) != 0) {
-            return false;
-        }
-        return date != null ? date.equals(lastPrice.date) : lastPrice.date == null;
+        return Double.compare(lastPrice.getValue(), getValue()) == 0 && (date.getValue() != null
+            ? date.getValue().equals(lastPrice.date.getValue()) : lastPrice.date.getValue() == null);
 
     }
 
@@ -66,7 +66,7 @@ public class LastPrice {
     public int hashCode() {
         int result;
         long temp;
-        result = date != null ? date.hashCode() : 0;
+        result = date.getValue() != null ? date.getValue().hashCode() : 0;
         temp = Double.doubleToLongBits(this.getValue());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;

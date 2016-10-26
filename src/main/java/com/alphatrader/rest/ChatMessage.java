@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,7 +18,7 @@ public class ChatMessage {
     /**
      * The date the message was sent.
      */
-    private final ZonedDateTime dateSent = null;
+    private final ObjectProperty<ZonedDateTime> dateSent = new SimpleObjectProperty<>();
 
     /**
      * The id of the chat the message was sent in.
@@ -31,7 +28,7 @@ public class ChatMessage {
     /**
      * The user who sent the message.
      */
-    private final User sender = null;
+    private final ObjectProperty<User> sender = new SimpleObjectProperty<>();
 
     /**
      * Is the message unread?
@@ -165,8 +162,7 @@ public class ChatMessage {
      * @return the date the message was sent.
      */
     public ZonedDateTime getDateSent() {
-
-        return dateSent;
+        return dateSent.getValue();
     }
 
     /**
@@ -180,7 +176,7 @@ public class ChatMessage {
      * @return the sender
      */
     public User getSender() {
-        return sender;
+        return sender.getValue();
     }
 
     /**
@@ -207,9 +203,9 @@ public class ChatMessage {
     @Override
     public String toString() {
         return "ChatMessage{"
-            + "dateSent=" + dateSent
+            + "dateSent=" + dateSent.getValue()
             + ", chatId='" + chatId.getValueSafe() + '\''
-            + ", sender=" + sender
+//            + ", sender=" + sender.getValue()
             + ", read=" + read.getValue()
             + ", id='" + id.getValueSafe() + '\''
             + ", content='" + content.getValueSafe() + '\''
@@ -227,12 +223,9 @@ public class ChatMessage {
 
         ChatMessage that = (ChatMessage) o;
 
-        if (chatId.getValue() != null ? !chatId.getValue().equals(that.chatId.getValue())
-            : that.chatId.getValue() != null) {
-            return false;
-        }
-        return id.getValue() != null ? id.getValue().equals(that.id.getValue())
-            : that.id.getValue() == null;
+        return chatId.getValue() != null ? chatId.getValue().equals(that.chatId.getValue())
+            : that.chatId.getValue() == null && (id.getValue() != null ? id.getValue().equals(
+                that.id.getValue()) : that.id.getValue() == null);
 
     }
 

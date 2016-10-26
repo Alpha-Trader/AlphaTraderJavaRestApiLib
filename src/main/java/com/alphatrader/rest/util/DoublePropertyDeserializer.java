@@ -16,7 +16,7 @@ import java.io.IOException;
  * @author Christopher Guckes (christopher.guckes@torq-dev.de)
  * @version 1.0.0
  */
-final class DoublePropertyDeserializer extends TypeAdapter<DoubleProperty> {
+public final class DoublePropertyDeserializer extends TypeAdapter<DoubleProperty> {
     @Override
     public void write(JsonWriter jsonWriter, DoubleProperty doubleProperty) throws IOException {
         jsonWriter.value(doubleProperty.getValue());
