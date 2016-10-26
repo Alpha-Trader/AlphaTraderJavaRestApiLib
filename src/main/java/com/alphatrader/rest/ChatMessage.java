@@ -111,7 +111,7 @@ public class ChatMessage {
             parameters.add("beforeDate=" + to.toInstant().toEpochMilli());
         }
 
-        if (parameters.size() > 0) {
+        if (parameters.isEmpty()) {
             suffix += "?" + String.join("&", parameters);
         }
 

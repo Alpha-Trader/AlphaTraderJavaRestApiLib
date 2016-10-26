@@ -1,6 +1,8 @@
 package com.alphatrader.rest.util;
 
 import com.alphatrader.rest.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +14,11 @@ import java.net.URL;
  * @version 1.0.0
  */
 public final class ApiLibConfig {
+    /**
+     * The logger for this class.
+     */
+    private static final Log log = LogFactory.getLog(ApiLibConfig.class);
+
     /**
      * The singleton instance.
      */
@@ -66,7 +73,7 @@ public final class ApiLibConfig {
             setApiUrl(new URL(apiUrl));
         }
         catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.error(e);
         }
     }
     /**

@@ -68,14 +68,14 @@ public class CashTransferLog {
         if (endDate != null) {
             options.add("endDate=" + endDate.toInstant().toEpochMilli());
         }
-        if (senderBankAccountId != null && !senderBankAccountId.equals("")) {
+        if (senderBankAccountId != null && !"".equals(senderBankAccountId)) {
             options.add("senderBankAccountId=" + senderBankAccountId);
         }
-        if (receiverBankAccountId != null && !receiverBankAccountId.equals("")) {
+        if (receiverBankAccountId != null && !"".equals(receiverBankAccountId)) {
             options.add("receiverBankAccountId=" + receiverBankAccountId);
         }
 
-        if (options.size() > 0) {
+        if (options.isEmpty()) {
             request += "?" + String.join("&", options);
         }
 

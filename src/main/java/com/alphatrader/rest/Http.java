@@ -87,12 +87,12 @@ class Http {
      *
      * @param typeParameterClass the class of the type of object to return
      * @param suffix             the api endpoint suffix
-     * @param <Type>             the type of object to return
+     * @param <T>             the type of object to return
      * @return the requested object
      */
     @Nullable
-    static <Type> Type getSingleObjectFromApi(Class<Type> typeParameterClass, String suffix) {
-        Type myReturn = null;
+    static <T> T getSingleObjectFromApi(Class<T> typeParameterClass, String suffix) {
+        T myReturn = null;
 
         try {
             HttpResponse<String> response = httpAnswerCache.get(suffix);
@@ -113,12 +113,12 @@ class Http {
      *
      * @param typeParameterClass the class of the type of objects to return
      * @param suffix             the api endpoint suffix
-     * @param <Type>             the type of object to return
+     * @param <T>             the type of object to return
      * @return the requested object
      */
     @NotNull
-    static <Type> List<Type> getMultipleObjectFromApi(Class<Type> typeParameterClass, String suffix) {
-        List<Type> myReturn = new ArrayList<>();
+    static <T> List<T> getMultipleObjectFromApi(Class<T> typeParameterClass, String suffix) {
+        List<T> myReturn = new ArrayList<>();
 
 
         try {
@@ -185,7 +185,7 @@ class Http {
     }
 
     /**
-     * Type token for array list. Necessary to avoid type erasure problems.
+     * T token for array list. Necessary to avoid type erasure problems.
      *
      * @param <T> the type of object you want to store
      */

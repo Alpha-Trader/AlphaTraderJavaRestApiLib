@@ -66,7 +66,9 @@ public class User {
     /**
      * Default constructor for gson generation.
      */
-    public User() { }
+    public User() {
+        // Gson needs a default constructor.
+    }
 
     /**
      * Creates a new user object with the given parameters.
@@ -175,7 +177,8 @@ public class User {
             }
         }
         catch (UnirestException e) {
-            log.warn("Login error: " + e.getMessage());
+            log.warn("Login error: ");
+            log.error(e);
         }
     }
 
