@@ -1,8 +1,7 @@
 package com.alphatrader.rest.util;
 
 import com.google.gson.Gson;
-import org.hildan.fxgson.ApiLibTypeFactory;
-import org.hildan.fxgson.FxGson;
+import org.hildan.fxgson.FxGsonBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
@@ -19,9 +18,9 @@ public final class PropertyGson {
      */
     @NotNull
     public Gson create() {
-        return FxGson.coreBuilder()
-            .registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeDeserializer())
-            .registerTypeAdapterFactory(new ApiLibTypeFactory())
+        return new FxGsonBuilder()
+            .acceptNullPrimitives()
+            .builder().registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeDeserializer())
             .create();
     }
 }
