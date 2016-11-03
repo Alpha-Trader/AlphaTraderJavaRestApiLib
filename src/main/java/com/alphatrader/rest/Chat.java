@@ -1,11 +1,11 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,7 +26,7 @@ public class Chat {
     /**
      * All participants in this chat room.
      */
-    private final User[] participants = new User[0];
+    private final ObservableList<User> participants = new SimpleListProperty<>();
     /**
      * The readonly flag. If set, only the owner can send messages.
      */
@@ -103,8 +103,8 @@ public class Chat {
     /**
      * @return a list of all participants
      */
-    public List<User> getParticipants() {
-        return Arrays.asList(participants);
+    public ObservableList<User> getParticipants() {
+        return participants;
     }
 
     /**

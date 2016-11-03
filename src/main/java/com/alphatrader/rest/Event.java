@@ -2,11 +2,12 @@ package com.alphatrader.rest;
 
 import com.google.gson.JsonElement;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class Event {
     /**
      * The list of realms.
      */
-    private final String[] realms = new String[0];
+    private final ObservableList<String> realms = new SimpleListProperty<>();
 
     /**
      * @return all non-persistent events in the game
@@ -151,8 +152,8 @@ public class Event {
     /**
      * @return the realms
      */
-    public List<String> getRealms() {
-        return Arrays.asList(realms);
+    public ObservableList<String> getRealms() {
+        return realms;
     }
 
     @Override
@@ -188,7 +189,7 @@ public class Event {
             : event.date.getValue() != null) {
             return false;
         }
-        return Arrays.equals(realms, event.realms);
+        return realms.equals(event.realms);
 
     }
 

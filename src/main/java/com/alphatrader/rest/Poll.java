@@ -1,11 +1,11 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,7 +30,7 @@ public class Poll {
     /**
      * All votes.
      */
-    private final Vote[] votes = new Vote[0];
+    private final ObservableList<Vote> votes = new SimpleListProperty<>();
     /**
      * The motion text, describing the poll.
      */
@@ -46,7 +46,7 @@ public class Poll {
     /**
      * All group members of this poll.
      */
-    private final VotingGroupMember[] group = new VotingGroupMember[0];
+    private final ObservableList<VotingGroupMember> group = new SimpleListProperty<>();
     /**
      * The percentage of votes already cast.
      */
@@ -138,8 +138,8 @@ public class Poll {
     /**
      * @return the votes
      */
-    public List<Vote> getVotes() {
-        return Arrays.asList(votes);
+    public ObservableList<Vote> getVotes() {
+        return votes;
     }
 
     /**
@@ -166,8 +166,8 @@ public class Poll {
     /**
      * @return the group of users affected by the poll
      */
-    public List<VotingGroupMember> getGroup() {
-        return Arrays.asList(group);
+    public ObservableList<VotingGroupMember> getGroup() {
+        return group;
     }
 
     /**

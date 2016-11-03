@@ -2,10 +2,9 @@ package com.alphatrader.rest;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Represents a company order book in the game.
@@ -27,12 +26,12 @@ public class OrderBook {
     /**
      * List of buy orders.
      */
-    private final Order[] buyEntries = new Order[0];
+    private final ObservableList<Order> buyEntries = new SimpleListProperty<>();
 
     /**
      * List of sell orders.
      */
-    private final Order[] sellEntries = new Order[0];
+    private final ObservableList<Order> sellEntries = new SimpleListProperty<>();
 
     /**
      * Returns the order book for the specified company.
@@ -62,15 +61,15 @@ public class OrderBook {
     /**
      * @return the list of buy orders
      */
-    public List<Order> getBuyEntries() {
-        return Arrays.asList(buyEntries);
+    public ObservableList<Order> getBuyEntries() {
+        return buyEntries;
     }
 
     /**
      * @return the list of sell orders
      */
-    public List<Order> getSellEntries() {
-        return Arrays.asList(sellEntries);
+    public ObservableList<Order> getSellEntries() {
+        return sellEntries;
     }
 
     @Override
@@ -78,8 +77,8 @@ public class OrderBook {
         return "OrderBook{"
             + "maxBuySize=" + maxBuySize
             + ", maxSellSize=" + maxSellSize
-            + ", buyEntries=" + Arrays.toString(buyEntries)
-            + ", sellEntries=" + Arrays.toString(sellEntries)
+            + ", buyEntries=" + buyEntries
+            + ", sellEntries=" + sellEntries
             + '}';
     }
 

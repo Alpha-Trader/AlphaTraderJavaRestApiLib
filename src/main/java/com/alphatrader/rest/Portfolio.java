@@ -2,10 +2,9 @@ package com.alphatrader.rest;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Represents a company's portfolio in the game.
@@ -25,7 +24,7 @@ public class Portfolio {
     /**
      * A list of all positions in this portfolio.
      */
-    private final Position[] positions = new Position[0];
+    private final ObservableList<Position> positions = new SimpleListProperty<>();
 
     /**
      * Fetches a company's portfolio from the server.
@@ -77,8 +76,8 @@ public class Portfolio {
     /**
      * @return a list of all positions in this portfolio
      */
-    public List<Position> getPositions() {
-        return Arrays.asList(positions);
+    public ObservableList<Position> getPositions() {
+        return positions;
     }
 
     /**
@@ -100,7 +99,7 @@ public class Portfolio {
         return "Portfolio{"
             + "cash=" + cash.getValue()
             + ", committedCash=" + committedCash.getValue()
-            + ", positions=" + Arrays.toString(positions)
+            + ", positions=" + positions.toString()
             + '}';
     }
 
@@ -124,7 +123,7 @@ public class Portfolio {
             portfolio.committedCash.getValue()) : portfolio.committedCash.getValue() != null) {
             return false;
         }
-        return Arrays.equals(positions, portfolio.positions);
+        return positions.equals(portfolio.positions);
 
     }
 
@@ -133,7 +132,7 @@ public class Portfolio {
         int result = cash.getValue() != null ? cash.getValue().hashCode() : 0;
         result = 31 * result + (committedCash.getValue() != null ? committedCash.getValue().hashCode()
             : 0);
-        result = 31 * result + Arrays.hashCode(positions);
+        result = 31 * result + positions.hashCode();
         return result;
     }
 }

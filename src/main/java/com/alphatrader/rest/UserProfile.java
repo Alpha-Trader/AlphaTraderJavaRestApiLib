@@ -1,13 +1,8 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Represents a user profile in the game.
@@ -19,27 +14,27 @@ public class UserProfile {
     /**
      * All cash transfer logs for this user's interactions.
      */
-    private final CashTransferLog[] cashTransferLogs = new CashTransferLog[0];
+    private final ObservableList<CashTransferLog> cashTransferLogs = new SimpleListProperty<>();
 
     /**
      * All employment agreements of this user.
      */
-    private final EmploymentAgreement[] employments = new EmploymentAgreement[0];
+    private final ObservableList<EmploymentAgreement> employments = new SimpleListProperty<>();
 
     /**
      * All polls that concern this user.
      */
-    private final Poll[] polls = new Poll[0];
+    private final ObservableList<Poll> polls = new SimpleListProperty<>();
 
     /**
      * All polls that have been initiated by this user.
      */
-    private final Poll[] initiatedPolls = new Poll[0];
+    private final ObservableList<Poll> initiatedPolls = new SimpleListProperty<>();
 
     /**
      * All salary payments this user has gotten.
      */
-    private final SalaryPayment[] salaryPayments = new SalaryPayment[0];
+    private final ObservableList<SalaryPayment> salaryPayments = new SimpleListProperty<>();
 
     /**
      * The user with this profile.
@@ -81,36 +76,36 @@ public class UserProfile {
     /**
      * @return the user's cash transfer logs
      */
-    public List<CashTransferLog> getCashTransferLogs() {
-        return Arrays.asList(cashTransferLogs);
+    public ObservableList<CashTransferLog> getCashTransferLogs() {
+        return cashTransferLogs;
     }
 
     /**
      * @return the user's employments
      */
-    public List<EmploymentAgreement> getEmployments() {
-        return Arrays.asList(employments);
+    public ObservableList<EmploymentAgreement> getEmployments() {
+        return employments;
     }
 
     /**
      * @return the polls concerning the user
      */
-    public List<Poll> getPolls() {
-        return Arrays.asList(polls);
+    public ObservableList<Poll> getPolls() {
+        return polls;
     }
 
     /**
      * @return the polls initiated by the user
      */
-    public List<Poll> getInitiatedPolls() {
-        return Arrays.asList(initiatedPolls);
+    public ObservableList<Poll> getInitiatedPolls() {
+        return initiatedPolls;
     }
 
     /**
      * @return a list of the user's salary payments
      */
-    public List<SalaryPayment> getSalaryPayments() {
-        return Arrays.asList(salaryPayments);
+    public ObservableList<SalaryPayment> getSalaryPayments() {
+        return salaryPayments;
     }
 
     /**
@@ -137,11 +132,11 @@ public class UserProfile {
     @Override
     public String toString() {
         return "UserProfile{"
-            + "cashTransferLogs=" + Arrays.toString(cashTransferLogs)
-            + ", employments=" + Arrays.toString(employments)
-            + ", polls=" + Arrays.toString(polls)
-            + ", initiatedPolls=" + Arrays.toString(initiatedPolls)
-            + ", salaryPayments=" + Arrays.toString(salaryPayments)
+            + "cashTransferLogs=" + cashTransferLogs.toString()
+            + ", employments=" + employments.toString()
+            + ", polls=" + polls.toString()
+            + ", initiatedPolls=" + initiatedPolls.toString()
+            + ", salaryPayments=" + salaryPayments.toString()
             + ", user=" + user.getValue()
             + ", bankAccount=" + bankAccount
             + ", locale='" + locale + '\''

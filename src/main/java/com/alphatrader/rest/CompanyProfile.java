@@ -1,6 +1,7 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
@@ -28,17 +29,17 @@ public class CompanyProfile {
     /**
      * The issued bonds of this company.
      */
-    private final Bond[] issuedBonds = new Bond[0];
+    private final ObservableList<Bond> issuedBonds = new SimpleListProperty<>();
 
     /**
      * The last trades made by this company.
      */
-    private final SecurityOrderLog[] lastTrades = new SecurityOrderLog[0];
+    private final ObservableList<SecurityOrderLog> lastTrades = new SimpleListProperty<>();
 
     /**
      * The sponsored listings.
      */
-    private final SecuritySponsorship[] sponsoredListings = new SecuritySponsorship[0];
+    private final ObservableList<SecuritySponsorship> sponsoredListings = new SimpleListProperty<>();
 
     /**
      * The current price spread.
@@ -48,7 +49,7 @@ public class CompanyProfile {
     /**
      * The designated sponsors of this company.
      */
-    private final SecuritySponsorship[] designatedSponsors = new SecuritySponsorship[0];
+    private final ObservableList<SecuritySponsorship> designatedSponsors = new SimpleListProperty<>();
 
     /**
      * The last order of this company.
@@ -149,22 +150,22 @@ public class CompanyProfile {
     /**
      * @return the bonds issued by this company
      */
-    public List<Bond> getIssuedBonds() {
-        return Arrays.asList(issuedBonds);
+    public ObservableList<Bond> getIssuedBonds() {
+        return issuedBonds;
     }
 
     /**
      * @return the last trades
      */
-    public List<SecurityOrderLog> getLastTrades() {
-        return Arrays.asList(lastTrades);
+    public ObservableList<SecurityOrderLog> getLastTrades() {
+        return lastTrades;
     }
 
     /**
      * @return the sponsored listings
      */
-    public List<SecuritySponsorship> getSponsoredListings() {
-        return Arrays.asList(sponsoredListings);
+    public ObservableList<SecuritySponsorship> getSponsoredListings() {
+        return sponsoredListings;
     }
 
     /**
@@ -177,8 +178,8 @@ public class CompanyProfile {
     /**
      * @return the designated sponsors of this company
      */
-    public List<SecuritySponsorship> getDesignatedSponsors() {
-        return Arrays.asList(designatedSponsors);
+    public ObservableList<SecuritySponsorship> getDesignatedSponsors() {
+        return designatedSponsors;
     }
 
     /**
@@ -270,11 +271,11 @@ public class CompanyProfile {
         return "CompanyProfile{"
             + "ceoEmploymentAgreement=" + ceoEmploymentAgreement.getValue()
             + ", companyCapabilities=" + companyCapabilities.getValue()
-            + ", issuedBonds=" + Arrays.toString(issuedBonds)
-            + ", lastTrades=" + Arrays.toString(lastTrades)
-            + ", sponsoredListings=" + Arrays.toString(sponsoredListings)
+            + ", issuedBonds=" + issuedBonds.toString()
+            + ", lastTrades=" + lastTrades.toString()
+            + ", sponsoredListings=" + sponsoredListings.toString()
             + ", currentSpread=" + currentSpread.getValue()
-            + ", designatedSponsors=" + Arrays.toString(designatedSponsors)
+            + ", designatedSponsors=" + designatedSponsors.toString()
             + ", lastOrderLogEntry=" + lastOrderLogEntry.getValue()
             + ", lastPrice=" + lastPrice.getValue()
             + ", outstandingShares=" + outstandingShares.getValue()

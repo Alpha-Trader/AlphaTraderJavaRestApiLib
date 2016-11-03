@@ -1,10 +1,9 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
-import java.util.Arrays;
-import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  * Represents a translateable text message object in the game.
@@ -21,7 +20,7 @@ public class Message {
     /**
      * The substitutions for the i18n string.
      */
-    private final String[] substitutions = new String[0];
+    private final ObservableList<String> substitutions = new SimpleListProperty<>();
 
     /**
      * The substituded message.
@@ -38,8 +37,8 @@ public class Message {
     /**
      * @return the substitutions
      */
-    public List<String> getSubstitutions() {
-        return Arrays.asList(substitutions);
+    public ObservableList<String> getSubstitutions() {
+        return substitutions;
     }
 
     /**
@@ -74,7 +73,7 @@ public class Message {
     public String toString() {
         return "Message{"
             + "message='" + message.getValue() + '\''
-            + ", substitutions=" + Arrays.toString(substitutions)
+            + ", substitutions=" + substitutions.toString()
             + ", filledString='" + filledString.getValue() + '\''
             + '}';
     }
