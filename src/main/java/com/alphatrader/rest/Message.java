@@ -57,10 +57,10 @@ public class Message {
             return false;
         }
 
-        Message message = (Message) o;
+        Message theMessage = (Message) o;
 
-        return filledString.getValue() != null ? filledString.getValue().equals(message.filledString
-            .getValue()) : message.filledString.getValue() == null;
+        return filledString.getValue() != null ? filledString.getValue().equals(theMessage.filledString
+            .getValue()) : theMessage.filledString.getValue() == null;
 
     }
 
