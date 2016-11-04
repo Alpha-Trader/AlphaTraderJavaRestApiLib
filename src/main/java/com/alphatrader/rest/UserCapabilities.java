@@ -90,6 +90,54 @@ public class UserCapabilities {
         return premiumEndDate.getValue();
     }
 
+    /**
+     * @return the level 2 user property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty level2UserProperty() {
+        return level2User;
+    }
+
+    /**
+     * @return the level 2 user end date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> level2UserEndDateProperty() {
+        return level2UserEndDate;
+    }
+
+    /**
+     * @return the locale property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty localeProperty() {
+        return locale;
+    }
+
+    /**
+     * @return the partner status property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty partnerProperty() {
+        return partner;
+    }
+
+    /**
+     * @return the premium property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty premiumProperty() {
+        return premium;
+    }
+
+    /**
+     * @return the premium end date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> premiumEndDateProperty() {
+        return premiumEndDate;
+    }
+
     @Override
     public String toString() {
         return "UserCapabilities{"

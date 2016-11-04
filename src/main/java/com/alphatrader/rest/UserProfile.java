@@ -138,6 +138,30 @@ public class UserProfile {
         return locale.getValue();
     }
 
+    /**
+     * @return the user property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> userProperty() {
+        return user;
+    }
+
+    /**
+     * @return the bank account property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<BankAccount> bankAccountProperty() {
+        return bankAccount;
+    }
+
+    /**
+     * @return the locale property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty localeProperty() {
+        return locale;
+    }
+
     @Override
     public String toString() {
         return "UserProfile{"

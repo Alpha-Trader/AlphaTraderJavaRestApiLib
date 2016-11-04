@@ -146,6 +146,54 @@ public class Chat {
         return id.getValue();
     }
 
+    /**
+     * @return  the creation date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateCreatedProperty() {
+        return dateCreated;
+    }
+
+    /**
+     * @return the last message property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ChatMessage> lastMessageProperty() {
+        return lastMessage;
+    }
+
+    /**
+     * @return the readonly property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty readonlyProperty() {
+        return readonly;
+    }
+
+    /**
+     * @return the chat name property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty chatNameProperty() {
+        return chatName;
+    }
+
+    /**
+     * @return the chat owner property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> ownerProperty() {
+        return owner;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Chat{"

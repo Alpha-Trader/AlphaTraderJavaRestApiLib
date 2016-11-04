@@ -1,10 +1,9 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.Nullable;
+
+import java.lang.annotation.Documented;
 
 /**
  * Represents a bank account in the game.
@@ -46,6 +45,22 @@ public class BankAccount {
     @PublicAPI
     public String getId() {
         return id.getValue();
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty cashProperty() {
+        return cash;
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 
 /**
  * A group member in a poll in the game.
@@ -36,6 +33,22 @@ public class VotingGroupMember {
     @PublicAPI
     public Long getNumberOfVoices() {
         return numberOfVoices.getValue();
+    }
+
+    /**
+     * @return the group member property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> groupMemberProperty() {
+        return groupMember;
+    }
+
+    /**
+     * @return the number of voices property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfVoicesProperty() {
+        return numberOfVoices;
     }
 
     @Override

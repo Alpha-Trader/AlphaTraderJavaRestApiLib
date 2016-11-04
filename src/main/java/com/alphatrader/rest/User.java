@@ -5,10 +5,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
@@ -243,6 +240,62 @@ public class User {
     @PublicAPI
     public UserCapabilities getUserCapabilities() {
         return userCapabilities.getValue();
+    }
+
+    /**
+     * @return the username property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty usernameProperty() {
+        return username;
+    }
+
+    /**
+     * @return the password property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty passwordProperty() {
+        return password;
+    }
+
+    /**
+     * @return the email address property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty emailAddressProperty() {
+        return emailAddress;
+    }
+
+    /**
+     * @return the gravatar hash property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty gravatarHashProperty() {
+        return gravatarHash;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the user capabilities property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<UserCapabilities> userCapabilitiesProperty() {
+        return userCapabilities;
+    }
+
+    /**
+     * @return the token property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty tokenProperty() {
+        return jwtToken;
     }
 
     @Override

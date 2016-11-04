@@ -75,6 +75,30 @@ public class MainInterestRate {
         return date.getValue();
     }
 
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the value property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty valueProperty() {
+        return value;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return "MainInterestRate{"

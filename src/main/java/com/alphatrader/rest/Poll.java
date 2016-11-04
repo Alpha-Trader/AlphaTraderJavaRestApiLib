@@ -230,6 +230,102 @@ public class Poll {
         return type.getValue();
     }
 
+    /**
+     * @return the abstention rule property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<AbstentionRule> abstentionRuleProperty() {
+        return abstentionRule;
+    }
+
+    /**
+     * @return the approval votes percentage property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty approvalVotesPercentageProperty() {
+        return approvalVotesPercentage;
+    }
+
+    /**
+     * @return the total number of voices property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty totalNumberOfVoicesProperty() {
+        return totalNumberOfVoices;
+    }
+
+    /**
+     * @return the motion property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty motionProperty() {
+        return motion;
+    }
+
+    /**
+     * @return the start date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> startDateProperty() {
+        return startDate;
+    }
+
+    /**
+     * @return the end date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> endDateProperty() {
+        return endDate;
+    }
+
+    /**
+     * @return the cast votes percentage property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty castVotesPercentageProperty() {
+        return castVotesPercentage;
+    }
+
+    /**
+     * @return the total number of cast votes property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty totalNumberOfCastVotesProperty() {
+        return totalNumberOfCastVotes;
+    }
+
+    /**
+     * @return the poll initiator property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> pollInitiatorProperty() {
+        return pollInitiator;
+    }
+
+    /**
+     * @return the result expire date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> resultExpireDateProperty() {
+        return resultExpireDate;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the type property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Type> typeProperty() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "Poll{"

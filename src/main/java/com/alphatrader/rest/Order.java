@@ -286,6 +286,110 @@ public class Order {
         return id.getValue();
     }
 
+    /**
+     * @return the creation date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> creationDateProperty() {
+        return creationDate;
+    }
+
+    /**
+     * @return the listing property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> listingProperty() {
+        return listing;
+    }
+
+    /**
+     * @return the type property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Type> typeProperty() {
+        return type;
+    }
+
+    /**
+     * @return the security identifier property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securityIdentifierProperty() {
+        return securityIdentifier;
+    }
+
+    /**
+     * @return the number of shares property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfSharesProperty() {
+        return numberOfShares;
+    }
+
+    /**
+     * @return the counter party name property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty counterPartyNameProperty() {
+        return counterPartyName;
+    }
+
+    /**
+     * @return the counter party property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty counterPartyProperty() {
+        return counterParty;
+    }
+
+    /**
+     * @return the action property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Action> actionProperty() {
+        return action;
+    }
+
+    /**
+     * @return the committed cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty committedCashProperty() {
+        return committedCash;
+    }
+
+    /**
+     * @return the price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty priceProperty() {
+        return price;
+    }
+
+    /**
+     * @return the owner name property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty ownerNameProperty() {
+        return ownerName;
+    }
+
+    /**
+     * @return the owner property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty ownerProperty() {
+        return owner;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Order{"

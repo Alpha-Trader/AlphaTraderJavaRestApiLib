@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 
 /**
  * A vote in a poll in the game.
@@ -49,6 +46,30 @@ public class Vote {
     @PublicAPI
     public User getVoter() {
         return voter.getValue();
+    }
+
+    /**
+     * @return the type property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Answer> typeProperty() {
+        return type;
+    }
+
+    /**
+     * @return the voices property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty voicesProperty() {
+        return voices;
+    }
+
+    /**
+     * @return the voter property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> voterProperty() {
+        return voter;
     }
 
     @Override

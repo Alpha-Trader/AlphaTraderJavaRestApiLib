@@ -1,6 +1,7 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 /**
@@ -47,6 +48,30 @@ public class SecuritySponsorship {
     @PublicAPI
     public SponsorRating getSponsorRating() {
         return sponsorRating.getValue();
+    }
+
+    /**
+     * @return the designated sponsor property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Company> designatedSponsorProperty() {
+        return designatedSponsor;
+    }
+
+    /**
+     * @return the listing property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> listingProperty() {
+        return listing;
+    }
+
+    /**
+     * @return the sponsor rating property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<SponsorRating> sponsorRatingProperty() {
+        return sponsorRating;
     }
 
     @Override

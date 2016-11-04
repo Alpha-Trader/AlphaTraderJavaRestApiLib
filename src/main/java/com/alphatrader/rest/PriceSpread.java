@@ -179,6 +179,86 @@ public class PriceSpread {
         return date.getValue();
     }
 
+    /**
+     * @return the ask size property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty askSizeProperty() {
+        return askSize;
+    }
+
+    /**
+     * @return the ask price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty askPriceProperty() {
+        return askPrice;
+    }
+
+    /**
+     * @return the bid size property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty bidSizeProperty() {
+        return bidSize;
+    }
+
+    /**
+     * @return the bid price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty bidPriceProperty() {
+        return bidPrice;
+    }
+
+    /**
+     * @return the absolute spread property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty spreadAbsProperty() {
+        return spreadAbs;
+    }
+
+    /**
+     * @return the spread percentage property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty spreadPercentProperty() {
+        return spreadPercent;
+    }
+
+    /**
+     * @return the last price property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<LastPrice> lastPriceProperty() {
+        return lastPrice;
+    }
+
+    /**
+     * @return the max bid price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty maxBidPriceProperty() {
+        return maxBidPrice;
+    }
+
+    /**
+     * @return the minimal asking price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty minAskPriceProperty() {
+        return minAskPrice;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return "PriceSpread{"

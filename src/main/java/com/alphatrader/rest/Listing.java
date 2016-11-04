@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -175,6 +172,46 @@ public class Listing {
     @PublicAPI
     public Type getType() {
         return type.getValue();
+    }
+
+    /**
+     * @return the start date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> startDateProperty() {
+        return startDate;
+    }
+
+    /**
+     * @return the end date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> endDateProperty() {
+        return endDate;
+    }
+
+    /**
+     * @return the security identifier property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securityIdentifierProperty() {
+        return securityIdentifier;
+    }
+
+    /**
+     * @return the name property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * @return the type property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Type> typeProperty() {
+        return type;
     }
 
     @Override

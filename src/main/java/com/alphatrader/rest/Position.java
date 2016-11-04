@@ -61,6 +61,38 @@ public class Position {
         return volume.getValue();
     }
 
+    /**
+     * @return the security identifier property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securityIdentifierProperty() {
+        return securityIdentifier;
+    }
+
+    /**
+     * @return the last price property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<LastPrice> lastPriceProperty() {
+        return lastPrice;
+    }
+
+    /**
+     * @return the number of shares property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfSharesProperty() {
+        return numberOfShares;
+    }
+
+    /**
+     * @return the volume property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty volumeProperty() {
+        return volume;
+    }
+
     @Override
     public String toString() {
         return "Position{"

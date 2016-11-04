@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.ZonedDateTime;
@@ -86,6 +83,14 @@ public class BankingLicense {
     }
 
     /**
+     * @return the start date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> startDateProperty() {
+        return startDate;
+    }
+
+    /**
      * @return the company this license belongs to
      */
     @PublicAPI
@@ -94,11 +99,27 @@ public class BankingLicense {
     }
 
     /**
+     * @return the company property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Company> companyProperty() {
+        return company;
+    }
+
+    /**
      * @return the id of this license
      */
     @PublicAPI
     public String getId() {
         return id.getValue();
+    }
+
+    /**
+     * @return the id property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
     }
 
     @Override

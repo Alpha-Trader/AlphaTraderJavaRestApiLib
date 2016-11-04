@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.*;
 
 /**
  * Represents a companies capabilities in the game.
@@ -101,6 +98,62 @@ public class CompanyCapabilities {
     @PublicAPI
     public Double getNetCash() {
         return netCash.getValue();
+    }
+
+    /**
+     * @return the bank ready property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty bankReadyProperty() {
+        return bankReady;
+    }
+
+    /**
+     * @return the bank property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty bankProperty() {
+        return bank;
+    }
+
+    /**
+     * @return the taken central loans property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty takenCentralBankLoansProperty() {
+        return takenCentralBankLoans;
+    }
+
+    /**
+     * @return the designated sponsor property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty designatedSponsorProperty() {
+        return designatedSponsor;
+    }
+
+    /**
+     * @return the reserves property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty reservesProperty() {
+        return reserves;
+    }
+
+    /**
+     * @return the max central bank loans property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty maxCentralBankLoansProperty() {
+        return maxCentralBankLoans;
+    }
+
+    /**
+     * @return the net cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty netCashProperty() {
+        return netCash;
     }
 
     @Override

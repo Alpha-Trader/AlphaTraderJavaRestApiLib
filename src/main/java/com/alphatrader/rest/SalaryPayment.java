@@ -90,6 +90,46 @@ public class SalaryPayment {
         return id.getValue();
     }
 
+    /**
+     * @return the company id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty companyIdProperty() {
+        return companyId;
+    }
+
+    /**
+     * @return the next possible payment date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> nextPossiblePaymentDateProperty() {
+        return nextPossiblePaymentDate;
+    }
+
+    /**
+     * @return the salary amount property property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty salaryAmountProperty() {
+        return salaryAmount;
+    }
+
+    /**
+     * @return the date property property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "SalaryPayment{"

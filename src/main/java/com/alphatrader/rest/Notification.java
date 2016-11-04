@@ -121,6 +121,54 @@ public class Notification {
         return id.getValue();
     }
 
+    /**
+     * @return the message property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Message> messageProperty() {
+        return content;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
+    /**
+     * @return the subject property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Message> subjectProperty() {
+        return subject;
+    }
+
+    /**
+     * @return the receiver property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> receiverProperty() {
+        return receiver;
+    }
+
+    /**
+     * @return the read by receiver property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty readByReceiverProperty() {
+        return readByReceiver;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Notification{"

@@ -506,6 +506,302 @@ public class HourlyMarketStatistics {
         return systemBondFaceVolume.getValue();
     }
 
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty averageBondDurationInDaysProperty() {
+        return averageBondDurationInDays;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty averageBookValueProperty() {
+        return averageBookValue;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty averageDailyWageProperty() {
+        return averageDailyWage;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<SponsorRating.SponsorRatingLetter> averageDesignatedSponsorRatingProperty() {
+        return averageDesignatedSponsorRating;
+    }
+
+    /**
+     * @return average yield to maturity property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty averageYieldToMaturityProperty() {
+        return averageYieldToMaturity;
+    }
+
+    /**
+     * @return the bond face volume property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty bondFaceVolumeProperty() {
+        return bondFaceVolume;
+    }
+
+    /**
+     * @return the central bank reserves property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty centralBankReservesProperty() {
+        return centralBankReserves;
+    }
+
+    /**
+     * @return the committed cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty committedCashProperty() {
+        return committedCash;
+    }
+
+    /**
+     * @return the corporate cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty corporateCashProperty() {
+        return corporateCash;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
+    /**
+     * @return the main interest rate property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty mainInterestRateProperty() {
+        return mainInterestRate;
+    }
+
+    /**
+     * @return the market cap property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty marketCapProperty() {
+        return marketCap;
+    }
+
+    /**
+     * @return the number of active other listings property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfActiveOtherListingsProperty() {
+        return numberOfActiveOtherListings;
+    }
+
+    /**
+     * @return the number of banks property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfBanksProperty() {
+        return numberOfBanks;
+    }
+
+    /**
+     * @return the number of bond orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfBondOrdersProperty() {
+        return numberOfBondOrders;
+    }
+
+    /**
+     * @return the number of cashout polls property property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfCashoutPollsProperty() {
+        return numberOfCashoutPolls;
+    }
+
+    /**
+     * @return the number of committed shares property property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfCommittedSharesProperty() {
+        return numberOfCommittedShares;
+    }
+
+    /**
+     * @return the number of companies property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfCompaniesProperty() {
+        return numberOfCompanies;
+    }
+
+    /**
+     * @return the number of designated sponsors property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfDesignatedSponsorsProperty() {
+        return numberOfDesignatedSponsors;
+    }
+
+    /**
+     * @return the number of liquidation polls property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfLiquidationPollsProperty() {
+        return numberOfLiquidationPolls;
+    }
+
+    /**
+     * @return the number of orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfOrdersProperty() {
+        return numberOfOrders;
+    }
+
+    /**
+     * @return the number of orders in the last 24h property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfOrders24hProperty() {
+        return numberOfOrders24h;
+    }
+
+    /**
+     * @return the number of otc orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfOtcOrdersProperty() {
+        return numberOfOtcOrders;
+    }
+
+    /**
+     * @return the number of other listings property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfOtherListingsProperty() {
+        return numberOfOtherListings;
+    }
+
+    /**
+     * @return the number of other orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfOtherOrdersProperty() {
+        return numberOfOtherOrders;
+    }
+
+    /**
+     * @return the number of partner users property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfPartnerUsersProperty() {
+        return numberOfPartnerUsers;
+    }
+
+    /**
+     * @return the number of premium users property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfPremiumUsersProperty() {
+        return numberOfPremiumUsers;
+    }
+
+    /**
+     * @return the number of repo orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfRepoOrdersProperty() {
+        return numberOfRepoOrders;
+    }
+
+    /**
+     * @return the number of stock orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfStockOrdersProperty() {
+        return numberOfStockOrders;
+    }
+
+    /**
+     * @return the number of system bond orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfSystemBondOrdersProperty() {
+        return numberOfSystemBondOrders;
+    }
+
+    /**
+     * @return the number of system repo orders property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfSystemRepoOrdersProperty() {
+        return numberOfSystemRepoOrders;
+    }
+
+    /**
+     * @return the number of users property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty numberOfUsersProperty() {
+        return numberOfUsers;
+    }
+
+    /**
+     * @return the order volume property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty orderVolumeProperty() {
+        return orderVolume;
+    }
+
+    /**
+     * @return the order volume in the last 24h property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty orderVolume24hProperty() {
+        return orderVolume24h;
+    }
+
+    /**
+     * @return the private cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty privateCashProperty() {
+        return privateCash;
+    }
+
+    /**
+     * @return the system bond face volume property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty systemBondFaceVolumeProperty() {
+        return systemBondFaceVolume;
+    }
+
     @Override
     public String toString() {
         return "HourlyMarketStatistics{"

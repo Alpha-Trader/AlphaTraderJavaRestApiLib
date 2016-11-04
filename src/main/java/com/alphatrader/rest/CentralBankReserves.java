@@ -99,6 +99,38 @@ public class CentralBankReserves {
         return cashHolding.getValue();
     }
 
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<BankingLicense> bankingLicenseProperty() {
+        return bankingLicense;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty maxCentralBankLoansProperty() {
+        return maxCentralBankLoans;
+    }
+
+    /**
+     * @return  property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty cashHoldingProperty() {
+        return cashHolding;
+    }
+
     @Override
     public String toString() {
         return "CentralBankReserves{"

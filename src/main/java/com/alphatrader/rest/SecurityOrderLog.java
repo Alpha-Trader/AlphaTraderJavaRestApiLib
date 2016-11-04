@@ -185,6 +185,70 @@ public class SecurityOrderLog {
         return id.getValue();
     }
 
+    /**
+     * @return the buyer securities account property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty buyerSecuritiesAccountProperty() {
+        return buyerSecuritiesAccount;
+    }
+
+    /**
+     * @return the seller securities account property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty sellerSecuritiesAccountProperty() {
+        return sellerSecuritiesAccount;
+    }
+
+    /**
+     * @return the number of shares property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty numberOfSharesProperty() {
+        return numberOfShares;
+    }
+
+    /**
+     * @return the volume property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty volumeProperty() {
+        return volume;
+    }
+
+    /**
+     * @return the security identifier property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securityIdentifierProperty() {
+        return securityIdentifier;
+    }
+
+    /**
+     * @return the price property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty priceProperty() {
+        return price;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "SecurityOrderLog{"

@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.time.ZonedDateTime;
 
@@ -38,6 +35,22 @@ public class LastPrice {
     @PublicAPI
     public Double getValue() {
         return Double.valueOf(this.value.getValue().replaceAll("%", "").trim());
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
+    /**
+     * @return the value property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty valueProperty() {
+        return value;
     }
 
     @Override

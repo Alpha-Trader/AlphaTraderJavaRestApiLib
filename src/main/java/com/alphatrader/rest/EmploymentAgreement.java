@@ -102,6 +102,38 @@ public class EmploymentAgreement {
         return startDate.getValue();
     }
 
+    /**
+     * @return the company property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Company> companyProperty() {
+        return company;
+    }
+
+    /**
+     * @return the daily wage property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty dailyWageProperty() {
+        return dailyWage;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the start date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> startDateProperty() {
+        return startDate;
+    }
+
     @Override
     public String toString() {
         return "EmploymentAgreement{"

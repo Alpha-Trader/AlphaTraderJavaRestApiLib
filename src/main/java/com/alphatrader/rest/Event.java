@@ -2,6 +2,7 @@ package com.alphatrader.rest;
 
 import com.google.gson.JsonElement;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -111,6 +112,22 @@ public class Event {
         return realms;
     }
 
+    /**
+     * @return the type property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Type> typeProperty() {
+        return type;
+    }
+
+    /**
+     * @return the date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return "Event{"
@@ -153,7 +170,6 @@ public class Event {
         int result = content.getValue() != null ? content.getValue().hashCode() : 0;
         result = 31 * result + (type.getValue() != null ? type.getValue().hashCode() : 0);
         result = 31 * result + (date.getValue() != null ? date.getValue().hashCode() : 0);
-//        result = 31 * result + realms.hashCode();
         return result;
     }
 

@@ -92,11 +92,26 @@ public class CashTransferLog {
     }
 
     /**
+     * @return the transfer amount property
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty amountProperty() {
+        return amount;
+    }
+
+    /**
      * @return the receiver's bank account id
      */
     @PublicAPI
     public String getReceiverBankAccount() {
         return receiverBankAccount.getValue();
+    }
+
+    /**
+     * @return the receiver's bank account id property
+     */
+    @PublicAPI ReadOnlyStringProperty receiverBankAccountProperty() {
+        return receiverBankAccount;
     }
 
     /**
@@ -108,11 +123,27 @@ public class CashTransferLog {
     }
 
     /**
+     * @return the sender's bank account id property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty senderBankAccountProperty() {
+        return senderBankAccount;
+    }
+
+    /**
      * @return the date the transfer took place
      */
     @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
+    }
+
+    /**
+     * @return the date the transfer took place as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateProperty() {
+        return date;
     }
 
     /**
@@ -124,11 +155,27 @@ public class CashTransferLog {
     }
 
     /**
+     * @return the subject message of the transfer as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Message> messageProperty() {
+        return message;
+    }
+
+    /**
      * @return the transfer id
      */
     @PublicAPI
     public String getId() {
         return id.getValue();
+    }
+
+    /**
+     * @return the transfer id property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
     }
 
     @Override

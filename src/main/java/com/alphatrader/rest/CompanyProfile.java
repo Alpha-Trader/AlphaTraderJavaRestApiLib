@@ -287,6 +287,118 @@ public class CompanyProfile {
         return id.getValue();
     }
 
+    /**
+     * @return the ceo employment agreement property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<EmploymentAgreement> ceoEmploymentAgreementProperty() {
+        return ceoEmploymentAgreement;
+    }
+
+    /**
+     * @return the company capabilities property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<CompanyCapabilities> companyCapabilitiesProperty() {
+        return companyCapabilities;
+    }
+
+    /**
+     * @return the current spread property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<PriceSpread> currentSpreadProperty() {
+        return currentSpread;
+    }
+
+    /**
+     * @return the last order log entry property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<SecurityOrderLog> lastOrderLogEntryProperty() {
+        return lastOrderLogEntry;
+    }
+
+    /**
+     * @return the last price property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<LastPrice> lastPriceProperty() {
+        return lastPrice;
+    }
+
+    /**
+     * @return the outstanding shares property.
+     */
+    @PublicAPI
+    public ReadOnlyLongProperty outstandingSharesProperty() {
+        return outstandingShares;
+    }
+
+    /**
+     * @return the market cap property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty marketCapProperty() {
+        return marketCap;
+    }
+
+    /**
+     * @return the securities account id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securitiesAccountIdProperty() {
+        return securitiesAccountId;
+    }
+
+    /**
+     * @return the bank account property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<BankAccount> bankAccountProperty() {
+        return bankAccount;
+    }
+
+    /**
+     * @return the logo url property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<URL> logoUrlProperty() {
+        return logoUrl;
+    }
+
+    /**
+     * @return the ceo property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> ceoProperty() {
+        return ceo;
+    }
+
+    /**
+     * @return the listing property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> listingProperty() {
+        return listing;
+    }
+
+    /**
+     * @return the name property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "CompanyProfile{"

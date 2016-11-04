@@ -1,6 +1,7 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
@@ -99,6 +100,22 @@ public class Portfolio {
     @PublicAPI
     public Double getCommittedCash() {
         return committedCash.getValue();
+    }
+
+    /**
+     * @return the cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty cashProperty() {
+        return cash;
+    }
+
+    /**
+     * @return the committed cash property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty committedCashProperty() {
+        return committedCash;
     }
 
     @Override

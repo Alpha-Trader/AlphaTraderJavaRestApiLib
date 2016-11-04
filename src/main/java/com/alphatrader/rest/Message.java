@@ -1,5 +1,6 @@
 package com.alphatrader.rest;
 
+import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -49,6 +50,22 @@ public class Message {
     @PublicAPI
     public String getFilledString() {
         return filledString.getValue();
+    }
+
+    /**
+     * @return the message property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty messageProperty() {
+        return message;
+    }
+
+    /**
+     * @return the filled string property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty filledStringProperty() {
+        return filledString;
     }
 
     @Override

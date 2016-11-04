@@ -171,11 +171,27 @@ public class Bond {
     }
 
     /**
+     * @return the name property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty nameProperty() {
+        return name;
+    }
+
+    /**
      * @return the volume
      */
     @PublicAPI
     public Double getVolume() {
         return volume.getValue();
+    }
+
+    /**
+     * @return the volume property
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty volumeProperty() {
+        return volume;
     }
 
     /**
@@ -187,11 +203,27 @@ public class Bond {
     }
 
     /**
+     * @return the interest rate property
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty interestRateProperty() {
+        return interestRate;
+    }
+
+    /**
      * @return the face value
      */
     @PublicAPI
     public Double getFaceValue() {
         return faceValue.getValue();
+    }
+
+    /**
+     * @return the face value property
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty faceValueProperty() {
+        return faceValue;
     }
 
     /**
@@ -202,6 +234,13 @@ public class Bond {
         return maturityDate.getValue();
     }
 
+    /**
+     * @return the maturity date property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> maturityDateProperty() {
+        return maturityDate;
+    }
 
     /**
      * @return the issue date
@@ -209,6 +248,14 @@ public class Bond {
     @PublicAPI
     public ZonedDateTime getIssueDate() {
         return issueDate.getValue();
+    }
+
+    /**
+     * @return the issue date property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> issueDateProperty() {
+        return issueDate;
     }
 
     /**
@@ -220,11 +267,27 @@ public class Bond {
     }
 
     /**
+     * @return the price spread property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<PriceSpread> priceSpreadProperty() {
+        return priceSpread;
+    }
+
+    /**
      * @return the issuer
      */
     @PublicAPI
     public Company getIssuer() {
         return issuer.getValue();
+    }
+
+    /**
+     * @return the issuer property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Company> issuerProperty() {
+        return issuer;
     }
 
     /**
@@ -236,6 +299,14 @@ public class Bond {
     }
 
     /**
+     * @return the listing property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> listingProperty() {
+        return listing;
+    }
+
+    /**
      * @return the repurchase listing
      */
     @PublicAPI
@@ -244,11 +315,27 @@ public class Bond {
     }
 
     /**
+     * @return the repurchase listing property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> repurchaseListingProperty() {
+        return repurchaseListing;
+    }
+
+    /**
      * @return the unique id
      */
     @PublicAPI
     public String getId() {
         return id.getValue();
+    }
+
+    /**
+     * @return the unique id property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
     }
 
     @Override

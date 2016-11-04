@@ -215,6 +215,54 @@ public class ChatMessage {
         return content.getValue();
     }
 
+    /**
+     * @return the sent date property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<ZonedDateTime> dateSentProperty() {
+        return dateSent;
+    }
+
+    /**
+     * @return the chat id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty chatIdProperty() {
+        return chatId;
+    }
+
+    /**
+     * @return the sender property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> senderProperty() {
+        return sender;
+    }
+
+    /**
+     * @return the read property.
+     */
+    @PublicAPI
+    public ReadOnlyBooleanProperty readProperty() {
+        return read;
+    }
+
+    /**
+     * @return the id property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * @return the content property.
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty contentProperty() {
+        return content;
+    }
+
     @Override
     public String toString() {
         return "ChatMessage{"

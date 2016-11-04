@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 
 /**
  * Represents a sponsor rating in the game.
@@ -36,6 +33,22 @@ public class SponsorRating {
     @PublicAPI
     public SponsorRatingLetter getValue() {
         return value.getValue();
+    }
+
+    /**
+     * @return the salary property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty salaryProperty() {
+        return salary;
+    }
+
+    /**
+     * @return the value property.
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<SponsorRatingLetter> valueProperty() {
+        return value;
     }
 
     /**

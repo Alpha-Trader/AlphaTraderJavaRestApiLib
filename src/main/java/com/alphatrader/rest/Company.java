@@ -1,9 +1,6 @@
 package com.alphatrader.rest;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -189,7 +186,15 @@ public class Company {
     }
 
     /**
-     * @return the securities accounts unique identifier.
+     * @return the name property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * @return the securities accounts unique identifier
      */
     @PublicAPI
     public String getSecuritiesAccountId() {
@@ -197,11 +202,27 @@ public class Company {
     }
 
     /**
-     * @return the company's unique id.
+     * @return the securities account unique identifier property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty securitiesAccountIdProperty() {
+        return securitiesAccountId;
+    }
+
+    /**
+     * @return the company's unique id
      */
     @PublicAPI
     public String getId() {
         return id.getValue();
+    }
+
+    /**
+     * @return the company's unique id property
+     */
+    @PublicAPI
+    public ReadOnlyStringProperty idProperty() {
+        return id;
     }
 
     /**
@@ -210,6 +231,14 @@ public class Company {
     @PublicAPI
     public Listing getListing() {
         return listing.getValue();
+    }
+
+    /**
+     * @return the listing of the company as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<Listing> listingProperty() {
+        return listing;
     }
 
     /**
@@ -226,6 +255,54 @@ public class Company {
     @PublicAPI
     public CompanyProfile getProfile() {
         return CompanyProfile.getByCompany(this);
+    }
+
+    /**
+     * @return the company's bank account
+     */
+    @PublicAPI
+    public BankAccount getBankAccount() {
+        return bankAccount.get();
+    }
+
+    /**
+     * @return the company's bank account as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<BankAccount> bankAccountProperty() {
+        return bankAccount;
+    }
+
+    /**
+     * @return the company's ceo
+     */
+    @PublicAPI
+    public User getCeo() {
+        return ceo.get();
+    }
+
+    /**
+     * @return the company's ceo as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<User> ceoProperty() {
+        return ceo;
+    }
+
+    /**
+     * @return the company's logo url
+     */
+    @PublicAPI
+    public URL getLogoUrl() {
+        return logoUrl.get();
+    }
+
+    /**
+     * @return the company's logo url as a property
+     */
+    @PublicAPI
+    public ReadOnlyObjectProperty<URL> logoUrlProperty() {
+        return logoUrl;
     }
 
     @Override

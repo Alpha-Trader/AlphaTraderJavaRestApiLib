@@ -1,6 +1,7 @@
 package com.alphatrader.rest;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
@@ -75,6 +76,22 @@ public class OrderBook {
     @PublicAPI
     public ObservableList<Order> getSellEntries() {
         return sellEntries;
+    }
+
+    /**
+     * @return the max buy size property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty maxBuySizeProperty() {
+        return maxBuySize;
+    }
+
+    /**
+     * @return the max sell size property.
+     */
+    @PublicAPI
+    public ReadOnlyDoubleProperty maxSellSizeProperty() {
+        return maxSellSize;
     }
 
     @Override
