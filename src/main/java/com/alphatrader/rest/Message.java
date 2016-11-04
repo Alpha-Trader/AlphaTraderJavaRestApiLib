@@ -30,6 +30,7 @@ public class Message {
     /**
      * @return the i18n string.
      */
+    @PublicAPI
     public String getMessage() {
         return message.getValue();
     }
@@ -37,6 +38,7 @@ public class Message {
     /**
      * @return the substitutions
      */
+    @PublicAPI
     public ObservableList<String> getSubstitutions() {
         return substitutions;
     }
@@ -44,6 +46,7 @@ public class Message {
     /**
      * @return the substituted message
      */
+    @PublicAPI
     public String getFilledString() {
         return filledString.getValue();
     }

@@ -25,6 +25,7 @@ public class SponsorRating {
     /**
      * @return the sponsor salary
      */
+    @PublicAPI
     public Double getSalary() {
         return salary.getValue();
     }
@@ -32,6 +33,7 @@ public class SponsorRating {
     /**
      * @return the valuation of the sponsor
      */
+    @PublicAPI
     public SponsorRatingLetter getValue() {
         return value.getValue();
     }

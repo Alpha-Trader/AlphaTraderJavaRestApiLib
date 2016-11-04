@@ -26,6 +26,7 @@ public class BankAccount {
     /**
      * @return the bank account of the logged in user
      */
+    @PublicAPI
     @Nullable
     public static BankAccount getUserBankAccount() {
         return Http.getSingleObjectFromApi(BankAccount.class, "/api/bankaccounts/");
@@ -34,6 +35,7 @@ public class BankAccount {
     /**
      * @return the amount of cash in this bank account
      */
+    @PublicAPI
     public Double getCash() {
         return cash.getValue();
     }
@@ -41,6 +43,7 @@ public class BankAccount {
     /**
      * @return the id of this bank account
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

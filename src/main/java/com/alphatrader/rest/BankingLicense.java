@@ -36,6 +36,7 @@ public class BankingLicense {
      * @param companyId the company id to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @PublicAPI
     @Nullable
     public static BankingLicense getBankingLicenseOfCompany(String companyId) {
         return getFromApi("?companyId=" + companyId);
@@ -47,6 +48,7 @@ public class BankingLicense {
      * @param company the company to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @PublicAPI
     @Nullable
     public static BankingLicense getBankingLicenseOfCompany(Company company) {
         return getBankingLicenseOfCompany(company.getId());
@@ -58,6 +60,7 @@ public class BankingLicense {
      * @param licenseId the license id to look for a banking license
      * @return the banking license or null if it doesn't exist.
      */
+    @PublicAPI
     @Nullable
     public static BankingLicense getBankingLicenseById(String licenseId) {
         return getFromApi(licenseId);
@@ -77,6 +80,7 @@ public class BankingLicense {
     /**
      * @return the issue date of this license
      */
+    @PublicAPI
     public ZonedDateTime getStartDate() {
         return startDate.getValue();
     }
@@ -84,6 +88,7 @@ public class BankingLicense {
     /**
      * @return the company this license belongs to
      */
+    @PublicAPI
     public Company getCompany() {
         return company.getValue();
     }
@@ -91,6 +96,7 @@ public class BankingLicense {
     /**
      * @return the id of this license
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

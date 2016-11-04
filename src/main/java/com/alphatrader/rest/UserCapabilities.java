@@ -45,6 +45,7 @@ public class UserCapabilities {
     /**
      * @return true, if the user is a level 2 user
      */
+    @PublicAPI
     public Boolean isLevel2User() {
         return level2User.getValue();
     }
@@ -52,6 +53,7 @@ public class UserCapabilities {
     /**
      * @return the date the level 2 user status runs out
      */
+    @PublicAPI
     public ZonedDateTime getLevel2UserEndDate() {
         return level2UserEndDate.getValue();
     }
@@ -59,6 +61,7 @@ public class UserCapabilities {
     /**
      * @return the user's locale
      */
+    @PublicAPI
     public String getLocale() {
         return locale.getValue();
     }
@@ -66,6 +69,7 @@ public class UserCapabilities {
     /**
      * @return true, if the user is a partner
      */
+    @PublicAPI
     public Boolean isPartner() {
         return partner.getValue();
     }
@@ -73,6 +77,7 @@ public class UserCapabilities {
     /**
      * @return true, if the user is a premium user
      */
+    @PublicAPI
     public Boolean isPremium() {
         return premium.getValue();
     }
@@ -80,6 +85,7 @@ public class UserCapabilities {
     /**
      * @return the time the premium status runs out
      */
+    @PublicAPI
     public ZonedDateTime getPremiumEndDate() {
         return premiumEndDate.getValue();
     }

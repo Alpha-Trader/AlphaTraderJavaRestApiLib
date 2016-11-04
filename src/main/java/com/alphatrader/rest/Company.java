@@ -58,6 +58,7 @@ public class Company {
      * @param user the user who governs the company
      * @return a list of all companies governed by the user
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getAllUserCompanies(User user) {
         return getAllUserCompanies(user.getId());
@@ -69,6 +70,7 @@ public class Company {
      * @param userId the id of the user who governs the company
      * @return a list of all companies governed by the user
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getAllUserCompanies(String userId) {
         return getMultipleCompaniesFromApi("companies/ceo/userid/" + userId);
@@ -80,6 +82,7 @@ public class Company {
      * @param username the name of the user who governs the company
      * @return a list of all companies governed by the user
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getAllUserCompaniesByUsername(String username) {
         return getMultipleCompaniesFromApi("companies/ceo/username/" + username);
@@ -90,6 +93,7 @@ public class Company {
      *
      * @return all companies currently employing the logged in user as CEO
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getAllUserCompanies() {
         return getMultipleCompaniesFromApi("companies/");
@@ -100,6 +104,7 @@ public class Company {
      *
      * @return all companies in the game
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getAllCompanies() {
         return getMultipleCompaniesFromApi("companies/all/");
@@ -111,6 +116,7 @@ public class Company {
      * @param securitiesAccountId the securities account id
      * @return the company or null if not found
      */
+    @PublicAPI
     @Nullable
     public static Company getBySecuritiesAccountId(String securitiesAccountId) {
         return getSingleCompanyFromApi("companies/securitiesaccount/" + securitiesAccountId);
@@ -122,6 +128,7 @@ public class Company {
      * @param securityIdentifier the security identifier
      * @return the company or null if not found
      */
+    @PublicAPI
     @Nullable
     public static Company getBySecurityIdentifier(String securityIdentifier) {
         return getSingleCompanyFromApi("companies/securityIdentifier/" + securityIdentifier);
@@ -133,6 +140,7 @@ public class Company {
      * @param id the company id
      * @return the company or null if not found
      */
+    @PublicAPI
     @Nullable
     public static Company getById(String id) {
         return getSingleCompanyFromApi("companies/" + id);
@@ -144,6 +152,7 @@ public class Company {
      * @param namePart the search query
      * @return a list of companies matching the search
      */
+    @PublicAPI
     @NotNull
     public static List<Company> searchByName(String namePart) {
         return getMultipleCompaniesFromApi("search/companies/" + namePart);
@@ -174,6 +183,7 @@ public class Company {
     /**
      * @return the name
      */
+    @PublicAPI
     public String getName() {
         return name.getValue();
     }
@@ -181,6 +191,7 @@ public class Company {
     /**
      * @return the securities accounts unique identifier.
      */
+    @PublicAPI
     public String getSecuritiesAccountId() {
         return securitiesAccountId.getValue();
     }
@@ -188,6 +199,7 @@ public class Company {
     /**
      * @return the company's unique id.
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -195,6 +207,7 @@ public class Company {
     /**
      * @return the listing of the company
      */
+    @PublicAPI
     public Listing getListing() {
         return listing.getValue();
     }
@@ -202,6 +215,7 @@ public class Company {
     /**
      * @return the company portfolio
      */
+    @PublicAPI
     public Portfolio getPortfolio() {
         return Portfolio.getCompanyPortfolio(this);
     }
@@ -209,6 +223,7 @@ public class Company {
     /**
      * @return the company profile
      */
+    @PublicAPI
     public CompanyProfile getProfile() {
         return CompanyProfile.getByCompany(this);
     }

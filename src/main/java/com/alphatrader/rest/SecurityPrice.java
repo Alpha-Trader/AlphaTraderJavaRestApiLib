@@ -24,6 +24,7 @@ public final class SecurityPrice {
      * @param securityIdentifier the securityIdentifier
      * @return the list of prices
      */
+    @PublicAPI
     @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier) {
         return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier);
@@ -36,6 +37,7 @@ public final class SecurityPrice {
      * @param startDate          the lower date boundary
      * @return the list of prices
      */
+    @PublicAPI
     @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate) {
         return getMultipleLastPricesFromApi("?securityIdentifier=" + securityIdentifier + "&startDate="
@@ -50,6 +52,7 @@ public final class SecurityPrice {
      * @param endDate            the upper date boundary
      * @return the list of prices
      */
+    @PublicAPI
     @NotNull
     public static List<LastPrice> getSecurityPrices(String securityIdentifier, ZonedDateTime startDate,
                                                     ZonedDateTime endDate) {

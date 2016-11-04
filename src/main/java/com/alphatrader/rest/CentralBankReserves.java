@@ -36,6 +36,7 @@ public class CentralBankReserves {
      * @param companyId the unique identifier of the company
      * @return the central bank loans of the company
      */
+    @PublicAPI
     @Nullable
     public static CentralBankReserves getByCompany(String companyId) {
         return Http.getSingleObjectFromApi(CentralBankReserves.class,
@@ -48,6 +49,7 @@ public class CentralBankReserves {
      * @param company the company
      * @return the central bank loans of the company
      */
+    @PublicAPI
     @Nullable
     public static CentralBankReserves getByCompany(Company company) {
         return getByCompany(company.getId());
@@ -59,6 +61,7 @@ public class CentralBankReserves {
      * @param id the central bank reserve's id
      * @return the central bank reserve
      */
+    @PublicAPI
     @Nullable
     public static CentralBankReserves getById(String id) {
         return Http.getSingleObjectFromApi(CentralBankReserves.class, "/api/centralbankreserves/" + id);
@@ -67,6 +70,7 @@ public class CentralBankReserves {
     /**
      * @return the unique id of these reserves
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -74,6 +78,7 @@ public class CentralBankReserves {
     /**
      * @return the associated banking license
      */
+    @PublicAPI
     public BankingLicense getBankingLicense() {
         return bankingLicense.getValue();
     }
@@ -81,6 +86,7 @@ public class CentralBankReserves {
     /**
      * @return the maximum of central bank loans
      */
+    @PublicAPI
     public Double getMaxCentralBankLoans() {
         return maxCentralBankLoans.getValue();
     }
@@ -88,6 +94,7 @@ public class CentralBankReserves {
     /**
      * @return the currently held cash
      */
+    @PublicAPI
     public Double getCashHolding() {
         return cashHolding.getValue();
     }

@@ -204,6 +204,7 @@ public class HourlyMarketStatistics {
      *
      * @return a list of the hourly market statistics
      */
+    @PublicAPI
     @NotNull
     public static List<HourlyMarketStatistics> getAll() {
         return Http.getMultipleObjectFromApi(HourlyMarketStatistics.class, "/api/marketstatistics/");
@@ -212,6 +213,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -219,6 +221,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average bond duration in days
      */
+    @PublicAPI
     public Double getAverageBondDurationInDays() {
         return averageBondDurationInDays.getValue();
     }
@@ -226,6 +229,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average book value
      */
+    @PublicAPI
     public Double getAverageBookValue() {
         return averageBookValue.getValue();
     }
@@ -233,6 +237,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average daily wage
      */
+    @PublicAPI
     public Double getAverageDailyWage() {
         return averageDailyWage.getValue();
     }
@@ -240,6 +245,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average designated sponsor rating
      */
+    @PublicAPI
     public SponsorRating.SponsorRatingLetter getAverageDesignatedSponsorRating() {
         return averageDesignatedSponsorRating.getValue();
     }
@@ -247,6 +253,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the average yield to maturity
      */
+    @PublicAPI
     public Double getAverageYieldToMaturity() {
         return averageYieldToMaturity.getValue();
     }
@@ -254,6 +261,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the cumulative bond face volume
      */
+    @PublicAPI
     public Double getBondFaceVolume() {
         return bondFaceVolume.getValue();
     }
@@ -261,6 +269,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the amount of central bank reserves
      */
+    @PublicAPI
     public Double getCentralBankReserves() {
         return centralBankReserves.getValue();
     }
@@ -268,6 +277,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the amount of committed cash
      */
+    @PublicAPI
     public Double getCommittedCash() {
         return committedCash.getValue();
     }
@@ -275,6 +285,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the amount of corporate cash
      */
+    @PublicAPI
     public Double getCorporateCash() {
         return corporateCash.getValue();
     }
@@ -282,6 +293,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the date
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -289,6 +301,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the main interest rate
      */
+    @PublicAPI
     public Double getMainInterestRate() {
         return mainInterestRate.getValue();
     }
@@ -296,6 +309,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the market cap
      */
+    @PublicAPI
     public Double getMarketCap() {
         return marketCap.getValue();
     }
@@ -303,6 +317,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of active listings
      */
+    @PublicAPI
     public Long getNumberOfActiveOtherListings() {
         return numberOfActiveOtherListings.getValue();
     }
@@ -310,6 +325,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of banks
      */
+    @PublicAPI
     public Long getNumberOfBanks() {
         return numberOfBanks.getValue();
     }
@@ -317,6 +333,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of bond orders
      */
+    @PublicAPI
     public Long getNumberOfBondOrders() {
         return numberOfBondOrders.getValue();
     }
@@ -324,6 +341,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of cashout polls
      */
+    @PublicAPI
     public Long getNumberOfCashoutPolls() {
         return numberOfCashoutPolls.getValue();
     }
@@ -331,6 +349,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of committed shares
      */
+    @PublicAPI
     public Long getNumberOfCommittedShares() {
         return numberOfCommittedShares.getValue();
     }
@@ -338,6 +357,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of companies
      */
+    @PublicAPI
     public Long getNumberOfCompanies() {
         return numberOfCompanies.getValue();
     }
@@ -345,6 +365,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of designated sponsors
      */
+    @PublicAPI
     public Long getNumberOfDesignatedSponsors() {
         return numberOfDesignatedSponsors.getValue();
     }
@@ -352,6 +373,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of liquidation polls
      */
+    @PublicAPI
     public Long getNumberOfLiquidationPolls() {
         return numberOfLiquidationPolls.getValue();
     }
@@ -359,6 +381,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of orders
      */
+    @PublicAPI
     public Long getNumberOfOrders() {
         return numberOfOrders.getValue();
     }
@@ -366,6 +389,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of orders in the last 24 hours
      */
+    @PublicAPI
     public Long getNumberOfOrders24h() {
         return numberOfOrders24h.getValue();
     }
@@ -373,6 +397,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of over the counter orders
      */
+    @PublicAPI
     public Long getNumberOfOtcOrders() {
         return numberOfOtcOrders.getValue();
     }
@@ -380,6 +405,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of other listings
      */
+    @PublicAPI
     public Long getNumberOfOtherListings() {
         return numberOfOtherListings.getValue();
     }
@@ -387,6 +413,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of other orders
      */
+    @PublicAPI
     public Long getNumberOfOtherOrders() {
         return numberOfOtherOrders.getValue();
     }
@@ -394,6 +421,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of users with partner status
      */
+    @PublicAPI
     public Long getNumberOfPartnerUsers() {
         return numberOfPartnerUsers.getValue();
     }
@@ -401,6 +429,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of users with premium status
      */
+    @PublicAPI
     public Long getNumberOfPremiumUsers() {
         return numberOfPremiumUsers.getValue();
     }
@@ -408,6 +437,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of repo orders
      */
+    @PublicAPI
     public Long getNumberOfRepoOrders() {
         return numberOfRepoOrders.getValue();
     }
@@ -415,6 +445,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of stock orders
      */
+    @PublicAPI
     public Long getNumberOfStockOrders() {
         return numberOfStockOrders.getValue();
     }
@@ -422,6 +453,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of system bond orders
      */
+    @PublicAPI
     public Long getNumberOfSystemBondOrders() {
         return numberOfSystemBondOrders.getValue();
     }
@@ -429,6 +461,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of system repo orders
      */
+    @PublicAPI
     public Long getNumberOfSystemRepoOrders() {
         return numberOfSystemRepoOrders.getValue();
     }
@@ -436,6 +469,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the number of users
      */
+    @PublicAPI
     public Long getNumberOfUsers() {
         return numberOfUsers.getValue();
     }
@@ -443,6 +477,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the cumulative order volume
      */
+    @PublicAPI
     public Double getOrderVolume() {
         return orderVolume.getValue();
     }
@@ -450,6 +485,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the cumulative order volume in the last 24 hours
      */
+    @PublicAPI
     public Double getOrderVolume24h() {
         return orderVolume24h.getValue();
     }
@@ -457,6 +493,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the cumulative private cash
      */
+    @PublicAPI
     public Double getPrivateCash() {
         return privateCash.getValue();
     }
@@ -464,6 +501,7 @@ public class HourlyMarketStatistics {
     /**
      * @return the cumulative system bond face volume
      */
+    @PublicAPI
     public Double getSystemBondFaceVolume() {
         return systemBondFaceVolume.getValue();
     }

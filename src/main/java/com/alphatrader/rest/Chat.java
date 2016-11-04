@@ -49,6 +49,7 @@ public class Chat {
      *
      * @return a list of all chats for this user
      */
+    @PublicAPI
     @NotNull
     public static List<Chat> getAllChatsForThisUser() {
         return getMultipleChatsFromApi("");
@@ -59,6 +60,7 @@ public class Chat {
      *
      * @return a list of all chats with unread messages for this user
      */
+    @PublicAPI
     @NotNull
     public static List<Chat> getAllUnreadChatsForThisUser() {
         return getMultipleChatsFromApi("/unread");
@@ -70,6 +72,7 @@ public class Chat {
      * @param suffix the api endpoint suffix
      * @return the list of objects
      */
+    @PublicAPI
     @NotNull
     private static List<Chat> getMultipleChatsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(Chat.class, "/api/chats" + suffix);
@@ -81,6 +84,7 @@ public class Chat {
      * @param chatId the chat id to look for
      * @return the chat with the given id
      */
+    @PublicAPI
     @Nullable
     public static Chat getChatById(String chatId) {
         return Http.getSingleObjectFromApi(Chat.class, "/api/chats/" + chatId);
@@ -89,6 +93,7 @@ public class Chat {
     /**
      * @return the creation date
      */
+    @PublicAPI
     public ZonedDateTime getDateCreated() {
         return dateCreated.getValue();
     }
@@ -96,6 +101,7 @@ public class Chat {
     /**
      * @return the last message
      */
+    @PublicAPI
     public ChatMessage getLastMessage() {
         return lastMessage.getValue();
     }
@@ -103,6 +109,7 @@ public class Chat {
     /**
      * @return a list of all participants
      */
+    @PublicAPI
     public ObservableList<User> getParticipants() {
         return participants;
     }
@@ -110,6 +117,7 @@ public class Chat {
     /**
      * @return true if the chat is readonly
      */
+    @PublicAPI
     public Boolean isReadonly() {
         return readonly.getValue();
     }
@@ -117,6 +125,7 @@ public class Chat {
     /**
      * @return the name of the chat
      */
+    @PublicAPI
     public String getChatName() {
         return chatName.getValue();
     }
@@ -124,6 +133,7 @@ public class Chat {
     /**
      * @return the owner of the chat
      */
+    @PublicAPI
     public User getOwner() {
         return owner.getValue();
     }
@@ -131,6 +141,7 @@ public class Chat {
     /**
      * @return the unique identifier
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

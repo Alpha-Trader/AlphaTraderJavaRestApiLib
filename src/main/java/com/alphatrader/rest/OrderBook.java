@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * @version 1.0.0
  */
 public class OrderBook {
-   /**
+    /**
      * The maximum buy size.
      */
     private final DoubleProperty maxBuySize = new SimpleDoubleProperty();
@@ -39,6 +39,7 @@ public class OrderBook {
      * @param securityIdentifier the security identifier
      * @return the order book
      */
+    @PublicAPI
     @Nullable
     public static OrderBook getOrderBook(String securityIdentifier) {
         return Http.getSingleObjectFromApi(OrderBook.class, "/api/orderbook/" + securityIdentifier);
@@ -47,6 +48,7 @@ public class OrderBook {
     /**
      * @return the maximum buy size
      */
+    @PublicAPI
     public Double getMaxBuySize() {
         return maxBuySize.getValue();
     }
@@ -54,6 +56,7 @@ public class OrderBook {
     /**
      * @return the maximum sell size
      */
+    @PublicAPI
     public Double getMaxSellSize() {
         return maxSellSize.getValue();
     }
@@ -61,6 +64,7 @@ public class OrderBook {
     /**
      * @return the list of buy orders
      */
+    @PublicAPI
     public ObservableList<Order> getBuyEntries() {
         return buyEntries;
     }
@@ -68,6 +72,7 @@ public class OrderBook {
     /**
      * @return the list of sell orders
      */
+    @PublicAPI
     public ObservableList<Order> getSellEntries() {
         return sellEntries;
     }

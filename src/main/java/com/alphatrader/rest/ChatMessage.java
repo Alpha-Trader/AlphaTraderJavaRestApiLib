@@ -51,6 +51,7 @@ public class ChatMessage {
      * @param chatId the id of the chat room
      * @return the list of all messages in that room
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(String chatId) {
         return getChatMessages(chatId, null, null);
@@ -62,6 +63,7 @@ public class ChatMessage {
      * @param chat the chat room
      * @return the list of all messages in that room
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(Chat chat) {
         return getChatMessages(chat.getId());
@@ -74,6 +76,7 @@ public class ChatMessage {
      * @param from   the lower date boundary
      * @return the list of messages in that room
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(String chatId, ZonedDateTime from) {
         return getChatMessages(chatId, from, null);
@@ -86,6 +89,7 @@ public class ChatMessage {
      * @param from the lower date boundary
      * @return the list of messages in that room
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(Chat chat, ZonedDateTime from) {
         return getChatMessages(chat.getId(), from);
@@ -99,6 +103,7 @@ public class ChatMessage {
      * @param to     the upper date boundary
      * @return the list of messages
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(String chatId, ZonedDateTime from, ZonedDateTime to) {
         String suffix = chatId;
@@ -126,11 +131,13 @@ public class ChatMessage {
      * @param to   the upper date boundary
      * @return the list of messages
      */
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getChatMessages(Chat chat, ZonedDateTime from, ZonedDateTime to) {
         return getChatMessages(chat.getId(), from, to);
     }
 
+    @PublicAPI
     @NotNull
     public static List<ChatMessage> getUnreadMessages() {
         return getFromApi("messages/unread");
@@ -142,6 +149,7 @@ public class ChatMessage {
      * @param suffix the api suffix to fetch from
      * @return the list of messages
      */
+    @PublicAPI
     @NotNull
     private static List<ChatMessage> getFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(ChatMessage.class, "/api/" + suffix);
@@ -153,6 +161,7 @@ public class ChatMessage {
      * @param messageId the id of the message to fetch
      * @return the message
      */
+    @PublicAPI
     @Nullable
     public static ChatMessage getById(String messageId) {
         return Http.getSingleObjectFromApi(ChatMessage.class, "/api/messages/" + messageId);
@@ -161,6 +170,7 @@ public class ChatMessage {
     /**
      * @return the date the message was sent.
      */
+    @PublicAPI
     public ZonedDateTime getDateSent() {
         return dateSent.getValue();
     }
@@ -168,6 +178,7 @@ public class ChatMessage {
     /**
      * @return the chat id.
      */
+    @PublicAPI
     public String getChatId() {
         return chatId.getValue();
     }
@@ -175,6 +186,7 @@ public class ChatMessage {
     /**
      * @return the sender
      */
+    @PublicAPI
     public User getSender() {
         return sender.getValue();
     }
@@ -182,6 +194,7 @@ public class ChatMessage {
     /**
      * @return true if the message was read.
      */
+    @PublicAPI
     public Boolean isRead() {
         return read.getValue();
     }
@@ -189,6 +202,7 @@ public class ChatMessage {
     /**
      * @return the unique id of the message.
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -196,6 +210,7 @@ public class ChatMessage {
     /**
      * @return the message content.
      */
+    @PublicAPI
     public String getContent() {
         return content.getValue();
     }

@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Notification {
-   /**
+    /**
      * The content of the notification.
      */
     private final ObjectProperty<Message> content = new SimpleObjectProperty<>();
@@ -49,6 +49,7 @@ public class Notification {
      * @param suffix the api endpoint suffix
      * @return all unread events
      */
+    @PublicAPI
     @NotNull
     public static List<Notification> getMultipleNotificationsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(Notification.class, "/api/notifications" + suffix);
@@ -57,6 +58,7 @@ public class Notification {
     /**
      * @return all unread notifications for the logged in user
      */
+    @PublicAPI
     @NotNull
     public static List<Notification> getUnreadNotifications() {
         return getMultipleNotificationsFromApi("/unread/");
@@ -65,33 +67,16 @@ public class Notification {
     /**
      * @return all notifications for the logged in user
      */
+    @PublicAPI
     @NotNull
     public static List<Notification> getNotifications() {
         return getMultipleNotificationsFromApi("");
     }
 
-    /*
-     * Marks all notifications as read.
-     */
-    /*public static void markAllAsRead() {
-        try {
-            Unirest.put(ApiLibConfig.getInstance().getApiUrl() + "/api/notifications/read/")
-                .header("accept", "*/
-    /*").header("Authorization", "Bearer " + ApiLibConfig.getInstance()
-                .getUser().getToken())
-                .header("X-Authorization", "e1d149fb-0b2a-4cf5-9ef7-17749bf9d144").asJson();
-        }
-        catch (UnirestException ue) {
-            log.error("Error fetching marking notifications as read: " + ue.getMessage());
-            StringWriter stringWriter = new StringWriter();
-            ue.printStackTrace(new PrintWriter(stringWriter));
-            log.debug(stringWriter.toString());
-        }
-    } */
-
     /**
      * @return the message
      */
+    @PublicAPI
     public Message getMessage() {
         return content.getValue();
     }
@@ -99,6 +84,7 @@ public class Notification {
     /**
      * @return the date
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -106,6 +92,7 @@ public class Notification {
     /**
      * @return the notification subject
      */
+    @PublicAPI
     public Message getSubject() {
         return subject.getValue();
     }
@@ -113,6 +100,7 @@ public class Notification {
     /**
      * @return the notification's receiver
      */
+    @PublicAPI
     public User getReceiver() {
         return receiver.getValue();
     }
@@ -120,6 +108,7 @@ public class Notification {
     /**
      * @return true, if the notification was read
      */
+    @PublicAPI
     public Boolean isReadByReceiver() {
         return readByReceiver.getValue();
     }
@@ -127,6 +116,7 @@ public class Notification {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

@@ -69,6 +69,7 @@ public class PriceSpread {
      *
      * @return all price spreads on the market
      */
+    @PublicAPI
     @NotNull
     public static List<PriceSpread> getAllPriceSpreads() {
         return Http.getMultipleObjectFromApi(PriceSpread.class, "/api/pricespreads/");
@@ -80,6 +81,7 @@ public class PriceSpread {
      * @param listing the listing
      * @return the price spread of the listing
      */
+    @PublicAPI
     @Nullable
     public static PriceSpread getPriceSpread(Listing listing) {
         return getPriceSpread(listing.getSecurityIdentifier());
@@ -91,6 +93,7 @@ public class PriceSpread {
      * @param securityIdentifier the security identifier or the listing
      * @return the price spread of the listing
      */
+    @PublicAPI
     @Nullable
     public static PriceSpread getPriceSpread(String securityIdentifier) {
         return Http.getSingleObjectFromApi(PriceSpread.class, "/api/pricespreads/" + securityIdentifier);
@@ -99,6 +102,7 @@ public class PriceSpread {
     /**
      * @return the current ask size
      */
+    @PublicAPI
     public Long getAskSize() {
         return askSize.getValue();
     }
@@ -106,6 +110,7 @@ public class PriceSpread {
     /**
      * @return the current asking price
      */
+    @PublicAPI
     public Double getAskPrice() {
         return askPrice.getValue();
     }
@@ -113,6 +118,7 @@ public class PriceSpread {
     /**
      * @return the current bid size
      */
+    @PublicAPI
     public Long getBidSize() {
         return bidSize.getValue();
     }
@@ -120,6 +126,7 @@ public class PriceSpread {
     /**
      * @return the current bid price
      */
+    @PublicAPI
     public Double getBidPrice() {
         return bidPrice.getValue();
     }
@@ -127,6 +134,7 @@ public class PriceSpread {
     /**
      * @return the current absolute spread
      */
+    @PublicAPI
     public Double getSpreadAbs() {
         return spreadAbs.getValue();
     }
@@ -134,6 +142,7 @@ public class PriceSpread {
     /**
      * @return the current spread percentage
      */
+    @PublicAPI
     public Double getSpreadPercent() {
         return spreadPercent.getValue();
     }
@@ -141,6 +150,7 @@ public class PriceSpread {
     /**
      * @return the last price
      */
+    @PublicAPI
     public LastPrice getLastPrice() {
         return lastPrice.getValue();
     }
@@ -148,6 +158,7 @@ public class PriceSpread {
     /**
      * @return the maximum bid price
      */
+    @PublicAPI
     public Double getMaxBidPrice() {
         return maxBidPrice.getValue();
     }
@@ -155,6 +166,7 @@ public class PriceSpread {
     /**
      * @return the minimum asking price
      */
+    @PublicAPI
     public Double getMinAskPrice() {
         return minAskPrice.getValue();
     }
@@ -162,10 +174,10 @@ public class PriceSpread {
     /**
      * @return the date of the last trade
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
-
 
     @Override
     public String toString() {

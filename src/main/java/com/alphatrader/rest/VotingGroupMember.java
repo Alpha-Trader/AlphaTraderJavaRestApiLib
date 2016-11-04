@@ -25,6 +25,7 @@ public class VotingGroupMember {
     /**
      * @return the group member
      */
+    @PublicAPI
     public User getGroupMember() {
         return groupMember.getValue();
     }
@@ -32,6 +33,7 @@ public class VotingGroupMember {
     /**
      * @return the number of votes
      */
+    @PublicAPI
     public Long getNumberOfVoices() {
         return numberOfVoices.getValue();
     }

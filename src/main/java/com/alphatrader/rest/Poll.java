@@ -77,6 +77,7 @@ public class Poll {
      *
      * @return all polls initiated by the current user
      */
+    @PublicAPI
     @NotNull
     public static List<Poll> getInitiatedPolls() {
         return getMultiplePollsFromApi("initiatedpolls/");
@@ -87,6 +88,7 @@ public class Poll {
      *
      * @return all polls concerning the logged in user
      */
+    @PublicAPI
     @NotNull
     public static List<Poll> getPolls() {
         return getMultiplePollsFromApi("polls/");
@@ -98,6 +100,7 @@ public class Poll {
      * @param suffix the api endpoint suffix
      * @return the list of polls requested
      */
+    @PublicAPI
     @NotNull
     private static List<Poll> getMultiplePollsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(Poll.class, "/api/" + suffix);
@@ -109,6 +112,7 @@ public class Poll {
      * @param pollId the poll id
      * @return the poll with the given id
      */
+    @PublicAPI
     @Nullable
     public static Poll getById(String pollId) {
         return Http.getSingleObjectFromApi(Poll.class, "/api/polls/" + pollId);
@@ -117,6 +121,7 @@ public class Poll {
     /**
      * @return the abstention rule
      */
+    @PublicAPI
     public AbstentionRule getAbstentionRule() {
         return abstentionRule.getValue();
     }
@@ -124,6 +129,7 @@ public class Poll {
     /**
      * @return the percentage of approval votes
      */
+    @PublicAPI
     public Double getApprovalVotesPercentage() {
         return approvalVotesPercentage.getValue();
     }
@@ -131,6 +137,7 @@ public class Poll {
     /**
      * @return the total number of voices
      */
+    @PublicAPI
     public Long getTotalNumberOfVoices() {
         return totalNumberOfVoices.getValue();
     }
@@ -138,6 +145,7 @@ public class Poll {
     /**
      * @return the votes
      */
+    @PublicAPI
     public ObservableList<Vote> getVotes() {
         return votes;
     }
@@ -145,6 +153,7 @@ public class Poll {
     /**
      * @return the motion text
      */
+    @PublicAPI
     public String getMotion() {
         return motion.getValue();
     }
@@ -152,6 +161,7 @@ public class Poll {
     /**
      * @return the start date
      */
+    @PublicAPI
     public ZonedDateTime getStartDate() {
         return startDate.getValue();
     }
@@ -159,6 +169,7 @@ public class Poll {
     /**
      * @return the end date
      */
+    @PublicAPI
     public ZonedDateTime getEndDate() {
         return endDate.getValue();
     }
@@ -166,6 +177,7 @@ public class Poll {
     /**
      * @return the group of users affected by the poll
      */
+    @PublicAPI
     public ObservableList<VotingGroupMember> getGroup() {
         return group;
     }
@@ -173,6 +185,7 @@ public class Poll {
     /**
      * @return the percentage of votes cast
      */
+    @PublicAPI
     public Double getCastVotesPercentage() {
         return castVotesPercentage.getValue();
     }
@@ -180,6 +193,7 @@ public class Poll {
     /**
      * @return the total number of votes cast
      */
+    @PublicAPI
     public Long getTotalNumberOfCastVotes() {
         return totalNumberOfCastVotes.getValue();
     }
@@ -187,6 +201,7 @@ public class Poll {
     /**
      * @return the initiator of the poll
      */
+    @PublicAPI
     public User getPollInitiator() {
         return pollInitiator.getValue();
     }
@@ -194,6 +209,7 @@ public class Poll {
     /**
      * @return the expiry date of the result
      */
+    @PublicAPI
     public ZonedDateTime getResultExpireDate() {
         return resultExpireDate.getValue();
     }
@@ -201,6 +217,7 @@ public class Poll {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -208,6 +225,7 @@ public class Poll {
     /**
      * @return the current result
      */
+    @PublicAPI
     public Type getType() {
         return type.getValue();
     }

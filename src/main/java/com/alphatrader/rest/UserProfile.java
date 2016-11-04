@@ -57,6 +57,7 @@ public class UserProfile {
      * @param user the user to fetch the profile from
      * @return the user's profile
      */
+    @PublicAPI
     @Nullable
     public static UserProfile getUserProfile(User user) {
         return getUserProfile(user.getUsername());
@@ -68,6 +69,7 @@ public class UserProfile {
      * @param username the username to fetch the profile from
      * @return the user's profile
      */
+    @PublicAPI
     @Nullable
     public static UserProfile getUserProfile(String username) {
         return Http.getSingleObjectFromApi(UserProfile.class, "/api/userprofiles/" + username);
@@ -76,6 +78,7 @@ public class UserProfile {
     /**
      * @return the user's cash transfer logs
      */
+    @PublicAPI
     public ObservableList<CashTransferLog> getCashTransferLogs() {
         return cashTransferLogs;
     }
@@ -83,6 +86,7 @@ public class UserProfile {
     /**
      * @return the user's employments
      */
+    @PublicAPI
     public ObservableList<EmploymentAgreement> getEmployments() {
         return employments;
     }
@@ -90,6 +94,7 @@ public class UserProfile {
     /**
      * @return the polls concerning the user
      */
+    @PublicAPI
     public ObservableList<Poll> getPolls() {
         return polls;
     }
@@ -97,6 +102,7 @@ public class UserProfile {
     /**
      * @return the polls initiated by the user
      */
+    @PublicAPI
     public ObservableList<Poll> getInitiatedPolls() {
         return initiatedPolls;
     }
@@ -111,6 +117,7 @@ public class UserProfile {
     /**
      * @return the user this profile belongs to
      */
+    @PublicAPI
     public User getUser() {
         return user.getValue();
     }
@@ -118,6 +125,7 @@ public class UserProfile {
     /**
      * @return the user's bank account
      */
+    @PublicAPI
     public BankAccount getBankAccount() {
         return bankAccount.getValue();
     }
@@ -125,6 +133,7 @@ public class UserProfile {
     /**
      * @return the user's locale
      */
+    @PublicAPI
     public String getLocale() {
         return locale.getValue();
     }

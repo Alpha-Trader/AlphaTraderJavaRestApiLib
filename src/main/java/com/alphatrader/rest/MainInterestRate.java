@@ -34,6 +34,7 @@ public class MainInterestRate {
      *
      * @return the latest main interest rate
      */
+    @PublicAPI
     @Nullable
     public static MainInterestRate getCurrent() {
         return Http.getSingleObjectFromApi(MainInterestRate.class, "/api/maininterestrate/latest/");
@@ -44,6 +45,7 @@ public class MainInterestRate {
      *
      * @return all main interest rates
      */
+    @PublicAPI
     @NotNull
     public static List<MainInterestRate> getAll() {
         return Http.getMultipleObjectFromApi(MainInterestRate.class, "/api/maininterestrate/");
@@ -52,6 +54,7 @@ public class MainInterestRate {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -59,6 +62,7 @@ public class MainInterestRate {
     /**
      * @return the interest rate
      */
+    @PublicAPI
     public Double getValue() {
         return value.getValue();
     }
@@ -66,6 +70,7 @@ public class MainInterestRate {
     /**
      * @return the start date
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }

@@ -74,6 +74,7 @@ public class Bond {
      *
      * @return all bonds on the market
      */
+    @PublicAPI
     @NotNull
     public static List<Bond> getAllBonds() {
         return getMultipleBondsFromApi("bonds/");
@@ -84,6 +85,7 @@ public class Bond {
      *
      * @return all system bonds on the market
      */
+    @PublicAPI
     @NotNull
     public static List<Bond> getAllSystemBonds() {
         return getMultipleBondsFromApi("systembonds/");
@@ -95,6 +97,7 @@ public class Bond {
      * @param secId the security identifier of the bond you want
      * @return the bond with the given security identifier
      */
+    @PublicAPI
     @Nullable
     public static Bond getBondBySecurityIdentifier(String secId) {
         return getSingleBondFromApi("bonds/securityidentifier/" + secId);
@@ -106,6 +109,7 @@ public class Bond {
      * @param secId the security identifier of the system bond you want
      * @return the system bond with the given security identifier
      */
+    @PublicAPI
     @Nullable
     public static Bond getSystemBondBySecurityIdentifier(String secId) {
         return getSingleBondFromApi("systembonds/securityidentifier/" + secId);
@@ -117,6 +121,7 @@ public class Bond {
      * @param bondId the id of the bond you want
      * @return the bond with the given id
      */
+    @PublicAPI
     @Nullable
     public static Bond getBondById(String bondId) {
         return getSingleBondFromApi("bonds/" + bondId);
@@ -128,6 +133,7 @@ public class Bond {
      * @param bondId the id of the system bond you want
      * @return the system bond with the given id
      */
+    @PublicAPI
     @Nullable
     public static Bond getSystemBondById(String bondId) {
         return getSingleBondFromApi("systembonds/" + bondId);
@@ -150,6 +156,7 @@ public class Bond {
      * @param suffix the api endpoint suffix
      * @return all requested bonds
      */
+    @PublicAPI
     @NotNull
     public static List<Bond> getMultipleBondsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(Bond.class, "/api/" + suffix);
@@ -158,6 +165,7 @@ public class Bond {
     /**
      * @return the name
      */
+    @PublicAPI
     public String getName() {
         return name.getValue();
     }
@@ -165,6 +173,7 @@ public class Bond {
     /**
      * @return the volume
      */
+    @PublicAPI
     public Double getVolume() {
         return volume.getValue();
     }
@@ -172,6 +181,7 @@ public class Bond {
     /**
      * @return the interest rate
      */
+    @PublicAPI
     public Double getInterestRate() {
         return interestRate.getValue();
     }
@@ -179,6 +189,7 @@ public class Bond {
     /**
      * @return the face value
      */
+    @PublicAPI
     public Double getFaceValue() {
         return faceValue.getValue();
     }
@@ -186,6 +197,7 @@ public class Bond {
     /**
      * @return the maturity date
      */
+    @PublicAPI
     public ZonedDateTime getMaturityDate() {
         return maturityDate.getValue();
     }
@@ -194,6 +206,7 @@ public class Bond {
     /**
      * @return the issue date
      */
+    @PublicAPI
     public ZonedDateTime getIssueDate() {
         return issueDate.getValue();
     }
@@ -201,6 +214,7 @@ public class Bond {
     /**
      * @return the price spread
      */
+    @PublicAPI
     public PriceSpread getPriceSpread() {
         return priceSpread.getValue();
     }
@@ -208,6 +222,7 @@ public class Bond {
     /**
      * @return the issuer
      */
+    @PublicAPI
     public Company getIssuer() {
         return issuer.getValue();
     }
@@ -215,6 +230,7 @@ public class Bond {
     /**
      * @return the listing
      */
+    @PublicAPI
     public Listing getListing() {
         return listing.getValue();
     }
@@ -222,6 +238,7 @@ public class Bond {
     /**
      * @return the repurchase listing
      */
+    @PublicAPI
     public Listing getRepurchaseListing() {
         return repurchaseListing.getValue();
     }
@@ -229,6 +246,7 @@ public class Bond {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

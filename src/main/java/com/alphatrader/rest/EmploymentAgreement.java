@@ -40,6 +40,7 @@ public class EmploymentAgreement {
      * @param company the company
      * @return the current employment agreement
      */
+    @PublicAPI
     @Nullable
     public static EmploymentAgreement getEmploymentAgreement(Company company) {
         return getEmploymentAgreement(company.getId());
@@ -50,6 +51,7 @@ public class EmploymentAgreement {
      *
      * @return the current user's employment agreements
      */
+    @PublicAPI
     @NotNull
     public static List<EmploymentAgreement> getEmploymentAgreements() {
         return Http.getMultipleObjectFromApi(EmploymentAgreement.class, "/api/employmentagreements/");
@@ -61,6 +63,7 @@ public class EmploymentAgreement {
      * @param companyId the company id
      * @return the current employment agreement
      */
+    @PublicAPI
     @Nullable
     public static EmploymentAgreement getEmploymentAgreement(String companyId) {
         return Http.getSingleObjectFromApi(EmploymentAgreement.class,
@@ -70,6 +73,7 @@ public class EmploymentAgreement {
     /**
      * @return the employing company
      */
+    @PublicAPI
     public Company getCompany() {
         return company.getValue();
     }
@@ -77,6 +81,7 @@ public class EmploymentAgreement {
     /**
      * @return the daily wage
      */
+    @PublicAPI
     public Double getDailyWage() {
         return dailyWage.getValue();
     }
@@ -84,6 +89,7 @@ public class EmploymentAgreement {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -91,6 +97,7 @@ public class EmploymentAgreement {
     /**
      * @return the start date
      */
+    @PublicAPI
     public ZonedDateTime getStartDate() {
         return startDate.getValue();
     }

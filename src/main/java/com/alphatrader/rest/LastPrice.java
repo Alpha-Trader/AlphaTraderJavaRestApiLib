@@ -27,6 +27,7 @@ public class LastPrice {
     /**
      * @return the time this trade took place
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return this.date.getValue();
     }
@@ -34,6 +35,7 @@ public class LastPrice {
     /**
      * @return the value of this trade
      */
+    @PublicAPI
     public Double getValue() {
         return Double.valueOf(this.value.getValue().replaceAll("%", "").trim());
     }

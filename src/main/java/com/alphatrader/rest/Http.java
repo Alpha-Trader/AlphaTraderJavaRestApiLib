@@ -78,7 +78,7 @@ class Http {
      * @return the singleton instance
      */
     @NotNull
-    public static Http getInstance() {
+    static Http getInstance() {
         return instance;
     }
 
@@ -87,7 +87,7 @@ class Http {
      *
      * @param typeParameterClass the class of the type of object to return
      * @param suffix             the api endpoint suffix
-     * @param <T>             the type of object to return
+     * @param <T>                the type of object to return
      * @return the requested object
      */
     @Nullable
@@ -113,7 +113,7 @@ class Http {
      *
      * @param typeParameterClass the class of the type of objects to return
      * @param suffix             the api endpoint suffix
-     * @param <T>             the type of object to return
+     * @param <T>                the type of object to return
      * @return the requested object
      */
     @NotNull
@@ -142,7 +142,7 @@ class Http {
      * @return the HttpResponse of the server
      * @throws UnirestException if anything goes wrong with the request
      */
-    public HttpResponse<String> get(String url) throws UnirestException {
+    HttpResponse<String> get(String url) throws UnirestException {
         return decorateRequest(Unirest.get(config.getApiUrl() + url)).asString();
     }
 
@@ -153,7 +153,7 @@ class Http {
      * @return the HttpResponse of the server
      * @throws UnirestException if anything goes wrong with the request
      */
-    public HttpResponse<String> post(String url) throws UnirestException {
+    HttpResponse<String> post(String url) throws UnirestException {
         return decorateRequest(Unirest.post(config.getApiUrl() + url)).asString();
     }
 
@@ -171,9 +171,9 @@ class Http {
     /**
      * Logs any unirest exception thrown during an API request
      *
-     * @param ue the exception thrown
+     * @param ue                 the exception thrown
      * @param typeParameterClass the class of object the request tried to fetch
-     * @param <T> the type of object the request tried to fetch
+     * @param <T>                the type of object the request tried to fetch
      */
     private static <T> void handleException(Exception ue, Class<T> typeParameterClass) {
         log.error("Error fetching " + typeParameterClass.getSimpleName() + "s: " + ue.getMessage());

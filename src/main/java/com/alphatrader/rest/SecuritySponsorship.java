@@ -28,6 +28,7 @@ public class SecuritySponsorship {
     /**
      * @return the designated sponsor
      */
+    @PublicAPI
     public Company getDesignatedSponsor() {
         return designatedSponsor.getValue();
     }
@@ -35,6 +36,7 @@ public class SecuritySponsorship {
     /**
      * @return the listing
      */
+    @PublicAPI
     public Listing getListing() {
         return listing.getValue();
     }
@@ -42,6 +44,7 @@ public class SecuritySponsorship {
     /**
      * @return the sponsor rating
      */
+    @PublicAPI
     public SponsorRating getSponsorRating() {
         return sponsorRating.getValue();
     }

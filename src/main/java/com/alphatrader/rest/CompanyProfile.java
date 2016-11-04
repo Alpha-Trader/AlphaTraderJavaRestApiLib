@@ -117,6 +117,7 @@ public class CompanyProfile {
      * @param company the company
      * @return the CompanyProfile requested or null of not found
      */
+    @PublicAPI
     @Nullable
     public static CompanyProfile getByCompany(Company company) {
         return getByCompany(company.getId());
@@ -128,6 +129,7 @@ public class CompanyProfile {
      * @param companyId the company id
      * @return the CompanyProfile requested or null of not found
      */
+    @PublicAPI
     @Nullable
     public static CompanyProfile getByCompany(String companyId) {
         return Http.getSingleObjectFromApi(CompanyProfile.class, "/api/companyprofiles/" + companyId);
@@ -136,6 +138,7 @@ public class CompanyProfile {
     /**
      * @return the current CEO employment agreement
      */
+    @PublicAPI
     public EmploymentAgreement getCeoEmploymentAgreement() {
         return ceoEmploymentAgreement.getValue();
     }
@@ -143,6 +146,7 @@ public class CompanyProfile {
     /**
      * @return the company capabilities
      */
+    @PublicAPI
     public CompanyCapabilities getCompanyCapabilities() {
         return companyCapabilities.getValue();
     }
@@ -150,6 +154,7 @@ public class CompanyProfile {
     /**
      * @return the bonds issued by this company
      */
+    @PublicAPI
     public ObservableList<Bond> getIssuedBonds() {
         return issuedBonds;
     }
@@ -157,6 +162,7 @@ public class CompanyProfile {
     /**
      * @return the last trades
      */
+    @PublicAPI
     public ObservableList<SecurityOrderLog> getLastTrades() {
         return lastTrades;
     }
@@ -164,6 +170,7 @@ public class CompanyProfile {
     /**
      * @return the sponsored listings
      */
+    @PublicAPI
     public ObservableList<SecuritySponsorship> getSponsoredListings() {
         return sponsoredListings;
     }
@@ -171,6 +178,7 @@ public class CompanyProfile {
     /**
      * @return the current price spread
      */
+    @PublicAPI
     public PriceSpread getCurrentSpread() {
         return currentSpread.getValue();
     }
@@ -178,6 +186,7 @@ public class CompanyProfile {
     /**
      * @return the designated sponsors of this company
      */
+    @PublicAPI
     public ObservableList<SecuritySponsorship> getDesignatedSponsors() {
         return designatedSponsors;
     }
@@ -185,6 +194,7 @@ public class CompanyProfile {
     /**
      * @return the last order of this company
      */
+    @PublicAPI
     public SecurityOrderLog getLastOrderLogEntry() {
         return lastOrderLogEntry.getValue();
     }
@@ -192,6 +202,7 @@ public class CompanyProfile {
     /**
      * @return the last price of this company
      */
+    @PublicAPI
     public LastPrice getLastPrice() {
         return lastPrice.getValue();
     }
@@ -199,6 +210,7 @@ public class CompanyProfile {
     /**
      * @return the number of outstanding shares
      */
+    @PublicAPI
     public Long getOutstandingShares() {
         return outstandingShares.getValue();
     }
@@ -206,6 +218,7 @@ public class CompanyProfile {
     /**
      * @return the prices of this company for the last 14 days
      */
+    @PublicAPI
     public List<LastPrice> getPrices14d() {
         return Arrays.asList(prices14d);
     }
@@ -213,6 +226,7 @@ public class CompanyProfile {
     /**
      * @return the market cap
      */
+    @PublicAPI
     public Double getMarketCap() {
         return marketCap.getValue();
     }
@@ -220,6 +234,7 @@ public class CompanyProfile {
     /**
      * @return the securities account id
      */
+    @PublicAPI
     public String getSecuritiesAccountId() {
         return securitiesAccountId.getValue();
     }
@@ -227,6 +242,7 @@ public class CompanyProfile {
     /**
      * @return the bank account
      */
+    @PublicAPI
     public BankAccount getBankAccount() {
         return bankAccount.getValue();
     }
@@ -234,6 +250,7 @@ public class CompanyProfile {
     /**
      * @return the company logo URL
      */
+    @PublicAPI
     public URL getLogoUrl() {
         return logoUrl.getValue();
     }
@@ -241,6 +258,7 @@ public class CompanyProfile {
     /**
      * @return the current CEO
      */
+    @PublicAPI
     public User getCeo() {
         return ceo.getValue();
     }
@@ -248,6 +266,7 @@ public class CompanyProfile {
     /**
      * @return the company listing
      */
+    @PublicAPI
     public Listing getListing() {
         return listing.getValue();
     }
@@ -255,6 +274,7 @@ public class CompanyProfile {
     /**
      * @return the company name
      */
+    @PublicAPI
     public String getName() {
         return name.getValue();
     }
@@ -262,6 +282,7 @@ public class CompanyProfile {
     /**
      * @return the company id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

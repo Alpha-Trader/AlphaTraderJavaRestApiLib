@@ -61,6 +61,7 @@ public class SecurityOrderLog {
     /**
      * @return a list of all security order logs
      */
+    @PublicAPI
     @NotNull
     public static List<SecurityOrderLog> getAllLogs() {
         return searchLogs(null, null, (Pair<SearchType, String>[]) null);
@@ -74,6 +75,7 @@ public class SecurityOrderLog {
      * @param params    the list of search parameters
      * @return the search result list
      */
+    @PublicAPI
     @NotNull
     @SafeVarargs
     public static List<SecurityOrderLog> searchLogs(ZonedDateTime startDate, ZonedDateTime endDate,
@@ -113,6 +115,7 @@ public class SecurityOrderLog {
      * @param suffix the url suffix
      * @return the list of security orders requested
      */
+    @PublicAPI
     @NotNull
     private static List<SecurityOrderLog> getMultipleLogsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(SecurityOrderLog.class, "/api/securityorderlogs" + suffix);
@@ -121,6 +124,7 @@ public class SecurityOrderLog {
     /**
      * @return the buyer's securities account id
      */
+    @PublicAPI
     public String getBuyerSecuritiesAccount() {
         return buyerSecuritiesAccount.getValue();
     }
@@ -128,6 +132,7 @@ public class SecurityOrderLog {
     /**
      * @return the seller's securities account id
      */
+    @PublicAPI
     public String getSellerSecuritiesAccount() {
         return sellerSecuritiesAccount.getValue();
     }
@@ -135,6 +140,7 @@ public class SecurityOrderLog {
     /**
      * @return the number of shares
      */
+    @PublicAPI
     public Double getNumberOfShares() {
         return numberOfShares.getValue();
     }
@@ -142,6 +148,7 @@ public class SecurityOrderLog {
     /**
      * @return the overall volume of the order
      */
+    @PublicAPI
     public Double getVolume() {
         return volume.getValue();
     }
@@ -149,6 +156,7 @@ public class SecurityOrderLog {
     /**
      * @return the security identifier of the traded asset
      */
+    @PublicAPI
     public String getSecurityIdentifier() {
         return securityIdentifier.getValue();
     }
@@ -156,6 +164,7 @@ public class SecurityOrderLog {
     /**
      * @return the price the asset was traded for
      */
+    @PublicAPI
     public Double getPrice() {
         return price.getValue();
     }
@@ -163,6 +172,7 @@ public class SecurityOrderLog {
     /**
      * @return the date the order was placed
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -170,6 +180,7 @@ public class SecurityOrderLog {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

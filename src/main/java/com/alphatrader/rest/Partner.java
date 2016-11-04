@@ -21,6 +21,7 @@ public final class Partner {
      *
      * @return all partners
      */
+    @PublicAPI
     @NotNull
     public static List<User> getAllPartners() {
         return Http.getMultipleObjectFromApi(User.class, "/api/partners/");

@@ -47,6 +47,7 @@ public class Listing {
      *
      * @return all listings on the market
      */
+    @PublicAPI
     @NotNull
     public static List<Listing> getAllListings() {
         return getMultipleListingsFromApi("listings/");
@@ -58,6 +59,7 @@ public class Listing {
      * @param securityIdentifier the identifier to look for
      * @return the listing of null if not found
      */
+    @PublicAPI
     @Nullable
     public static Listing getById(String securityIdentifier) {
         return Http.getSingleObjectFromApi(Listing.class, "/api/listings/" + securityIdentifier);
@@ -69,12 +71,20 @@ public class Listing {
      * @param securityIdentifier the security identifier of the listing
      * @return the number of outstanding shares
      */
+    @PublicAPI
     @Nullable
     public static Long getOutstandingShares(String securityIdentifier) {
         return Http.getSingleObjectFromApi(Long.class, "/api/listings/outstandingshares/"
             + securityIdentifier);
     }
 
+    /**
+     * Returns the number of outstanding shares for this listing.
+     *
+     * @param listing the listing
+     * @return the number of outstanding shares
+     */
+    @PublicAPI
     @Nullable
     public static Long getOutstandingShares(Listing listing) {
         return getOutstandingShares(listing.getSecurityIdentifier());
@@ -86,6 +96,7 @@ public class Listing {
      * @param securityIdentifier part of the security identifier to look for
      * @return all listings on the market
      */
+    @PublicAPI
     @NotNull
     public static List<Listing> searchBySecurityIdentifier(String securityIdentifier) {
         return getMultipleListingsFromApi("search/listings/" + securityIdentifier);
@@ -97,6 +108,7 @@ public class Listing {
      * @param securityIdentifier the identifier to look for
      * @return the list of shareholder companies for this listing
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getShareholders(String securityIdentifier) {
         return Http.getMultipleObjectFromApi(Company.class, "/api/shareholders/" + securityIdentifier);
@@ -119,6 +131,7 @@ public class Listing {
      * @param listing the listing
      * @return the list of shareholder companies for this listing
      */
+    @PublicAPI
     @NotNull
     public static List<Company> getShareholders(Listing listing) {
         return getShareholders(listing.getSecurityIdentifier());
@@ -127,6 +140,7 @@ public class Listing {
     /**
      * @return the start date
      */
+    @PublicAPI
     public ZonedDateTime getStartDate() {
         return startDate.getValue();
     }
@@ -134,6 +148,7 @@ public class Listing {
     /**
      * @return the end date
      */
+    @PublicAPI
     public ZonedDateTime getEndDate() {
         return endDate.getValue();
     }
@@ -141,6 +156,7 @@ public class Listing {
     /**
      * @return the security identifier
      */
+    @PublicAPI
     public String getSecurityIdentifier() {
         return securityIdentifier.getValue();
     }
@@ -148,6 +164,7 @@ public class Listing {
     /**
      * @return the company, bond or repo name
      */
+    @PublicAPI
     public String getName() {
         return name.getValue();
     }
@@ -155,6 +172,7 @@ public class Listing {
     /**
      * @return the listing type
      */
+    @PublicAPI
     public Type getType() {
         return type.getValue();
     }

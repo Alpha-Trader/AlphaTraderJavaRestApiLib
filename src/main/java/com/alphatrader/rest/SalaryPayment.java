@@ -44,6 +44,7 @@ public class SalaryPayment {
      * @param paymentId the identifier to look for
      * @return the salary payment or null if not found
      */
+    @PublicAPI
     @Nullable
     public static SalaryPayment getById(String paymentId) {
         return Http.getSingleObjectFromApi(SalaryPayment.class, "/api/salarypayments/" + paymentId);
@@ -52,6 +53,7 @@ public class SalaryPayment {
     /**
      * @return the company id
      */
+    @PublicAPI
     public String getCompanyId() {
         return companyId.getValue();
     }
@@ -59,6 +61,7 @@ public class SalaryPayment {
     /**
      * @return the date at which the next payment can be made
      */
+    @PublicAPI
     public ZonedDateTime getNextPossiblePaymentDate() {
         return nextPossiblePaymentDate.getValue();
     }
@@ -66,6 +69,7 @@ public class SalaryPayment {
     /**
      * @return the salary amount
      */
+    @PublicAPI
     public Double getSalaryAmount() {
         return salaryAmount.getValue();
     }
@@ -73,6 +77,7 @@ public class SalaryPayment {
     /**
      * @return the date this salary was paid
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -80,6 +85,7 @@ public class SalaryPayment {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

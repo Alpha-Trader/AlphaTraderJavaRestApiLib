@@ -50,6 +50,7 @@ public class CompanyCapabilities {
     /**
      * @return true if the company may become a bank
      */
+    @PublicAPI
     public Boolean isBankReady() {
         return bankReady.getValue();
     }
@@ -57,6 +58,7 @@ public class CompanyCapabilities {
     /**
      * @return true if the company is a bank
      */
+    @PublicAPI
     public Boolean isBank() {
         return bank.getValue();
     }
@@ -64,6 +66,7 @@ public class CompanyCapabilities {
     /**
      * @return the amount of taken central bank loads
      */
+    @PublicAPI
     public Double getTakenCentralBankLoans() {
         return takenCentralBankLoans.getValue();
     }
@@ -71,6 +74,7 @@ public class CompanyCapabilities {
     /**
      * @return true, if the company is a designated sponsor
      */
+    @PublicAPI
     public Boolean isDesignatedSponsor() {
         return designatedSponsor.getValue();
     }
@@ -78,6 +82,7 @@ public class CompanyCapabilities {
     /**
      * @return the amount of deposited reserves
      */
+    @PublicAPI
     public Double getReserves() {
         return reserves.getValue();
     }
@@ -85,6 +90,7 @@ public class CompanyCapabilities {
     /**
      * @return the maximum central bank loans this company can take
      */
+    @PublicAPI
     public Double getMaxCentralBankLoans() {
         return maxCentralBankLoans.getValue();
     }
@@ -92,6 +98,7 @@ public class CompanyCapabilities {
     /**
      * @return the company's net cash
      */
+    @PublicAPI
     public Double getNetCash() {
         return netCash.getValue();
     }

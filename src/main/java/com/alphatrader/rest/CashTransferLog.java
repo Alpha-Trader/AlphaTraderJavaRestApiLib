@@ -54,6 +54,7 @@ public class CashTransferLog {
      * @param receiverBankAccountId the id of the receiver's bank account
      * @return a list of all cash transfers matching the given criteria
      */
+    @PublicAPI
     @NotNull
     public static List<CashTransferLog> getCashTransferLogs(ZonedDateTime startDate,
                                                             ZonedDateTime endDate,
@@ -85,6 +86,7 @@ public class CashTransferLog {
     /**
      * @return the amount that was transferred
      */
+    @PublicAPI
     public Double getAmount() {
         return amount.getValue();
     }
@@ -92,6 +94,7 @@ public class CashTransferLog {
     /**
      * @return the receiver's bank account id
      */
+    @PublicAPI
     public String getReceiverBankAccount() {
         return receiverBankAccount.getValue();
     }
@@ -99,6 +102,7 @@ public class CashTransferLog {
     /**
      * @return the sender's bank account id
      */
+    @PublicAPI
     public String getSenderBankAccount() {
         return senderBankAccount.getValue();
     }
@@ -106,6 +110,7 @@ public class CashTransferLog {
     /**
      * @return the date the transfer took place
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -113,6 +118,7 @@ public class CashTransferLog {
     /**
      * @return the subject message of the transfer
      */
+    @PublicAPI
     public Message getMessage() {
         return message.getValue();
     }
@@ -120,6 +126,7 @@ public class CashTransferLog {
     /**
      * @return the transfer id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

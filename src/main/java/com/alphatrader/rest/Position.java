@@ -32,6 +32,7 @@ public class Position {
     /**
      * @return the security identifier
      */
+    @PublicAPI
     public String getSecurityIdentifier() {
         return securityIdentifier.getValue();
     }
@@ -39,6 +40,7 @@ public class Position {
     /**
      * @return the last trading price
      */
+    @PublicAPI
     public LastPrice getLastPrice() {
         return lastPrice.getValue();
     }
@@ -46,6 +48,7 @@ public class Position {
     /**
      * @return the number of shares
      */
+    @PublicAPI
     public Long getNumberOfShares() {
         return numberOfShares.getValue();
     }
@@ -53,6 +56,7 @@ public class Position {
     /**
      * @return the overall volume
      */
+    @PublicAPI
     public Double getVolume() {
         return volume.getValue();
     }

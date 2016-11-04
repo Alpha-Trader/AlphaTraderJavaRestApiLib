@@ -85,6 +85,7 @@ public class Order {
      * @param securitiesAccountId the securities account id
      * @return all otc orders
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOtcOrders(String securitiesAccountId) {
         return getMultipleOrdersFromApi("securityorders/counterparty/" + securitiesAccountId);
@@ -96,6 +97,7 @@ public class Order {
      * @param company the company
      * @return all otc orders
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOtcOrders(Company company) {
         return getOtcOrders(company.getSecuritiesAccountId());
@@ -107,6 +109,7 @@ public class Order {
      * @param securityIdentifier the security identifier
      * @return all orders concerning the given identifier
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOrdersForCompany(String securityIdentifier) {
         return getMultipleOrdersFromApi("orderlist/" + securityIdentifier);
@@ -118,6 +121,7 @@ public class Order {
      * @param company the company being traded
      * @return all orders concerning the given identifier
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOrdersForCompany(Company company) {
         return getOrdersForCompany(company.getListing().getSecurityIdentifier());
@@ -129,6 +133,7 @@ public class Order {
      * @param securitiesAccountId the securities account id
      * @return the list of orders
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOrders(String securitiesAccountId) {
         return getMultipleOrdersFromApi("securityorders/securitiesaccount/" + securitiesAccountId);
@@ -140,6 +145,7 @@ public class Order {
      * @param company the company looking to buy / sell
      * @return the list of orders
      */
+    @PublicAPI
     @NotNull
     public static List<Order> getOrders(Company company) {
         return getOrders(company.getSecuritiesAccountId());
@@ -162,6 +168,7 @@ public class Order {
      * @param id the id of the order
      * @return the requested order
      */
+    @PublicAPI
     @Nullable
     public static Order getById(String id) {
         return Http.getSingleObjectFromApi(Order.class, "/api/securityorders/" + id);
@@ -170,6 +177,7 @@ public class Order {
     /**
      * @return the name
      */
+    @PublicAPI
     public String getName() {
         return getListing().getName();
     }
@@ -177,6 +185,7 @@ public class Order {
     /**
      * return the date of creation
      */
+    @PublicAPI
     public ZonedDateTime getCreationDate() {
         return creationDate.getValue();
     }
@@ -184,6 +193,7 @@ public class Order {
     /**
      * @return the listing
      */
+    @PublicAPI
     public Listing getListing() {
         return listing.getValue();
     }
@@ -191,6 +201,7 @@ public class Order {
     /**
      * @return the type of security
      */
+    @PublicAPI
     public Type getType() {
         return type.getValue();
     }
@@ -198,6 +209,7 @@ public class Order {
     /**
      * @return the security identifier
      */
+    @PublicAPI
     public String getSecurityIdentifier() {
         return securityIdentifier.getValue();
     }
@@ -205,6 +217,7 @@ public class Order {
     /**
      * @return the number of shares
      */
+    @PublicAPI
     public Long getNumberOfShares() {
         return numberOfShares.getValue();
     }
@@ -212,6 +225,7 @@ public class Order {
     /**
      * @return the counter party name
      */
+    @PublicAPI
     public String getCounterPartyName() {
         return counterPartyName.getValue();
     }
@@ -219,6 +233,7 @@ public class Order {
     /**
      * @return the counter party
      */
+    @PublicAPI
     public String getCounterParty() {
         return counterParty.getValue();
     }
@@ -226,6 +241,7 @@ public class Order {
     /**
      * @return the action
      */
+    @PublicAPI
     public Action getAction() {
         return action.getValue();
     }
@@ -233,6 +249,7 @@ public class Order {
     /**
      * @return the committed cash
      */
+    @PublicAPI
     public Double getCommittedCash() {
         return committedCash.getValue();
     }
@@ -240,6 +257,7 @@ public class Order {
     /**
      * @return the price
      */
+    @PublicAPI
     public Double getPrice() {
         return price.getValue();
     }
@@ -247,6 +265,7 @@ public class Order {
     /**
      * @return the owner name
      */
+    @PublicAPI
     public String getOwnerName() {
         return ownerName.getValue();
     }
@@ -254,6 +273,7 @@ public class Order {
     /**
      * @return the owner
      */
+    @PublicAPI
     public String getOwner() {
         return owner.getValue();
     }
@@ -261,6 +281,7 @@ public class Order {
     /**
      * @return the unique id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }

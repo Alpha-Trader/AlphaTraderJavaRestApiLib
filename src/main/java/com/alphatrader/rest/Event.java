@@ -40,6 +40,7 @@ public class Event {
     /**
      * @return all non-persistent events in the game
      */
+    @PublicAPI
     @NotNull
     public static List<Event> getAllEvents() {
         return getMultipleEventsFromApi("events/");
@@ -49,6 +50,7 @@ public class Event {
      * @param fromDate the lower boundary date
      * @return all non-persistent events in the game from the provided date
      */
+    @PublicAPI
     @NotNull
     public static List<Event> getAllEvents(ZonedDateTime fromDate) {
         return getMultipleEventsFromApi("events/?afterDate=" + fromDate.toInstant().toEpochMilli());
@@ -57,6 +59,7 @@ public class Event {
     /**
      * @return all non-persistent events for this user
      */
+    @PublicAPI
     @NotNull
     public static List<Event> getAllUserEvents() {
         return getMultipleEventsFromApi("events/user/");
@@ -66,56 +69,11 @@ public class Event {
      * @param fromDate the lower boundary date
      * @return all non-persistent events for this user from the provided date
      */
+    @PublicAPI
     @NotNull
     public static List<Event> getAllUserEvents(ZonedDateTime fromDate) {
         return getMultipleEventsFromApi("events/user/?afterDate=" + fromDate.toInstant().toEpochMilli());
     }
-
-    /* TEMPORARILY DISABLED UNTIL UNDERSTOOD BETTER
-
-    / **
-     * @param type the type of event to list
-     * @return all non-persistent events for this user by type
-     * /
-    @NotNull
-    public static List<Event> getEventsByType(Type type) {
-        return getMultipleEventsFromApi("search/events/" + type.toString());
-    }
-
-    / **
-     * @param type     the type of event to list
-     * @param fromDate the lower boundary date
-     * @return all non-persistent events in the game from the provided date
-     * /
-    @NotNull
-    public static List<Event> getEventsByType(Type type, ZonedDateTime fromDate) {
-        return getMultipleEventsFromApi("search/events/" + type.toString() + "?afterDate=" + fromDate
-            .toInstant().toEpochMilli());
-    }
-
-    / **
-     * Search for events using the given fulltext.
-     *
-     * @param fulltext the search string
-     * @return the events matching the search string
-     * /
-    @NotNull
-    public static List<Event> searchEvents(String fulltext) {
-        return getMultipleEventsFromApi("search/events/" + fulltext);
-    }
-
-    / **
-     * @param fulltext the search string
-     * @param fromDate the lower boundary date
-     * @return all non-persistent events in the game from the provided date
-     * /
-    @NotNull
-    public static List<Event> searchEvents(String fulltext, ZonedDateTime fromDate) {
-        return getMultipleEventsFromApi("search/events/" + fulltext + "?afterDate=" + fromDate
-            .toInstant().toEpochMilli());
-    }
-
-    */
 
     /**
      * Gets events based on the provided suffix and date.
@@ -123,21 +81,16 @@ public class Event {
      * @param suffix the API suffix for the events
      * @return the list of requested events
      */
+    @PublicAPI
     @NotNull
     private static List<Event> getMultipleEventsFromApi(String suffix) {
         return Http.getMultipleObjectFromApi(Event.class, "/api/" + suffix);
     }
 
     /**
-     * @return the contained object
-     */
-    public JsonElement getContent() {
-        return content.getValue();
-    }
-
-    /**
      * @return the event type
      */
+    @PublicAPI
     public Type getType() {
         return type.getValue();
     }
@@ -145,6 +98,7 @@ public class Event {
     /**
      * @return the event trigger date
      */
+    @PublicAPI
     public ZonedDateTime getDate() {
         return date.getValue();
     }
@@ -152,6 +106,7 @@ public class Event {
     /**
      * @return the realms
      */
+    @PublicAPI
     public ObservableList<String> getRealms() {
         return realms;
     }

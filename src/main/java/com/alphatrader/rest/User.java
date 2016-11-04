@@ -86,6 +86,7 @@ public class User {
      *
      * @return the logged in user
      */
+    @PublicAPI
     @Nullable
     public static User getLoggedInUser() {
         return getSingleUser("user");
@@ -97,6 +98,7 @@ public class User {
      * @param userId the user id to look for
      * @return the requested user
      */
+    @PublicAPI
     @Nullable
     public static User getById(String userId) {
         return getSingleUser("users/" + userId);
@@ -108,6 +110,7 @@ public class User {
      * @param username the user to look for
      * @return the requested user
      */
+    @PublicAPI
     @Nullable
     public static User getByUsername(String username) {
         return getSingleUser("users/username/" + username);
@@ -130,6 +133,7 @@ public class User {
      * @param namePart the name part
      * @return a list of matching users
      */
+    @PublicAPI
     @NotNull
     public static List<User> searchUser(String namePart) {
         return getMultipleUsers("search/users/" + namePart);
@@ -140,6 +144,7 @@ public class User {
      *
      * @return a list of all users
      */
+    @PublicAPI
     @NotNull
     public static List<User> getAllUsers() {
         return getMultipleUsers("users");
@@ -151,6 +156,7 @@ public class User {
      * @param suffix the api suffix
      * @return the requested users
      */
+    @PublicAPI
     @NotNull
     private static List<User> getMultipleUsers(String suffix) {
         return Http.getMultipleObjectFromApi(User.class, "/api/" + suffix);
@@ -159,6 +165,7 @@ public class User {
     /**
      * Tries to log in you in and saves the token if successful.
      */
+    @PublicAPI
     public void login() {
         try {
             HttpResponse<JsonNode> response = Unirest
@@ -185,6 +192,7 @@ public class User {
     /**
      * @return the name
      */
+    @PublicAPI
     public String getUsername() {
         return username.getValue();
     }
@@ -192,6 +200,7 @@ public class User {
     /**
      * @return the password
      */
+    @PublicAPI
     public String getPassword() {
         return password.getValue();
     }
@@ -199,6 +208,7 @@ public class User {
     /**
      * @return the token
      */
+    @PublicAPI
     public String getToken() {
         return jwtToken.getValue();
     }
@@ -206,6 +216,7 @@ public class User {
     /**
      * @return the unique user id
      */
+    @PublicAPI
     public String getId() {
         return id.getValue();
     }
@@ -213,6 +224,7 @@ public class User {
     /**
      * @return the user's email address
      */
+    @PublicAPI
     public String getEmailAddress() {
         return emailAddress.getValue();
     }
@@ -220,6 +232,7 @@ public class User {
     /**
      * @return the gravatar hash
      */
+    @PublicAPI
     public String getGravatarHash() {
         return gravatarHash.getValue();
     }
@@ -227,6 +240,7 @@ public class User {
     /**
      * @return the user's capabilities
      */
+    @PublicAPI
     public UserCapabilities getUserCapabilities() {
         return userCapabilities.getValue();
     }

@@ -32,6 +32,7 @@ public class Portfolio {
      * @param company the company of which you want the portfolio from.
      * @return the portfolio of the given company
      */
+    @PublicAPI
     @Nullable
     public static Portfolio getCompanyPortfolio(Company company) {
         return getCompanyPortfolio(company.getSecuritiesAccountId());
@@ -44,6 +45,7 @@ public class Portfolio {
      *                            portfolio from.
      * @return the portfolio of the given company
      */
+    @PublicAPI
     @Nullable
     public static Portfolio getCompanyPortfolio(String securitiesAccountId) {
         return Http.getSingleObjectFromApi(Portfolio.class, "/api/portfolios/" + securitiesAccountId);
@@ -55,6 +57,7 @@ public class Portfolio {
      * @param company the company of which you want the portfolio from.
      * @return the fixed income portfolio of the given company
      */
+    @PublicAPI
     @Nullable
     public static Portfolio getFixedIncomePortfolio(Company company) {
         return getFixedIncomePortfolio(company.getSecuritiesAccountId());
@@ -67,6 +70,7 @@ public class Portfolio {
      *                            portfolio from.
      * @return the fixed income portfolio of the given company
      */
+    @PublicAPI
     @Nullable
     public static Portfolio getFixedIncomePortfolio(String securitiesAccountId) {
         return Http.getSingleObjectFromApi(Portfolio.class, "/api/portfolios/fixedincome/"
@@ -76,6 +80,7 @@ public class Portfolio {
     /**
      * @return a list of all positions in this portfolio
      */
+    @PublicAPI
     public ObservableList<Position> getPositions() {
         return positions;
     }
@@ -83,6 +88,7 @@ public class Portfolio {
     /**
      * @return the amount of cash
      */
+    @PublicAPI
     public Double getCash() {
         return cash.getValue();
     }
@@ -90,6 +96,7 @@ public class Portfolio {
     /**
      * @return the amount of committed cash
      */
+    @PublicAPI
     public Double getCommittedCash() {
         return committedCash.getValue();
     }

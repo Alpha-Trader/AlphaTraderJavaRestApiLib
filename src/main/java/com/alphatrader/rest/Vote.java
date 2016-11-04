@@ -30,6 +30,7 @@ public class Vote {
     /**
      * @return the result
      */
+    @PublicAPI
     public Answer getType() {
         return type.getValue();
     }
@@ -37,6 +38,7 @@ public class Vote {
     /**
      * @return the number of voices
      */
+    @PublicAPI
     public Long getVoices() {
         return voices.getValue();
     }
@@ -44,6 +46,7 @@ public class Vote {
     /**
      * @return the voter
      */
+    @PublicAPI
     public User getVoter() {
         return voter.getValue();
     }

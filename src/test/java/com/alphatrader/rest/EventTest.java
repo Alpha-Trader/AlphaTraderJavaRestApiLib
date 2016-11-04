@@ -110,11 +110,6 @@ public class EventTest {
     }
 
     @Test
-    public void getContent() throws Exception {
-        assertNotNull(toTest.getContent());
-    }
-
-    @Test
     public void getType() throws Exception {
         assertEquals(Event.Type.ORDER_DELETED, toTest.getType());
     }
