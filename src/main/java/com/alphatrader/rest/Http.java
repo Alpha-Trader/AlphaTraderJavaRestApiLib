@@ -12,6 +12,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +23,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -52,7 +55,7 @@ class Http {
     private static final LoadingCache<String, HttpResponse<String>> httpAnswerCache = CacheBuilder
         .newBuilder()
         .maximumSize(1000)
-        .expireAfterAccess(5, TimeUnit.MINUTES)
+        .expireAfterAccess(1, TimeUnit.DAYS)
         .build(new CacheLoader<String, HttpResponse<String>>() {
             @Override
             public HttpResponse<String> load(String suffix) throws Exception {
@@ -64,6 +67,8 @@ class Http {
      * The library configuration.
      */
     private final ApiLibConfig config = ApiLibConfig.getInstance();
+
+    private final ScheduledExecutorService cacheRefresher = Executors.newSingleThreadScheduledExecutor();
 
     /**
      * Replaces the current instance with a different one. Use for testing only.
@@ -133,6 +138,22 @@ class Http {
         }
 
         return myReturn;
+    }
+
+    /**
+     * Creates a new http service object that automatically refreshes it's cache.
+     */
+    private Http() {
+        cacheRefresher.scheduleWithFixedDelay(
+                () -> {
+                    for(String key : httpAnswerCache.asMap().keySet()) {
+                        httpAnswerCache.refresh(key);
+                    }
+                },
+                config.getRefreshInterval(),
+                config.getRefreshInterval(),
+                TimeUnit.MINUTES
+        );
     }
 
     /**

@@ -36,6 +36,11 @@ public final class ApiLibConfig {
      */
     private String partnerId;
 
+    /**
+     * The cache refresh interval in minutes.
+     */
+    private Long refreshInterval = 5L;
+
     private ApiLibConfig() {
         setApiUrl("http://stable.alpha-trader.com");
     }
@@ -48,19 +53,26 @@ public final class ApiLibConfig {
     }
 
     /**
+     * @return the cache refresh interval in minutes.
+     */
+    public Long getRefreshInterval() {
+        return refreshInterval;
+    }
+
+    /**
+     * Sets the refresh interval of the http cache.
+     *
+     * @param refreshInterval the refresh interval in minutes
+     */
+    public void setRefreshInterval(Long refreshInterval) {
+        this.refreshInterval = refreshInterval;
+    }
+
+    /**
      * @return the API URL.
      */
     public URL getApiUrl() {
         return apiUrl;
-    }
-
-    /**
-     * Sets the API URL to a new value.
-     *
-     * @param apiUrl the new API URL
-     */
-    public void setApiUrl(URL apiUrl) {
-        this.apiUrl = apiUrl;
     }
 
     /**
@@ -76,6 +88,16 @@ public final class ApiLibConfig {
             log.error(e);
         }
     }
+
+    /**
+     * Sets the API URL to a new value.
+     *
+     * @param apiUrl the new API URL
+     */
+    public void setApiUrl(URL apiUrl) {
+        this.apiUrl = apiUrl;
+    }
+
     /**
      * @return the user
      */
